@@ -1,7 +1,7 @@
 // Load environment variables
 import "dotenv/config";
 import * as i from "./utils/imports.js";
-import prisma from "./utils/prisma.js";
+import prisma, { initializeDatabase } from "./utils/prisma.js";
 import compression from "compression";
 import process from "node:process";
 
@@ -57,6 +57,9 @@ app.use(
 app.use("/api/v1/auth", i.express.json());
 app.use("/api/v1/auth", i.express.urlencoded({ extended: false }));
 app.use("/api/v1/auth", i.authRouter); // Mount auth routes BEFORE the apiRouter
+
+// Health check endpoints (public, no authentication required)
+app.use("/health", i.healthRouter); // Also available at root level for easier access
 
 // Apply middleware to all protected routes at once to reduce setup overhead
 const apiRouter = i.express.Router();
@@ -120,9 +123,54 @@ i.setupSwagger(app);
 
 app.use("/api/v1/auth", i.authRouter);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-  console.log(
-    `API documentation available at http://localhost:${port}/api-docs (requires authentication)`
-  );
-});
+// Initialize database connection and start server
+const startServer = async () => {
+  try {
+    // Allow degraded start based on environment variable
+    const allowDegradedStart = process.env.ALLOW_DEGRADED_START === "true";
+
+    // Test database connection with retry logic
+    const dbResult = await initializeDatabase({ allowDegradedStart });
+
+    if (dbResult.degraded) {
+      console.warn(
+        "⚠️  Server starting in degraded mode - some features may be unavailable"
+      );
+    }
+
+    app.listen(port, () => {
+      const status = dbResult.degraded ? "🟡" : "🚀";
+      const mode = dbResult.degraded ? " (DEGRADED MODE)" : "";
+      console.log(
+        `${status} Server running at http://localhost:${port}${mode}`
+      );
+      console.log(
+        `📚 API documentation available at http://localhost:${port}/api-docs (requires authentication)`
+      );
+
+      if (dbResult.degraded) {
+        console.log(
+          "🔧 Database connection will be retried automatically on each request"
+        );
+        console.log(`📊 Health endpoints available:`);
+        console.log(`   • Basic health: http://localhost:${port}/health/basic`);
+        console.log(
+          `   • Database health: http://localhost:${port}/health/database`
+        );
+        console.log(`   • Full health: http://localhost:${port}/health`);
+      }
+    });
+  } catch (error) {
+    console.error(
+      "❌ Failed to start server due to database connection issues:",
+      error.message
+    );
+    console.error(
+      "💡 Tip: Set ALLOW_DEGRADED_START=true to start server without database"
+    );
+    process.exit(1);
+  }
+};
+
+// Start the server
+startServer();

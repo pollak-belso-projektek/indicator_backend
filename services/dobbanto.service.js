@@ -1,6 +1,6 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 
-const pattern = new ServicePattern('dobbanto', 'id', {
+const pattern = new ServicePattern("dobbanto", "id", {
   alapadatok: true,
 });
 
