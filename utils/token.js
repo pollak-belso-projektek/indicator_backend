@@ -22,6 +22,7 @@ export function generateToken(user) {
     email: user.email,
     name: user.name,
     permissions: user.permissionsDetails,
+    school: user.alapadatok,
     tableAccess: user.tableAccess
       ? user.tableAccess.map((access) => ({
           tableName: access.tableName,

@@ -4,6 +4,7 @@ import {
   getAll,
   update,
   getAllFiltered,
+  updatePassword,
 } from "../services/user.service.js";
 
 const router = e.Router();
@@ -379,21 +380,26 @@ router.post("/", async (req, res) => {
  */
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { email, name, password, permissions, tableAccess, alapadatok_id } =
-    req.body;
+  const { email, name, permissions, tableAccess, alapadatok_id } = req.body;
+
   try {
-    await update(
-      id,
-      email,
-      name,
-      password,
-      permissions,
-      tableAccess,
-      alapadatok_id
-    );
+    await update(id, email, name, permissions, tableAccess, alapadatok_id);
     res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
     console.error("Error updating user:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+router.put("/:id/password", async (req, res) => {
+  const { id } = req.params;
+  const { newPassword, newPasswordConfirm } = req.body;
+
+  try {
+    await updatePassword(id, newPassword, newPasswordConfirm);
+    res.status(200).json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.error("Error updating password:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
