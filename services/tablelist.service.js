@@ -1,6 +1,6 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 
-const pattern = new ServicePattern('tableList', 'id');
+const pattern = new ServicePattern("tableList", "id");
 
 export async function getAll() {
   return await pattern.findAll();
@@ -14,7 +14,7 @@ export async function create(name, isAvailable) {
 }
 
 export async function update(id, name, isAvailable) {
-  return await pattern.update(Number(id), {
+  return await pattern.update(id, {
     name,
     isAvailable,
   });

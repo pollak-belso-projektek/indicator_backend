@@ -15,7 +15,7 @@ export async function create(tanev_kezdete, letszam, alapadatok_id) {
   return await pattern.create({
     tanev_kezdete: tanev_kezdete,
     letszam: Number(letszam),
-    alapadatok_id: Number(alapadatok_id),
+    alapadatok_id: alapadatok_id,
   });
 }
 
@@ -23,6 +23,6 @@ export async function update(id, tanev_kezdete, letszam, alapadatok_id) {
   return await pattern.update(id, {
     tanev_kezdete: tanev_kezdete,
     letszam: Number(letszam),
-    alapadatok_id: Number(alapadatok_id),
+    alapadatok_id: alapadatok_id,
   });
 }
