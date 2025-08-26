@@ -141,6 +141,7 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.TableListScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  alias: 'alias',
   isAvailable: 'isAvailable',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

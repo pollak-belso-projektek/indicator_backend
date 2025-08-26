@@ -6769,6 +6769,7 @@ export namespace Prisma {
   export type TableListMinAggregateOutputType = {
     id: string | null
     name: string | null
+    alias: string | null
     isAvailable: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6777,6 +6778,7 @@ export namespace Prisma {
   export type TableListMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    alias: string | null
     isAvailable: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6785,6 +6787,7 @@ export namespace Prisma {
   export type TableListCountAggregateOutputType = {
     id: number
     name: number
+    alias: number
     isAvailable: number
     createdAt: number
     updatedAt: number
@@ -6795,6 +6798,7 @@ export namespace Prisma {
   export type TableListMinAggregateInputType = {
     id?: true
     name?: true
+    alias?: true
     isAvailable?: true
     createdAt?: true
     updatedAt?: true
@@ -6803,6 +6807,7 @@ export namespace Prisma {
   export type TableListMaxAggregateInputType = {
     id?: true
     name?: true
+    alias?: true
     isAvailable?: true
     createdAt?: true
     updatedAt?: true
@@ -6811,6 +6816,7 @@ export namespace Prisma {
   export type TableListCountAggregateInputType = {
     id?: true
     name?: true
+    alias?: true
     isAvailable?: true
     createdAt?: true
     updatedAt?: true
@@ -6892,6 +6898,7 @@ export namespace Prisma {
   export type TableListGroupByOutputType = {
     id: string
     name: string
+    alias: string | null
     isAvailable: boolean
     createdAt: Date
     updatedAt: Date | null
@@ -6917,6 +6924,7 @@ export namespace Prisma {
   export type TableListSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    alias?: boolean
     isAvailable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6927,6 +6935,7 @@ export namespace Prisma {
   export type TableListSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    alias?: boolean
     isAvailable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6935,6 +6944,7 @@ export namespace Prisma {
   export type TableListSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    alias?: boolean
     isAvailable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6943,12 +6953,13 @@ export namespace Prisma {
   export type TableListSelectScalar = {
     id?: boolean
     name?: boolean
+    alias?: boolean
     isAvailable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TableListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["tableList"]>
+  export type TableListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "alias" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["tableList"]>
   export type TableListInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     access?: boolean | TableList$accessArgs<ExtArgs>
     _count?: boolean | TableListCountOutputTypeDefaultArgs<ExtArgs>
@@ -6964,6 +6975,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      alias: string | null
       isAvailable: boolean
       createdAt: Date
       updatedAt: Date | null
@@ -7393,6 +7405,7 @@ export namespace Prisma {
   interface TableListFieldRefs {
     readonly id: FieldRef<"TableList", 'String'>
     readonly name: FieldRef<"TableList", 'String'>
+    readonly alias: FieldRef<"TableList", 'String'>
     readonly isAvailable: FieldRef<"TableList", 'Boolean'>
     readonly createdAt: FieldRef<"TableList", 'DateTime'>
     readonly updatedAt: FieldRef<"TableList", 'DateTime'>
@@ -47698,6 +47711,7 @@ export namespace Prisma {
   export const TableListScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    alias: 'alias',
     isAvailable: 'isAvailable',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -48580,6 +48594,7 @@ export namespace Prisma {
     NOT?: TableListWhereInput | TableListWhereInput[]
     id?: UuidFilter<"TableList"> | string
     name?: StringFilter<"TableList"> | string
+    alias?: StringNullableFilter<"TableList"> | string | null
     isAvailable?: BoolFilter<"TableList"> | boolean
     createdAt?: DateTimeFilter<"TableList"> | Date | string
     updatedAt?: DateTimeNullableFilter<"TableList"> | Date | string | null
@@ -48589,6 +48604,7 @@ export namespace Prisma {
   export type TableListOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    alias?: SortOrderInput | SortOrder
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -48601,6 +48617,7 @@ export namespace Prisma {
     AND?: TableListWhereInput | TableListWhereInput[]
     OR?: TableListWhereInput[]
     NOT?: TableListWhereInput | TableListWhereInput[]
+    alias?: StringNullableFilter<"TableList"> | string | null
     isAvailable?: BoolFilter<"TableList"> | boolean
     createdAt?: DateTimeFilter<"TableList"> | Date | string
     updatedAt?: DateTimeNullableFilter<"TableList"> | Date | string | null
@@ -48610,6 +48627,7 @@ export namespace Prisma {
   export type TableListOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    alias?: SortOrderInput | SortOrder
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -48624,6 +48642,7 @@ export namespace Prisma {
     NOT?: TableListScalarWhereWithAggregatesInput | TableListScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"TableList"> | string
     name?: StringWithAggregatesFilter<"TableList"> | string
+    alias?: StringNullableWithAggregatesFilter<"TableList"> | string | null
     isAvailable?: BoolWithAggregatesFilter<"TableList"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"TableList"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"TableList"> | Date | string | null
@@ -52024,6 +52043,7 @@ export namespace Prisma {
   export type TableListCreateInput = {
     id?: string
     name: string
+    alias?: string | null
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -52033,6 +52053,7 @@ export namespace Prisma {
   export type TableListUncheckedCreateInput = {
     id?: string
     name: string
+    alias?: string | null
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -52042,6 +52063,7 @@ export namespace Prisma {
   export type TableListUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52051,6 +52073,7 @@ export namespace Prisma {
   export type TableListUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52060,6 +52083,7 @@ export namespace Prisma {
   export type TableListCreateManyInput = {
     id?: string
     name: string
+    alias?: string | null
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -52068,6 +52092,7 @@ export namespace Prisma {
   export type TableListUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -52076,6 +52101,7 @@ export namespace Prisma {
   export type TableListUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -56069,6 +56095,7 @@ export namespace Prisma {
   export type TableListCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    alias?: SortOrder
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -56077,6 +56104,7 @@ export namespace Prisma {
   export type TableListMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    alias?: SortOrder
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -56085,6 +56113,7 @@ export namespace Prisma {
   export type TableListMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    alias?: SortOrder
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -61925,6 +61954,7 @@ export namespace Prisma {
   export type TableListCreateWithoutAccessInput = {
     id?: string
     name: string
+    alias?: string | null
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -61933,6 +61963,7 @@ export namespace Prisma {
   export type TableListUncheckedCreateWithoutAccessInput = {
     id?: string
     name: string
+    alias?: string | null
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -61992,6 +62023,7 @@ export namespace Prisma {
   export type TableListUpdateWithoutAccessInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62000,6 +62032,7 @@ export namespace Prisma {
   export type TableListUncheckedUpdateWithoutAccessInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
