@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  login-service:
+    build: .
+    ports:
+      - "5301:5301"
+    environment:
+      - NODE_ENV=development
+      - PORT=5301
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-15m}
+      - JWT_REFRESH_EXPIRES_IN=${JWT_REFRESH_EXPIRES_IN:-7d}
+      - ALLOW_DEGRADED_START=false
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5301/health/basic"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

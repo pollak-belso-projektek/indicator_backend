@@ -43,6 +43,9 @@ import { authMiddleware } from "../middleware/auth.middleware.js";
 import endpointAccessMiddleware from "../middleware/endpointAccess.middleware.js";
 import cacheMiddleware from "../middleware/cache.middleware.js";
 
+// Utils
+import { loginServiceClient } from "./loginServiceClient.js";
+
 // Export everything for single import
 export {
   express,
@@ -82,4 +85,5 @@ export {
   oktatoEgyebTevRouter,
   alkalmazottakMunkauyRouter,
   healthRouter,
+  loginServiceClient,
 };
