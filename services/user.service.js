@@ -154,7 +154,7 @@ export async function update(
   name,
   permissions = 0b00001,
   tableAccess = [],
-  alapadatok_id = null
+  alapadatokId = null
 ) {
   const user = await prisma.user.update({
     where: { id: id },
@@ -162,7 +162,7 @@ export async function update(
       email,
       name,
       permissions: Number(permissions),
-      alapadatokId: alapadatok_id ? alapadatok_id : null,
+      alapadatokId: alapadatokId ? alapadatokId : null,
     },
   });
   if (tableAccess && tableAccess.length > 0) {

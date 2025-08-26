@@ -380,10 +380,19 @@ router.post("/", async (req, res) => {
  */
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { email, name, permissions, tableAccess, alapadatok_id } = req.body;
+  const { email, name, permissions, tableAccess, alapadatokId } = req.body;
+
+  console.log("Updating user:", {
+    id,
+    email,
+    name,
+    permissions,
+    tableAccess,
+    alapadatokId,
+  });
 
   try {
-    await update(id, email, name, permissions, tableAccess, alapadatok_id);
+    await update(id, email, name, permissions, tableAccess, alapadatokId);
     res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
     console.error("Error updating user:", error);
