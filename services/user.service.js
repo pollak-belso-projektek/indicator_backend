@@ -115,7 +115,7 @@ export async function create(
       name,
       password: await hashPassword(password),
       permissions: permissions,
-      alapadatokId: alapadatok_id ? Number(alapadatok_id) : null,
+      alapadatokId: alapadatok_id ? alapadatok_id : null,
     },
   });
   if (tableAccess && tableAccess.length > 0) {
@@ -152,19 +152,17 @@ export async function update(
   id,
   email,
   name,
-  password,
   permissions = 0b00001,
   tableAccess = [],
-  alapadatok_id = null
+  alapadatokId = null
 ) {
   const user = await prisma.user.update({
     where: { id: id },
     data: {
       email,
       name,
-      password,
       permissions: Number(permissions),
-      alapadatokId: alapadatok_id ? Number(alapadatok_id) : null,
+      alapadatokId: alapadatokId ? alapadatokId : null,
     },
   });
   if (tableAccess && tableAccess.length > 0) {
@@ -206,3 +204,15 @@ export async function update(
   return user;
 }
 
+export async function updatePassword(id, newPassword, newPasswordConfirm) {
+  if (newPassword !== newPasswordConfirm) {
+    throw new Error("Passwords do not match");
+  }
+
+  const hashedPassword = await hashPassword(newPassword);
+
+  return prisma.user.update({
+    where: { id },
+    data: { password: hashedPassword },
+  });
+}
