@@ -20,8 +20,14 @@ export function generateToken(user) {
   const payload = {
     email: user.email,
     name: user.name,
-    permissions: user.permissions || 0,
-    id: user.id,
+    permissions: user.permissionsDetails,
+    school: user.alapadatok,
+    tableAccess: user.tableAccess
+      ? user.tableAccess.map((access) => ({
+          tableName: access.tableName,
+          permissions: mapTableAccess(access.access),
+        }))
+      : [],
   };
 
   // Use different secrets for access and refresh tokens for better security

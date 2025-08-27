@@ -1,4 +1,5 @@
 import prisma, { executeWithRetry } from "../utils/prisma.js";
+import { enrichUserWithPermissions } from "../utils/permissions.js";
 
 export async function getByEmail(email) {
   try {
@@ -19,6 +20,8 @@ export async function getByEmail(email) {
         },
       });
     });
+
+    enrichUserWithPermissions(user);
 
     return user;
   } catch (error) {
@@ -45,6 +48,8 @@ export async function getById(id) {
         },
       });
     });
+
+    enrichUserWithPermissions(user);
 
     return user;
   } catch (error) {

@@ -20,6 +20,7 @@ const corsConfig = {
   origin: [
     "http://localhost:5173",
     "http://172.16.0.100:5174",
+    "http://10.0.1.10:5173",
     "https://indikator.pollak.info",
     "http://localhost:5300", // Allow main backend to call this service
   ],

@@ -33,6 +33,7 @@ const corsOrigins = process.env.CORS_ORIGINS
       "http://localhost:5173",
       "http://172.16.0.100:5174",
       "https://indikator.pollak.info",
+      "http://10.0.1.10:5173",
     ];
 
 const corsConfig = {
@@ -46,6 +47,7 @@ const corsConfig = {
     "X-Request-ID",
     "expires",
     "cache-control",
+    "pragma",
     "no-cache",
     "no-store",
     "must-revalidate",
@@ -68,7 +70,7 @@ app.use(cors(corsConfig));
 app.use(requestLoggingMiddleware);
 
 // Apply rate limiting (before body parsing to protect against large payloads)
-app.use(generalRateLimit);
+// app.use(generalRateLimit);
 
 /**
  * @swagger
