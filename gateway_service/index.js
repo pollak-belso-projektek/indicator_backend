@@ -44,6 +44,11 @@ const corsConfig = {
     "Authorization",
     "X-Refresh-Token",
     "X-Request-ID",
+    "expires",
+    "cache-control",
+    "no-cache",
+    "no-store",
+    "must-revalidate",
   ],
 };
 

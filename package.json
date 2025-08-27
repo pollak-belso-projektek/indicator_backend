@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "validate-docs": "node validate-docs.js",
     "start:all": "concurrently \"npm run start:login\" \"npm run start:gateway\" \"npm run start:main\"",
-    "start:all:dev": "concurrently \"npm run dev:login\" \"npm run dev:gateway\" \"npm run dev:main\"",
+    "start:all:dev": "concurrently \"npm run dev:login\" \"npm run dev:main\" \"npm run dev:gateway\"",
     "start:all:script": "node start-microservices.js",
     "start:login": "cd login_service && npm start",
     "start:gateway": "cd gateway_service && npm start",
