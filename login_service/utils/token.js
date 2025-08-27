@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import * as cache from "./cache.js";
 import process from "node:process";
+import { mapTableAccess } from "./permissions.js";
 
 // Load configuration once
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret_key";
@@ -29,6 +30,8 @@ export function generateToken(user) {
         }))
       : [],
   };
+
+  console.log(user.tableAccess);
 
   // Use different secrets for access and refresh tokens for better security
   const accessToken = jwt.sign(payload, JWT_SECRET, {

@@ -8,15 +8,14 @@ export async function getByEmail(email) {
         where: {
           email: email,
         },
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          password: true,
-          permissions: true,
-          createdAt: true,
-          updatedAt: true,
-          alapadatokId: true,
+        include: {
+          // Only include what's needed for login to optimize query
+          tableAccess: {
+            include: {
+              table: true,
+            },
+          },
+          alapadatok: true,
         },
       });
     });
@@ -37,14 +36,14 @@ export async function getById(id) {
         where: {
           id: id,
         },
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          permissions: true,
-          createdAt: true,
-          updatedAt: true,
-          alapadatokId: true,
+        include: {
+          // Only include what's needed for login to optimize query
+          tableAccess: {
+            include: {
+              table: true,
+            },
+          },
+          alapadatok: true,
         },
       });
     });

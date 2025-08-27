@@ -702,7 +702,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "E:\\Projects\\indicator\\indicator_backend\\generated\\prisma",
+      "value": "D:\\projects\\indicator_backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -716,7 +716,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "E:\\Projects\\indicator\\indicator_backend\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\projects\\indicator_backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -730,6 +730,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
