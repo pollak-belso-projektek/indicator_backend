@@ -70,7 +70,7 @@ app.use(cors(corsConfig));
 app.use(requestLoggingMiddleware);
 
 // Apply rate limiting (before body parsing to protect against large payloads)
-// app.use(generalRateLimit);
+app.use(generalRateLimit);
 
 /**
  * @swagger

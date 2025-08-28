@@ -24,10 +24,14 @@ export function generateToken(user) {
     permissions: user.permissionsDetails,
     school: user.alapadatok,
     tableAccess: user.tableAccess
-      ? user.tableAccess.map((access) => ({
-          tableName: access.tableName,
-          permissions: mapTableAccess(access.access),
-        }))
+      ? user.tableAccess
+          .filter((access) => access.table.isAvailable)
+          .map((access) => ({
+            tableName: access.tableName,
+            permissions: mapTableAccess(access.access),
+            isAvailable: access.table.isAvailable,
+            alias: access.table.alias,
+          }))
       : [],
   };
 
