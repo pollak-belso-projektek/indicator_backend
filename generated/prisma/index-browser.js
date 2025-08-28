@@ -652,7 +652,8 @@ exports.Prisma.OktatoEgyebTevScalarFieldEnum = {
   tanterviro: 'tanterviro',
   tananyagfejleszto: 'tananyagfejleszto',
   tankonyv_jegyzetiro: 'tankonyv_jegyzetiro',
-  szakmai_tisztsegviselo: 'szakmai_tisztsegviselo'
+  szakmai_tisztsegviselo: 'szakmai_tisztsegviselo',
+  oktatok_letszama: 'oktatok_letszama'
 };
 
 exports.Prisma.SortOrder = {

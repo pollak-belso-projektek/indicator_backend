@@ -754,6 +754,7 @@ model OktatoEgyebTev {
   tananyagfejleszto         Int @default(0) @db.Integer
   tankonyv_jegyzetiro       Int @default(0) @db.Integer
   szakmai_tisztsegviselo    Int @default(0) @db.Integer
+  oktatok_letszama          Int @default(0) @db.Integer
 
   alapadatok Alapadatok @relation(fields: [alapadatok_id], references: [id])
 

@@ -1,6 +1,6 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 
-const pattern = new ServicePattern('oktatoEgyebTev', 'id');
+const pattern = new ServicePattern("oktatoEgyebTev", "id");
 
 export async function getAllByAlapadatok(alapadatokId, tanev) {
   return await pattern.findByAlapadatokIdAndYear(alapadatokId, tanev);
@@ -31,6 +31,7 @@ export async function create(
   tananyagfejleszto = 0,
   tankonyv_jegyzetiro = 0,
   szakmai_tisztsegviselo = 0,
+  oktatok_letszama = 0,
   createBy = null
 ) {
   // Validate required fields
@@ -65,6 +66,7 @@ export async function create(
     tananyagfejleszto: parseInt(tananyagfejleszto) || 0,
     tankonyv_jegyzetiro: parseInt(tankonyv_jegyzetiro) || 0,
     szakmai_tisztsegviselo: parseInt(szakmai_tisztsegviselo) || 0,
+    oktatok_letszama: parseInt(oktatok_letszama) || 0,
     createBy,
   });
 }
@@ -87,6 +89,7 @@ export async function update(
   tananyagfejleszto = 0,
   tankonyv_jegyzetiro = 0,
   szakmai_tisztsegviselo = 0,
+  oktatok_letszama = 0,
   updatedBy = null
 ) {
   // Validate required fields
@@ -125,6 +128,7 @@ export async function update(
     tananyagfejleszto: parseInt(tananyagfejleszto) || 0,
     tankonyv_jegyzetiro: parseInt(tankonyv_jegyzetiro) || 0,
     szakmai_tisztsegviselo: parseInt(szakmai_tisztsegviselo) || 0,
+    oktatok_letszama: parseInt(oktatok_letszama) || 0,
     updatedBy,
   });
 }
