@@ -13,6 +13,7 @@ import {
   createCircuitBreakerProxy,
 } from "./utils/proxy.js";
 import { authMiddleware } from "./middleware/auth.middleware.js";
+import { apiKeyMiddleware } from "./middleware/apiKey.middleware.js";
 import { requestLoggingMiddleware } from "./middleware/logging.middleware.js";
 import {
   generalRateLimit,
@@ -43,6 +44,7 @@ const corsConfig = {
   allowedHeaders: [
     "Content-Type",
     "Authorization",
+    "X-API-Key",
     "X-Refresh-Token",
     "X-Request-ID",
     "expires",
@@ -68,6 +70,9 @@ serviceRegistry.registerService("main_service", {
 // Global middleware
 app.use(cors(corsConfig));
 app.use(requestLoggingMiddleware);
+
+// Apply API key validation first (before rate limiting to prevent abuse)
+app.use(apiKeyMiddleware);
 
 // Apply rate limiting (before body parsing to protect against large payloads)
 app.use(generalRateLimit);
@@ -197,6 +202,7 @@ const startServer = async () => {
       );
       console.log("");
       console.log("🛡️  Security Features:");
+      console.log("   • API key authentication required");
       console.log("   • Rate limiting enabled");
       console.log("   • JWT authentication for protected routes");
       console.log("   • CORS configured");

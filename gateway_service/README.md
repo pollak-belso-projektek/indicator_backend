@@ -4,8 +4,9 @@ A centralized API Gateway that routes requests to the appropriate microservices 
 
 ## Features
 
+- **API Key Authentication**: Secure access control for frontend applications
 - **Request Routing**: Routes requests to login service and main service
-- **Authentication Middleware**: Validates JWT tokens
+- **JWT Authentication**: Validates JWT tokens for user sessions
 - **Rate Limiting**: Protects services from abuse
 - **Health Monitoring**: Monitors service health
 - **Load Balancing**: Basic load balancing capabilities
@@ -40,10 +41,57 @@ A centralized API Gateway that routes requests to the appropriate microservices 
 
 ```
 PORT=5000
+API_KEYS=your_secure_api_key_here,another_key_for_staging
 LOGIN_SERVICE_URL=http://localhost:5301
 MAIN_SERVICE_URL=http://localhost:5300
 JWT_SECRET=your_jwt_secret
 CORS_ORIGINS=http://localhost:5173,https://yourapp.com
+```
+
+## API Key Setup
+
+### 1. Generate an API Key
+
+```bash
+npm run generate-api-key
+```
+
+This will generate a secure API key and show you how to configure it.
+
+### 2. Configure Environment
+
+Add the generated API key to your `.env` file:
+
+```
+API_KEYS=your_generated_api_key_here
+```
+
+### 3. Frontend Integration
+
+Include the API key in your frontend requests:
+
+```javascript
+// Option 1: Using X-API-Key header
+fetch("http://localhost:5000/api/v1/data", {
+  headers: {
+    "X-API-Key": "your_api_key_here",
+    "Content-Type": "application/json",
+  },
+});
+
+// Option 2: Using Authorization header
+fetch("http://localhost:5000/api/v1/data", {
+  headers: {
+    Authorization: "Bearer your_api_key_here",
+    "Content-Type": "application/json",
+  },
+});
+```
+
+### 4. Test API Key
+
+```bash
+npm run test-api-key
 ```
 
 ## Running the Gateway
