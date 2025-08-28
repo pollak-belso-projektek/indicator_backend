@@ -661,6 +661,8 @@ model HHEsHHHTanulok {
   alapadatok_id String @db.Uuid
   tanev_kezdete Int    @db.SmallInt
 
+  jogviszony_tipus Int @db.SmallInt
+
   hh_tanulo_letszam   Int @db.Integer
   tanuloi_osszletszam Int @db.Integer
 

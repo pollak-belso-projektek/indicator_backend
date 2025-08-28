@@ -281,17 +281,10 @@ router.get("/filtered", async (req, res) => {
  *         description: Internal server error
  */
 router.post("/", async (req, res) => {
-  const { email, name, password, permissions, tableAccess, alapadatok_id } =
+  const { email, name, password, permissions, tableAccess, alapadatokId } =
     req.body;
   try {
-    await create(
-      email,
-      name,
-      password,
-      permissions,
-      tableAccess,
-      alapadatok_id
-    );
+    await create(email, name, password, permissions, tableAccess, alapadatokId);
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     console.error("Error creating user:", error);

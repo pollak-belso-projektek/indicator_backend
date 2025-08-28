@@ -41720,12 +41720,14 @@ export namespace Prisma {
 
   export type HHEsHHHTanulokAvgAggregateOutputType = {
     tanev_kezdete: number | null
+    jogviszony_tipus: number | null
     hh_tanulo_letszam: number | null
     tanuloi_osszletszam: number | null
   }
 
   export type HHEsHHHTanulokSumAggregateOutputType = {
     tanev_kezdete: number | null
+    jogviszony_tipus: number | null
     hh_tanulo_letszam: number | null
     tanuloi_osszletszam: number | null
   }
@@ -41734,6 +41736,7 @@ export namespace Prisma {
     id: string | null
     alapadatok_id: string | null
     tanev_kezdete: number | null
+    jogviszony_tipus: number | null
     hh_tanulo_letszam: number | null
     tanuloi_osszletszam: number | null
     createAt: Date | null
@@ -41746,6 +41749,7 @@ export namespace Prisma {
     id: string | null
     alapadatok_id: string | null
     tanev_kezdete: number | null
+    jogviszony_tipus: number | null
     hh_tanulo_letszam: number | null
     tanuloi_osszletszam: number | null
     createAt: Date | null
@@ -41758,6 +41762,7 @@ export namespace Prisma {
     id: number
     alapadatok_id: number
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt: number
@@ -41770,12 +41775,14 @@ export namespace Prisma {
 
   export type HHEsHHHTanulokAvgAggregateInputType = {
     tanev_kezdete?: true
+    jogviszony_tipus?: true
     hh_tanulo_letszam?: true
     tanuloi_osszletszam?: true
   }
 
   export type HHEsHHHTanulokSumAggregateInputType = {
     tanev_kezdete?: true
+    jogviszony_tipus?: true
     hh_tanulo_letszam?: true
     tanuloi_osszletszam?: true
   }
@@ -41784,6 +41791,7 @@ export namespace Prisma {
     id?: true
     alapadatok_id?: true
     tanev_kezdete?: true
+    jogviszony_tipus?: true
     hh_tanulo_letszam?: true
     tanuloi_osszletszam?: true
     createAt?: true
@@ -41796,6 +41804,7 @@ export namespace Prisma {
     id?: true
     alapadatok_id?: true
     tanev_kezdete?: true
+    jogviszony_tipus?: true
     hh_tanulo_letszam?: true
     tanuloi_osszletszam?: true
     createAt?: true
@@ -41808,6 +41817,7 @@ export namespace Prisma {
     id?: true
     alapadatok_id?: true
     tanev_kezdete?: true
+    jogviszony_tipus?: true
     hh_tanulo_letszam?: true
     tanuloi_osszletszam?: true
     createAt?: true
@@ -41907,6 +41917,7 @@ export namespace Prisma {
     id: string
     alapadatok_id: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt: Date
@@ -41938,6 +41949,7 @@ export namespace Prisma {
     id?: boolean
     alapadatok_id?: boolean
     tanev_kezdete?: boolean
+    jogviszony_tipus?: boolean
     hh_tanulo_letszam?: boolean
     tanuloi_osszletszam?: boolean
     createAt?: boolean
@@ -41951,6 +41963,7 @@ export namespace Prisma {
     id?: boolean
     alapadatok_id?: boolean
     tanev_kezdete?: boolean
+    jogviszony_tipus?: boolean
     hh_tanulo_letszam?: boolean
     tanuloi_osszletszam?: boolean
     createAt?: boolean
@@ -41964,6 +41977,7 @@ export namespace Prisma {
     id?: boolean
     alapadatok_id?: boolean
     tanev_kezdete?: boolean
+    jogviszony_tipus?: boolean
     hh_tanulo_letszam?: boolean
     tanuloi_osszletszam?: boolean
     createAt?: boolean
@@ -41977,6 +41991,7 @@ export namespace Prisma {
     id?: boolean
     alapadatok_id?: boolean
     tanev_kezdete?: boolean
+    jogviszony_tipus?: boolean
     hh_tanulo_letszam?: boolean
     tanuloi_osszletszam?: boolean
     createAt?: boolean
@@ -41985,7 +42000,7 @@ export namespace Prisma {
     updatedBy?: boolean
   }
 
-  export type HHEsHHHTanulokOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "alapadatok_id" | "tanev_kezdete" | "hh_tanulo_letszam" | "tanuloi_osszletszam" | "createAt" | "createBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["hHEsHHHTanulok"]>
+  export type HHEsHHHTanulokOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "alapadatok_id" | "tanev_kezdete" | "jogviszony_tipus" | "hh_tanulo_letszam" | "tanuloi_osszletszam" | "createAt" | "createBy" | "updatedAt" | "updatedBy", ExtArgs["result"]["hHEsHHHTanulok"]>
   export type HHEsHHHTanulokInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
   }
@@ -42005,6 +42020,7 @@ export namespace Prisma {
       id: string
       alapadatok_id: string
       tanev_kezdete: number
+      jogviszony_tipus: number
       hh_tanulo_letszam: number
       tanuloi_osszletszam: number
       createAt: Date
@@ -42438,6 +42454,7 @@ export namespace Prisma {
     readonly id: FieldRef<"HHEsHHHTanulok", 'String'>
     readonly alapadatok_id: FieldRef<"HHEsHHHTanulok", 'String'>
     readonly tanev_kezdete: FieldRef<"HHEsHHHTanulok", 'Int'>
+    readonly jogviszony_tipus: FieldRef<"HHEsHHHTanulok", 'Int'>
     readonly hh_tanulo_letszam: FieldRef<"HHEsHHHTanulok", 'Int'>
     readonly tanuloi_osszletszam: FieldRef<"HHEsHHHTanulok", 'Int'>
     readonly createAt: FieldRef<"HHEsHHHTanulok", 'DateTime'>
@@ -48240,6 +48257,7 @@ export namespace Prisma {
     id: 'id',
     alapadatok_id: 'alapadatok_id',
     tanev_kezdete: 'tanev_kezdete',
+    jogviszony_tipus: 'jogviszony_tipus',
     hh_tanulo_letszam: 'hh_tanulo_letszam',
     tanuloi_osszletszam: 'tanuloi_osszletszam',
     createAt: 'createAt',
@@ -51469,6 +51487,7 @@ export namespace Prisma {
     id?: UuidFilter<"HHEsHHHTanulok"> | string
     alapadatok_id?: UuidFilter<"HHEsHHHTanulok"> | string
     tanev_kezdete?: IntFilter<"HHEsHHHTanulok"> | number
+    jogviszony_tipus?: IntFilter<"HHEsHHHTanulok"> | number
     hh_tanulo_letszam?: IntFilter<"HHEsHHHTanulok"> | number
     tanuloi_osszletszam?: IntFilter<"HHEsHHHTanulok"> | number
     createAt?: DateTimeFilter<"HHEsHHHTanulok"> | Date | string
@@ -51482,6 +51501,7 @@ export namespace Prisma {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
     createAt?: SortOrder
@@ -51498,6 +51518,7 @@ export namespace Prisma {
     NOT?: HHEsHHHTanulokWhereInput | HHEsHHHTanulokWhereInput[]
     alapadatok_id?: UuidFilter<"HHEsHHHTanulok"> | string
     tanev_kezdete?: IntFilter<"HHEsHHHTanulok"> | number
+    jogviszony_tipus?: IntFilter<"HHEsHHHTanulok"> | number
     hh_tanulo_letszam?: IntFilter<"HHEsHHHTanulok"> | number
     tanuloi_osszletszam?: IntFilter<"HHEsHHHTanulok"> | number
     createAt?: DateTimeFilter<"HHEsHHHTanulok"> | Date | string
@@ -51511,6 +51532,7 @@ export namespace Prisma {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
     createAt?: SortOrder
@@ -51531,6 +51553,7 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"HHEsHHHTanulok"> | string
     alapadatok_id?: UuidWithAggregatesFilter<"HHEsHHHTanulok"> | string
     tanev_kezdete?: IntWithAggregatesFilter<"HHEsHHHTanulok"> | number
+    jogviszony_tipus?: IntWithAggregatesFilter<"HHEsHHHTanulok"> | number
     hh_tanulo_letszam?: IntWithAggregatesFilter<"HHEsHHHTanulok"> | number
     tanuloi_osszletszam?: IntWithAggregatesFilter<"HHEsHHHTanulok"> | number
     createAt?: DateTimeWithAggregatesFilter<"HHEsHHHTanulok"> | Date | string
@@ -55302,6 +55325,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokCreateInput = {
     id?: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt?: Date | string
@@ -55315,6 +55339,7 @@ export namespace Prisma {
     id?: string
     alapadatok_id: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt?: Date | string
@@ -55326,6 +55351,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55339,6 +55365,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55351,6 +55378,7 @@ export namespace Prisma {
     id?: string
     alapadatok_id: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt?: Date | string
@@ -55362,6 +55390,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55374,6 +55403,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58162,6 +58192,7 @@ export namespace Prisma {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
     createAt?: SortOrder
@@ -58172,6 +58203,7 @@ export namespace Prisma {
 
   export type HHEsHHHTanulokAvgOrderByAggregateInput = {
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
   }
@@ -58180,6 +58212,7 @@ export namespace Prisma {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
     createAt?: SortOrder
@@ -58192,6 +58225,7 @@ export namespace Prisma {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
     createAt?: SortOrder
@@ -58202,6 +58236,7 @@ export namespace Prisma {
 
   export type HHEsHHHTanulokSumOrderByAggregateInput = {
     tanev_kezdete?: SortOrder
+    jogviszony_tipus?: SortOrder
     hh_tanulo_letszam?: SortOrder
     tanuloi_osszletszam?: SortOrder
   }
@@ -62995,6 +63030,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt?: Date | string
@@ -63006,6 +63042,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokUncheckedCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt?: Date | string
@@ -63963,6 +64000,7 @@ export namespace Prisma {
     id?: UuidFilter<"HHEsHHHTanulok"> | string
     alapadatok_id?: UuidFilter<"HHEsHHHTanulok"> | string
     tanev_kezdete?: IntFilter<"HHEsHHHTanulok"> | number
+    jogviszony_tipus?: IntFilter<"HHEsHHHTanulok"> | number
     hh_tanulo_letszam?: IntFilter<"HHEsHHHTanulok"> | number
     tanuloi_osszletszam?: IntFilter<"HHEsHHHTanulok"> | number
     createAt?: DateTimeFilter<"HHEsHHHTanulok"> | Date | string
@@ -70571,6 +70609,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokCreateManyAlapadatokInput = {
     id?: string
     tanev_kezdete: number
+    jogviszony_tipus: number
     hh_tanulo_letszam: number
     tanuloi_osszletszam: number
     createAt?: Date | string
@@ -71698,6 +71737,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -71709,6 +71749,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokUncheckedUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -71720,6 +71761,7 @@ export namespace Prisma {
   export type HHEsHHHTanulokUncheckedUpdateManyWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    jogviszony_tipus?: IntFieldUpdateOperationsInput | number
     hh_tanulo_letszam?: IntFieldUpdateOperationsInput | number
     tanuloi_osszletszam?: IntFieldUpdateOperationsInput | number
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string

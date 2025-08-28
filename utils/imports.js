@@ -36,6 +36,8 @@ import vizsgaeredmenyekRouter from "../controllers/vizsgaeredmenyek.controller.j
 import oktatoEgyebTevRouter from "../controllers/oktato_egyeb_tev.controller.js";
 import alkalmazottakMunkauyRouter from "../controllers/alkalmazottak_munkaugy.controller.js";
 import healthRouter from "../controllers/health.controller.js";
+import szakiranyRouter from "../controllers/szakirany.controller.js";
+import szakmaRouter from "../controllers/szakma.controller.js";
 
 // Middleware
 import logMiddleware from "../middleware/log.middleware.js";
@@ -86,4 +88,6 @@ export {
   alkalmazottakMunkauyRouter,
   healthRouter,
   loginServiceClient,
+  szakiranyRouter,
+  szakmaRouter,
 };

@@ -586,6 +586,7 @@ exports.Prisma.HHEsHHHTanulokScalarFieldEnum = {
   id: 'id',
   alapadatok_id: 'alapadatok_id',
   tanev_kezdete: 'tanev_kezdete',
+  jogviszony_tipus: 'jogviszony_tipus',
   hh_tanulo_letszam: 'hh_tanulo_letszam',
   tanuloi_osszletszam: 'tanuloi_osszletszam',
   createAt: 'createAt',

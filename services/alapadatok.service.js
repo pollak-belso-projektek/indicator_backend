@@ -117,6 +117,49 @@ export async function add(
       });
 
       if (existingSzakirany) {
+        // Get existing szakma for this szakirany
+        const existingSzakiranyWithSzakma = await prisma.szakirany.findUnique({
+          where: { id: existingSzakirany.id },
+          include: {
+            szakma: {
+              include: {
+                szakma: true,
+              },
+            },
+          },
+        });
+
+        const existingSzakmaNames = existingSzakiranyWithSzakma.szakma.map(
+          (s) => s.szakma.nev
+        );
+
+        // Filter out szakma that are already connected
+        const newSzakmaToAdd = szakirany.szakirany.szakma.filter(
+          (szakma) => !existingSzakmaNames.includes(szakma.szakma.nev)
+        );
+
+        // Only update if there are new szakma to add
+        if (newSzakmaToAdd.length > 0) {
+          await prisma.szakirany.update({
+            where: { id: existingSzakirany.id },
+            data: {
+              nev: szakiranyNev,
+              szakma: {
+                create: newSzakmaToAdd.map((szakma) => ({
+                  szakma: {
+                    connectOrCreate: {
+                      where: { nev: szakma.szakma.nev },
+                      create: {
+                        nev: szakma.szakma.nev,
+                      },
+                    },
+                  },
+                })),
+              },
+            },
+          });
+        }
+
         return existingSzakirany;
       }
 
@@ -210,6 +253,49 @@ export async function update(
         },
       });
       if (existingSzakirany) {
+        // Get existing szakma for this szakirany
+        const existingSzakiranyWithSzakma = await prisma.szakirany.findUnique({
+          where: { id: existingSzakirany.id },
+          include: {
+            szakma: {
+              include: {
+                szakma: true,
+              },
+            },
+          },
+        });
+
+        const existingSzakmaNames = existingSzakiranyWithSzakma.szakma.map(
+          (s) => s.szakma.nev
+        );
+
+        // Filter out szakma that are already connected
+        const newSzakmaToAdd = szakirany.szakirany.szakma.filter(
+          (szakma) => !existingSzakmaNames.includes(szakma.szakma.nev)
+        );
+
+        // Only update if there are new szakma to add
+        if (newSzakmaToAdd.length > 0) {
+          await prisma.szakirany.update({
+            where: { id: existingSzakirany.id },
+            data: {
+              nev: szakiranyNev,
+              szakma: {
+                create: newSzakmaToAdd.map((szakma) => ({
+                  szakma: {
+                    connectOrCreate: {
+                      where: { nev: szakma.szakma.nev },
+                      create: {
+                        nev: szakma.szakma.nev,
+                      },
+                    },
+                  },
+                })),
+              },
+            },
+          });
+        }
+
         return existingSzakirany;
       }
 
@@ -272,18 +358,22 @@ export async function update(
   });
 
   // Get existing szakirany and szakma IDs
-  const existingSzakiranyIds = existingData.alapadatok_szakirany.map(rel => rel.szakirany_id);
-  const existingSzakmaIds = existingData.alapadatok_szakma.map(rel => rel.szakma_id);
+  const existingSzakiranyIds = existingData.alapadatok_szakirany.map(
+    (rel) => rel.szakirany_id
+  );
+  const existingSzakmaIds = existingData.alapadatok_szakma.map(
+    (rel) => rel.szakma_id
+  );
 
   // Filter out already connected szakirany
   const newSzakiranyConnections = foundOrCreatedSzakirany
-    .filter(szakirany => !existingSzakiranyIds.includes(szakirany.id))
-    .map(szakirany => ({ szakirany_id: szakirany.id }));
+    .filter((szakirany) => !existingSzakiranyIds.includes(szakirany.id))
+    .map((szakirany) => ({ szakirany_id: szakirany.id }));
 
   // Filter out already connected szakma
   const newSzakmaConnections = createdSzakmak
-    .filter(szakma => !existingSzakmaIds.includes(szakma.id))
-    .map(szakma => ({ szakma_id: szakma.id }));
+    .filter((szakma) => !existingSzakmaIds.includes(szakma.id))
+    .map((szakma) => ({ szakma_id: szakma.id }));
 
   const retData = await prisma.alapadatok.update({
     data: {

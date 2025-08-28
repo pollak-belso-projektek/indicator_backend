@@ -265,6 +265,7 @@ router.post("/", async (req, res) => {
     const {
       alapadatok_id,
       tanev_kezdete,
+      jogviszony_tipus,
       hh_tanulo_letszam,
       tanuloi_osszletszam,
     } = req.body;
@@ -272,6 +273,7 @@ router.post("/", async (req, res) => {
     const createdData = await create(
       alapadatok_id,
       tanev_kezdete,
+      jogviszony_tipus,
       hh_tanulo_letszam,
       tanuloi_osszletszam
     );
@@ -286,9 +288,11 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
+    console.log("Updating elhelyezkedes data:", id);
     const {
       alapadatok_id,
       tanev_kezdete,
+      jogviszony_tipus,
       hh_tanulo_letszam,
       tanuloi_osszletszam,
     } = req.body;
@@ -297,6 +301,7 @@ router.put("/:id", async (req, res) => {
       id,
       alapadatok_id,
       tanev_kezdete,
+      jogviszony_tipus,
       hh_tanulo_letszam,
       tanuloi_osszletszam
     );
