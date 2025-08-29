@@ -392,7 +392,8 @@ router.post("/", async (req, res) => {
  */
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { email, name, permissions, tableAccess, alapadatokId } = req.body;
+  const { email, name, permissions, tableAccess, alapadatokId, isActive } =
+    req.body;
 
   console.log("Updating user:", {
     id,
