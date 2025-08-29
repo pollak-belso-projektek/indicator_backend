@@ -11,6 +11,10 @@ export async function login(email, password) {
       throw new Error("User not found");
     }
 
+    if (!user.isActive) {
+      throw new Error("User is inactive");
+    }
+
     // Password comparison is inherently slow for security
     const isPasswordValid = await comparePassword(password, user.password);
     if (!isPasswordValid) {
