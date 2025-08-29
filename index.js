@@ -9,8 +9,10 @@ const corsConfig = {
   origin: [
     "http://localhost:5173",
     "http://172.16.0.100:5174",
+    "http://10.0.1.7:5173",
     "http://10.0.1.10:5173",
     "https://indikator.pollak.info",
+    "http://localhost:5000", // Allow API Gateway to call this service
   ],
 };
 
@@ -55,6 +57,8 @@ app.use(
 
 // First, mount the auth routes separately to avoid middleware collision
 // For auth routes, we need the body parsers but not the authentication middleware
+// NOTE: In gateway mode, auth routes are handled by the gateway → login service
+// Keep these for backward compatibility when running standalone
 app.use("/api/v1/auth", i.express.json());
 app.use("/api/v1/auth", i.express.urlencoded({ extended: false }));
 app.use("/api/v1/auth", i.authRouter); // Mount auth routes BEFORE the apiRouter
@@ -112,6 +116,8 @@ protectedRouter.use(
 protectedRouter.use("/vizsgaeredmenyek", i.vizsgaeredmenyekRouter);
 protectedRouter.use("/oktato-egyeb-tev", i.oktatoEgyebTevRouter);
 protectedRouter.use("/alkalmazottak_munkaugy", i.alkalmazottakMunkauyRouter);
+protectedRouter.use("/szakirany", i.szakiranyRouter);
+protectedRouter.use("/szakma", i.szakmaRouter);
 
 // Mount the protected router under the API router
 apiRouter.use(protectedRouter);

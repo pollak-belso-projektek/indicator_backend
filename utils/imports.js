@@ -36,12 +36,17 @@ import vizsgaeredmenyekRouter from "../controllers/vizsgaeredmenyek.controller.j
 import oktatoEgyebTevRouter from "../controllers/oktato_egyeb_tev.controller.js";
 import alkalmazottakMunkauyRouter from "../controllers/alkalmazottak_munkaugy.controller.js";
 import healthRouter from "../controllers/health.controller.js";
+import szakiranyRouter from "../controllers/szakirany.controller.js";
+import szakmaRouter from "../controllers/szakma.controller.js";
 
 // Middleware
 import logMiddleware from "../middleware/log.middleware.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
 import endpointAccessMiddleware from "../middleware/endpointAccess.middleware.js";
 import cacheMiddleware from "../middleware/cache.middleware.js";
+
+// Utils
+import { loginServiceClient } from "./loginServiceClient.js";
 
 // Export everything for single import
 export {
@@ -82,4 +87,7 @@ export {
   oktatoEgyebTevRouter,
   alkalmazottakMunkauyRouter,
   healthRouter,
+  loginServiceClient,
+  szakiranyRouter,
+  szakmaRouter,
 };

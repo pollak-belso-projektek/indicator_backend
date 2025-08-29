@@ -586,6 +586,7 @@ exports.Prisma.HHEsHHHTanulokScalarFieldEnum = {
   id: 'id',
   alapadatok_id: 'alapadatok_id',
   tanev_kezdete: 'tanev_kezdete',
+  jogviszony_tipus: 'jogviszony_tipus',
   hh_tanulo_letszam: 'hh_tanulo_letszam',
   tanuloi_osszletszam: 'tanuloi_osszletszam',
   createAt: 'createAt',
@@ -651,7 +652,8 @@ exports.Prisma.OktatoEgyebTevScalarFieldEnum = {
   tanterviro: 'tanterviro',
   tananyagfejleszto: 'tananyagfejleszto',
   tankonyv_jegyzetiro: 'tankonyv_jegyzetiro',
-  szakmai_tisztsegviselo: 'szakmai_tisztsegviselo'
+  szakmai_tisztsegviselo: 'szakmai_tisztsegviselo',
+  oktatok_letszama: 'oktatok_letszama'
 };
 
 exports.Prisma.SortOrder = {

@@ -7,7 +7,18 @@
     "dev": "nodemon ./index.js",
     "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "validate-docs": "node validate-docs.js"
+    "validate-docs": "node validate-docs.js",
+    "start:all": "concurrently \"npm run start:login\" \"npm run start:gateway\" \"npm run start:main\"",
+    "start:all:dev": "concurrently \"npm run dev:login\" \"npm run dev:main\" \"npm run dev:gateway\"",
+    "start:all:script": "node start-microservices.js",
+    "start:login": "cd login_service && npm start",
+    "start:gateway": "cd gateway_service && npm start",
+    "start:main": "npm start",
+    "dev:login": "cd login_service && npm run dev",
+    "dev:gateway": "cd gateway_service && npm run dev",
+    "dev:main": "npm run dev",
+    "microservices": "concurrently --kill-others-on-fail \"npm run start:login\" \"npm run start:gateway\"",
+    "microservices:dev": "concurrently --kill-others-on-fail \"npm run dev:login\" \"npm run dev:gateway\""
   },
   "keywords": [],
   "author": "",
@@ -29,6 +40,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "eslint": "^9.29.0",
     "nodemon": "^3.1.10",
     "prisma": "^6.12.0"

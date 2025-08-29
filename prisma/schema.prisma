@@ -663,6 +663,8 @@ model HHEsHHHTanulok {
   alapadatok_id String     @db.Uuid
   tanev_kezdete Int        @db.SmallInt
 
+  jogviszony_tipus Int @db.SmallInt 
+
   hh_tanulo_letszam Int @db.Integer
   tanuloi_osszletszam Int @db.Integer
 
@@ -754,6 +756,7 @@ model OktatoEgyebTev{
   tananyagfejleszto Int @db.Integer @default(0)
   tankonyv_jegyzetiro Int @db.Integer @default(0)
   szakmai_tisztsegviselo Int @db.Integer @default(0)
+  oktatok_letszama Int @db.Integer @default(0)
 
   alapadatok    Alapadatok @relation(fields: [alapadatok_id], references: [id])
 

@@ -1,4 +1,4 @@
-import { refreshAccessToken, getUserFromToken } from "../utils/token.js";
+import { refreshAccessToken, getUserFromToken } from "../utils/tokenClient.js";
 
 export async function authMiddleware(req, res, next) {
   if (req.method === "OPTIONS") {

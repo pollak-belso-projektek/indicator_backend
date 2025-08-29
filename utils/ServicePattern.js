@@ -10,10 +10,10 @@ export class ServicePattern {
     this.include = include;
     this.select = select;
     this.serviceCache = new ServiceCache(serviceName);
-    
+
     // Field naming options for flexibility
-    this.yearField = options.yearField || 'tanev_kezdete'; // Default to tanev_kezdete
-    this.alapadatokField = options.alapadatokField || 'alapadatok_id'; // Default to alapadatok_id
+    this.yearField = options.yearField || "tanev_kezdete"; // Default to tanev_kezdete
+    this.alapadatokField = options.alapadatokField || "alapadatok_id"; // Default to alapadatok_id
   }
 
   /**
@@ -204,6 +204,21 @@ export class ServicePattern {
     return result;
   }
 
+  async deleteByAlapadatokIdAndExactYear(alapadatokId, year) {
+    const targetYear = parseInt(year);
+    const result = await prisma[this.serviceName].deleteMany({
+      where: {
+        [this.alapadatokField]: alapadatokId,
+        [this.yearField]: targetYear,
+      },
+    });
+
+    // Invalidate related caches
+    this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
+
+    return result;
+  }
+
   /**
    * Additional convenience methods for common patterns
    */
@@ -251,10 +266,10 @@ export class ServicePattern {
    */
   async deleteMany(where) {
     const result = await prisma[this.serviceName].deleteMany({ where });
-    
+
     // Invalidate all cache for bulk operations
     this.serviceCache.invalidateRelated("deleteMany");
-    
+
     return result;
   }
 }

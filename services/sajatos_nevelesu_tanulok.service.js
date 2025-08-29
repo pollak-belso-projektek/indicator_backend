@@ -2,17 +2,13 @@ import prisma from "../utils/prisma.js";
 import { ServicePattern, CACHE_TTL } from "../utils/ServicePattern.js";
 
 // Initialize ServicePattern for sajatosNevelesuTanulok with relations
-const pattern = new ServicePattern(
-  "sajatosNevelesuTanulok", 
-  "id", 
-  {
-    alapadatok: true,
-  }
-);
+const pattern = new ServicePattern("sajatosNevelesuTanulok", "id", {
+  alapadatok: true,
+});
 
 export async function getAll(tanev) {
   return await pattern.serviceCache.get(
-    'all_with_year_ordered',
+    "all_with_year_ordered",
     async () => {
       const { firstYear, lastYear } = pattern.getYearRange(tanev);
       return await prisma.sajatosNevelesuTanulok.findMany({
@@ -30,7 +26,7 @@ export async function getAll(tanev) {
 
 export async function getAllByAlapadatok(alapadatokId, tanev) {
   return await pattern.serviceCache.get(
-    'alapadatok_with_year_ordered',
+    "alapadatok_with_year_ordered",
     async () => {
       const { firstYear, lastYear } = pattern.getYearRange(tanev);
       return await prisma.sajatosNevelesuTanulok.findMany({
@@ -52,15 +48,13 @@ export async function create(
   alapadatok_id,
   tanev_kezdete,
   sni_tanulok_szama,
-  btmn_tanulok_szama,
   tanuloi_osszletszam
 ) {
   return await pattern.create({
     alapadatok_id,
     tanev_kezdete: parseInt(tanev_kezdete),
     sni_tanulok_szama: parseInt(sni_tanulok_szama),
-    btmn_tanulok_szama: parseInt(btmn_tanulok_szama),
-    tanuloi_osszletszam: parseInt(tanuloi_osszletszam),
+    tanulok_osszesen: parseInt(tanuloi_osszletszam),
   });
 }
 
@@ -69,15 +63,13 @@ export async function update(
   alapadatok_id,
   tanev_kezdete,
   sni_tanulok_szama,
-  btmn_tanulok_szama,
   tanuloi_osszletszam
 ) {
   return await pattern.update(id, {
     alapadatok_id,
     tanev_kezdete: parseInt(tanev_kezdete),
     sni_tanulok_szama: parseInt(sni_tanulok_szama),
-    btmn_tanulok_szama: parseInt(btmn_tanulok_szama),
-    tanuloi_osszletszam: parseInt(tanuloi_osszletszam),
+    tanulok_osszesen: parseInt(tanuloi_osszletszam),
   });
 }
 

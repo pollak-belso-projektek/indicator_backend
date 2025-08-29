@@ -604,6 +604,7 @@ router.post("/", async (req, res) => {
       tananyagfejleszto,
       tankonyv_jegyzetiro,
       szakmai_tisztsegviselo,
+      oktatok_letszama,
       createBy,
     } = req.body;
 
@@ -632,6 +633,7 @@ router.post("/", async (req, res) => {
       tananyagfejleszto,
       tankonyv_jegyzetiro,
       szakmai_tisztsegviselo,
+      oktatok_letszama,
       createBy
     );
 
@@ -733,6 +735,7 @@ router.put("/:id", async (req, res) => {
       tananyagfejleszto,
       tankonyv_jegyzetiro,
       szakmai_tisztsegviselo,
+      oktatok_letszama,
       updatedBy,
     } = req.body;
 
@@ -762,6 +765,7 @@ router.put("/:id", async (req, res) => {
       tananyagfejleszto,
       tankonyv_jegyzetiro,
       szakmai_tisztsegviselo,
+      oktatok_letszama,
       updatedBy
     );
 
