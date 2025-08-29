@@ -703,7 +703,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "E:\\Projects\\indicator\\indicator_backend\\generated\\prisma",
+      "value": "/home/runner/work/indicator_backend/indicator_backend/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -712,12 +712,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "E:\\Projects\\indicator\\indicator_backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/runner/work/indicator_backend/indicator_backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -731,6 +731,8 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
+  "ciName": "GitHub Actions",
   "inlineDatasources": {
     "db": {
       "url": {
