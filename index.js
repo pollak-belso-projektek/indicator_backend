@@ -10,6 +10,7 @@ const corsConfig = {
     "http://localhost:5173",
     "http://172.16.0.100:5174",
     "http://10.0.1.7:5173",
+    "http://10.0.1.10:5173",
     "https://indikator.pollak.info",
     "http://localhost:5000", // Allow API Gateway to call this service
   ],
