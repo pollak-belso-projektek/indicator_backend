@@ -135,7 +135,8 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   alapadatokId: 'alapadatokId',
-  permissions: 'permissions'
+  permissions: 'permissions',
+  isActive: 'isActive'
 };
 
 exports.Prisma.TableListScalarFieldEnum = {

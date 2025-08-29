@@ -274,16 +274,6 @@ router.post("/", async (req, res) => {
   try {
     const { alapadatok_id, alkalmazottak_munkaugy } = req.body;
 
-    console.log(
-      "Creating alkalmazottak_munkaugy for alapadatok_id:",
-      alapadatok_id
-    );
-
-    console.log(
-      "Received data:",
-      JSON.stringify(alkalmazottak_munkaugy, null, 2)
-    );
-
     const result = await createMany(alapadatok_id, alkalmazottak_munkaugy);
     res.status(201).json(result);
   } catch (error) {

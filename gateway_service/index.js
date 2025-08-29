@@ -72,7 +72,7 @@ app.use(cors(corsConfig));
 app.use(requestLoggingMiddleware);
 
 // Apply API key validation first (before rate limiting to prevent abuse)
-app.use(apiKeyMiddleware);
+// app.use(apiKeyMiddleware);
 
 // Apply rate limiting (before body parsing to protect against large payloads)
 app.use(generalRateLimit);

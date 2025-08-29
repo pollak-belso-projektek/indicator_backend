@@ -288,7 +288,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    console.log("Updating elhelyezkedes data:", id);
+    
     const {
       alapadatok_id,
       tanev_kezdete,

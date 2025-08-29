@@ -5,6 +5,7 @@ import {
   update,
   getAllFiltered,
   updatePassword,
+  inactivateUser,
 } from "../services/user.service.js";
 
 const router = e.Router();
@@ -115,7 +116,8 @@ const router = e.Router();
  */
 router.get("/", async (req, res) => {
   try {
-    const data = await getAll();
+    const token = req.headers.authorization.split(" ")[1];
+    const data = await getAll(token);
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -197,7 +199,8 @@ router.get("/getByEmail/:email", async (req, res) => {
  */
 router.get("/filtered", async (req, res) => {
   try {
-    const data = await getAllFiltered();
+    const token = req.headers.authorization.split(" ")[1];
+    const data = await getAllFiltered(token);
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching filtered users:", error);
@@ -281,10 +284,26 @@ router.get("/filtered", async (req, res) => {
  *         description: Internal server error
  */
 router.post("/", async (req, res) => {
-  const { email, name, password, permissions, tableAccess, alapadatokId } =
-    req.body;
+  const {
+    email,
+    name,
+    password,
+    permissions,
+    tableAccess,
+    alapadatokId,
+    isActive,
+  } = req.body;
+
   try {
-    await create(email, name, password, permissions, tableAccess, alapadatokId);
+    await create(
+      email,
+      name,
+      password,
+      permissions,
+      tableAccess,
+      alapadatokId,
+      isActive
+    );
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
     console.error("Error creating user:", error);
@@ -382,10 +401,19 @@ router.put("/:id", async (req, res) => {
     permissions,
     tableAccess,
     alapadatokId,
+    isActive,
   });
 
   try {
-    await update(id, email, name, permissions, tableAccess, alapadatokId);
+    await update(
+      id,
+      email,
+      name,
+      permissions,
+      tableAccess,
+      alapadatokId,
+      isActive
+    );
     res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
     console.error("Error updating user:", error);
@@ -402,6 +430,28 @@ router.put("/:id/password", async (req, res) => {
     res.status(200).json({ message: "Password updated successfully" });
   } catch (error) {
     console.error("Error updating password:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+/**
+ * @swagger
+ * /users/inactivate/{id}:
+ *   delete:
+ *     summary: Inactivate user
+ *     description: Inactivate a user by setting their isActive status to false
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.delete("/inactivate/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await inactivateUser(id);
+    res.status(200).json({ message: "User inactivated successfully" });
+  } catch (error) {
+    console.error("Error inactivating user:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });

@@ -134,7 +134,6 @@ router.get("/:id", async (req, res) => {
     }
     res.status(200).json(data);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -226,7 +225,6 @@ router.post("/", async (req, res) => {
     );
     res.status(201).json(newEntry);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -264,7 +262,6 @@ router.put("/:id", async (req, res) => {
     );
     res.status(200).json(updatedEntry);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

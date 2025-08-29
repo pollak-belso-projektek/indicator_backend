@@ -2,6 +2,7 @@ import { hashPassword } from "../utils/hash.js";
 import prisma from "../utils/prisma.js";
 import * as cache from "../utils/cache.js";
 import { enrichUserWithPermissions } from "../utils/permissions.js";
+import { getUserFromToken } from "../utils/token.js";
 
 // Cache TTLs
 const CACHE_TTL = {
@@ -9,7 +10,7 @@ const CACHE_TTL = {
   DETAIL: 10 * 60 * 1000, // 10 minutes for details
 };
 
-export async function getAll() {
+export async function getAll(token) {
   const cacheKey = "users:all";
   const cachedData = cache.get(cacheKey);
 
@@ -17,7 +18,43 @@ export async function getAll() {
     return cachedData;
   }
 
+  const user = await getUserFromToken(token);
+
+  let whereClause = {};
+
+  // Apply filtering based on user permissions
+  if (user.permissionsDetails.isSuperadmin) {
+    // Superadmin gets all users - no filtering needed
+    whereClause = {};
+  } else if (
+    user.permissionsDetails.isHSZC &&
+    user.permissionsDetails.isAdmin
+  ) {
+    // HSZC + Admin gets everyone who is HSZC or lower (HSZC, Admin, Privileged, Standard)
+    // Exclude superadmin (bit 16) by checking permissions < 16 OR specific combinations that include HSZC but not superadmin
+    whereClause = {
+      AND: [
+        { permissions: { lt: 16 } }, // Exclude superadmin
+        {
+          OR: [
+            { permissions: { gte: 8 } }, // HSZC and combinations (but less than 16)
+            { permissions: { in: [4, 2, 1] } }, // Admin, Privileged, Standard only
+          ],
+        },
+      ],
+    };
+  } else if (user.permissionsDetails.isAdmin) {
+    // Admin only gets users with the same alapadatokId
+    whereClause = {
+      alapadatokId: user.alapadatokId,
+    };
+  } else {
+    // For other roles, return empty result or throw error
+    return [];
+  }
+
   const data = await prisma.user.findMany({
+    where: whereClause,
     include: {
       tableAccess: {
         include: {
@@ -71,7 +108,7 @@ export async function getByEmail(email) {
   return data;
 }
 
-export async function getAllFiltered() {
+export async function getAllFiltered(token) {
   const cacheKey = `users:all:filtered`;
   const cachedData = cache.get(cacheKey);
 
@@ -79,7 +116,43 @@ export async function getAllFiltered() {
     return cachedData;
   }
 
+  const user = await getUserFromToken(token);
+
+  let whereClause = {};
+
+  // Apply filtering based on user permissions
+  if (user.permissionsDetails.isSuperadmin) {
+    // Superadmin gets all users - no filtering needed
+    whereClause = {};
+  } else if (
+    user.permissionsDetails.isHSZC &&
+    user.permissionsDetails.isAdmin
+  ) {
+    // HSZC + Admin gets everyone who is HSZC or lower (HSZC, Admin, Privileged, Standard)
+    // Exclude superadmin (bit 16) by checking permissions < 16 OR specific combinations that include HSZC but not superadmin
+    whereClause = {
+      AND: [
+        { permissions: { lt: 16 } }, // Exclude superadmin
+        {
+          OR: [
+            { permissions: { gte: 8 } }, // HSZC and combinations (but less than 16)
+            { permissions: { in: [4, 2, 1] } }, // Admin, Privileged, Standard only
+          ],
+        },
+      ],
+    };
+  } else if (user.permissionsDetails.isAdmin) {
+    // Admin only gets users with the same alapadatokId
+    whereClause = {
+      alapadatokId: user.alapadatokId,
+    };
+  } else {
+    // For other roles, return empty result or throw error
+    return [];
+  }
+
   const data = await prisma.user.findMany({
+    where: whereClause,
     select: {
       id: true,
       email: true,
@@ -99,7 +172,8 @@ export async function create(
   password,
   permissions = 1,
   tableAccess = [],
-  alapadatok_id = null
+  alapadatok_id = null,
+  isActive = true
 ) {
   const existingUser = await prisma.user.findUnique({
     where: { email },
@@ -116,6 +190,7 @@ export async function create(
       password: await hashPassword(password),
       permissions: permissions,
       alapadatokId: alapadatok_id ? alapadatok_id : null,
+      isActive,
     },
   });
   if (tableAccess && tableAccess.length > 0) {
@@ -154,7 +229,8 @@ export async function update(
   name,
   permissions = 0b00001,
   tableAccess = [],
-  alapadatokId = null
+  alapadatokId = null,
+  isActive = true
 ) {
   const user = await prisma.user.update({
     where: { id: id },
@@ -163,6 +239,7 @@ export async function update(
       name,
       permissions: Number(permissions),
       alapadatokId: alapadatokId ? alapadatokId : null,
+      isActive,
     },
   });
   if (tableAccess && tableAccess.length > 0) {
@@ -214,5 +291,12 @@ export async function updatePassword(id, newPassword, newPasswordConfirm) {
   return prisma.user.update({
     where: { id },
     data: { password: hashedPassword },
+  });
+}
+
+export async function inactivateUser(id) {
+  return prisma.user.update({
+    where: { id },
+    data: { isActive: false },
   });
 }

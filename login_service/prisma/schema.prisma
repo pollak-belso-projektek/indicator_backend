@@ -16,6 +16,7 @@ model User {
   updatedAt    DateTime?     @updatedAt
   alapadatokId String?       @db.Uuid
   permissions  Int           @default(0)
+  isActive    Boolean       @default(true)
 
   tableAccess  TableAccess[]
 

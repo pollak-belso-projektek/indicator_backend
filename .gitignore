@@ -2,3 +2,4 @@ node_modules
 # Keep environment variables out of version control
 .env
 OKTATO_EGYEB_TEV_API.md
+docker-compose-priv.yaml

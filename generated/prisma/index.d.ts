@@ -5577,6 +5577,7 @@ export namespace Prisma {
     updatedAt: Date | null
     alapadatokId: string | null
     permissions: number | null
+    isActive: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -5588,6 +5589,7 @@ export namespace Prisma {
     updatedAt: Date | null
     alapadatokId: string | null
     permissions: number | null
+    isActive: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -5599,6 +5601,7 @@ export namespace Prisma {
     updatedAt: number
     alapadatokId: number
     permissions: number
+    isActive: number
     _all: number
   }
 
@@ -5620,6 +5623,7 @@ export namespace Prisma {
     updatedAt?: true
     alapadatokId?: true
     permissions?: true
+    isActive?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -5631,6 +5635,7 @@ export namespace Prisma {
     updatedAt?: true
     alapadatokId?: true
     permissions?: true
+    isActive?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -5642,6 +5647,7 @@ export namespace Prisma {
     updatedAt?: true
     alapadatokId?: true
     permissions?: true
+    isActive?: true
     _all?: true
   }
 
@@ -5740,6 +5746,7 @@ export namespace Prisma {
     updatedAt: Date | null
     alapadatokId: string | null
     permissions: number
+    isActive: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -5770,6 +5777,7 @@ export namespace Prisma {
     updatedAt?: boolean
     alapadatokId?: boolean
     permissions?: boolean
+    isActive?: boolean
     logs?: boolean | User$logsArgs<ExtArgs>
     tableAccess?: boolean | User$tableAccessArgs<ExtArgs>
     alapadatok?: boolean | User$alapadatokArgs<ExtArgs>
@@ -5785,6 +5793,7 @@ export namespace Prisma {
     updatedAt?: boolean
     alapadatokId?: boolean
     permissions?: boolean
+    isActive?: boolean
     alapadatok?: boolean | User$alapadatokArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -5797,6 +5806,7 @@ export namespace Prisma {
     updatedAt?: boolean
     alapadatokId?: boolean
     permissions?: boolean
+    isActive?: boolean
     alapadatok?: boolean | User$alapadatokArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -5809,9 +5819,10 @@ export namespace Prisma {
     updatedAt?: boolean
     alapadatokId?: boolean
     permissions?: boolean
+    isActive?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "createdAt" | "updatedAt" | "alapadatokId" | "permissions", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "createdAt" | "updatedAt" | "alapadatokId" | "permissions" | "isActive", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     logs?: boolean | User$logsArgs<ExtArgs>
     tableAccess?: boolean | User$tableAccessArgs<ExtArgs>
@@ -5841,6 +5852,7 @@ export namespace Prisma {
       updatedAt: Date | null
       alapadatokId: string | null
       permissions: number
+      isActive: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -6275,6 +6287,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly alapadatokId: FieldRef<"User", 'String'>
     readonly permissions: FieldRef<"User", 'Int'>
+    readonly isActive: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -47736,7 +47749,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     alapadatokId: 'alapadatokId',
-    permissions: 'permissions'
+    permissions: 'permissions',
+    isActive: 'isActive'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -48558,6 +48572,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     alapadatokId?: UuidNullableFilter<"User"> | string | null
     permissions?: IntFilter<"User"> | number
+    isActive?: BoolFilter<"User"> | boolean
     logs?: LogListRelationFilter
     tableAccess?: TableAccessListRelationFilter
     alapadatok?: XOR<AlapadatokNullableScalarRelationFilter, AlapadatokWhereInput> | null
@@ -48572,6 +48587,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     alapadatokId?: SortOrderInput | SortOrder
     permissions?: SortOrder
+    isActive?: SortOrder
     logs?: LogOrderByRelationAggregateInput
     tableAccess?: TableAccessOrderByRelationAggregateInput
     alapadatok?: AlapadatokOrderByWithRelationInput
@@ -48589,6 +48605,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     alapadatokId?: UuidNullableFilter<"User"> | string | null
     permissions?: IntFilter<"User"> | number
+    isActive?: BoolFilter<"User"> | boolean
     logs?: LogListRelationFilter
     tableAccess?: TableAccessListRelationFilter
     alapadatok?: XOR<AlapadatokNullableScalarRelationFilter, AlapadatokWhereInput> | null
@@ -48603,6 +48620,7 @@ export namespace Prisma {
     updatedAt?: SortOrderInput | SortOrder
     alapadatokId?: SortOrderInput | SortOrder
     permissions?: SortOrder
+    isActive?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -48622,6 +48640,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     alapadatokId?: UuidNullableWithAggregatesFilter<"User"> | string | null
     permissions?: IntWithAggregatesFilter<"User"> | number
+    isActive?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type TableListWhereInput = {
@@ -52010,6 +52029,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     permissions?: number
+    isActive?: boolean
     logs?: LogCreateNestedManyWithoutUserInput
     tableAccess?: TableAccessCreateNestedManyWithoutUserInput
     alapadatok?: AlapadatokCreateNestedOneWithoutUsersInput
@@ -52024,6 +52044,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     alapadatokId?: string | null
     permissions?: number
+    isActive?: boolean
     logs?: LogUncheckedCreateNestedManyWithoutUserInput
     tableAccess?: TableAccessUncheckedCreateNestedManyWithoutUserInput
   }
@@ -52036,6 +52057,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     logs?: LogUpdateManyWithoutUserNestedInput
     tableAccess?: TableAccessUpdateManyWithoutUserNestedInput
     alapadatok?: AlapadatokUpdateOneWithoutUsersNestedInput
@@ -52050,6 +52072,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alapadatokId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     logs?: LogUncheckedUpdateManyWithoutUserNestedInput
     tableAccess?: TableAccessUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -52063,6 +52086,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     alapadatokId?: string | null
     permissions?: number
+    isActive?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -52073,6 +52097,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -52084,6 +52109,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alapadatokId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TableListCreateInput = {
@@ -55998,6 +56024,11 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type LogListRelationFilter = {
     every?: LogWhereInput
     some?: LogWhereInput
@@ -56037,6 +56068,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     alapadatokId?: SortOrder
     permissions?: SortOrder
+    isActive?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -56052,6 +56084,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     alapadatokId?: SortOrder
     permissions?: SortOrder
+    isActive?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -56063,6 +56096,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     alapadatokId?: SortOrder
     permissions?: SortOrder
+    isActive?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -56147,9 +56181,12 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type TableListCountOrderByAggregateInput = {
@@ -56177,14 +56214,6 @@ export namespace Prisma {
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserNullableScalarRelationFilter = {
@@ -58586,6 +58615,10 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type LogUpdateManyWithoutUserNestedInput = {
     create?: XOR<LogCreateWithoutUserInput, LogUncheckedCreateWithoutUserInput> | LogCreateWithoutUserInput[] | LogUncheckedCreateWithoutUserInput[]
     connectOrCreate?: LogCreateOrConnectWithoutUserInput | LogCreateOrConnectWithoutUserInput[]
@@ -58664,10 +58697,6 @@ export namespace Prisma {
     connectOrCreate?: TableAccessCreateOrConnectWithoutTableInput | TableAccessCreateOrConnectWithoutTableInput[]
     createMany?: TableAccessCreateManyTableInputEnvelope
     connect?: TableAccessWhereUniqueInput | TableAccessWhereUniqueInput[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type TableAccessUpdateManyWithoutTableNestedInput = {
@@ -61500,6 +61529,11 @@ export namespace Prisma {
     not?: NestedUuidNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -61595,11 +61629,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -62000,6 +62029,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     permissions?: number
+    isActive?: boolean
     logs?: LogCreateNestedManyWithoutUserInput
     alapadatok?: AlapadatokCreateNestedOneWithoutUsersInput
   }
@@ -62013,6 +62043,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     alapadatokId?: string | null
     permissions?: number
+    isActive?: boolean
     logs?: LogUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -62063,6 +62094,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     logs?: LogUpdateManyWithoutUserNestedInput
     alapadatok?: AlapadatokUpdateOneWithoutUsersNestedInput
   }
@@ -62076,6 +62108,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alapadatokId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     logs?: LogUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -62116,6 +62149,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     permissions?: number
+    isActive?: boolean
     tableAccess?: TableAccessCreateNestedManyWithoutUserInput
     alapadatok?: AlapadatokCreateNestedOneWithoutUsersInput
   }
@@ -62129,6 +62163,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     alapadatokId?: string | null
     permissions?: number
+    isActive?: boolean
     tableAccess?: TableAccessUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -62156,6 +62191,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     tableAccess?: TableAccessUpdateManyWithoutUserNestedInput
     alapadatok?: AlapadatokUpdateOneWithoutUsersNestedInput
   }
@@ -62169,6 +62205,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alapadatokId?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     tableAccess?: TableAccessUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -63200,6 +63237,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     permissions?: number
+    isActive?: boolean
     logs?: LogCreateNestedManyWithoutUserInput
     tableAccess?: TableAccessCreateNestedManyWithoutUserInput
   }
@@ -63212,6 +63250,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     permissions?: number
+    isActive?: boolean
     logs?: LogUncheckedCreateNestedManyWithoutUserInput
     tableAccess?: TableAccessUncheckedCreateNestedManyWithoutUserInput
   }
@@ -64167,6 +64206,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     alapadatokId?: UuidNullableFilter<"User"> | string | null
     permissions?: IntFilter<"User"> | number
+    isActive?: BoolFilter<"User"> | boolean
   }
 
   export type OktatoEgyebTevUpsertWithWhereUniqueWithoutAlapadatokInput = {
@@ -70697,6 +70737,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     permissions?: number
+    isActive?: boolean
   }
 
   export type OktatoEgyebTevCreateManyAlapadatokInput = {
@@ -71916,6 +71957,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     logs?: LogUpdateManyWithoutUserNestedInput
     tableAccess?: TableAccessUpdateManyWithoutUserNestedInput
   }
@@ -71928,6 +71970,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     logs?: LogUncheckedUpdateManyWithoutUserNestedInput
     tableAccess?: TableAccessUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -71940,6 +71983,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     permissions?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type OktatoEgyebTevUpdateWithoutAlapadatokInput = {
