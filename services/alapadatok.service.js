@@ -73,7 +73,7 @@ export async function getAll() {
     };
   });
 
-  return filteredBySzakma;
+  return data;
 }
 
 export async function getById(id) {
@@ -132,7 +132,7 @@ export async function getById(id) {
     })),
   };
 
-  return filteredBySzakma;
+  return data;
 }
 
 export async function add(
