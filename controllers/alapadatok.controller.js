@@ -4,6 +4,7 @@ import {
   getAll,
   getById,
   update,
+  removeSzakiranyFromAlapadatok,
   removeSzakmaFromAlapadatok,
 } from "../services/alapadatok.service.js";
 
@@ -299,6 +300,84 @@ router.put("/:id", async (req, res) => {
     res.status(500).json({ message: "Szerver hiba!", error: error });
   }
 });
+
+/**
+ * @swagger
+ * /alapadatok/removeSzakma/{alapadatokId}/{szakmaId}:
+ *   delete:
+ *     summary: Remove szakma from alapadatok
+ *     description: Remove a szakma association from a specific alapadatok record
+ *     tags: [Alapadatok]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: alapadatokId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the alapadatok record
+ *       - in: path
+ *         name: szakmaId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the szakma to be removed
+ *     responses:
+ *       200:
+ *         description: Sikeresen frissítve
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Sikeresen frissítve!"
+ *       400:
+ *         description: Hiányos adatok
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Hiányos adatok!"
+ *       401:
+ *         description: Unauthorized - Invalid or missing token
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Szerver hiba!"
+ *                 error:
+ *                   type: object
+ *                   example: {}
+ */
+router.delete(
+  "/removeSzakirany/:alapadatokId/:szakiranyId",
+  async (req, res) => {
+    try {
+      const { alapadatokId, szakiranyId } = req.params;
+
+      if (!alapadatokId || !szakiranyId)
+        return res.status(400).json({ message: "Hiányos adatok!" });
+
+      await removeSzakiranyFromAlapadatok(alapadatokId, szakiranyId);
+
+      res.status(200).json({ message: "Sikeresen frissítve!" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Szerver hiba!", error: error });
+    }
+  }
+);
 
 /**
  * @swagger

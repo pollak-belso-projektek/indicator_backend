@@ -429,6 +429,24 @@ export async function update(
   return retData;
 }
 
+export async function removeSzakiranyFromAlapadatok(
+  alapadatok_id,
+  szakirany_id
+) {
+  // Invalidate both list and specific item cache
+  cache.del("alapadatok:all");
+  cache.del(`alapadatok:id:${alapadatok_id}`);
+
+  await prisma.alapadatok_Szakirany.deleteMany({
+    where: {
+      alapadatok_id: alapadatok_id,
+      szakirany_id: szakirany_id,
+    },
+  });
+
+  cache.del(`alapadatok:id:${alapadatok_id}`);
+}
+
 export async function removeSzakmaFromAlapadatok(alapadatok_id, szakma_id) {
   // Invalidate both list and specific item cache
   cache.del("alapadatok:all");
