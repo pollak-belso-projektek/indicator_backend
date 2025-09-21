@@ -428,3 +428,20 @@ export async function update(
 
   return retData;
 }
+
+export async function removeSzakmaFromAlapadatok(alapadatok_id, szakma_id) {
+  // Invalidate both list and specific item cache
+  cache.del("alapadatok:all");
+  cache.del(`alapadatok:id:${alapadatok_id}`);
+
+  await prisma.alapadatok_Szakma.deleteMany({
+    where: {
+      alapadatok_id: alapadatok_id,
+      szakma_id: szakma_id,
+    },
+  });
+
+  cache.del(`alapadatok:id:${alapadatok_id}`);
+
+  return { message: "Szakma removed from Alapadatok" };
+}
