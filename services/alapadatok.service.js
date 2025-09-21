@@ -81,6 +81,7 @@ export async function getById(id) {
   const data = await prisma.alapadatok.findUnique({
     where: {
       id: id,
+      deleted: false,
     },
     include: {
       alapadatok_szakma: {
@@ -101,9 +102,6 @@ export async function getById(id) {
           },
         },
       },
-    },
-    where: {
-      deleted: false, // Exclude deleted records
     },
   });
 
