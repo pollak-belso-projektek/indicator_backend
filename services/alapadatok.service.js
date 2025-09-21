@@ -36,6 +36,9 @@ export async function getAll() {
         },
       },
     },
+    where: {
+      deleted: false, // Exclude deleted records
+    },
   });
 
   const filteredBySzakma = data.map((item) => {
@@ -98,6 +101,9 @@ export async function getById(id) {
           },
         },
       },
+    },
+    where: {
+      deleted: false, // Exclude deleted records
     },
   });
 
@@ -462,4 +468,19 @@ export async function removeSzakmaFromAlapadatok(alapadatok_id, szakma_id) {
   cache.del(`alapadatok:id:${alapadatok_id}`);
 
   return { message: "Szakma removed from Alapadatok" };
+}
+
+export async function deleteById(id) {
+  // Invalidate both list and specific item cache
+  cache.del("alapadatok:all");
+  cache.del(`alapadatok:id:${id}`);
+
+  await prisma.alapadatok.update({
+    where: { id: id },
+    data: {
+      deleted: true,
+    },
+  });
+
+  return { message: "Alapadatok deleted" };
 }

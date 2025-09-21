@@ -89,6 +89,7 @@ model Alapadatok {
   id              String            @id @default(uuid()) @db.Uuid
   iskola_neve     String            @db.VarChar(150)
   intezmeny_tipus String            @db.VarChar(50)
+  deleted         Boolean           @default(false)
   felvettek_szama Felvettek_Szama[]
   kompetencia     Kompetencia[]
   tanar_letszam   Tanar_Letszam[]

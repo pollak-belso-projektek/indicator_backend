@@ -176,7 +176,8 @@ exports.Prisma.LogScalarFieldEnum = {
 exports.Prisma.AlapadatokScalarFieldEnum = {
   id: 'id',
   iskola_neve: 'iskola_neve',
-  intezmeny_tipus: 'intezmeny_tipus'
+  intezmeny_tipus: 'intezmeny_tipus',
+  deleted: 'deleted'
 };
 
 exports.Prisma.SzakiranyScalarFieldEnum = {

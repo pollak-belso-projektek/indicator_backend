@@ -6,6 +6,7 @@ import {
   update,
   removeSzakiranyFromAlapadatok,
   removeSzakmaFromAlapadatok,
+  deleteById,
 } from "../services/alapadatok.service.js";
 
 const router = express.Router();
@@ -448,6 +449,21 @@ router.delete("/removeSzakma/:alapadatokId/:szakmaId", async (req, res) => {
     await removeSzakmaFromAlapadatok(alapadatokId, szakmaId);
 
     res.status(200).json({ message: "Sikeresen frissítve!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Szerver hiba!", error: error });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) return res.status(400).json({ message: "Hiányos adatok!" });
+
+    await deleteById(id);
+
+    res.status(200).json({ message: "Sikeresen törölve!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Szerver hiba!", error: error });

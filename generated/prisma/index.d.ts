@@ -10205,18 +10205,21 @@ export namespace Prisma {
     id: string | null
     iskola_neve: string | null
     intezmeny_tipus: string | null
+    deleted: boolean | null
   }
 
   export type AlapadatokMaxAggregateOutputType = {
     id: string | null
     iskola_neve: string | null
     intezmeny_tipus: string | null
+    deleted: boolean | null
   }
 
   export type AlapadatokCountAggregateOutputType = {
     id: number
     iskola_neve: number
     intezmeny_tipus: number
+    deleted: number
     _all: number
   }
 
@@ -10225,18 +10228,21 @@ export namespace Prisma {
     id?: true
     iskola_neve?: true
     intezmeny_tipus?: true
+    deleted?: true
   }
 
   export type AlapadatokMaxAggregateInputType = {
     id?: true
     iskola_neve?: true
     intezmeny_tipus?: true
+    deleted?: true
   }
 
   export type AlapadatokCountAggregateInputType = {
     id?: true
     iskola_neve?: true
     intezmeny_tipus?: true
+    deleted?: true
     _all?: true
   }
 
@@ -10316,6 +10322,7 @@ export namespace Prisma {
     id: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted: boolean
     _count: AlapadatokCountAggregateOutputType | null
     _min: AlapadatokMinAggregateOutputType | null
     _max: AlapadatokMaxAggregateOutputType | null
@@ -10339,6 +10346,7 @@ export namespace Prisma {
     id?: boolean
     iskola_neve?: boolean
     intezmeny_tipus?: boolean
+    deleted?: boolean
     felvettek_szama?: boolean | Alapadatok$felvettek_szamaArgs<ExtArgs>
     kompetencia?: boolean | Alapadatok$kompetenciaArgs<ExtArgs>
     tanar_letszam?: boolean | Alapadatok$tanar_letszamArgs<ExtArgs>
@@ -10371,21 +10379,24 @@ export namespace Prisma {
     id?: boolean
     iskola_neve?: boolean
     intezmeny_tipus?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["alapadatok"]>
 
   export type AlapadatokSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     iskola_neve?: boolean
     intezmeny_tipus?: boolean
+    deleted?: boolean
   }, ExtArgs["result"]["alapadatok"]>
 
   export type AlapadatokSelectScalar = {
     id?: boolean
     iskola_neve?: boolean
     intezmeny_tipus?: boolean
+    deleted?: boolean
   }
 
-  export type AlapadatokOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "iskola_neve" | "intezmeny_tipus", ExtArgs["result"]["alapadatok"]>
+  export type AlapadatokOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "iskola_neve" | "intezmeny_tipus" | "deleted", ExtArgs["result"]["alapadatok"]>
   export type AlapadatokInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     felvettek_szama?: boolean | Alapadatok$felvettek_szamaArgs<ExtArgs>
     kompetencia?: boolean | Alapadatok$kompetenciaArgs<ExtArgs>
@@ -10450,6 +10461,7 @@ export namespace Prisma {
       id: string
       iskola_neve: string
       intezmeny_tipus: string
+      deleted: boolean
     }, ExtArgs["result"]["alapadatok"]>
     composites: {}
   }
@@ -10901,6 +10913,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Alapadatok", 'String'>
     readonly iskola_neve: FieldRef<"Alapadatok", 'String'>
     readonly intezmeny_tipus: FieldRef<"Alapadatok", 'String'>
+    readonly deleted: FieldRef<"Alapadatok", 'Boolean'>
   }
     
 
@@ -47802,7 +47815,8 @@ export namespace Prisma {
   export const AlapadatokScalarFieldEnum: {
     id: 'id',
     iskola_neve: 'iskola_neve',
-    intezmeny_tipus: 'intezmeny_tipus'
+    intezmeny_tipus: 'intezmeny_tipus',
+    deleted: 'deleted'
   };
 
   export type AlapadatokScalarFieldEnum = (typeof AlapadatokScalarFieldEnum)[keyof typeof AlapadatokScalarFieldEnum]
@@ -48873,6 +48887,7 @@ export namespace Prisma {
     id?: UuidFilter<"Alapadatok"> | string
     iskola_neve?: StringFilter<"Alapadatok"> | string
     intezmeny_tipus?: StringFilter<"Alapadatok"> | string
+    deleted?: BoolFilter<"Alapadatok"> | boolean
     felvettek_szama?: Felvettek_SzamaListRelationFilter
     kompetencia?: KompetenciaListRelationFilter
     tanar_letszam?: Tanar_LetszamListRelationFilter
@@ -48904,6 +48919,7 @@ export namespace Prisma {
     id?: SortOrder
     iskola_neve?: SortOrder
     intezmeny_tipus?: SortOrder
+    deleted?: SortOrder
     felvettek_szama?: Felvettek_SzamaOrderByRelationAggregateInput
     kompetencia?: KompetenciaOrderByRelationAggregateInput
     tanar_letszam?: Tanar_LetszamOrderByRelationAggregateInput
@@ -48938,6 +48954,7 @@ export namespace Prisma {
     NOT?: AlapadatokWhereInput | AlapadatokWhereInput[]
     iskola_neve?: StringFilter<"Alapadatok"> | string
     intezmeny_tipus?: StringFilter<"Alapadatok"> | string
+    deleted?: BoolFilter<"Alapadatok"> | boolean
     felvettek_szama?: Felvettek_SzamaListRelationFilter
     kompetencia?: KompetenciaListRelationFilter
     tanar_letszam?: Tanar_LetszamListRelationFilter
@@ -48969,6 +48986,7 @@ export namespace Prisma {
     id?: SortOrder
     iskola_neve?: SortOrder
     intezmeny_tipus?: SortOrder
+    deleted?: SortOrder
     _count?: AlapadatokCountOrderByAggregateInput
     _max?: AlapadatokMaxOrderByAggregateInput
     _min?: AlapadatokMinOrderByAggregateInput
@@ -48981,6 +48999,7 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"Alapadatok"> | string
     iskola_neve?: StringWithAggregatesFilter<"Alapadatok"> | string
     intezmeny_tipus?: StringWithAggregatesFilter<"Alapadatok"> | string
+    deleted?: BoolWithAggregatesFilter<"Alapadatok"> | boolean
   }
 
   export type SzakiranyWhereInput = {
@@ -52355,6 +52374,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -52386,6 +52406,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -52417,6 +52438,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -52448,6 +52470,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -52479,18 +52502,21 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
   }
 
   export type AlapadatokUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type AlapadatokUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SzakiranyCreateInput = {
@@ -56648,18 +56674,21 @@ export namespace Prisma {
     id?: SortOrder
     iskola_neve?: SortOrder
     intezmeny_tipus?: SortOrder
+    deleted?: SortOrder
   }
 
   export type AlapadatokMaxOrderByAggregateInput = {
     id?: SortOrder
     iskola_neve?: SortOrder
     intezmeny_tipus?: SortOrder
+    deleted?: SortOrder
   }
 
   export type AlapadatokMinOrderByAggregateInput = {
     id?: SortOrder
     iskola_neve?: SortOrder
     intezmeny_tipus?: SortOrder
+    deleted?: SortOrder
   }
 
   export type Szakirany_SzakmaListRelationFilter = {
@@ -61786,6 +61815,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -61816,6 +61846,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -61925,6 +61956,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -61955,6 +61987,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -65401,6 +65434,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -65431,6 +65465,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -65510,6 +65545,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -65540,6 +65576,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -65609,6 +65646,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -65639,6 +65677,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -65720,6 +65759,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -65750,6 +65790,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -65821,6 +65862,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -65851,6 +65893,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -65965,6 +66008,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -65995,6 +66039,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -66105,6 +66150,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanugyiAdatok?: Tanugyi_AdatokCreateNestedManyWithoutAlapadatokInput
@@ -66135,6 +66181,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanugyiAdatok?: Tanugyi_AdatokUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -66181,6 +66228,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanugyiAdatok?: Tanugyi_AdatokUpdateManyWithoutAlapadatokNestedInput
@@ -66211,6 +66259,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanugyiAdatok?: Tanugyi_AdatokUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -66241,6 +66290,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
     tanugyiAdatok?: Tanugyi_AdatokCreateNestedManyWithoutAlapadatokInput
@@ -66271,6 +66321,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
     tanugyiAdatok?: Tanugyi_AdatokUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -66385,6 +66436,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
     tanugyiAdatok?: Tanugyi_AdatokUpdateManyWithoutAlapadatokNestedInput
@@ -66415,6 +66467,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanugyiAdatok?: Tanugyi_AdatokUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -66525,6 +66578,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
     tanugyiAdatok?: Tanugyi_AdatokCreateNestedManyWithoutAlapadatokInput
@@ -66555,6 +66609,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
     tanugyiAdatok?: Tanugyi_AdatokUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -66601,6 +66656,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
     tanugyiAdatok?: Tanugyi_AdatokUpdateManyWithoutAlapadatokNestedInput
@@ -66631,6 +66687,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanugyiAdatok?: Tanugyi_AdatokUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -66661,6 +66718,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -66691,6 +66749,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -66737,6 +66796,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -66767,6 +66827,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -66797,6 +66858,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -66827,6 +66889,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -66873,6 +66936,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -66903,6 +66967,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -66933,6 +66998,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -66963,6 +67029,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -67009,6 +67076,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -67039,6 +67107,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -67069,6 +67138,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -67099,6 +67169,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -67213,6 +67284,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -67243,6 +67315,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -67518,6 +67591,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -67548,6 +67622,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -67619,6 +67694,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -67649,6 +67725,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -67710,6 +67787,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -67740,6 +67818,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -67786,6 +67865,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -67816,6 +67896,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -67846,6 +67927,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -67876,6 +67958,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -67990,6 +68073,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -68020,6 +68104,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -68130,6 +68215,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -68160,6 +68246,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -68274,6 +68361,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -68304,6 +68392,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -68414,6 +68503,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -68444,6 +68534,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -68558,6 +68649,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -68588,6 +68680,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -68698,6 +68791,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -68728,6 +68822,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -68842,6 +68937,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -68872,6 +68968,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -68982,6 +69079,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69012,6 +69110,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -69126,6 +69225,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -69156,6 +69256,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -69266,6 +69367,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69296,6 +69398,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -69342,6 +69445,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -69372,6 +69476,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -69402,6 +69507,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69432,6 +69538,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -69478,6 +69585,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -69508,6 +69616,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -69538,6 +69647,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69568,6 +69678,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -69614,6 +69725,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -69644,6 +69756,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -69674,6 +69787,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69704,6 +69818,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -69750,6 +69865,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -69780,6 +69896,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -69810,6 +69927,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69840,6 +69958,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -69886,6 +70005,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -69916,6 +70036,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -69946,6 +70067,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -69976,6 +70098,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -70022,6 +70145,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -70052,6 +70176,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
@@ -70082,6 +70207,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
@@ -70112,6 +70238,7 @@ export namespace Prisma {
     id?: string
     iskola_neve: string
     intezmeny_tipus: string
+    deleted?: boolean
     felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
     kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
     tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
@@ -70158,6 +70285,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
@@ -70188,6 +70316,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     iskola_neve?: StringFieldUpdateOperationsInput | string
     intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
     felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
     kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
     tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
