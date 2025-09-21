@@ -38,42 +38,26 @@ export async function getAll() {
     },
   });
 
-  // Store in cache
-  cache.set(cacheKey, data, CACHE_TTL.LIST);
-
-  data.forEach((item) => {
-    const alapadatok_szakma = item.alapadatok_szakma.map((rel) => rel.szakma);
-
-    const filteredBySzakma = {
-      ...item,
-      alapadatok_szakirany: item.alapadatok_szakirany.map(
-        (szakirany_szakma) => ({
-          ...szakirany_szakma.szakirany,
-          szakma: szakirany_szakma.szakirany.szakma.filter((szakmaRel) =>
-            alapadatok_szakma.some((s) => s.id === szakmaRel.szakma.id)
-          ),
-        })
-      ),
-    };
-    return filteredBySzakma;
-  });
-
   const filteredBySzakma = data.map((item) => {
     const alapadatok_szakma = item.alapadatok_szakma.map((rel) => rel.szakma);
     return {
       ...item,
-      alapadatok_szakirany: item.alapadatok_szakirany.map(
-        (szakirany_szakma) => ({
-          ...szakirany_szakma.szakirany,
-          szakma: szakirany_szakma.szakirany.szakma.filter((szakmaRel) =>
+      alapadatok_szakirany: item.alapadatok_szakirany.map((szakirany_rel) => ({
+        ...szakirany_rel,
+        szakirany: {
+          ...szakirany_rel.szakirany,
+          szakma: szakirany_rel.szakirany.szakma.filter((szakmaRel) =>
             alapadatok_szakma.some((s) => s.id === szakmaRel.szakma.id)
           ),
-        })
-      ),
+        },
+      })),
     };
   });
 
-  return data;
+  // Store in cache
+  // cache.set(cacheKey, filteredBySzakma, CACHE_TTL.LIST);
+
+  return filteredBySzakma;
 }
 
 export async function getById(id) {
@@ -117,22 +101,25 @@ export async function getById(id) {
     },
   });
 
-  // Store in cache
-  cache.set(cacheKey, data, CACHE_TTL.DETAIL);
-
   const alapadatok_szakma = data.alapadatok_szakma.map((rel) => rel.szakma);
 
   const filteredBySzakma = {
     ...data,
-    alapadatok_szakirany: data.alapadatok_szakirany.map((szakirany_szakma) => ({
-      ...szakirany_szakma.szakirany,
-      szakma: szakirany_szakma.szakirany.szakma.filter((szakmaRel) =>
-        alapadatok_szakma.some((s) => s.id === szakmaRel.szakma.id)
-      ),
+    alapadatok_szakirany: data.alapadatok_szakirany.map((szakirany_rel) => ({
+      ...szakirany_rel,
+      szakirany: {
+        ...szakirany_rel.szakirany,
+        szakma: szakirany_rel.szakirany.szakma.filter((szakmaRel) =>
+          alapadatok_szakma.some((s) => s.id === szakmaRel.szakma.id)
+        ),
+      },
     })),
   };
 
-  return data;
+  // Store in cache
+  // cache.set(cacheKey, filteredBySzakma, CACHE_TTL.DETAIL);
+
+  return filteredBySzakma;
 }
 
 export async function add(
