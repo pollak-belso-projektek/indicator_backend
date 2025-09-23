@@ -14,6 +14,7 @@ export class ServicePattern {
     // Field naming options for flexibility
     this.yearField = options.yearField || "tanev_kezdete"; // Default to tanev_kezdete
     this.alapadatokField = options.alapadatokField || "alapadatok_id"; // Default to alapadatok_id
+    this.orderBy = options.orderBy || undefined; // Default ordering option
   }
 
   /**
@@ -49,6 +50,7 @@ export class ServicePattern {
         return await prisma[this.serviceName].findMany({
           include: this.include,
           select: Object.keys(this.select).length > 0 ? this.select : undefined,
+          orderBy: this.orderBy,
         });
       },
       CACHE_TTL.SHORT

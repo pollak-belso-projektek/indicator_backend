@@ -1,6 +1,12 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 
-const pattern = new ServicePattern("tableList", "id");
+const pattern = new ServicePattern(
+  "tableList",
+  "id",
+  {},
+  {},
+  { orderBy: { alias: "asc" } }
+);
 
 export async function getAll() {
   return await pattern.findAll();
