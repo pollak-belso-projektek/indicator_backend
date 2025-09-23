@@ -29,7 +29,7 @@ export async function createMany(alapadatok_id, data) {
   let year = new Date().getFullYear();
   const month = new Date().getMonth();
 
-  if (month <= 8) {
+  if (month <= 7) {
     year -= 1;
   }
 
