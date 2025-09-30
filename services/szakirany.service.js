@@ -1,8 +1,14 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 import prisma from "../utils/prisma.js";
 
-const pattern = new ServicePattern("szakirany", "id");
+const pattern = new ServicePattern(
+  "szakirany",
+  "id",
+  {},
+  {},
+  { orderBy: { nev: "asc" } }
+);
 
 export async function getAll() {
-    return await pattern.findAll();
+  return await pattern.findAll();
 }

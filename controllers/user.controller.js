@@ -395,16 +395,6 @@ router.put("/:id", async (req, res) => {
   const { email, name, permissions, tableAccess, alapadatokId, isActive } =
     req.body;
 
-  console.log("Updating user:", {
-    id,
-    email,
-    name,
-    permissions,
-    tableAccess,
-    alapadatokId,
-    isActive,
-  });
-
   try {
     await update(
       id,

@@ -35,6 +35,7 @@ const corsOrigins = process.env.CORS_ORIGINS
       "http://172.16.0.100:5174",
       "https://indikator.pollak.info",
       "http://10.0.1.7:5173",
+      "http://192.168.1.6:5173",
     ];
 
 const corsConfig = {

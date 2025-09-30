@@ -198,12 +198,6 @@ router.post("/", async (req, res) => {
   try {
     const { iskola_neve, intezmeny_tipus, alapadatok_szakirany } = req.body;
 
-    console.log("Adding alapadatok:", {
-      iskola_neve,
-      intezmeny_tipus,
-      alapadatok_szakirany,
-    });
-
     if (!iskola_neve || !intezmeny_tipus || !alapadatok_szakirany)
       return res.status(400).json({ message: "Hiányos adatok!" });
 

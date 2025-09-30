@@ -20151,7 +20151,7 @@ export namespace Prisma {
     id: string
     alapadatok_id: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -20196,7 +20196,7 @@ export namespace Prisma {
     szakiranyId?: boolean
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
     szakirany?: boolean | Felvettek_Szama$szakiranyArgs<ExtArgs>
-    szakma?: boolean | SzakmaDefaultArgs<ExtArgs>
+    szakma?: boolean | Felvettek_Szama$szakmaArgs<ExtArgs>
   }, ExtArgs["result"]["felvettek_Szama"]>
 
   export type Felvettek_SzamaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -20214,7 +20214,7 @@ export namespace Prisma {
     szakiranyId?: boolean
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
     szakirany?: boolean | Felvettek_Szama$szakiranyArgs<ExtArgs>
-    szakma?: boolean | SzakmaDefaultArgs<ExtArgs>
+    szakma?: boolean | Felvettek_Szama$szakmaArgs<ExtArgs>
   }, ExtArgs["result"]["felvettek_Szama"]>
 
   export type Felvettek_SzamaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -20232,7 +20232,7 @@ export namespace Prisma {
     szakiranyId?: boolean
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
     szakirany?: boolean | Felvettek_Szama$szakiranyArgs<ExtArgs>
-    szakma?: boolean | SzakmaDefaultArgs<ExtArgs>
+    szakma?: boolean | Felvettek_Szama$szakmaArgs<ExtArgs>
   }, ExtArgs["result"]["felvettek_Szama"]>
 
   export type Felvettek_SzamaSelectScalar = {
@@ -20254,17 +20254,17 @@ export namespace Prisma {
   export type Felvettek_SzamaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
     szakirany?: boolean | Felvettek_Szama$szakiranyArgs<ExtArgs>
-    szakma?: boolean | SzakmaDefaultArgs<ExtArgs>
+    szakma?: boolean | Felvettek_Szama$szakmaArgs<ExtArgs>
   }
   export type Felvettek_SzamaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
     szakirany?: boolean | Felvettek_Szama$szakiranyArgs<ExtArgs>
-    szakma?: boolean | SzakmaDefaultArgs<ExtArgs>
+    szakma?: boolean | Felvettek_Szama$szakmaArgs<ExtArgs>
   }
   export type Felvettek_SzamaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
     szakirany?: boolean | Felvettek_Szama$szakiranyArgs<ExtArgs>
-    szakma?: boolean | SzakmaDefaultArgs<ExtArgs>
+    szakma?: boolean | Felvettek_Szama$szakmaArgs<ExtArgs>
   }
 
   export type $Felvettek_SzamaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -20272,13 +20272,13 @@ export namespace Prisma {
     objects: {
       alapadatok: Prisma.$AlapadatokPayload<ExtArgs>
       szakirany: Prisma.$SzakiranyPayload<ExtArgs> | null
-      szakma: Prisma.$SzakmaPayload<ExtArgs>
+      szakma: Prisma.$SzakmaPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       alapadatok_id: string
       tanev_kezdete: number
-      szakma_id: string
+      szakma_id: string | null
       jelentkezo_letszam: number
       felveheto_letszam: number
       felvett_letszam: number
@@ -20683,7 +20683,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     alapadatok<T extends AlapadatokDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlapadatokDefaultArgs<ExtArgs>>): Prisma__AlapadatokClient<$Result.GetResult<Prisma.$AlapadatokPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     szakirany<T extends Felvettek_Szama$szakiranyArgs<ExtArgs> = {}>(args?: Subset<T, Felvettek_Szama$szakiranyArgs<ExtArgs>>): Prisma__SzakiranyClient<$Result.GetResult<Prisma.$SzakiranyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    szakma<T extends SzakmaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SzakmaDefaultArgs<ExtArgs>>): Prisma__SzakmaClient<$Result.GetResult<Prisma.$SzakmaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    szakma<T extends Felvettek_Szama$szakmaArgs<ExtArgs> = {}>(args?: Subset<T, Felvettek_Szama$szakmaArgs<ExtArgs>>): Prisma__SzakmaClient<$Result.GetResult<Prisma.$SzakmaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -21137,6 +21137,25 @@ export namespace Prisma {
      */
     include?: SzakiranyInclude<ExtArgs> | null
     where?: SzakiranyWhereInput
+  }
+
+  /**
+   * Felvettek_Szama.szakma
+   */
+  export type Felvettek_Szama$szakmaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Szakma
+     */
+    select?: SzakmaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Szakma
+     */
+    omit?: SzakmaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SzakmaInclude<ExtArgs> | null
+    where?: SzakmaWhereInput
   }
 
   /**
@@ -49445,7 +49464,7 @@ export namespace Prisma {
     id?: UuidFilter<"Felvettek_Szama"> | string
     alapadatok_id?: UuidFilter<"Felvettek_Szama"> | string
     tanev_kezdete?: IntFilter<"Felvettek_Szama"> | number
-    szakma_id?: UuidFilter<"Felvettek_Szama"> | string
+    szakma_id?: UuidNullableFilter<"Felvettek_Szama"> | string | null
     jelentkezo_letszam?: IntFilter<"Felvettek_Szama"> | number
     felveheto_letszam?: IntFilter<"Felvettek_Szama"> | number
     felvett_letszam?: IntFilter<"Felvettek_Szama"> | number
@@ -49456,14 +49475,14 @@ export namespace Prisma {
     szakiranyId?: UuidNullableFilter<"Felvettek_Szama"> | string | null
     alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
     szakirany?: XOR<SzakiranyNullableScalarRelationFilter, SzakiranyWhereInput> | null
-    szakma?: XOR<SzakmaScalarRelationFilter, SzakmaWhereInput>
+    szakma?: XOR<SzakmaNullableScalarRelationFilter, SzakmaWhereInput> | null
   }
 
   export type Felvettek_SzamaOrderByWithRelationInput = {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
-    szakma_id?: SortOrder
+    szakma_id?: SortOrderInput | SortOrder
     jelentkezo_letszam?: SortOrder
     felveheto_letszam?: SortOrder
     felvett_letszam?: SortOrder
@@ -49484,7 +49503,7 @@ export namespace Prisma {
     NOT?: Felvettek_SzamaWhereInput | Felvettek_SzamaWhereInput[]
     alapadatok_id?: UuidFilter<"Felvettek_Szama"> | string
     tanev_kezdete?: IntFilter<"Felvettek_Szama"> | number
-    szakma_id?: UuidFilter<"Felvettek_Szama"> | string
+    szakma_id?: UuidNullableFilter<"Felvettek_Szama"> | string | null
     jelentkezo_letszam?: IntFilter<"Felvettek_Szama"> | number
     felveheto_letszam?: IntFilter<"Felvettek_Szama"> | number
     felvett_letszam?: IntFilter<"Felvettek_Szama"> | number
@@ -49495,14 +49514,14 @@ export namespace Prisma {
     szakiranyId?: UuidNullableFilter<"Felvettek_Szama"> | string | null
     alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
     szakirany?: XOR<SzakiranyNullableScalarRelationFilter, SzakiranyWhereInput> | null
-    szakma?: XOR<SzakmaScalarRelationFilter, SzakmaWhereInput>
+    szakma?: XOR<SzakmaNullableScalarRelationFilter, SzakmaWhereInput> | null
   }, "id">
 
   export type Felvettek_SzamaOrderByWithAggregationInput = {
     id?: SortOrder
     alapadatok_id?: SortOrder
     tanev_kezdete?: SortOrder
-    szakma_id?: SortOrder
+    szakma_id?: SortOrderInput | SortOrder
     jelentkezo_letszam?: SortOrder
     felveheto_letszam?: SortOrder
     felvett_letszam?: SortOrder
@@ -49525,7 +49544,7 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"Felvettek_Szama"> | string
     alapadatok_id?: UuidWithAggregatesFilter<"Felvettek_Szama"> | string
     tanev_kezdete?: IntWithAggregatesFilter<"Felvettek_Szama"> | number
-    szakma_id?: UuidWithAggregatesFilter<"Felvettek_Szama"> | string
+    szakma_id?: UuidNullableWithAggregatesFilter<"Felvettek_Szama"> | string | null
     jelentkezo_letszam?: IntWithAggregatesFilter<"Felvettek_Szama"> | number
     felveheto_letszam?: IntWithAggregatesFilter<"Felvettek_Szama"> | number
     felvett_letszam?: IntWithAggregatesFilter<"Felvettek_Szama"> | number
@@ -52961,14 +52980,14 @@ export namespace Prisma {
     updatedBy?: string | null
     alapadatok: AlapadatokCreateNestedOneWithoutFelvettek_szamaInput
     szakirany?: SzakiranyCreateNestedOneWithoutFelvettek_szamaInput
-    szakma: SzakmaCreateNestedOneWithoutFelvettek_szamaInput
+    szakma?: SzakmaCreateNestedOneWithoutFelvettek_szamaInput
   }
 
   export type Felvettek_SzamaUncheckedCreateInput = {
     id?: string
     alapadatok_id: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id?: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -52991,14 +53010,14 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     alapadatok?: AlapadatokUpdateOneRequiredWithoutFelvettek_szamaNestedInput
     szakirany?: SzakiranyUpdateOneWithoutFelvettek_szamaNestedInput
-    szakma?: SzakmaUpdateOneRequiredWithoutFelvettek_szamaNestedInput
+    szakma?: SzakmaUpdateOneWithoutFelvettek_szamaNestedInput
   }
 
   export type Felvettek_SzamaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    szakma_id?: StringFieldUpdateOperationsInput | string
+    szakma_id?: NullableStringFieldUpdateOperationsInput | string | null
     jelentkezo_letszam?: IntFieldUpdateOperationsInput | number
     felveheto_letszam?: IntFieldUpdateOperationsInput | number
     felvett_letszam?: IntFieldUpdateOperationsInput | number
@@ -53013,7 +53032,7 @@ export namespace Prisma {
     id?: string
     alapadatok_id: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id?: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -53040,7 +53059,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    szakma_id?: StringFieldUpdateOperationsInput | string
+    szakma_id?: NullableStringFieldUpdateOperationsInput | string | null
     jelentkezo_letszam?: IntFieldUpdateOperationsInput | number
     felveheto_letszam?: IntFieldUpdateOperationsInput | number
     felvett_letszam?: IntFieldUpdateOperationsInput | number
@@ -60878,10 +60897,12 @@ export namespace Prisma {
     update?: XOR<XOR<SzakiranyUpdateToOneWithWhereWithoutFelvettek_szamaInput, SzakiranyUpdateWithoutFelvettek_szamaInput>, SzakiranyUncheckedUpdateWithoutFelvettek_szamaInput>
   }
 
-  export type SzakmaUpdateOneRequiredWithoutFelvettek_szamaNestedInput = {
+  export type SzakmaUpdateOneWithoutFelvettek_szamaNestedInput = {
     create?: XOR<SzakmaCreateWithoutFelvettek_szamaInput, SzakmaUncheckedCreateWithoutFelvettek_szamaInput>
     connectOrCreate?: SzakmaCreateOrConnectWithoutFelvettek_szamaInput
     upsert?: SzakmaUpsertWithoutFelvettek_szamaInput
+    disconnect?: SzakmaWhereInput | boolean
+    delete?: SzakmaWhereInput | boolean
     connect?: SzakmaWhereUniqueInput
     update?: XOR<XOR<SzakmaUpdateToOneWithWhereWithoutFelvettek_szamaInput, SzakmaUpdateWithoutFelvettek_szamaInput>, SzakmaUncheckedUpdateWithoutFelvettek_szamaInput>
   }
@@ -62253,13 +62274,13 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     updatedBy?: string | null
     szakirany?: SzakiranyCreateNestedOneWithoutFelvettek_szamaInput
-    szakma: SzakmaCreateNestedOneWithoutFelvettek_szamaInput
+    szakma?: SzakmaCreateNestedOneWithoutFelvettek_szamaInput
   }
 
   export type Felvettek_SzamaUncheckedCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id?: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -63379,7 +63400,7 @@ export namespace Prisma {
     id?: UuidFilter<"Felvettek_Szama"> | string
     alapadatok_id?: UuidFilter<"Felvettek_Szama"> | string
     tanev_kezdete?: IntFilter<"Felvettek_Szama"> | number
-    szakma_id?: UuidFilter<"Felvettek_Szama"> | string
+    szakma_id?: UuidNullableFilter<"Felvettek_Szama"> | string | null
     jelentkezo_letszam?: IntFilter<"Felvettek_Szama"> | number
     felveheto_letszam?: IntFilter<"Felvettek_Szama"> | number
     felvett_letszam?: IntFilter<"Felvettek_Szama"> | number
@@ -64297,14 +64318,14 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     updatedBy?: string | null
     alapadatok: AlapadatokCreateNestedOneWithoutFelvettek_szamaInput
-    szakma: SzakmaCreateNestedOneWithoutFelvettek_szamaInput
+    szakma?: SzakmaCreateNestedOneWithoutFelvettek_szamaInput
   }
 
   export type Felvettek_SzamaUncheckedCreateWithoutSzakiranyInput = {
     id?: string
     alapadatok_id: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id?: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -70466,7 +70487,7 @@ export namespace Prisma {
   export type Felvettek_SzamaCreateManyAlapadatokInput = {
     id?: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id?: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -70904,13 +70925,13 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     szakirany?: SzakiranyUpdateOneWithoutFelvettek_szamaNestedInput
-    szakma?: SzakmaUpdateOneRequiredWithoutFelvettek_szamaNestedInput
+    szakma?: SzakmaUpdateOneWithoutFelvettek_szamaNestedInput
   }
 
   export type Felvettek_SzamaUncheckedUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    szakma_id?: StringFieldUpdateOperationsInput | string
+    szakma_id?: NullableStringFieldUpdateOperationsInput | string | null
     jelentkezo_letszam?: IntFieldUpdateOperationsInput | number
     felveheto_letszam?: IntFieldUpdateOperationsInput | number
     felvett_letszam?: IntFieldUpdateOperationsInput | number
@@ -70924,7 +70945,7 @@ export namespace Prisma {
   export type Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    szakma_id?: StringFieldUpdateOperationsInput | string
+    szakma_id?: NullableStringFieldUpdateOperationsInput | string | null
     jelentkezo_letszam?: IntFieldUpdateOperationsInput | number
     felveheto_letszam?: IntFieldUpdateOperationsInput | number
     felvett_letszam?: IntFieldUpdateOperationsInput | number
@@ -72191,7 +72212,7 @@ export namespace Prisma {
     id?: string
     alapadatok_id: string
     tanev_kezdete: number
-    szakma_id: string
+    szakma_id?: string | null
     jelentkezo_letszam: number
     felveheto_letszam: number
     felvett_letszam: number
@@ -72315,14 +72336,14 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     alapadatok?: AlapadatokUpdateOneRequiredWithoutFelvettek_szamaNestedInput
-    szakma?: SzakmaUpdateOneRequiredWithoutFelvettek_szamaNestedInput
+    szakma?: SzakmaUpdateOneWithoutFelvettek_szamaNestedInput
   }
 
   export type Felvettek_SzamaUncheckedUpdateWithoutSzakiranyInput = {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    szakma_id?: StringFieldUpdateOperationsInput | string
+    szakma_id?: NullableStringFieldUpdateOperationsInput | string | null
     jelentkezo_letszam?: IntFieldUpdateOperationsInput | number
     felveheto_letszam?: IntFieldUpdateOperationsInput | number
     felvett_letszam?: IntFieldUpdateOperationsInput | number
@@ -72336,7 +72357,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    szakma_id?: StringFieldUpdateOperationsInput | string
+    szakma_id?: NullableStringFieldUpdateOperationsInput | string | null
     jelentkezo_letszam?: IntFieldUpdateOperationsInput | number
     felveheto_letszam?: IntFieldUpdateOperationsInput | number
     felvett_letszam?: IntFieldUpdateOperationsInput | number

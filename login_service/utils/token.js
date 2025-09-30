@@ -35,8 +35,6 @@ export function generateToken(user) {
       : [],
   };
 
-  console.log(user.tableAccess);
-
   // Use different secrets for access and refresh tokens for better security
   const accessToken = jwt.sign(payload, JWT_SECRET, {
     ...JWT_DEFAULT_OPTIONS,

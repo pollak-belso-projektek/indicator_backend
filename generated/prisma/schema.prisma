@@ -214,7 +214,7 @@ model Felvettek_Szama {
   id                 String     @id @default(uuid()) @db.Uuid
   alapadatok_id      String     @db.Uuid
   tanev_kezdete      Int        @db.SmallInt
-  szakma_id          String     @db.Uuid
+  szakma_id          String?    @db.Uuid
   jelentkezo_letszam Int        @db.SmallInt
   felveheto_letszam  Int        @db.SmallInt
   felvett_letszam    Int        @db.SmallInt
@@ -225,7 +225,7 @@ model Felvettek_Szama {
   szakiranyId        String?    @db.Uuid
   alapadatok         Alapadatok @relation(fields: [alapadatok_id], references: [id])
   szakirany          Szakirany? @relation(fields: [szakiranyId], references: [id])
-  szakma             Szakma     @relation(fields: [szakma_id], references: [id])
+  szakma             Szakma?    @relation(fields: [szakma_id], references: [id])
 }
 
 model Kompetencia {

@@ -3,8 +3,8 @@ import { ServicePattern, CACHE_TTL } from "../utils/ServicePattern.js";
 
 // Initialize ServicePattern for felvettek_szama with relations
 const pattern = new ServicePattern(
-  "felvettek_Szama", 
-  "id", 
+  "felvettek_Szama",
+  "id",
   {
     szakma: true,
     szakirany: true,
@@ -23,13 +23,11 @@ export async function create(data) {
     felvett_letszam,
   } = data;
 
-  // Find szakma and szakirany by name
-  const szakma = await prisma.szakma.findUnique({
-    where: { nev: szakmaNev },
-  });
+  let szakma = null;
 
-  if (!szakma) {
-    throw new Error(`Szakma with name ${szakmaNev} not found`);
+  // Find szakma and szakirany by name
+  if (szakma && szakma !== "Nincs meghatározva") {
+    szakma = { connect: { nev: szakma } };
   }
 
   const szakirany = await prisma.szakirany.findUnique({
@@ -45,7 +43,7 @@ export async function create(data) {
     data: {
       alapadatok_id,
       tanev_kezdete,
-      szakma_id: szakma.id,
+      szakma_id: szakma ? szakma.id : null,
       szakiranyId: szakirany.id,
       jelentkezo_letszam,
       felveheto_letszam,
@@ -63,7 +61,7 @@ export async function create(data) {
 export async function getAll(tanev) {
   // Use pattern's method for year-based query with custom cache operation
   return await pattern.serviceCache.get(
-    'all_with_year_ordered',
+    "all_with_year_ordered",
     async () => {
       const { firstYear, lastYear } = pattern.getYearRange(tanev);
       return await prisma.felvettek_Szama.findMany({
@@ -99,19 +97,19 @@ export async function update(id, data) {
   const szakma = await prisma.szakma.findUnique({
     where: { nev: szakmaNev },
   });
-  
+
   if (!szakma) {
     throw new Error(`Szakma with name ${szakmaNev} not found`);
   }
-  
+
   const szakirany = await prisma.szakirany.findUnique({
     where: { nev: szakiranyNev },
   });
-  
+
   if (!szakirany) {
     throw new Error(`Szakirany with name ${szakiranyNev} not found`);
   }
-  
+
   // Update with resolved IDs - use custom update for proper relations
   const result = await prisma.felvettek_Szama.update({
     where: { id },

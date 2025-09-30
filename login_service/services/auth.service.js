@@ -21,8 +21,6 @@ export async function login(email, password) {
       throw new Error("User not found");
     }
 
-    console.log(user);
-
     // Generate token
     const token = generateToken(user);
 

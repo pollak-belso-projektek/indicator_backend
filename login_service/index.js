@@ -23,6 +23,7 @@ const corsConfig = {
     "http://10.0.1.10:5173",
     "https://indikator.pollak.info",
     "http://localhost:5300", // Allow main backend to call this service
+    "http://192.168.1.6:5173",
   ],
   credentials: true,
 };

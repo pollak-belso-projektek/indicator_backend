@@ -10,11 +10,6 @@ export function apiKeyMiddleware(req, res, next) {
     ? process.env.API_KEYS.split(",")
     : [];
 
-  console.log(
-    "---------------------------------------- Valid API Keys:",
-    validApiKeys
-  );
-
   if (validApiKeys.length === 0) {
     console.warn("⚠️  No API keys configured - API key validation disabled");
     return next();
