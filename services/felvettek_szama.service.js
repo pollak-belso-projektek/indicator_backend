@@ -26,8 +26,10 @@ export async function create(data) {
   let szakma = null;
 
   // Find szakma and szakirany by name
-  if (szakma && szakma !== "Nincs meghatározva") {
-    szakma = { connect: { nev: szakma } };
+  if (szakmaNev && szakmaNev !== "Nincs meghatározva") {
+    szakma = await prisma.szakma.findUnique({
+      where: { nev: szakmaNev },
+    });
   }
 
   const szakirany = await prisma.szakirany.findUnique({
@@ -93,13 +95,13 @@ export async function update(id, data) {
     felvett_letszam,
   } = data;
 
-  // Find szakma and szakirany by name
-  const szakma = await prisma.szakma.findUnique({
-    where: { nev: szakmaNev },
-  });
+  let szakma = null;
 
-  if (!szakma) {
-    throw new Error(`Szakma with name ${szakmaNev} not found`);
+  // Find szakma and szakirany by name
+  if (szakmaNev && szakmaNev !== "Nincs meghatározva") {
+    szakma = await prisma.szakma.findUnique({
+      where: { nev: szakmaNev },
+    });
   }
 
   const szakirany = await prisma.szakirany.findUnique({
@@ -116,7 +118,7 @@ export async function update(id, data) {
     data: {
       alapadatok_id,
       tanev_kezdete,
-      szakma_id: szakma.id,
+      szakma_id: szakma ? szakma.id : null,
       szakiranyId: szakirany.id,
       jelentkezo_letszam,
       felveheto_letszam,

@@ -76,7 +76,7 @@ app.use(requestLoggingMiddleware);
 // app.use(apiKeyMiddleware);
 
 // Apply rate limiting (before body parsing to protect against large payloads)
-app.use(generalRateLimit);
+// app.use(generalRateLimit);
 
 /**
  * @swagger
@@ -140,7 +140,7 @@ app.use("/api/v1/auth", authRateLimit);
 app.use("/api/v1/auth", loginServiceProxy); // Direct proxy without circuit breaker for testing
 
 // Protected API routes
-app.use("/api/v1", readOnlyRateLimit); // Apply read-only rate limit first
+// app.use("/api/v1", readOnlyRateLimit); // Apply read-only rate limit first
 app.use("/api/v1", authMiddleware); // Then apply authentication
 app.use("/api/v1", createCircuitBreakerProxy("main_service", mainServiceProxy));
 
