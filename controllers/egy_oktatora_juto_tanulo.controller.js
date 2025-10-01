@@ -228,11 +228,12 @@ router.get("/", async (req, res) => {
  *             example:
  *               error: "Internal Server Error"
  */
-router.get("/:alapadatok_id", async (req, res) => {
+router.get("/:alapadatok_id/:year", async (req, res) => {
   const alapadatok_id = req.params.alapadatok_id;
+  const year = req.params.year;
 
   try {
-    const data = await getById(alapadatok_id);
+    const data = await getById(alapadatok_id, year);
     if (data.length === 0) {
       return res.status(404).json({ error: "Data not found" });
     }
