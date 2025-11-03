@@ -250,7 +250,7 @@ model EgyOktatoraJutoTanulo {
   id            String     @id @default(uuid()) @db.Uuid
   alapadatok_id String     @db.Uuid
   tanev_kezdete Int        @default(0) @db.SmallInt
-  letszam       Int        @default(0) @db.SmallInt
+  letszam       Decimal    @default(0) @db.Decimal(5, 2)
   createAt      DateTime   @default(now())
   createBy      String?
   updatedAt     DateTime?  @updatedAt
@@ -758,6 +758,7 @@ model OktatoEgyebTev{
   tananyagfejleszto Int @db.Integer @default(0)
   tankonyv_jegyzetiro Int @db.Integer @default(0)
   szakmai_tisztsegviselo Int @db.Integer @default(0)
+  szakmai_vizsga_mero_ertekelo Int @db.Integer @default(0)
   oktatok_letszama Int @db.Integer @default(0)
 
   alapadatok    Alapadatok @relation(fields: [alapadatok_id], references: [id])

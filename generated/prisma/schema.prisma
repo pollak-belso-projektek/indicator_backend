@@ -248,7 +248,7 @@ model EgyOktatoraJutoTanulo {
   id            String     @id @default(uuid()) @db.Uuid
   alapadatok_id String     @db.Uuid
   tanev_kezdete Int        @default(0) @db.SmallInt
-  letszam       Int        @default(0) @db.SmallInt
+  letszam       Decimal    @default(0) @db.Decimal(5, 2)
   createAt      DateTime   @default(now())
   createBy      String?
   updatedAt     DateTime?  @updatedAt
@@ -742,21 +742,22 @@ model OktatoEgyebTev {
   updatedAt DateTime? @updatedAt
   updatedBy String?
 
-  szakkepzesi_szakerto      Int @default(0) @db.Integer
-  koznevelesi_szakerto      Int @default(0) @db.Integer
-  koznevelesi_szaktanacsado Int @default(0) @db.Integer
-  vizsgafelugyelo           Int @default(0) @db.Integer
-  agazati_alapvizsgan_elnok Int @default(0) @db.Integer
-  feladatkeszito_lektor     Int @default(0) @db.Integer
-  erettsegi_elnok           Int @default(0) @db.Integer
-  emelt_erettsegi_vb_tag    Int @default(0) @db.Integer
-  emelt_erettsegi_vb_elnok  Int @default(0) @db.Integer
-  erettsegi_vizsgaztato     Int @default(0) @db.Integer
-  tanterviro                Int @default(0) @db.Integer
-  tananyagfejleszto         Int @default(0) @db.Integer
-  tankonyv_jegyzetiro       Int @default(0) @db.Integer
-  szakmai_tisztsegviselo    Int @default(0) @db.Integer
-  oktatok_letszama          Int @default(0) @db.Integer
+  szakkepzesi_szakerto         Int @default(0) @db.Integer
+  koznevelesi_szakerto         Int @default(0) @db.Integer
+  koznevelesi_szaktanacsado    Int @default(0) @db.Integer
+  vizsgafelugyelo              Int @default(0) @db.Integer
+  agazati_alapvizsgan_elnok    Int @default(0) @db.Integer
+  feladatkeszito_lektor        Int @default(0) @db.Integer
+  erettsegi_elnok              Int @default(0) @db.Integer
+  emelt_erettsegi_vb_tag       Int @default(0) @db.Integer
+  emelt_erettsegi_vb_elnok     Int @default(0) @db.Integer
+  erettsegi_vizsgaztato        Int @default(0) @db.Integer
+  tanterviro                   Int @default(0) @db.Integer
+  tananyagfejleszto            Int @default(0) @db.Integer
+  tankonyv_jegyzetiro          Int @default(0) @db.Integer
+  szakmai_tisztsegviselo       Int @default(0) @db.Integer
+  szakmai_vizsga_mero_ertekelo Int @default(0) @db.Integer
+  oktatok_letszama             Int @default(0) @db.Integer
 
   alapadatok Alapadatok @relation(fields: [alapadatok_id], references: [id])
 

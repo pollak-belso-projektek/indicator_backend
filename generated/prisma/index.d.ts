@@ -22374,19 +22374,19 @@ export namespace Prisma {
 
   export type EgyOktatoraJutoTanuloAvgAggregateOutputType = {
     tanev_kezdete: number | null
-    letszam: number | null
+    letszam: Decimal | null
   }
 
   export type EgyOktatoraJutoTanuloSumAggregateOutputType = {
     tanev_kezdete: number | null
-    letszam: number | null
+    letszam: Decimal | null
   }
 
   export type EgyOktatoraJutoTanuloMinAggregateOutputType = {
     id: string | null
     alapadatok_id: string | null
     tanev_kezdete: number | null
-    letszam: number | null
+    letszam: Decimal | null
     createAt: Date | null
     createBy: string | null
     updatedAt: Date | null
@@ -22397,7 +22397,7 @@ export namespace Prisma {
     id: string | null
     alapadatok_id: string | null
     tanev_kezdete: number | null
-    letszam: number | null
+    letszam: Decimal | null
     createAt: Date | null
     createBy: string | null
     updatedAt: Date | null
@@ -22551,7 +22551,7 @@ export namespace Prisma {
     id: string
     alapadatok_id: string
     tanev_kezdete: number
-    letszam: number
+    letszam: Decimal
     createAt: Date
     createBy: string | null
     updatedAt: Date | null
@@ -22644,7 +22644,7 @@ export namespace Prisma {
       id: string
       alapadatok_id: string
       tanev_kezdete: number
-      letszam: number
+      letszam: Prisma.Decimal
       createAt: Date
       createBy: string | null
       updatedAt: Date | null
@@ -23076,7 +23076,7 @@ export namespace Prisma {
     readonly id: FieldRef<"EgyOktatoraJutoTanulo", 'String'>
     readonly alapadatok_id: FieldRef<"EgyOktatoraJutoTanulo", 'String'>
     readonly tanev_kezdete: FieldRef<"EgyOktatoraJutoTanulo", 'Int'>
-    readonly letszam: FieldRef<"EgyOktatoraJutoTanulo", 'Int'>
+    readonly letszam: FieldRef<"EgyOktatoraJutoTanulo", 'Decimal'>
     readonly createAt: FieldRef<"EgyOktatoraJutoTanulo", 'DateTime'>
     readonly createBy: FieldRef<"EgyOktatoraJutoTanulo", 'String'>
     readonly updatedAt: FieldRef<"EgyOktatoraJutoTanulo", 'DateTime'>
@@ -46404,6 +46404,7 @@ export namespace Prisma {
     tananyagfejleszto: number | null
     tankonyv_jegyzetiro: number | null
     szakmai_tisztsegviselo: number | null
+    szakmai_vizsga_mero_ertekelo: number | null
     oktatok_letszama: number | null
   }
 
@@ -46423,6 +46424,7 @@ export namespace Prisma {
     tananyagfejleszto: number | null
     tankonyv_jegyzetiro: number | null
     szakmai_tisztsegviselo: number | null
+    szakmai_vizsga_mero_ertekelo: number | null
     oktatok_letszama: number | null
   }
 
@@ -46448,6 +46450,7 @@ export namespace Prisma {
     tananyagfejleszto: number | null
     tankonyv_jegyzetiro: number | null
     szakmai_tisztsegviselo: number | null
+    szakmai_vizsga_mero_ertekelo: number | null
     oktatok_letszama: number | null
   }
 
@@ -46473,6 +46476,7 @@ export namespace Prisma {
     tananyagfejleszto: number | null
     tankonyv_jegyzetiro: number | null
     szakmai_tisztsegviselo: number | null
+    szakmai_vizsga_mero_ertekelo: number | null
     oktatok_letszama: number | null
   }
 
@@ -46498,6 +46502,7 @@ export namespace Prisma {
     tananyagfejleszto: number
     tankonyv_jegyzetiro: number
     szakmai_tisztsegviselo: number
+    szakmai_vizsga_mero_ertekelo: number
     oktatok_letszama: number
     _all: number
   }
@@ -46519,6 +46524,7 @@ export namespace Prisma {
     tananyagfejleszto?: true
     tankonyv_jegyzetiro?: true
     szakmai_tisztsegviselo?: true
+    szakmai_vizsga_mero_ertekelo?: true
     oktatok_letszama?: true
   }
 
@@ -46538,6 +46544,7 @@ export namespace Prisma {
     tananyagfejleszto?: true
     tankonyv_jegyzetiro?: true
     szakmai_tisztsegviselo?: true
+    szakmai_vizsga_mero_ertekelo?: true
     oktatok_letszama?: true
   }
 
@@ -46563,6 +46570,7 @@ export namespace Prisma {
     tananyagfejleszto?: true
     tankonyv_jegyzetiro?: true
     szakmai_tisztsegviselo?: true
+    szakmai_vizsga_mero_ertekelo?: true
     oktatok_letszama?: true
   }
 
@@ -46588,6 +46596,7 @@ export namespace Prisma {
     tananyagfejleszto?: true
     tankonyv_jegyzetiro?: true
     szakmai_tisztsegviselo?: true
+    szakmai_vizsga_mero_ertekelo?: true
     oktatok_letszama?: true
   }
 
@@ -46613,6 +46622,7 @@ export namespace Prisma {
     tananyagfejleszto?: true
     tankonyv_jegyzetiro?: true
     szakmai_tisztsegviselo?: true
+    szakmai_vizsga_mero_ertekelo?: true
     oktatok_letszama?: true
     _all?: true
   }
@@ -46725,6 +46735,7 @@ export namespace Prisma {
     tananyagfejleszto: number
     tankonyv_jegyzetiro: number
     szakmai_tisztsegviselo: number
+    szakmai_vizsga_mero_ertekelo: number
     oktatok_letszama: number
     _count: OktatoEgyebTevCountAggregateOutputType | null
     _avg: OktatoEgyebTevAvgAggregateOutputType | null
@@ -46769,6 +46780,7 @@ export namespace Prisma {
     tananyagfejleszto?: boolean
     tankonyv_jegyzetiro?: boolean
     szakmai_tisztsegviselo?: boolean
+    szakmai_vizsga_mero_ertekelo?: boolean
     oktatok_letszama?: boolean
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["oktatoEgyebTev"]>
@@ -46795,6 +46807,7 @@ export namespace Prisma {
     tananyagfejleszto?: boolean
     tankonyv_jegyzetiro?: boolean
     szakmai_tisztsegviselo?: boolean
+    szakmai_vizsga_mero_ertekelo?: boolean
     oktatok_letszama?: boolean
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["oktatoEgyebTev"]>
@@ -46821,6 +46834,7 @@ export namespace Prisma {
     tananyagfejleszto?: boolean
     tankonyv_jegyzetiro?: boolean
     szakmai_tisztsegviselo?: boolean
+    szakmai_vizsga_mero_ertekelo?: boolean
     oktatok_letszama?: boolean
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["oktatoEgyebTev"]>
@@ -46847,10 +46861,11 @@ export namespace Prisma {
     tananyagfejleszto?: boolean
     tankonyv_jegyzetiro?: boolean
     szakmai_tisztsegviselo?: boolean
+    szakmai_vizsga_mero_ertekelo?: boolean
     oktatok_letszama?: boolean
   }
 
-  export type OktatoEgyebTevOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "alapadatok_id" | "tanev_kezdete" | "createAt" | "createBy" | "updatedAt" | "updatedBy" | "szakkepzesi_szakerto" | "koznevelesi_szakerto" | "koznevelesi_szaktanacsado" | "vizsgafelugyelo" | "agazati_alapvizsgan_elnok" | "feladatkeszito_lektor" | "erettsegi_elnok" | "emelt_erettsegi_vb_tag" | "emelt_erettsegi_vb_elnok" | "erettsegi_vizsgaztato" | "tanterviro" | "tananyagfejleszto" | "tankonyv_jegyzetiro" | "szakmai_tisztsegviselo" | "oktatok_letszama", ExtArgs["result"]["oktatoEgyebTev"]>
+  export type OktatoEgyebTevOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "alapadatok_id" | "tanev_kezdete" | "createAt" | "createBy" | "updatedAt" | "updatedBy" | "szakkepzesi_szakerto" | "koznevelesi_szakerto" | "koznevelesi_szaktanacsado" | "vizsgafelugyelo" | "agazati_alapvizsgan_elnok" | "feladatkeszito_lektor" | "erettsegi_elnok" | "emelt_erettsegi_vb_tag" | "emelt_erettsegi_vb_elnok" | "erettsegi_vizsgaztato" | "tanterviro" | "tananyagfejleszto" | "tankonyv_jegyzetiro" | "szakmai_tisztsegviselo" | "szakmai_vizsga_mero_ertekelo" | "oktatok_letszama", ExtArgs["result"]["oktatoEgyebTev"]>
   export type OktatoEgyebTevInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
   }
@@ -46888,6 +46903,7 @@ export namespace Prisma {
       tananyagfejleszto: number
       tankonyv_jegyzetiro: number
       szakmai_tisztsegviselo: number
+      szakmai_vizsga_mero_ertekelo: number
       oktatok_letszama: number
     }, ExtArgs["result"]["oktatoEgyebTev"]>
     composites: {}
@@ -47334,6 +47350,7 @@ export namespace Prisma {
     readonly tananyagfejleszto: FieldRef<"OktatoEgyebTev", 'Int'>
     readonly tankonyv_jegyzetiro: FieldRef<"OktatoEgyebTev", 'Int'>
     readonly szakmai_tisztsegviselo: FieldRef<"OktatoEgyebTev", 'Int'>
+    readonly szakmai_vizsga_mero_ertekelo: FieldRef<"OktatoEgyebTev", 'Int'>
     readonly oktatok_letszama: FieldRef<"OktatoEgyebTev", 'Int'>
   }
     
@@ -48400,6 +48417,7 @@ export namespace Prisma {
     tananyagfejleszto: 'tananyagfejleszto',
     tankonyv_jegyzetiro: 'tankonyv_jegyzetiro',
     szakmai_tisztsegviselo: 'szakmai_tisztsegviselo',
+    szakmai_vizsga_mero_ertekelo: 'szakmai_vizsga_mero_ertekelo',
     oktatok_letszama: 'oktatok_letszama'
   };
 
@@ -49654,7 +49672,7 @@ export namespace Prisma {
     id?: UuidFilter<"EgyOktatoraJutoTanulo"> | string
     alapadatok_id?: UuidFilter<"EgyOktatoraJutoTanulo"> | string
     tanev_kezdete?: IntFilter<"EgyOktatoraJutoTanulo"> | number
-    letszam?: IntFilter<"EgyOktatoraJutoTanulo"> | number
+    letszam?: DecimalFilter<"EgyOktatoraJutoTanulo"> | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFilter<"EgyOktatoraJutoTanulo"> | Date | string
     createBy?: StringNullableFilter<"EgyOktatoraJutoTanulo"> | string | null
     updatedAt?: DateTimeNullableFilter<"EgyOktatoraJutoTanulo"> | Date | string | null
@@ -49681,7 +49699,7 @@ export namespace Prisma {
     NOT?: EgyOktatoraJutoTanuloWhereInput | EgyOktatoraJutoTanuloWhereInput[]
     alapadatok_id?: UuidFilter<"EgyOktatoraJutoTanulo"> | string
     tanev_kezdete?: IntFilter<"EgyOktatoraJutoTanulo"> | number
-    letszam?: IntFilter<"EgyOktatoraJutoTanulo"> | number
+    letszam?: DecimalFilter<"EgyOktatoraJutoTanulo"> | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFilter<"EgyOktatoraJutoTanulo"> | Date | string
     createBy?: StringNullableFilter<"EgyOktatoraJutoTanulo"> | string | null
     updatedAt?: DateTimeNullableFilter<"EgyOktatoraJutoTanulo"> | Date | string | null
@@ -49712,7 +49730,7 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | string
     alapadatok_id?: UuidWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | string
     tanev_kezdete?: IntWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | number
-    letszam?: IntWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | number
+    letszam?: DecimalWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | Date | string
     createBy?: StringNullableWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | string | null
     updatedAt?: DateTimeNullableWithAggregatesFilter<"EgyOktatoraJutoTanulo"> | Date | string | null
@@ -51893,6 +51911,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFilter<"OktatoEgyebTev"> | number
     tankonyv_jegyzetiro?: IntFilter<"OktatoEgyebTev"> | number
     szakmai_tisztsegviselo?: IntFilter<"OktatoEgyebTev"> | number
+    szakmai_vizsga_mero_ertekelo?: IntFilter<"OktatoEgyebTev"> | number
     oktatok_letszama?: IntFilter<"OktatoEgyebTev"> | number
     alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
   }
@@ -51919,6 +51938,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
     alapadatok?: AlapadatokOrderByWithRelationInput
   }
@@ -51948,6 +51968,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFilter<"OktatoEgyebTev"> | number
     tankonyv_jegyzetiro?: IntFilter<"OktatoEgyebTev"> | number
     szakmai_tisztsegviselo?: IntFilter<"OktatoEgyebTev"> | number
+    szakmai_vizsga_mero_ertekelo?: IntFilter<"OktatoEgyebTev"> | number
     oktatok_letszama?: IntFilter<"OktatoEgyebTev"> | number
     alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
   }, "id">
@@ -51974,6 +51995,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
     _count?: OktatoEgyebTevCountOrderByAggregateInput
     _avg?: OktatoEgyebTevAvgOrderByAggregateInput
@@ -52007,6 +52029,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntWithAggregatesFilter<"OktatoEgyebTev"> | number
     tankonyv_jegyzetiro?: IntWithAggregatesFilter<"OktatoEgyebTev"> | number
     szakmai_tisztsegviselo?: IntWithAggregatesFilter<"OktatoEgyebTev"> | number
+    szakmai_vizsga_mero_ertekelo?: IntWithAggregatesFilter<"OktatoEgyebTev"> | number
     oktatok_letszama?: IntWithAggregatesFilter<"OktatoEgyebTev"> | number
   }
 
@@ -53177,7 +53200,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloCreateInput = {
     id?: string
     tanev_kezdete?: number
-    letszam?: number
+    letszam?: Decimal | DecimalJsLike | number | string
     createAt?: Date | string
     createBy?: string | null
     updatedAt?: Date | string | null
@@ -53189,7 +53212,7 @@ export namespace Prisma {
     id?: string
     alapadatok_id: string
     tanev_kezdete?: number
-    letszam?: number
+    letszam?: Decimal | DecimalJsLike | number | string
     createAt?: Date | string
     createBy?: string | null
     updatedAt?: Date | string | null
@@ -53199,7 +53222,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -53211,7 +53234,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -53222,7 +53245,7 @@ export namespace Prisma {
     id?: string
     alapadatok_id: string
     tanev_kezdete?: number
-    letszam?: number
+    letszam?: Decimal | DecimalJsLike | number | string
     createAt?: Date | string
     createBy?: string | null
     updatedAt?: Date | string | null
@@ -53232,7 +53255,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -53243,7 +53266,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -55776,6 +55799,7 @@ export namespace Prisma {
     tananyagfejleszto?: number
     tankonyv_jegyzetiro?: number
     szakmai_tisztsegviselo?: number
+    szakmai_vizsga_mero_ertekelo?: number
     oktatok_letszama?: number
     alapadatok: AlapadatokCreateNestedOneWithoutOktatoEgyebTevInput
   }
@@ -55802,6 +55826,7 @@ export namespace Prisma {
     tananyagfejleszto?: number
     tankonyv_jegyzetiro?: number
     szakmai_tisztsegviselo?: number
+    szakmai_vizsga_mero_ertekelo?: number
     oktatok_letszama?: number
   }
 
@@ -55826,6 +55851,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
     alapadatok?: AlapadatokUpdateOneRequiredWithoutOktatoEgyebTevNestedInput
   }
@@ -55852,6 +55878,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
@@ -55877,6 +55904,7 @@ export namespace Prisma {
     tananyagfejleszto?: number
     tankonyv_jegyzetiro?: number
     szakmai_tisztsegviselo?: number
+    szakmai_vizsga_mero_ertekelo?: number
     oktatok_letszama?: number
   }
 
@@ -55901,6 +55929,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
@@ -55926,6 +55955,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
@@ -57047,6 +57077,17 @@ export namespace Prisma {
     tanev_kezdete?: SortOrder
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type EgyOktatoraJutoTanuloCountOrderByAggregateInput = {
     id?: SortOrder
     alapadatok_id?: SortOrder
@@ -57088,6 +57129,22 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloSumOrderByAggregateInput = {
     tanev_kezdete?: SortOrder
     letszam?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type Tanugyi_AdatokCountOrderByAggregateInput = {
@@ -57338,17 +57395,6 @@ export namespace Prisma {
     tanev_kezdete?: SortOrder
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type Alkalmazottak_MunkaugyCountOrderByAggregateInput = {
     id?: SortOrder
     Elotag?: SortOrder
@@ -57483,22 +57529,6 @@ export namespace Prisma {
     Oraszam?: SortOrder
     FeladattalTerheltOraszam?: SortOrder
     PedagogusHetiOraszama?: SortOrder
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type SzakkepzesiMunkaszerzodesAranyaCountOrderByAggregateInput = {
@@ -58514,6 +58544,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
   }
 
@@ -58533,6 +58564,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
   }
 
@@ -58558,6 +58590,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
   }
 
@@ -58583,6 +58616,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
   }
 
@@ -58602,6 +58636,7 @@ export namespace Prisma {
     tananyagfejleszto?: SortOrder
     tankonyv_jegyzetiro?: SortOrder
     szakmai_tisztsegviselo?: SortOrder
+    szakmai_vizsga_mero_ertekelo?: SortOrder
     oktatok_letszama?: SortOrder
   }
 
@@ -60927,6 +60962,14 @@ export namespace Prisma {
     connect?: AlapadatokWhereUniqueInput
   }
 
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type AlapadatokUpdateOneRequiredWithoutEgyOktatoraJutoTanuloNestedInput = {
     create?: XOR<AlapadatokCreateWithoutEgyOktatoraJutoTanuloInput, AlapadatokUncheckedCreateWithoutEgyOktatoraJutoTanuloInput>
     connectOrCreate?: AlapadatokCreateOrConnectWithoutEgyOktatoraJutoTanuloInput
@@ -60953,14 +60996,6 @@ export namespace Prisma {
     create?: XOR<AlapadatokCreateWithoutAlkalmazottakMunkaugyInput, AlapadatokUncheckedCreateWithoutAlkalmazottakMunkaugyInput>
     connectOrCreate?: AlapadatokCreateOrConnectWithoutAlkalmazottakMunkaugyInput
     connect?: AlapadatokWhereUniqueInput
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type AlapadatokUpdateOneRequiredWithoutAlkalmazottakMunkaugyNestedInput = {
@@ -62664,7 +62699,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete?: number
-    letszam?: number
+    letszam?: Decimal | DecimalJsLike | number | string
     createAt?: Date | string
     createBy?: string | null
     updatedAt?: Date | string | null
@@ -62674,7 +62709,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloUncheckedCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete?: number
-    letszam?: number
+    letszam?: Decimal | DecimalJsLike | number | string
     createAt?: Date | string
     createBy?: string | null
     updatedAt?: Date | string | null
@@ -63340,6 +63375,7 @@ export namespace Prisma {
     tananyagfejleszto?: number
     tankonyv_jegyzetiro?: number
     szakmai_tisztsegviselo?: number
+    szakmai_vizsga_mero_ertekelo?: number
     oktatok_letszama?: number
   }
 
@@ -63364,6 +63400,7 @@ export namespace Prisma {
     tananyagfejleszto?: number
     tankonyv_jegyzetiro?: number
     szakmai_tisztsegviselo?: number
+    szakmai_vizsga_mero_ertekelo?: number
     oktatok_letszama?: number
   }
 
@@ -63689,7 +63726,7 @@ export namespace Prisma {
     id?: UuidFilter<"EgyOktatoraJutoTanulo"> | string
     alapadatok_id?: UuidFilter<"EgyOktatoraJutoTanulo"> | string
     tanev_kezdete?: IntFilter<"EgyOktatoraJutoTanulo"> | number
-    letszam?: IntFilter<"EgyOktatoraJutoTanulo"> | number
+    letszam?: DecimalFilter<"EgyOktatoraJutoTanulo"> | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFilter<"EgyOktatoraJutoTanulo"> | Date | string
     createBy?: StringNullableFilter<"EgyOktatoraJutoTanulo"> | string | null
     updatedAt?: DateTimeNullableFilter<"EgyOktatoraJutoTanulo"> | Date | string | null
@@ -64304,6 +64341,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFilter<"OktatoEgyebTev"> | number
     tankonyv_jegyzetiro?: IntFilter<"OktatoEgyebTev"> | number
     szakmai_tisztsegviselo?: IntFilter<"OktatoEgyebTev"> | number
+    szakmai_vizsga_mero_ertekelo?: IntFilter<"OktatoEgyebTev"> | number
     oktatok_letszama?: IntFilter<"OktatoEgyebTev"> | number
   }
 
@@ -70656,7 +70694,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloCreateManyAlapadatokInput = {
     id?: string
     tanev_kezdete?: number
-    letszam?: number
+    letszam?: Decimal | DecimalJsLike | number | string
     createAt?: Date | string
     createBy?: string | null
     updatedAt?: Date | string | null
@@ -70911,6 +70949,7 @@ export namespace Prisma {
     tananyagfejleszto?: number
     tankonyv_jegyzetiro?: number
     szakmai_tisztsegviselo?: number
+    szakmai_vizsga_mero_ertekelo?: number
     oktatok_letszama?: number
   }
 
@@ -71424,7 +71463,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71434,7 +71473,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloUncheckedUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71444,7 +71483,7 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloUncheckedUpdateManyWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    letszam?: IntFieldUpdateOperationsInput | number
+    letszam?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -72157,6 +72196,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
@@ -72181,6 +72221,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
@@ -72205,6 +72246,7 @@ export namespace Prisma {
     tananyagfejleszto?: IntFieldUpdateOperationsInput | number
     tankonyv_jegyzetiro?: IntFieldUpdateOperationsInput | number
     szakmai_tisztsegviselo?: IntFieldUpdateOperationsInput | number
+    szakmai_vizsga_mero_ertekelo?: IntFieldUpdateOperationsInput | number
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
