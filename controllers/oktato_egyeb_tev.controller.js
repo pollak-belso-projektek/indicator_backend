@@ -582,6 +582,7 @@ router.post("/", async (req, res) => {
       szakmai_tisztsegviselo,
       oktatok_letszama,
       createBy,
+      szakmai_vizsga_mero_ertekelo,
     } = req.body;
 
     // Validate required fields
@@ -609,7 +610,8 @@ router.post("/", async (req, res) => {
       tankonyv_jegyzetiro,
       szakmai_tisztsegviselo,
       oktatok_letszama,
-      createBy
+      createBy,
+      szakmai_vizsga_mero_ertekelo
     );
 
     res.status(201).json(newEntry);
@@ -708,6 +710,7 @@ router.put("/:id", async (req, res) => {
       szakmai_tisztsegviselo,
       oktatok_letszama,
       updatedBy,
+      szakmai_vizsga_mero_ertekelo,
     } = req.body;
 
     // Validate required fields
@@ -736,7 +739,8 @@ router.put("/:id", async (req, res) => {
       tankonyv_jegyzetiro,
       szakmai_tisztsegviselo,
       oktatok_letszama,
-      updatedBy
+      updatedBy,
+      szakmai_vizsga_mero_ertekelo
     );
 
     res.json(updatedEntry);

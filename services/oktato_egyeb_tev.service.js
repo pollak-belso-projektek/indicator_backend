@@ -32,7 +32,8 @@ export async function create(
   tankonyv_jegyzetiro = 0,
   szakmai_tisztsegviselo = 0,
   oktatok_letszama = 0,
-  createBy = null
+  createBy = null,
+  szakmai_vizsga_mero_ertekelo = 0
 ) {
   // Validate required fields
   if (!alapadatok_id) {
@@ -67,6 +68,7 @@ export async function create(
     tankonyv_jegyzetiro: parseInt(tankonyv_jegyzetiro) || 0,
     szakmai_tisztsegviselo: parseInt(szakmai_tisztsegviselo) || 0,
     oktatok_letszama: parseInt(oktatok_letszama) || 0,
+    szakmai_vizsga_mero_ertekelo: parseInt(szakmai_vizsga_mero_ertekelo) || 0,
     createBy,
   });
 }
@@ -90,7 +92,8 @@ export async function update(
   tankonyv_jegyzetiro = 0,
   szakmai_tisztsegviselo = 0,
   oktatok_letszama = 0,
-  updatedBy = null
+  updatedBy = null,
+  szakmai_vizsga_mero_ertekelo = 0
 ) {
   // Validate required fields
   if (!id) {
@@ -129,6 +132,7 @@ export async function update(
     tankonyv_jegyzetiro: parseInt(tankonyv_jegyzetiro) || 0,
     szakmai_tisztsegviselo: parseInt(szakmai_tisztsegviselo) || 0,
     oktatok_letszama: parseInt(oktatok_letszama) || 0,
+    szakmai_vizsga_mero_ertekelo: parseInt(szakmai_vizsga_mero_ertekelo) || 0,
     updatedBy,
   });
 }
