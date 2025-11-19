@@ -1,7 +1,7 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 import prisma from "../utils/prisma.js";
 
-const pattern = new ServicePattern('szakkepzesiMunkaszerzodesAranya', 'id', {
+const pattern = new ServicePattern("szakkepzesiMunkaszerzodesAranya", "id", {
   szakirany: true,
   szakma: true,
 });
@@ -53,7 +53,7 @@ export async function createSzakkepzesiMunkaszerzodesAranya(
   }
 
   // Use pattern's cache invalidation
-  pattern.serviceCache.invalidateRelated("create", newRecord.id);
+  await pattern.serviceCache.invalidateRelated("create", newRecord.id);
 
   return newRecord;
 }
@@ -100,7 +100,7 @@ export async function updateSzakkepzesiMunkaszerzodesAranya(
   }
 
   // Use pattern's cache invalidation
-  pattern.serviceCache.invalidateRelated("update", id);
+  await pattern.serviceCache.invalidateRelated("update", id);
 
   return updatedRecord;
 }

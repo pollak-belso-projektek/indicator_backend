@@ -55,7 +55,7 @@ export async function create(data) {
   });
 
   // Invalidate related caches manually since we bypassed pattern.create
-  pattern.serviceCache.invalidateRelated("create", result.id);
+  await pattern.serviceCache.invalidateRelated("create", result.id);
 
   return result;
 }
@@ -128,7 +128,7 @@ export async function update(id, data) {
   });
 
   // Invalidate related caches manually since we bypassed pattern.update
-  pattern.serviceCache.invalidateRelated("update", id);
+  await pattern.serviceCache.invalidateRelated("update", id);
 
   return result;
 }

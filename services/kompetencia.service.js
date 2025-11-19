@@ -45,7 +45,7 @@ export async function deleteAllByAlapadatokId(alapadatok_id, year) {
   });
 
   // Invalidate related caches
-  pattern.serviceCache.invalidateRelated("deleteMany", alapadatok_id);
+  await pattern.serviceCache.invalidateRelated("deleteMany", alapadatok_id);
 
   return result;
 }

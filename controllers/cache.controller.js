@@ -56,8 +56,8 @@ const router = e.Router();
  *         description: Forbidden - Insufficient permissions
  */
 // Get cache stats
-router.get("/stats", (req, res) => {
-  const stats = cache.stats();
+router.get("/stats", async (req, res) => {
+  const stats = await cache.stats();
   res.json({
     status: "success",
     data: stats,
@@ -93,8 +93,8 @@ router.get("/stats", (req, res) => {
  *         description: Forbidden - Insufficient permissions
  */
 // Clear cache (admin only)
-router.post("/clear", (req, res) => {
-  cache.clear();
+router.post("/clear", async (req, res) => {
+  await cache.clear();
   res.json({
     status: "success",
     message: "Cache cleared successfully",
@@ -138,9 +138,9 @@ router.post("/clear", (req, res) => {
  *         description: Forbidden - Insufficient permissions
  */
 // Clear specific pattern
-router.post("/clear/:pattern", (req, res) => {
+router.post("/clear/:pattern", async (req, res) => {
   const { pattern } = req.params;
-  cache.delByPattern(pattern);
+  await cache.delByPattern(pattern);
   res.json({
     status: "success",
     message: `Cache matching pattern '${pattern}' cleared successfully`,

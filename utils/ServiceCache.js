@@ -28,14 +28,14 @@ export class ServiceCache {
     const cacheKey = this.key(operation, ...params);
 
     // Try to get from cache first
-    let data = cache.get(cacheKey);
+    let data = await cache.get(cacheKey);
     if (data !== null) {
       return data;
     }
 
     // Execute query and cache result
     data = await queryFn();
-    cache.set(cacheKey, data, ttl);
+    await cache.set(cacheKey, data, ttl);
 
     return data;
   }
@@ -43,71 +43,76 @@ export class ServiceCache {
   /**
    * Invalidate cache patterns for this service
    */
-  invalidate(...patterns) {
-    patterns.forEach((pattern) => {
+  async invalidate(...patterns) {
+    for (const pattern of patterns) {
       const fullPattern = `${this.serviceName}:${pattern}`;
-      cache.delByPattern(fullPattern);
-    });
+      await cache.delByPattern(fullPattern);
+    }
   }
 
   /**
    * Invalidate all cache for this service
    */
-  invalidateAll() {
-    cache.delByPattern(`${this.serviceName}:.*`);
+  async invalidateAll() {
+    await cache.delByPattern(`${this.serviceName}:.*`);
   }
 
   /**
    * Smart cache invalidation based on operations
    */
-  invalidateRelated(operation, ...params) {
+  async invalidateRelated(operation, ...params) {
     switch (operation) {
       case "create":
       case "update":
       case "delete":
         // Invalidate lists and specific items
-        this.invalidate("all.*", "byYear.*", "alapadatok_id.*", "count.*");
+        await this.invalidate(
+          "all.*",
+          "byYear.*",
+          "alapadatok_id.*",
+          "count.*"
+        );
         if (params[0]) {
           // If ID provided, invalidate specific item patterns
-          this.invalidate(`id:${params[0]}.*`);
+          await this.invalidate(`id:${params[0]}.*`);
           // Also invalidate any alapadatok-related caches if this affects them
-          this.invalidate(`alapadatok_id:${params[0]}.*`);
+          await this.invalidate(`alapadatok_id:${params[0]}.*`);
         }
         break;
       case "createMany":
       case "deleteMany":
         // Invalidate all for bulk operations
-        this.invalidateAll();
+        await this.invalidateAll();
         break;
       default:
         // For unknown operations, invalidate commonly affected patterns
-        this.invalidate("all.*", "count.*");
+        await this.invalidate("all.*", "count.*");
     }
   }
 
   /**
    * Invalidate caches for a specific alapadatok_id
    */
-  invalidateByAlapadatokId(alapadatokId) {
-    this.invalidate(`alapadatok_id:${alapadatokId}.*`);
-    this.invalidate("all.*", "count.*"); // Also invalidate general lists
+  async invalidateByAlapadatokId(alapadatokId) {
+    await this.invalidate(`alapadatok_id:${alapadatokId}.*`);
+    await this.invalidate("all.*", "count.*"); // Also invalidate general lists
   }
 
   /**
    * Invalidate caches for a specific year
    */
-  invalidateByYear(year) {
-    this.invalidate(`byYear:${year}.*`);
-    this.invalidate(`alapadatok_id_year:.*:${year}.*`);
-    this.invalidate("all.*"); // Also invalidate general lists
+  async invalidateByYear(year) {
+    await this.invalidate(`byYear:${year}.*`);
+    await this.invalidate(`alapadatok_id_year:.*:${year}.*`);
+    await this.invalidate("all.*"); // Also invalidate general lists
   }
 
   /**
    * Get cache statistics for this service
    */
-  getStats() {
+  async getStats() {
     // This would require extending the cache utility to support pattern-based stats
     // For now, return general cache stats
-    return cache.stats();
+    return await cache.stats();
   }
 }

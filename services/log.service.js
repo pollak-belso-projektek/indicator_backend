@@ -25,15 +25,15 @@ async function processLogQueue() {
 
   try {
     // Use createMany for batch insertion
-    
+
     await prisma.log.createMany({
       data: logsToProcess,
       skipDuplicates: true,
     });
 
     // Only invalidate specific cache keys related to logs, not all of them
-    cache.delByPattern("logs:list:*");
-    cache.delByPattern("logs:stats:*");
+    await cache.delByPattern("logs:list:*");
+    await cache.delByPattern("logs:stats:*");
 
     // Reset retry counter on success
     queueRetryCount = 0;
@@ -146,7 +146,7 @@ export async function getLogsWithPagination(options = {}) {
   });
   const cacheKey = `logs:list:${filterParams}`;
 
-  const cachedData = cache.get(cacheKey);
+  const cachedData = await cache.get(cacheKey);
   if (cachedData) {
     return cachedData;
   }
@@ -196,7 +196,7 @@ export async function getLogsWithPagination(options = {}) {
   const result = { logs, total };
 
   // Store in cache
-  cache.set(cacheKey, result, CACHE_TTL.LIST);
+  await cache.set(cacheKey, result, CACHE_TTL.LIST);
 
   return result;
 }
@@ -208,7 +208,7 @@ export async function getLogsWithPagination(options = {}) {
  */
 export async function getLogById(id) {
   const cacheKey = `logs:detail:${id}`;
-  const cachedData = cache.get(cacheKey);
+  const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
@@ -230,7 +230,7 @@ export async function getLogById(id) {
 
   if (data) {
     // Store in cache
-    cache.set(cacheKey, data, CACHE_TTL.DETAIL);
+    await cache.set(cacheKey, data, CACHE_TTL.DETAIL);
   }
 
   return data;
@@ -270,7 +270,7 @@ export async function clearOldLogs(cutoffDate, level) {
   });
 
   // Invalidate relevant caches
-  cache.delByPattern("logs:*");
+  await cache.delByPattern("logs:*");
 
   return result.count;
 }
@@ -282,7 +282,7 @@ export async function clearOldLogs(cutoffDate, level) {
  */
 export async function getLogStats(since) {
   const cacheKey = `logs:stats:${since.getTime()}`;
-  const cachedData = cache.get(cacheKey);
+  const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
@@ -368,7 +368,7 @@ export async function getLogStats(since) {
   };
 
   // Store in cache
-  cache.set(cacheKey, stats, CACHE_TTL.STATS);
+  await cache.set(cacheKey, stats, CACHE_TTL.STATS);
 
   return stats;
 }

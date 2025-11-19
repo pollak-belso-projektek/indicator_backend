@@ -12,7 +12,7 @@
     "build:docker": "node build.js docker",
     "build:prod": "node build.js production",
     "docker:start": "node build.js start production",
-    "docker:start:dev": "node build.js start development", 
+    "docker:start:dev": "node build.js start development",
     "docker:stop": "node build.js stop",
     "start:all": "concurrently \"npm run start:login\" \"npm run start:gateway\" \"npm run start:main\"",
     "start:all:dev": "concurrently \"npm run dev:login\" \"npm run dev:main\" \"npm run dev:gateway\"",
@@ -41,6 +41,7 @@
     "express": "^5.1.0",
     "express-basic-auth": "^1.2.1",
     "express-session": "^1.18.1",
+    "ioredis": "^5.8.2",
     "jsonwebtoken": "^9.0.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"

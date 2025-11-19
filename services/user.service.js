@@ -12,7 +12,7 @@ const CACHE_TTL = {
 
 export async function getAll(token) {
   const cacheKey = "users:all";
-  const cachedData = cache.get(cacheKey);
+  const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
@@ -68,14 +68,14 @@ export async function getAll(token) {
   data.forEach((user) => enrichUserWithPermissions(user));
 
   // Store in cache
-  cache.set(cacheKey, data, CACHE_TTL.LIST);
+  await cache.set(cacheKey, data, CACHE_TTL.LIST);
 
   return data;
 }
 
 export async function getByEmail(email) {
   const cacheKey = `users:email:${email}`;
-  const cachedData = cache.get(cacheKey);
+  const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
@@ -101,7 +101,7 @@ export async function getByEmail(email) {
   }
 
   // Store in cache
-  cache.set(cacheKey, data, CACHE_TTL.DETAIL);
+  await cache.set(cacheKey, data, CACHE_TTL.DETAIL);
   // Enrich user with permission details
   enrichUserWithPermissions(data);
 
@@ -110,7 +110,7 @@ export async function getByEmail(email) {
 
 export async function getAllFiltered(token) {
   const cacheKey = `users:all:filtered`;
-  const cachedData = cache.get(cacheKey);
+  const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
@@ -161,7 +161,7 @@ export async function getAllFiltered(token) {
   });
 
   // Store in cache
-  cache.set(cacheKey, data, CACHE_TTL.LIST);
+  await cache.set(cacheKey, data, CACHE_TTL.LIST);
 
   return data;
 }
@@ -218,7 +218,7 @@ export async function create(
   }
 
   // Invalidate cache after creating a user
-  cache.invalidate("users:*");
+  await cache.invalidate("users:*");
 
   return user;
 }
@@ -276,7 +276,7 @@ export async function update(
   }
 
   // Invalidate all user caches including specific user email and the users list
-  cache.invalidate("users:*");
+  await cache.invalidate("users:*");
 
   return user;
 }

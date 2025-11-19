@@ -135,7 +135,7 @@ export class ServicePattern {
     });
 
     // Invalidate related caches
-    this.serviceCache.invalidateRelated("create", result[this.key]);
+    await this.serviceCache.invalidateRelated("create", result[this.key]);
 
     return result;
   }
@@ -147,7 +147,7 @@ export class ServicePattern {
     });
 
     // Invalidate all cache for bulk operations
-    this.serviceCache.invalidateRelated("createMany");
+    await this.serviceCache.invalidateRelated("createMany");
 
     return result;
   }
@@ -161,7 +161,7 @@ export class ServicePattern {
     });
 
     // Invalidate related caches
-    this.serviceCache.invalidateRelated("update", id);
+    await this.serviceCache.invalidateRelated("update", id);
 
     return result;
   }
@@ -174,7 +174,7 @@ export class ServicePattern {
     });
 
     // Invalidate related caches
-    this.serviceCache.invalidateRelated("delete", id);
+    await this.serviceCache.invalidateRelated("delete", id);
 
     return result;
   }
@@ -185,7 +185,7 @@ export class ServicePattern {
     });
 
     // Invalidate related caches
-    this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
+    await this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
 
     return result;
   }
@@ -201,7 +201,7 @@ export class ServicePattern {
     });
 
     // Invalidate related caches
-    this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
+    await this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
 
     return result;
   }
@@ -216,7 +216,7 @@ export class ServicePattern {
     });
 
     // Invalidate related caches
-    this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
+    await this.serviceCache.invalidateRelated("deleteMany", alapadatokId);
 
     return result;
   }
@@ -270,7 +270,7 @@ export class ServicePattern {
     const result = await prisma[this.serviceName].deleteMany({ where });
 
     // Invalidate all cache for bulk operations
-    this.serviceCache.invalidateRelated("deleteMany");
+    await this.serviceCache.invalidateRelated("deleteMany");
 
     return result;
   }

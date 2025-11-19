@@ -1,32 +1,47 @@
 /**
- * Simple in-memory cache utility
- * Provides general-purpose caching with TTL support for the backend
+ * Redis cache utility
+ * Provides general-purpose caching with TTL support using Redis
  */
 
-// Main cache store
-const cache = new Map();
+import Redis from "ioredis";
+import process from "node:process";
 
 // Default TTL in milliseconds (5 minutes)
 const DEFAULT_TTL = 5 * 60 * 1000;
 
+// Initialize Redis client
+const redisUrl = process.env.REDIS_URL || "redis://localhost:6379";
+const redis = new Redis(redisUrl, {
+  retryStrategy: (times) => {
+    // Retry connection with exponential backoff, max 3 seconds
+    const delay = Math.min(times * 50, 3000);
+    return delay;
+  },
+  maxRetriesPerRequest: 3,
+});
+
+redis.on("error", (err) => {
+  console.error("Redis connection error:", err);
+});
+
+redis.on("connect", () => {
+  console.log("Connected to Redis");
+});
+
 /**
  * Get a value from the cache
  * @param {string} key - The cache key
- * @returns {any|null} - The cached value or null if not found/expired
+ * @returns {Promise<any|null>} - The cached value or null if not found/expired
  */
-export function get(key) {
-  const item = cache.get(key);
-
-  // Return null if not in cache or key doesn't exist
-  if (!item) return null;
-
-  // Check if item has expired
-  if (item.expiry && item.expiry < Date.now()) {
-    cache.delete(key); // Clean up expired item
+export async function get(key) {
+  try {
+    const value = await redis.get(key);
+    if (!value) return null;
+    return JSON.parse(value);
+  } catch (error) {
+    console.error(`Cache get error for key ${key}:`, error);
     return null;
   }
-
-  return item.value;
 }
 
 /**
@@ -35,81 +50,110 @@ export function get(key) {
  * @param {any} value - The value to cache
  * @param {number|null} ttl - Time to live in milliseconds (default: 5 minutes)
  */
-export function set(key, value, ttl = DEFAULT_TTL) {
-  const expiry = ttl ? Date.now() + ttl : null;
-
-  cache.set(key, {
-    value,
-    expiry,
-  });
+export async function set(key, value, ttl = DEFAULT_TTL) {
+  try {
+    const serializedValue = JSON.stringify(value);
+    if (ttl) {
+      await redis.set(key, serializedValue, "PX", ttl);
+    } else {
+      await redis.set(key, serializedValue);
+    }
+  } catch (error) {
+    console.error(`Cache set error for key ${key}:`, error);
+  }
 }
 
 /**
- * Check if a key exists in the cache and is not expired
+ * Check if a key exists in the cache
  * @param {string} key - The cache key
- * @returns {boolean} - True if the key exists and is not expired
+ * @returns {Promise<boolean>} - True if the key exists
  */
-export function has(key) {
-  const item = cache.get(key);
-  if (!item) return false;
-
-  if (item.expiry && item.expiry < Date.now()) {
-    cache.delete(key);
+export async function has(key) {
+  try {
+    const exists = await redis.exists(key);
+    return exists === 1;
+  } catch (error) {
+    console.error(`Cache has error for key ${key}:`, error);
     return false;
   }
-
-  return true;
 }
 
 /**
  * Delete a specific key from the cache
  * @param {string} key - The cache key
  */
-export function del(key) {
-  cache.delete(key);
+export async function del(key) {
+  try {
+    await redis.del(key);
+  } catch (error) {
+    console.error(`Cache del error for key ${key}:`, error);
+  }
 }
 
 /**
  * Delete all keys that match a pattern
- * @param {string} pattern - The pattern to match keys against
+ * @param {string} pattern - The pattern to match keys against (e.g. 'users:*')
  */
-export function delByPattern(pattern) {
-  const regex = new RegExp(pattern);
-  for (const key of cache.keys()) {
-    if (regex.test(key)) {
-      cache.delete(key);
-    }
+export async function delByPattern(pattern) {
+  try {
+    const stream = redis.scanStream({
+      match: pattern,
+      count: 100,
+    });
+
+    stream.on("data", async (keys) => {
+      if (keys.length) {
+        const pipeline = redis.pipeline();
+        keys.forEach((key) => {
+          pipeline.del(key);
+        });
+        await pipeline.exec();
+      }
+    });
+
+    return new Promise((resolve, reject) => {
+      stream.on("end", () => resolve());
+      stream.on("error", (err) => reject(err));
+    });
+  } catch (error) {
+    console.error(`Cache delByPattern error for pattern ${pattern}:`, error);
   }
 }
 
 /**
  * Clear the entire cache
  */
-export function clear() {
-  cache.clear();
+export async function clear() {
+  try {
+    await redis.flushdb();
+  } catch (error) {
+    console.error("Cache clear error:", error);
+  }
 }
 
 /**
  * Get stats about the cache
- * @returns {Object} - Stats about the cache
+ * @returns {Promise<Object>} - Stats about the cache
  */
-export function stats() {
-  let size = 0;
-  let expired = 0;
-  const now = Date.now();
-  for (const [_, item] of cache.entries()) {
-    if (item.expiry && item.expiry < now) {
-      expired++;
-    } else {
-      size++;
-    }
-  }
+export async function stats() {
+  try {
+    const info = await redis.info();
+    const dbSize = await redis.dbsize();
+    
+    // Parse info string to get relevant stats
+    const usedMemory = info.match(/used_memory_human:(\S+)/)?.[1] || "unknown";
+    const connectedClients = info.match(/connected_clients:(\d+)/)?.[1] || "0";
 
-  return {
-    size,
-    expired,
-    total: cache.size,
-  };
+    return {
+      size: dbSize,
+      usedMemory,
+      connectedClients: parseInt(connectedClients, 10),
+      type: "redis"
+    };
+  } catch (error) {
+    console.error("Cache stats error:", error);
+    return { size: 0, error: error.message };
+  }
 }
 
 /**
@@ -122,14 +166,14 @@ export function stats() {
 export function cached(fn, keyPrefix, ttl = DEFAULT_TTL) {
   return async (...args) => {
     const key = `${keyPrefix}:${JSON.stringify(args)}`;
-    const cached = get(key);
+    const cachedValue = await get(key);
 
-    if (cached !== null) {
-      return cached;
+    if (cachedValue !== null) {
+      return cachedValue;
     }
 
     const result = await fn(...args);
-    set(key, result, ttl);
+    await set(key, result, ttl);
     return result;
   };
 }
@@ -137,9 +181,11 @@ export function cached(fn, keyPrefix, ttl = DEFAULT_TTL) {
 /**
  * Convenience function to invalidate cache entries by pattern
  * @param {string} pattern - The pattern to match (e.g., 'users:*')
- * @returns {boolean} - Always returns true for ease of use
+ * @returns {Promise<boolean>} - Always returns true for ease of use
  */
-export function invalidate(pattern) {
-  delByPattern(pattern);
+export async function invalidate(pattern) {
+  await delByPattern(pattern);
   return true;
 }
+
+export default redis;

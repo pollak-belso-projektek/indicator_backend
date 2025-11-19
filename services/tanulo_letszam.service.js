@@ -3,8 +3,8 @@ import { ServicePattern, CACHE_TTL } from "../utils/ServicePattern.js";
 
 // Initialize ServicePattern for tanulo_letszam with relations
 const pattern = new ServicePattern(
-  "tanulo_Letszam", 
-  "id", 
+  "tanulo_Letszam",
+  "id",
   {
     szakirany: true,
     szakma: true,
@@ -51,7 +51,7 @@ export async function create(
   });
 
   // Invalidate related caches manually since we bypassed pattern.create
-  pattern.serviceCache.invalidateRelated("create", result.id);
+  await pattern.serviceCache.invalidateRelated("create", result.id);
 
   return result;
 }
@@ -87,7 +87,7 @@ export async function update(
   });
 
   // Invalidate related caches manually since we bypassed pattern.update
-  pattern.serviceCache.invalidateRelated("update", id);
+  await pattern.serviceCache.invalidateRelated("update", id);
 
   return result;
 }
@@ -102,7 +102,7 @@ export async function deleteMany(alapadatok_id, year) {
   });
 
   // Invalidate related caches
-  pattern.serviceCache.invalidateRelated("deleteMany", alapadatok_id);
+  await pattern.serviceCache.invalidateRelated("deleteMany", alapadatok_id);
 
   return result;
 }
