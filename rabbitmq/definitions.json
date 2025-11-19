@@ -1,0 +1,104 @@
+{
+  "rabbit_version": "3.13.0",
+  "rabbitmq_version": "3.13.0",
+  "users": [
+    {
+      "name": "admin",
+      "password_hash": "admin",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": ["administrator"]
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    },
+    {
+      "name": "indicator"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "admin",
+      "vhost": "indicator",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "indicator.events",
+      "vhost": "indicator",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false
+    },
+    {
+      "name": "indicator.dlx",
+      "vhost": "indicator",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false
+    }
+  ],
+  "queues": [
+    {
+      "name": "user.events",
+      "vhost": "indicator",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "indicator.dlx"
+      }
+    },
+    {
+      "name": "data.events",
+      "vhost": "indicator",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "indicator.dlx"
+      }
+    },
+    {
+      "name": "dead.letter.queue",
+      "vhost": "indicator",
+      "durable": true,
+      "auto_delete": false
+    }
+  ],
+  "bindings": [
+    {
+      "source": "indicator.events",
+      "vhost": "indicator",
+      "destination": "user.events",
+      "destination_type": "queue",
+      "routing_key": "user.*",
+      "arguments": {}
+    },
+    {
+      "source": "indicator.events",
+      "vhost": "indicator",
+      "destination": "data.events",
+      "destination_type": "queue",
+      "routing_key": "data.*",
+      "arguments": {}
+    },
+    {
+      "source": "indicator.dlx",
+      "vhost": "indicator",
+      "destination": "dead.letter.queue",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    jsonData:
+      version: Flux
+      organization: indicator
+      defaultBucket: metrics
+      tlsSkipVerify: true
+    secureJsonData:
+      token: my-super-secret-auth-token
+    editable: true
+    isDefault: true
+
+  - name: PostgreSQL
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    database: indicator_db
+    user: postgres
+    secureJsonData:
+      password: postgres
+    jsonData:
+      sslmode: disable
+      postgresVersion: 1700
+    editable: true
+
+  - name: ElasticSearch
+    type: elasticsearch
+    access: proxy
+    url: http://elasticsearch:9200
+    database: "indicator-logs-*"
+    jsonData:
+      timeField: "@timestamp"
+      esVersion: "8.11.0"
+      logMessageField: message
+      logLevelField: log_severity
+    editable: true

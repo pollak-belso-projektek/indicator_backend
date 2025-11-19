@@ -1,0 +1,8 @@
+server.name: indicator-kibana
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+monitoring.ui.container.elasticsearch.enabled: true
+
+# Kibana settings
+server.publicBaseUrl: "http://localhost:5601"
+xpack.reporting.enabled: false

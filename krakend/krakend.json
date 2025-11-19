@@ -1,0 +1,249 @@
+{
+  "$schema": "https://www.krakend.io/schema/v2.5/krakend.json",
+  "version": 3,
+  "name": "Indicator API Gateway",
+  "port": 5000,
+  "host": ["http://0.0.0.0:5000"],
+  
+  "timeout": "30s",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  
+  "extra_config": {
+    "telemetry/metrics": {
+      "collection_time": "60s",
+      "proxy_disabled": false,
+      "router_disabled": false,
+      "backend_disabled": false,
+      "endpoint_disabled": false,
+      "listen_address": ":8090"
+    },
+    "telemetry/influx": {
+      "address": "http://influxdb:8086",
+      "ttl": "25s",
+      "buffer_size": 100,
+      "username": "{{ env "INFLUXDB_USER" }}",
+      "password": "{{ env "INFLUXDB_PASSWORD" }}"
+    },
+    "telemetry/logging": {
+      "level": "INFO",
+      "prefix": "[KRAKEND]",
+      "syslog": false,
+      "stdout": true,
+      "format": "json"
+    },
+    "security/cors": {
+      "allow_origins": [
+        "http://localhost:5173",
+        "http://172.16.0.100:5174",
+        "https://indikator.pollak.info",
+        "http://10.0.1.7:5173",
+        "http://192.168.1.6:5173"
+      ],
+      "allow_methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "allow_headers": [
+        "Content-Type",
+        "Authorization",
+        "X-API-Key",
+        "X-Refresh-Token",
+        "X-Request-ID",
+        "Cache-Control",
+        "Pragma"
+      ],
+      "expose_headers": [
+        "Content-Length",
+        "Content-Type",
+        "X-Request-ID"
+      ],
+      "allow_credentials": true,
+      "max_age": "12h"
+    }
+  },
+
+  "endpoints": [
+    {
+      "@comment": "Health check endpoint",
+      "endpoint": "/health",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/health",
+          "host": ["http://main-service:5300"],
+          "encoding": "json",
+          "method": "GET"
+        }
+      ]
+    },
+
+    {
+      "@comment": "Authentication - Login",
+      "endpoint": "/api/v1/auth/login",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/auth/login",
+          "host": ["http://login-service:5301"],
+          "encoding": "json",
+          "method": "POST"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 10,
+          "capacity": 10,
+          "client_max_rate": 5
+        }
+      }
+    },
+
+    {
+      "@comment": "Authentication - Token Refresh",
+      "endpoint": "/api/v1/auth/refresh",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/auth/refresh",
+          "host": ["http://login-service:5301"],
+          "encoding": "json",
+          "method": "POST"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 20,
+          "capacity": 20
+        }
+      }
+    },
+
+    {
+      "@comment": "Authentication - Logout",
+      "endpoint": "/api/v1/auth/logout",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/auth/logout",
+          "host": ["http://login-service:5301"],
+          "encoding": "json",
+          "method": "POST"
+        }
+      ]
+    },
+
+    {
+      "@comment": "Main Service - All protected endpoints",
+      "endpoint": "/api/v1/{path}",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/{path}",
+          "host": ["http://main-service:5300"],
+          "encoding": "json",
+          "method": "GET"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 100,
+          "capacity": 100,
+          "client_max_rate": 50
+        },
+        "qos/circuit-breaker": {
+          "interval": 60,
+          "timeout": 10,
+          "max_errors": 5,
+          "log_status_change": true
+        }
+      }
+    },
+
+    {
+      "@comment": "Main Service - POST requests",
+      "endpoint": "/api/v1/{path}",
+      "method": "POST",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/{path}",
+          "host": ["http://main-service:5300"],
+          "encoding": "json",
+          "method": "POST"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 50,
+          "capacity": 50,
+          "client_max_rate": 25
+        },
+        "qos/circuit-breaker": {
+          "interval": 60,
+          "timeout": 10,
+          "max_errors": 5,
+          "log_status_change": true
+        }
+      }
+    },
+
+    {
+      "@comment": "Main Service - PUT requests",
+      "endpoint": "/api/v1/{path}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/{path}",
+          "host": ["http://main-service:5300"],
+          "encoding": "json",
+          "method": "PUT"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 50,
+          "capacity": 50,
+          "client_max_rate": 25
+        },
+        "qos/circuit-breaker": {
+          "interval": 60,
+          "timeout": 10,
+          "max_errors": 5,
+          "log_status_change": true
+        }
+      }
+    },
+
+    {
+      "@comment": "Main Service - DELETE requests",
+      "endpoint": "/api/v1/{path}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/v1/{path}",
+          "host": ["http://main-service:5300"],
+          "encoding": "json",
+          "method": "DELETE"
+        }
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "max_rate": 50,
+          "capacity": 50,
+          "client_max_rate": 25
+        },
+        "qos/circuit-breaker": {
+          "interval": 60,
+          "timeout": 10,
+          "max_errors": 5,
+          "log_status_change": true
+        }
+      }
+    }
+  ]
+}
