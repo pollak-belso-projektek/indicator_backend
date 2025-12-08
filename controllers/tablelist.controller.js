@@ -375,7 +375,7 @@ router.post("/:id/lock", async (req, res) => {
     const lockedTable = await lock(id);
 
     // Log the lock operation
-    await logTableOperation(req, "LOCK", id, table.name);
+    // await logTableOperation(req, "LOCK", id, table.name);
 
     res.status(200).json(lockedTable);
   } catch (error) {
@@ -421,7 +421,7 @@ router.post("/:id/unlock", async (req, res) => {
     const unlockedTable = await unlock(id);
 
     // Log the unlock operation
-    await logTableOperation(req, "UNLOCK", id, table.name);
+    // await logTableOperation(req, "UNLOCK", id, table.name);
 
     res.status(200).json(unlockedTable);
   } catch (error) {
@@ -495,10 +495,10 @@ router.put("/:id/alias", async (req, res) => {
     const updatedTable = await updateAlias(id, alias);
 
     // Log the alias change operation
-    await logTableOperation(req, "ALIAS_CHANGE", id, table.name, {
-      oldAlias,
-      newAlias: alias,
-    });
+    // await logTableOperation(req, "ALIAS_CHANGE", id, table.name, {
+    //   oldAlias,
+    //   newAlias: alias,
+    // });
 
     res.status(200).json(updatedTable);
   } catch (error) {

@@ -14,15 +14,7 @@ export async function getAll() {
 }
 
 export async function getById(id) {
-  return await prisma.tableList.findUnique({
-    where: { id },
-  });
-}
-
-export async function getByName(name) {
-  return await prisma.tableList.findUnique({
-    where: { name },
-  });
+  return await pattern.findById(id);
 }
 
 export async function create(name, isAvailable) {
@@ -41,38 +33,24 @@ export async function update(id, name, isAvailable, alias) {
 }
 
 export async function updateAlias(id, alias) {
-  return await prisma.tableList.update({
-    where: { id },
-    data: { alias },
+  return await pattern.update(id, {
+    alias,
   });
 }
 
 export async function lock(id) {
-  return await prisma.tableList.update({
-    where: { id },
-    data: { isLocked: true },
+  return await pattern.update(id, {
+    isLocked: true,
   });
 }
 
 export async function unlock(id) {
-  return await prisma.tableList.update({
-    where: { id },
-    data: { isLocked: false },
+  return await pattern.update(id, {
+    isLocked: false,
   });
 }
 
 export async function isTableLocked(id) {
-  const table = await prisma.tableList.findUnique({
-    where: { id },
-    select: { isLocked: true },
-  });
-  return table?.isLocked ?? false;
-}
-
-export async function isTableLockedByName(name) {
-  const table = await prisma.tableList.findUnique({
-    where: { name },
-    select: { isLocked: true },
-  });
+  const table = await pattern.findById(id);
   return table?.isLocked ?? false;
 }
