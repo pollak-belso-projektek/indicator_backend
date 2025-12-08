@@ -1,7 +1,51 @@
 import e from "express";
-import { getAll, create, update } from "../services/tablelist.service.js";
+import {
+  getAll,
+  getById,
+  create,
+  update,
+  updateAlias,
+  lock,
+  unlock,
+  isTableLocked,
+} from "../services/tablelist.service.js";
+import { logRequest } from "../services/log.service.js";
 
 const router = e.Router();
+
+// Helper function for logging lock/unlock and alias operations
+async function logTableOperation(
+  req,
+  operation,
+  tableId,
+  tableName,
+  details = {}
+) {
+  try {
+    const userId = req.user?.id || req.user?.sub || "unknown";
+    const logMessage = `Table ${operation}: ${tableName || tableId}`;
+
+    await logRequest({
+      userId,
+      method: "POST",
+      url: req.originalUrl,
+      statusCode: 200,
+      responseTime: 0,
+      requestBody: JSON.stringify({
+        operation,
+        tableName,
+        tableId,
+        ...details,
+      }),
+      level: "info",
+      message: logMessage,
+    });
+
+    console.log(`[TableList] ${logMessage} by user ${userId}`);
+  } catch (error) {
+    console.error("Failed to log table operation:", error);
+  }
+}
 
 /**
  * @swagger
@@ -24,10 +68,20 @@ const router = e.Router();
  *           maxLength: 100
  *           description: Name of the table
  *           example: "tanugyi_adatok"
+ *         alias:
+ *           type: string
+ *           maxLength: 100
+ *           nullable: true
+ *           description: Display name/alias for the table
+ *           example: "Tanügyi adatok"
  *         isAvailable:
  *           type: boolean
  *           description: Whether the table is available for access
  *           example: true
+ *         isLocked:
+ *           type: boolean
+ *           description: Whether the table is locked for modifications
+ *           example: false
  *         createdAt:
  *           type: string
  *           format: date-time
@@ -268,11 +322,188 @@ router.put("/:id", async (req, res) => {
   }
 
   try {
+    // Check if table is locked
+    const locked = await isTableLocked(id);
+    if (locked) {
+      return res
+        .status(403)
+        .json({ error: "Table is locked and cannot be modified." });
+    }
+
     const updatedTable = await update(id, name, isAvailable);
     res.status(200).json(updatedTable);
   } catch (error) {
     console.error("Error updating table:", error);
     res.status(500).json({ error: "Failed to update table." });
+  }
+});
+
+/**
+ * @swagger
+ * /tablelist/{id}/lock:
+ *   post:
+ *     summary: Lock a table
+ *     description: Locks a table to prevent modifications
+ *     tags: [TableList]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Unique identifier of the table to lock
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       200:
+ *         description: Table locked successfully
+ *       404:
+ *         description: Table not found
+ *       500:
+ *         description: Internal server error
+ */
+router.post("/:id/lock", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const table = await getById(id);
+    if (!table) {
+      return res.status(404).json({ error: "Table not found." });
+    }
+
+    const lockedTable = await lock(id);
+
+    // Log the lock operation
+    // await logTableOperation(req, "LOCK", id, table.name);
+
+    res.status(200).json(lockedTable);
+  } catch (error) {
+    console.error("Error locking table:", error);
+    res.status(500).json({ error: "Failed to lock table." });
+  }
+});
+
+/**
+ * @swagger
+ * /tablelist/{id}/unlock:
+ *   post:
+ *     summary: Unlock a table
+ *     description: Unlocks a table to allow modifications
+ *     tags: [TableList]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Unique identifier of the table to unlock
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     responses:
+ *       200:
+ *         description: Table unlocked successfully
+ *       404:
+ *         description: Table not found
+ *       500:
+ *         description: Internal server error
+ */
+router.post("/:id/unlock", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const table = await getById(id);
+    if (!table) {
+      return res.status(404).json({ error: "Table not found." });
+    }
+
+    const unlockedTable = await unlock(id);
+
+    // Log the unlock operation
+    // await logTableOperation(req, "UNLOCK", id, table.name);
+
+    res.status(200).json(unlockedTable);
+  } catch (error) {
+    console.error("Error unlocking table:", error);
+    res.status(500).json({ error: "Failed to unlock table." });
+  }
+});
+
+/**
+ * @swagger
+ * /tablelist/{id}/alias:
+ *   put:
+ *     summary: Update table alias
+ *     description: Updates the alias (display name) of a table
+ *     tags: [TableList]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Unique identifier of the table
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               alias:
+ *                 type: string
+ *                 maxLength: 100
+ *                 description: New alias for the table
+ *     responses:
+ *       200:
+ *         description: Alias updated successfully
+ *       400:
+ *         description: Invalid alias data
+ *       403:
+ *         description: Table is locked
+ *       404:
+ *         description: Table not found
+ *       500:
+ *         description: Internal server error
+ */
+router.put("/:id/alias", async (req, res) => {
+  const { id } = req.params;
+  const { alias } = req.body;
+
+  if (alias !== null && typeof alias !== "string") {
+    return res.status(400).json({ error: "Invalid alias data." });
+  }
+
+  try {
+    const table = await getById(id);
+    if (!table) {
+      return res.status(404).json({ error: "Table not found." });
+    }
+
+    // Check if table is locked
+    if (table.isLocked) {
+      return res
+        .status(403)
+        .json({ error: "Table is locked and cannot be modified." });
+    }
+
+    const oldAlias = table.alias;
+    const updatedTable = await updateAlias(id, alias);
+
+    // Log the alias change operation
+    // await logTableOperation(req, "ALIAS_CHANGE", id, table.name, {
+    //   oldAlias,
+    //   newAlias: alias,
+    // });
+
+    res.status(200).json(updatedTable);
+  } catch (error) {
+    console.error("Error updating table alias:", error);
+    res.status(500).json({ error: "Failed to update table alias." });
   }
 });
 

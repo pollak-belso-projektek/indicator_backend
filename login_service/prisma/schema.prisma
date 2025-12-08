@@ -43,6 +43,7 @@ model TableList {
   name      String    @unique @db.VarChar(100)
   alias     String?    @db.VarChar(100)
   isAvailable Boolean   @default(true)
+  isLocked   Boolean   @default(false)
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 

@@ -84,6 +84,18 @@
         "path": "/tablelist/{id}",
         "requiresAuth": true,
         "description": "Delete specific table by ID"
+      },
+      "lockTable": {
+        "method": "POST",
+        "path": "/tablelist/{id}/lock",
+        "requiresAuth": true,
+        "description": "Lock specific table by ID to prevent modifications"
+      },
+      "unlockTable": {
+        "method": "POST",
+        "path": "/tablelist/{id}/unlock",
+        "requiresAuth": true,
+        "description": "Unlock specific table by ID to allow modifications"
       }
     },
     "userManagement": {
