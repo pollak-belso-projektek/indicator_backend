@@ -188,6 +188,16 @@ export type Muhelyiskola = $Result.DefaultSelection<Prisma.$MuhelyiskolaPayload>
  * 
  */
 export type OktatoEgyebTev = $Result.DefaultSelection<Prisma.$OktatoEgyebTevPayload>
+/**
+ * Model TanuloAdatszolg
+ * 
+ */
+export type TanuloAdatszolg = $Result.DefaultSelection<Prisma.$TanuloAdatszolgPayload>
+/**
+ * Model OktatoAdatszolg
+ * 
+ */
+export type OktatoAdatszolg = $Result.DefaultSelection<Prisma.$OktatoAdatszolgPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -663,6 +673,26 @@ export class PrismaClient<
     * ```
     */
   get oktatoEgyebTev(): Prisma.OktatoEgyebTevDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tanuloAdatszolg`: Exposes CRUD operations for the **TanuloAdatszolg** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TanuloAdatszolgs
+    * const tanuloAdatszolgs = await prisma.tanuloAdatszolg.findMany()
+    * ```
+    */
+  get tanuloAdatszolg(): Prisma.TanuloAdatszolgDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.oktatoAdatszolg`: Exposes CRUD operations for the **OktatoAdatszolg** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OktatoAdatszolgs
+    * const oktatoAdatszolgs = await prisma.oktatoAdatszolg.findMany()
+    * ```
+    */
+  get oktatoAdatszolg(): Prisma.OktatoAdatszolgDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1137,7 +1167,9 @@ export namespace Prisma {
     SajatosNevelesuTanulok: 'SajatosNevelesuTanulok',
     Dobbanto: 'Dobbanto',
     Muhelyiskola: 'Muhelyiskola',
-    OktatoEgyebTev: 'OktatoEgyebTev'
+    OktatoEgyebTev: 'OktatoEgyebTev',
+    TanuloAdatszolg: 'TanuloAdatszolg',
+    OktatoAdatszolg: 'OktatoAdatszolg'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1156,7 +1188,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "session" | "user" | "tableList" | "tableAccess" | "log" | "alapadatok" | "szakirany" | "szakma" | "szakirany_Szakma" | "alapadatok_Szakirany" | "alapadatok_Szakma" | "tanulo_Letszam" | "tanar_Letszam" | "felvettek_Szama" | "kompetencia" | "egyOktatoraJutoTanulo" | "tanugyi_Adatok" | "alkalmazottak_Munkaugy" | "szakkepzesiMunkaszerzodesAranya" | "vesenyKategoria" | "vesenyNevek" | "versenyek" | "nszfhMeresek" | "elhelyezkedes" | "elegedettseg" | "vizsgaEredmenyek" | "szakmaiVizsgaEredmenyek" | "lemorzsolodas" | "elegedettsegMeres" | "intezmenyiNeveltseg" | "hHEsHHHTanulok" | "sajatosNevelesuTanulok" | "dobbanto" | "muhelyiskola" | "oktatoEgyebTev"
+      modelProps: "session" | "user" | "tableList" | "tableAccess" | "log" | "alapadatok" | "szakirany" | "szakma" | "szakirany_Szakma" | "alapadatok_Szakirany" | "alapadatok_Szakma" | "tanulo_Letszam" | "tanar_Letszam" | "felvettek_Szama" | "kompetencia" | "egyOktatoraJutoTanulo" | "tanugyi_Adatok" | "alkalmazottak_Munkaugy" | "szakkepzesiMunkaszerzodesAranya" | "vesenyKategoria" | "vesenyNevek" | "versenyek" | "nszfhMeresek" | "elhelyezkedes" | "elegedettseg" | "vizsgaEredmenyek" | "szakmaiVizsgaEredmenyek" | "lemorzsolodas" | "elegedettsegMeres" | "intezmenyiNeveltseg" | "hHEsHHHTanulok" | "sajatosNevelesuTanulok" | "dobbanto" | "muhelyiskola" | "oktatoEgyebTev" | "tanuloAdatszolg" | "oktatoAdatszolg"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3750,6 +3782,154 @@ export namespace Prisma {
           }
         }
       }
+      TanuloAdatszolg: {
+        payload: Prisma.$TanuloAdatszolgPayload<ExtArgs>
+        fields: Prisma.TanuloAdatszolgFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TanuloAdatszolgFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TanuloAdatszolgFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>
+          }
+          findFirst: {
+            args: Prisma.TanuloAdatszolgFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TanuloAdatszolgFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>
+          }
+          findMany: {
+            args: Prisma.TanuloAdatszolgFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>[]
+          }
+          create: {
+            args: Prisma.TanuloAdatszolgCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>
+          }
+          createMany: {
+            args: Prisma.TanuloAdatszolgCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TanuloAdatszolgCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>[]
+          }
+          delete: {
+            args: Prisma.TanuloAdatszolgDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>
+          }
+          update: {
+            args: Prisma.TanuloAdatszolgUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>
+          }
+          deleteMany: {
+            args: Prisma.TanuloAdatszolgDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TanuloAdatszolgUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TanuloAdatszolgUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>[]
+          }
+          upsert: {
+            args: Prisma.TanuloAdatszolgUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TanuloAdatszolgPayload>
+          }
+          aggregate: {
+            args: Prisma.TanuloAdatszolgAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTanuloAdatszolg>
+          }
+          groupBy: {
+            args: Prisma.TanuloAdatszolgGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TanuloAdatszolgGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TanuloAdatszolgCountArgs<ExtArgs>
+            result: $Utils.Optional<TanuloAdatszolgCountAggregateOutputType> | number
+          }
+        }
+      }
+      OktatoAdatszolg: {
+        payload: Prisma.$OktatoAdatszolgPayload<ExtArgs>
+        fields: Prisma.OktatoAdatszolgFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OktatoAdatszolgFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OktatoAdatszolgFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>
+          }
+          findFirst: {
+            args: Prisma.OktatoAdatszolgFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OktatoAdatszolgFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>
+          }
+          findMany: {
+            args: Prisma.OktatoAdatszolgFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>[]
+          }
+          create: {
+            args: Prisma.OktatoAdatszolgCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>
+          }
+          createMany: {
+            args: Prisma.OktatoAdatszolgCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OktatoAdatszolgCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>[]
+          }
+          delete: {
+            args: Prisma.OktatoAdatszolgDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>
+          }
+          update: {
+            args: Prisma.OktatoAdatszolgUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>
+          }
+          deleteMany: {
+            args: Prisma.OktatoAdatszolgDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OktatoAdatszolgUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OktatoAdatszolgUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>[]
+          }
+          upsert: {
+            args: Prisma.OktatoAdatszolgUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OktatoAdatszolgPayload>
+          }
+          aggregate: {
+            args: Prisma.OktatoAdatszolgAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOktatoAdatszolg>
+          }
+          groupBy: {
+            args: Prisma.OktatoAdatszolgGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OktatoAdatszolgGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OktatoAdatszolgCountArgs<ExtArgs>
+            result: $Utils.Optional<OktatoAdatszolgCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3869,6 +4049,8 @@ export namespace Prisma {
     dobbanto?: DobbantoOmit
     muhelyiskola?: MuhelyiskolaOmit
     oktatoEgyebTev?: OktatoEgyebTevOmit
+    tanuloAdatszolg?: TanuloAdatszolgOmit
+    oktatoAdatszolg?: OktatoAdatszolgOmit
   }
 
   /* Types for Logging */
@@ -4057,6 +4239,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok: number
     dobbanto: number
     muhelyiskola: number
+    tanuloAdatszolg: number
+    oktatoAdatszolg: number
     users: number
     OktatoEgyebTev: number
   }
@@ -4085,6 +4269,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: boolean | AlapadatokCountOutputTypeCountSajatosNevelesuTanulokArgs
     dobbanto?: boolean | AlapadatokCountOutputTypeCountDobbantoArgs
     muhelyiskola?: boolean | AlapadatokCountOutputTypeCountMuhelyiskolaArgs
+    tanuloAdatszolg?: boolean | AlapadatokCountOutputTypeCountTanuloAdatszolgArgs
+    oktatoAdatszolg?: boolean | AlapadatokCountOutputTypeCountOktatoAdatszolgArgs
     users?: boolean | AlapadatokCountOutputTypeCountUsersArgs
     OktatoEgyebTev?: boolean | AlapadatokCountOutputTypeCountOktatoEgyebTevArgs
   }
@@ -4259,6 +4445,20 @@ export namespace Prisma {
    */
   export type AlapadatokCountOutputTypeCountMuhelyiskolaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MuhelyiskolaWhereInput
+  }
+
+  /**
+   * AlapadatokCountOutputType without action
+   */
+  export type AlapadatokCountOutputTypeCountTanuloAdatszolgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TanuloAdatszolgWhereInput
+  }
+
+  /**
+   * AlapadatokCountOutputType without action
+   */
+  export type AlapadatokCountOutputTypeCountOktatoAdatszolgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OktatoAdatszolgWhereInput
   }
 
   /**
@@ -6784,6 +6984,7 @@ export namespace Prisma {
     name: string | null
     alias: string | null
     isAvailable: boolean | null
+    isLocked: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6793,6 +6994,7 @@ export namespace Prisma {
     name: string | null
     alias: string | null
     isAvailable: boolean | null
+    isLocked: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6802,6 +7004,7 @@ export namespace Prisma {
     name: number
     alias: number
     isAvailable: number
+    isLocked: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -6813,6 +7016,7 @@ export namespace Prisma {
     name?: true
     alias?: true
     isAvailable?: true
+    isLocked?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6822,6 +7026,7 @@ export namespace Prisma {
     name?: true
     alias?: true
     isAvailable?: true
+    isLocked?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6831,6 +7036,7 @@ export namespace Prisma {
     name?: true
     alias?: true
     isAvailable?: true
+    isLocked?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6913,6 +7119,7 @@ export namespace Prisma {
     name: string
     alias: string | null
     isAvailable: boolean
+    isLocked: boolean
     createdAt: Date
     updatedAt: Date | null
     _count: TableListCountAggregateOutputType | null
@@ -6939,6 +7146,7 @@ export namespace Prisma {
     name?: boolean
     alias?: boolean
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     access?: boolean | TableList$accessArgs<ExtArgs>
@@ -6950,6 +7158,7 @@ export namespace Prisma {
     name?: boolean
     alias?: boolean
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tableList"]>
@@ -6959,6 +7168,7 @@ export namespace Prisma {
     name?: boolean
     alias?: boolean
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tableList"]>
@@ -6968,11 +7178,12 @@ export namespace Prisma {
     name?: boolean
     alias?: boolean
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TableListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "alias" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["tableList"]>
+  export type TableListOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "alias" | "isAvailable" | "isLocked" | "createdAt" | "updatedAt", ExtArgs["result"]["tableList"]>
   export type TableListInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     access?: boolean | TableList$accessArgs<ExtArgs>
     _count?: boolean | TableListCountOutputTypeDefaultArgs<ExtArgs>
@@ -6990,6 +7201,7 @@ export namespace Prisma {
       name: string
       alias: string | null
       isAvailable: boolean
+      isLocked: boolean
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["tableList"]>
@@ -7420,6 +7632,7 @@ export namespace Prisma {
     readonly name: FieldRef<"TableList", 'String'>
     readonly alias: FieldRef<"TableList", 'String'>
     readonly isAvailable: FieldRef<"TableList", 'Boolean'>
+    readonly isLocked: FieldRef<"TableList", 'Boolean'>
     readonly createdAt: FieldRef<"TableList", 'DateTime'>
     readonly updatedAt: FieldRef<"TableList", 'DateTime'>
   }
@@ -10370,6 +10583,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: boolean | Alapadatok$sajatosNevelesuTanulokArgs<ExtArgs>
     dobbanto?: boolean | Alapadatok$dobbantoArgs<ExtArgs>
     muhelyiskola?: boolean | Alapadatok$muhelyiskolaArgs<ExtArgs>
+    tanuloAdatszolg?: boolean | Alapadatok$tanuloAdatszolgArgs<ExtArgs>
+    oktatoAdatszolg?: boolean | Alapadatok$oktatoAdatszolgArgs<ExtArgs>
     users?: boolean | Alapadatok$usersArgs<ExtArgs>
     OktatoEgyebTev?: boolean | Alapadatok$OktatoEgyebTevArgs<ExtArgs>
     _count?: boolean | AlapadatokCountOutputTypeDefaultArgs<ExtArgs>
@@ -10421,6 +10636,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: boolean | Alapadatok$sajatosNevelesuTanulokArgs<ExtArgs>
     dobbanto?: boolean | Alapadatok$dobbantoArgs<ExtArgs>
     muhelyiskola?: boolean | Alapadatok$muhelyiskolaArgs<ExtArgs>
+    tanuloAdatszolg?: boolean | Alapadatok$tanuloAdatszolgArgs<ExtArgs>
+    oktatoAdatszolg?: boolean | Alapadatok$oktatoAdatszolgArgs<ExtArgs>
     users?: boolean | Alapadatok$usersArgs<ExtArgs>
     OktatoEgyebTev?: boolean | Alapadatok$OktatoEgyebTevArgs<ExtArgs>
     _count?: boolean | AlapadatokCountOutputTypeDefaultArgs<ExtArgs>
@@ -10454,6 +10671,8 @@ export namespace Prisma {
       sajatosNevelesuTanulok: Prisma.$SajatosNevelesuTanulokPayload<ExtArgs>[]
       dobbanto: Prisma.$DobbantoPayload<ExtArgs>[]
       muhelyiskola: Prisma.$MuhelyiskolaPayload<ExtArgs>[]
+      tanuloAdatszolg: Prisma.$TanuloAdatszolgPayload<ExtArgs>[]
+      oktatoAdatszolg: Prisma.$OktatoAdatszolgPayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
       OktatoEgyebTev: Prisma.$OktatoEgyebTevPayload<ExtArgs>[]
     }
@@ -10879,6 +11098,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok<T extends Alapadatok$sajatosNevelesuTanulokArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$sajatosNevelesuTanulokArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SajatosNevelesuTanulokPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     dobbanto<T extends Alapadatok$dobbantoArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$dobbantoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DobbantoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     muhelyiskola<T extends Alapadatok$muhelyiskolaArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$muhelyiskolaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MuhelyiskolaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tanuloAdatszolg<T extends Alapadatok$tanuloAdatszolgArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$tanuloAdatszolgArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    oktatoAdatszolg<T extends Alapadatok$oktatoAdatszolgArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$oktatoAdatszolgArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Alapadatok$usersArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     OktatoEgyebTev<T extends Alapadatok$OktatoEgyebTevArgs<ExtArgs> = {}>(args?: Subset<T, Alapadatok$OktatoEgyebTevArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OktatoEgyebTevPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -11851,6 +12072,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MuhelyiskolaScalarFieldEnum | MuhelyiskolaScalarFieldEnum[]
+  }
+
+  /**
+   * Alapadatok.tanuloAdatszolg
+   */
+  export type Alapadatok$tanuloAdatszolgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    where?: TanuloAdatszolgWhereInput
+    orderBy?: TanuloAdatszolgOrderByWithRelationInput | TanuloAdatszolgOrderByWithRelationInput[]
+    cursor?: TanuloAdatszolgWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TanuloAdatszolgScalarFieldEnum | TanuloAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * Alapadatok.oktatoAdatszolg
+   */
+  export type Alapadatok$oktatoAdatszolgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    where?: OktatoAdatszolgWhereInput
+    orderBy?: OktatoAdatszolgOrderByWithRelationInput | OktatoAdatszolgOrderByWithRelationInput[]
+    cursor?: OktatoAdatszolgWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OktatoAdatszolgScalarFieldEnum | OktatoAdatszolgScalarFieldEnum[]
   }
 
   /**
@@ -21191,19 +21460,27 @@ export namespace Prisma {
 
   export type KompetenciaAvgAggregateOutputType = {
     tanev_kezdete: number | null
+    mat_orsz_p: Decimal | null
+    szoveg_orsz_p: Decimal | null
+    mat_int_p: Decimal | null
+    szoveg_int_p: Decimal | null
   }
 
   export type KompetenciaSumAggregateOutputType = {
     tanev_kezdete: number | null
+    mat_orsz_p: Decimal | null
+    szoveg_orsz_p: Decimal | null
+    mat_int_p: Decimal | null
+    szoveg_int_p: Decimal | null
   }
 
   export type KompetenciaMinAggregateOutputType = {
     id: string | null
     tanev_kezdete: number | null
-    mat_orsz_p: string | null
-    szoveg_orsz_p: string | null
-    mat_int_p: string | null
-    szoveg_int_p: string | null
+    mat_orsz_p: Decimal | null
+    szoveg_orsz_p: Decimal | null
+    mat_int_p: Decimal | null
+    szoveg_int_p: Decimal | null
     kepzes_forma: string | null
     alapadatok_id: string | null
     createAt: Date | null
@@ -21215,10 +21492,10 @@ export namespace Prisma {
   export type KompetenciaMaxAggregateOutputType = {
     id: string | null
     tanev_kezdete: number | null
-    mat_orsz_p: string | null
-    szoveg_orsz_p: string | null
-    mat_int_p: string | null
-    szoveg_int_p: string | null
+    mat_orsz_p: Decimal | null
+    szoveg_orsz_p: Decimal | null
+    mat_int_p: Decimal | null
+    szoveg_int_p: Decimal | null
     kepzes_forma: string | null
     alapadatok_id: string | null
     createAt: Date | null
@@ -21246,10 +21523,18 @@ export namespace Prisma {
 
   export type KompetenciaAvgAggregateInputType = {
     tanev_kezdete?: true
+    mat_orsz_p?: true
+    szoveg_orsz_p?: true
+    mat_int_p?: true
+    szoveg_int_p?: true
   }
 
   export type KompetenciaSumAggregateInputType = {
     tanev_kezdete?: true
+    mat_orsz_p?: true
+    szoveg_orsz_p?: true
+    mat_int_p?: true
+    szoveg_int_p?: true
   }
 
   export type KompetenciaMinAggregateInputType = {
@@ -21387,10 +21672,10 @@ export namespace Prisma {
   export type KompetenciaGroupByOutputType = {
     id: string
     tanev_kezdete: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p: Decimal
+    szoveg_orsz_p: Decimal
+    mat_int_p: Decimal
+    szoveg_int_p: Decimal
     kepzes_forma: string
     alapadatok_id: string
     createAt: Date
@@ -21500,10 +21785,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       tanev_kezdete: number
-      mat_orsz_p: string
-      szoveg_orsz_p: string
-      mat_int_p: string
-      szoveg_int_p: string
+      mat_orsz_p: Prisma.Decimal
+      szoveg_orsz_p: Prisma.Decimal
+      mat_int_p: Prisma.Decimal
+      szoveg_int_p: Prisma.Decimal
       kepzes_forma: string
       alapadatok_id: string
       createAt: Date
@@ -21936,10 +22221,10 @@ export namespace Prisma {
   interface KompetenciaFieldRefs {
     readonly id: FieldRef<"Kompetencia", 'String'>
     readonly tanev_kezdete: FieldRef<"Kompetencia", 'Int'>
-    readonly mat_orsz_p: FieldRef<"Kompetencia", 'String'>
-    readonly szoveg_orsz_p: FieldRef<"Kompetencia", 'String'>
-    readonly mat_int_p: FieldRef<"Kompetencia", 'String'>
-    readonly szoveg_int_p: FieldRef<"Kompetencia", 'String'>
+    readonly mat_orsz_p: FieldRef<"Kompetencia", 'Decimal'>
+    readonly szoveg_orsz_p: FieldRef<"Kompetencia", 'Decimal'>
+    readonly mat_int_p: FieldRef<"Kompetencia", 'Decimal'>
+    readonly szoveg_int_p: FieldRef<"Kompetencia", 'Decimal'>
     readonly kepzes_forma: FieldRef<"Kompetencia", 'String'>
     readonly alapadatok_id: FieldRef<"Kompetencia", 'String'>
     readonly createAt: FieldRef<"Kompetencia", 'DateTime'>
@@ -47767,6 +48052,3711 @@ export namespace Prisma {
 
 
   /**
+   * Model TanuloAdatszolg
+   */
+
+  export type AggregateTanuloAdatszolg = {
+    _count: TanuloAdatszolgCountAggregateOutputType | null
+    _avg: TanuloAdatszolgAvgAggregateOutputType | null
+    _sum: TanuloAdatszolgSumAggregateOutputType | null
+    _min: TanuloAdatszolgMinAggregateOutputType | null
+    _max: TanuloAdatszolgMaxAggregateOutputType | null
+  }
+
+  export type TanuloAdatszolgAvgAggregateOutputType = {
+    tanev_kezdete: number | null
+  }
+
+  export type TanuloAdatszolgSumAggregateOutputType = {
+    tanev_kezdete: number | null
+  }
+
+  export type TanuloAdatszolgMinAggregateOutputType = {
+    id: string | null
+    alapadatok_id: string | null
+    tanev_kezdete: number | null
+    Tanulo_Oktatasi_azonosito: string | null
+    Intezmeny_OM_azonosito: string | null
+    Intezmeny_nev: string | null
+    Intezmeny_szekhely_telepules_nev: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam: string | null
+    Intezmeny_szekhely_cim: string | null
+    Intezmeny_szekhely_email: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+    Feladatellatasi_hely_nev: string | null
+    Feladatellatasi_hely_telepules_nev: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam: string | null
+    Feladatellatasi_hely_cim: string | null
+    Feladatellatasi_hely_email: string | null
+    Lakohely_tanulo_lakohely_telepules: string | null
+    Lakohely_szulo_allando_lakohely_telepules: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: string | null
+    Tanulo_Koreve: string | null
+    Tanulo_jogviszonya: string | null
+    Nem: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+    Tantervi_jellemzo: string | null
+    Munkarend: string | null
+    Evfolyam: string | null
+    Regi_Szkt_OKJ_Szakmacsoport: string | null
+    Regi_Szkt_OKJ_Agazat: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany: string | null
+    Uj_Szkt_Reszszakmak_Agazat: string | null
+    Uj_Szkt_Reszszakma_Szakma: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: string | null
+    Programkovetelmenyes_szakmai_kepzes: string | null
+    Allampolgarsag_orszaga_1: string | null
+    Allampolgarsag_orszaga_2: string | null
+    Sajatos_nevelesi_igeny: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt: string | null
+    Fogyatekossag_tipusa: string | null
+    Kiemelten_tehetseges: string | null
+    Evfolyamismetlo: string | null
+    Egyeni_tanrend_szerint_tanul: string | null
+    Tanmuhelyben_tanul: string | null
+    Mas_telepulesrol_bejar: string | null
+    Kollegiumban_lakik: string | null
+    Externatusi_ellatasban_reszesitett: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: string | null
+    Etkeztetesben_reszesul: string | null
+    Gyakorlathoz_kotheto_jogviszony: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: string | null
+    Napkoziotthoni_ellatasban_reszesul: string | null
+    Hatranyos_helyzetu: string | null
+    Halmozottan_hatranyos_helyzetu: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: string | null
+    Szamitogepet_oktatasi_celra_hasznal: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt: string | null
+    Etika_oktatasban_reszesul: string | null
+    Nyelvoktatasban_reszesul: string | null
+    Nyelvoktatas_alol_felmentett: string | null
+    Tandijas: string | null
+    Teritesi_dijas: string | null
+    Kezdo_evfolyamos_tanulo: string | null
+    Iskolai_sportkorben_resztvevo_tanulo: string | null
+    Diaksport_egyesulet_tagja: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: string | null
+    Arany_Janos_Tehetseggondozo_Program: string | null
+    Emelt_szintu_oktatasban_vesz_reszt: string | null
+    Emelt_szintu_oktatas_tantargy_1: string | null
+    Emelt_szintu_oktatas_tantargy_2: string | null
+    Emelt_szintu_oktatas_tantargy_3: string | null
+    Tanult_idegen_nyelv_1: string | null
+    Tanult_idegen_nyelv_2: string | null
+    Tanult_idegen_nyelv_3: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja: string | null
+    Nemzetisegi_nyelv: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul: string | null
+    createBy: string | null
+  }
+
+  export type TanuloAdatszolgMaxAggregateOutputType = {
+    id: string | null
+    alapadatok_id: string | null
+    tanev_kezdete: number | null
+    Tanulo_Oktatasi_azonosito: string | null
+    Intezmeny_OM_azonosito: string | null
+    Intezmeny_nev: string | null
+    Intezmeny_szekhely_telepules_nev: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam: string | null
+    Intezmeny_szekhely_cim: string | null
+    Intezmeny_szekhely_email: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+    Feladatellatasi_hely_nev: string | null
+    Feladatellatasi_hely_telepules_nev: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam: string | null
+    Feladatellatasi_hely_cim: string | null
+    Feladatellatasi_hely_email: string | null
+    Lakohely_tanulo_lakohely_telepules: string | null
+    Lakohely_szulo_allando_lakohely_telepules: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: string | null
+    Tanulo_Koreve: string | null
+    Tanulo_jogviszonya: string | null
+    Nem: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+    Tantervi_jellemzo: string | null
+    Munkarend: string | null
+    Evfolyam: string | null
+    Regi_Szkt_OKJ_Szakmacsoport: string | null
+    Regi_Szkt_OKJ_Agazat: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany: string | null
+    Uj_Szkt_Reszszakmak_Agazat: string | null
+    Uj_Szkt_Reszszakma_Szakma: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: string | null
+    Programkovetelmenyes_szakmai_kepzes: string | null
+    Allampolgarsag_orszaga_1: string | null
+    Allampolgarsag_orszaga_2: string | null
+    Sajatos_nevelesi_igeny: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt: string | null
+    Fogyatekossag_tipusa: string | null
+    Kiemelten_tehetseges: string | null
+    Evfolyamismetlo: string | null
+    Egyeni_tanrend_szerint_tanul: string | null
+    Tanmuhelyben_tanul: string | null
+    Mas_telepulesrol_bejar: string | null
+    Kollegiumban_lakik: string | null
+    Externatusi_ellatasban_reszesitett: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: string | null
+    Etkeztetesben_reszesul: string | null
+    Gyakorlathoz_kotheto_jogviszony: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: string | null
+    Napkoziotthoni_ellatasban_reszesul: string | null
+    Hatranyos_helyzetu: string | null
+    Halmozottan_hatranyos_helyzetu: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: string | null
+    Szamitogepet_oktatasi_celra_hasznal: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt: string | null
+    Etika_oktatasban_reszesul: string | null
+    Nyelvoktatasban_reszesul: string | null
+    Nyelvoktatas_alol_felmentett: string | null
+    Tandijas: string | null
+    Teritesi_dijas: string | null
+    Kezdo_evfolyamos_tanulo: string | null
+    Iskolai_sportkorben_resztvevo_tanulo: string | null
+    Diaksport_egyesulet_tagja: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: string | null
+    Arany_Janos_Tehetseggondozo_Program: string | null
+    Emelt_szintu_oktatasban_vesz_reszt: string | null
+    Emelt_szintu_oktatas_tantargy_1: string | null
+    Emelt_szintu_oktatas_tantargy_2: string | null
+    Emelt_szintu_oktatas_tantargy_3: string | null
+    Tanult_idegen_nyelv_1: string | null
+    Tanult_idegen_nyelv_2: string | null
+    Tanult_idegen_nyelv_3: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja: string | null
+    Nemzetisegi_nyelv: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul: string | null
+    createBy: string | null
+  }
+
+  export type TanuloAdatszolgCountAggregateOutputType = {
+    id: number
+    alapadatok_id: number
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito: number
+    Intezmeny_OM_azonosito: number
+    Intezmeny_nev: number
+    Intezmeny_szekhely_telepules_nev: number
+    Intezmeny_szekhely_telepules_iranyitoszam: number
+    Intezmeny_szekhely_cim: number
+    Intezmeny_szekhely_email: number
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: number
+    Feladatellatasi_hely_nev: number
+    Feladatellatasi_hely_telepules_nev: number
+    Feladatellatasi_hely_telepules_iranyitoszam: number
+    Feladatellatasi_hely_cim: number
+    Feladatellatasi_hely_email: number
+    Lakohely_tanulo_lakohely_telepules: number
+    Lakohely_szulo_allando_lakohely_telepules: number
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: number
+    Tanulo_Koreve: number
+    Tanulo_jogviszonya: number
+    Nem: number
+    Feladatellatasi_hely_tipus_ellatott_feladat: number
+    Tantervi_jellemzo: number
+    Munkarend: number
+    Evfolyam: number
+    Regi_Szkt_OKJ_Szakmacsoport: number
+    Regi_Szkt_OKJ_Agazat: number
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese: number
+    Regi_Szkt_OKJ_Szakkepesites_kod: number
+    Regi_Szkt_OKJ_Reszszakkepesites: number
+    Uj_Szkt_Szakmajegyzek_Agazat: number
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: number
+    Uj_Szkt_Szakmajegyzek_Szakma_kod: number
+    Uj_Szkt_Szakmajegyzek_Szakmairany: number
+    Uj_Szkt_Reszszakmak_Agazat: number
+    Uj_Szkt_Reszszakma_Szakma: number
+    Uj_Szkt_Reszszakmak_Reszszakma: number
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: number
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: number
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: number
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: number
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: number
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: number
+    Programkovetelmenyes_szakmai_kepzes: number
+    Allampolgarsag_orszaga_1: number
+    Allampolgarsag_orszaga_2: number
+    Sajatos_nevelesi_igeny: number
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: number
+    Sajatos_nevelesi_igeny_integraltan_nevelt: number
+    Fogyatekossag_tipusa: number
+    Kiemelten_tehetseges: number
+    Evfolyamismetlo: number
+    Egyeni_tanrend_szerint_tanul: number
+    Tanmuhelyben_tanul: number
+    Mas_telepulesrol_bejar: number
+    Kollegiumban_lakik: number
+    Externatusi_ellatasban_reszesitett: number
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: number
+    Etkeztetesben_reszesul: number
+    Gyakorlathoz_kotheto_jogviszony: number
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: number
+    Napkoziotthoni_ellatasban_reszesul: number
+    Hatranyos_helyzetu: number
+    Halmozottan_hatranyos_helyzetu: number
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: number
+    Szamitogepet_oktatasi_celra_hasznal: number
+    Hit_es_erkolcstan_oktatasban_vesz_reszt: number
+    Etika_oktatasban_reszesul: number
+    Nyelvoktatasban_reszesul: number
+    Nyelvoktatas_alol_felmentett: number
+    Tandijas: number
+    Teritesi_dijas: number
+    Kezdo_evfolyamos_tanulo: number
+    Iskolai_sportkorben_resztvevo_tanulo: number
+    Diaksport_egyesulet_tagja: number
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: number
+    Arany_Janos_Tehetseggondozo_Program: number
+    Emelt_szintu_oktatasban_vesz_reszt: number
+    Emelt_szintu_oktatas_tantargy_1: number
+    Emelt_szintu_oktatas_tantargy_2: number
+    Emelt_szintu_oktatas_tantargy_3: number
+    Tanult_idegen_nyelv_1: number
+    Tanult_idegen_nyelv_2: number
+    Tanult_idegen_nyelv_3: number
+    Tanulo_nemzetisegi_nyelvoktatasa: number
+    Nemzetisegi_neveles_oktatas_fajtaja: number
+    Nemzetisegi_nyelv: number
+    Egesz_napos_iskolai_oktatasban_reszesul: number
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: number
+    Otthon_nyujtott_ellatasi_formaban_reszesul: number
+    createBy: number
+    _all: number
+  }
+
+
+  export type TanuloAdatszolgAvgAggregateInputType = {
+    tanev_kezdete?: true
+  }
+
+  export type TanuloAdatszolgSumAggregateInputType = {
+    tanev_kezdete?: true
+  }
+
+  export type TanuloAdatszolgMinAggregateInputType = {
+    id?: true
+    alapadatok_id?: true
+    tanev_kezdete?: true
+    Tanulo_Oktatasi_azonosito?: true
+    Intezmeny_OM_azonosito?: true
+    Intezmeny_nev?: true
+    Intezmeny_szekhely_telepules_nev?: true
+    Intezmeny_szekhely_telepules_iranyitoszam?: true
+    Intezmeny_szekhely_cim?: true
+    Intezmeny_szekhely_email?: true
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: true
+    Feladatellatasi_hely_nev?: true
+    Feladatellatasi_hely_telepules_nev?: true
+    Feladatellatasi_hely_telepules_iranyitoszam?: true
+    Feladatellatasi_hely_cim?: true
+    Feladatellatasi_hely_email?: true
+    Lakohely_tanulo_lakohely_telepules?: true
+    Lakohely_szulo_allando_lakohely_telepules?: true
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: true
+    Tanulo_Koreve?: true
+    Tanulo_jogviszonya?: true
+    Nem?: true
+    Feladatellatasi_hely_tipus_ellatott_feladat?: true
+    Tantervi_jellemzo?: true
+    Munkarend?: true
+    Evfolyam?: true
+    Regi_Szkt_OKJ_Szakmacsoport?: true
+    Regi_Szkt_OKJ_Agazat?: true
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: true
+    Regi_Szkt_OKJ_Szakkepesites_kod?: true
+    Regi_Szkt_OKJ_Reszszakkepesites?: true
+    Uj_Szkt_Szakmajegyzek_Agazat?: true
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: true
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: true
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: true
+    Uj_Szkt_Reszszakmak_Agazat?: true
+    Uj_Szkt_Reszszakma_Szakma?: true
+    Uj_Szkt_Reszszakmak_Reszszakma?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: true
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: true
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: true
+    Programkovetelmenyes_szakmai_kepzes?: true
+    Allampolgarsag_orszaga_1?: true
+    Allampolgarsag_orszaga_2?: true
+    Sajatos_nevelesi_igeny?: true
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: true
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: true
+    Fogyatekossag_tipusa?: true
+    Kiemelten_tehetseges?: true
+    Evfolyamismetlo?: true
+    Egyeni_tanrend_szerint_tanul?: true
+    Tanmuhelyben_tanul?: true
+    Mas_telepulesrol_bejar?: true
+    Kollegiumban_lakik?: true
+    Externatusi_ellatasban_reszesitett?: true
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: true
+    Etkeztetesben_reszesul?: true
+    Gyakorlathoz_kotheto_jogviszony?: true
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: true
+    Napkoziotthoni_ellatasban_reszesul?: true
+    Hatranyos_helyzetu?: true
+    Halmozottan_hatranyos_helyzetu?: true
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: true
+    Szamitogepet_oktatasi_celra_hasznal?: true
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: true
+    Etika_oktatasban_reszesul?: true
+    Nyelvoktatasban_reszesul?: true
+    Nyelvoktatas_alol_felmentett?: true
+    Tandijas?: true
+    Teritesi_dijas?: true
+    Kezdo_evfolyamos_tanulo?: true
+    Iskolai_sportkorben_resztvevo_tanulo?: true
+    Diaksport_egyesulet_tagja?: true
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: true
+    Arany_Janos_Tehetseggondozo_Program?: true
+    Emelt_szintu_oktatasban_vesz_reszt?: true
+    Emelt_szintu_oktatas_tantargy_1?: true
+    Emelt_szintu_oktatas_tantargy_2?: true
+    Emelt_szintu_oktatas_tantargy_3?: true
+    Tanult_idegen_nyelv_1?: true
+    Tanult_idegen_nyelv_2?: true
+    Tanult_idegen_nyelv_3?: true
+    Tanulo_nemzetisegi_nyelvoktatasa?: true
+    Nemzetisegi_neveles_oktatas_fajtaja?: true
+    Nemzetisegi_nyelv?: true
+    Egesz_napos_iskolai_oktatasban_reszesul?: true
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: true
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: true
+    createBy?: true
+  }
+
+  export type TanuloAdatszolgMaxAggregateInputType = {
+    id?: true
+    alapadatok_id?: true
+    tanev_kezdete?: true
+    Tanulo_Oktatasi_azonosito?: true
+    Intezmeny_OM_azonosito?: true
+    Intezmeny_nev?: true
+    Intezmeny_szekhely_telepules_nev?: true
+    Intezmeny_szekhely_telepules_iranyitoszam?: true
+    Intezmeny_szekhely_cim?: true
+    Intezmeny_szekhely_email?: true
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: true
+    Feladatellatasi_hely_nev?: true
+    Feladatellatasi_hely_telepules_nev?: true
+    Feladatellatasi_hely_telepules_iranyitoszam?: true
+    Feladatellatasi_hely_cim?: true
+    Feladatellatasi_hely_email?: true
+    Lakohely_tanulo_lakohely_telepules?: true
+    Lakohely_szulo_allando_lakohely_telepules?: true
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: true
+    Tanulo_Koreve?: true
+    Tanulo_jogviszonya?: true
+    Nem?: true
+    Feladatellatasi_hely_tipus_ellatott_feladat?: true
+    Tantervi_jellemzo?: true
+    Munkarend?: true
+    Evfolyam?: true
+    Regi_Szkt_OKJ_Szakmacsoport?: true
+    Regi_Szkt_OKJ_Agazat?: true
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: true
+    Regi_Szkt_OKJ_Szakkepesites_kod?: true
+    Regi_Szkt_OKJ_Reszszakkepesites?: true
+    Uj_Szkt_Szakmajegyzek_Agazat?: true
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: true
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: true
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: true
+    Uj_Szkt_Reszszakmak_Agazat?: true
+    Uj_Szkt_Reszszakma_Szakma?: true
+    Uj_Szkt_Reszszakmak_Reszszakma?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: true
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: true
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: true
+    Programkovetelmenyes_szakmai_kepzes?: true
+    Allampolgarsag_orszaga_1?: true
+    Allampolgarsag_orszaga_2?: true
+    Sajatos_nevelesi_igeny?: true
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: true
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: true
+    Fogyatekossag_tipusa?: true
+    Kiemelten_tehetseges?: true
+    Evfolyamismetlo?: true
+    Egyeni_tanrend_szerint_tanul?: true
+    Tanmuhelyben_tanul?: true
+    Mas_telepulesrol_bejar?: true
+    Kollegiumban_lakik?: true
+    Externatusi_ellatasban_reszesitett?: true
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: true
+    Etkeztetesben_reszesul?: true
+    Gyakorlathoz_kotheto_jogviszony?: true
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: true
+    Napkoziotthoni_ellatasban_reszesul?: true
+    Hatranyos_helyzetu?: true
+    Halmozottan_hatranyos_helyzetu?: true
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: true
+    Szamitogepet_oktatasi_celra_hasznal?: true
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: true
+    Etika_oktatasban_reszesul?: true
+    Nyelvoktatasban_reszesul?: true
+    Nyelvoktatas_alol_felmentett?: true
+    Tandijas?: true
+    Teritesi_dijas?: true
+    Kezdo_evfolyamos_tanulo?: true
+    Iskolai_sportkorben_resztvevo_tanulo?: true
+    Diaksport_egyesulet_tagja?: true
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: true
+    Arany_Janos_Tehetseggondozo_Program?: true
+    Emelt_szintu_oktatasban_vesz_reszt?: true
+    Emelt_szintu_oktatas_tantargy_1?: true
+    Emelt_szintu_oktatas_tantargy_2?: true
+    Emelt_szintu_oktatas_tantargy_3?: true
+    Tanult_idegen_nyelv_1?: true
+    Tanult_idegen_nyelv_2?: true
+    Tanult_idegen_nyelv_3?: true
+    Tanulo_nemzetisegi_nyelvoktatasa?: true
+    Nemzetisegi_neveles_oktatas_fajtaja?: true
+    Nemzetisegi_nyelv?: true
+    Egesz_napos_iskolai_oktatasban_reszesul?: true
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: true
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: true
+    createBy?: true
+  }
+
+  export type TanuloAdatszolgCountAggregateInputType = {
+    id?: true
+    alapadatok_id?: true
+    tanev_kezdete?: true
+    Tanulo_Oktatasi_azonosito?: true
+    Intezmeny_OM_azonosito?: true
+    Intezmeny_nev?: true
+    Intezmeny_szekhely_telepules_nev?: true
+    Intezmeny_szekhely_telepules_iranyitoszam?: true
+    Intezmeny_szekhely_cim?: true
+    Intezmeny_szekhely_email?: true
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: true
+    Feladatellatasi_hely_nev?: true
+    Feladatellatasi_hely_telepules_nev?: true
+    Feladatellatasi_hely_telepules_iranyitoszam?: true
+    Feladatellatasi_hely_cim?: true
+    Feladatellatasi_hely_email?: true
+    Lakohely_tanulo_lakohely_telepules?: true
+    Lakohely_szulo_allando_lakohely_telepules?: true
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: true
+    Tanulo_Koreve?: true
+    Tanulo_jogviszonya?: true
+    Nem?: true
+    Feladatellatasi_hely_tipus_ellatott_feladat?: true
+    Tantervi_jellemzo?: true
+    Munkarend?: true
+    Evfolyam?: true
+    Regi_Szkt_OKJ_Szakmacsoport?: true
+    Regi_Szkt_OKJ_Agazat?: true
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: true
+    Regi_Szkt_OKJ_Szakkepesites_kod?: true
+    Regi_Szkt_OKJ_Reszszakkepesites?: true
+    Uj_Szkt_Szakmajegyzek_Agazat?: true
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: true
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: true
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: true
+    Uj_Szkt_Reszszakmak_Agazat?: true
+    Uj_Szkt_Reszszakma_Szakma?: true
+    Uj_Szkt_Reszszakmak_Reszszakma?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: true
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: true
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: true
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: true
+    Programkovetelmenyes_szakmai_kepzes?: true
+    Allampolgarsag_orszaga_1?: true
+    Allampolgarsag_orszaga_2?: true
+    Sajatos_nevelesi_igeny?: true
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: true
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: true
+    Fogyatekossag_tipusa?: true
+    Kiemelten_tehetseges?: true
+    Evfolyamismetlo?: true
+    Egyeni_tanrend_szerint_tanul?: true
+    Tanmuhelyben_tanul?: true
+    Mas_telepulesrol_bejar?: true
+    Kollegiumban_lakik?: true
+    Externatusi_ellatasban_reszesitett?: true
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: true
+    Etkeztetesben_reszesul?: true
+    Gyakorlathoz_kotheto_jogviszony?: true
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: true
+    Napkoziotthoni_ellatasban_reszesul?: true
+    Hatranyos_helyzetu?: true
+    Halmozottan_hatranyos_helyzetu?: true
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: true
+    Szamitogepet_oktatasi_celra_hasznal?: true
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: true
+    Etika_oktatasban_reszesul?: true
+    Nyelvoktatasban_reszesul?: true
+    Nyelvoktatas_alol_felmentett?: true
+    Tandijas?: true
+    Teritesi_dijas?: true
+    Kezdo_evfolyamos_tanulo?: true
+    Iskolai_sportkorben_resztvevo_tanulo?: true
+    Diaksport_egyesulet_tagja?: true
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: true
+    Arany_Janos_Tehetseggondozo_Program?: true
+    Emelt_szintu_oktatasban_vesz_reszt?: true
+    Emelt_szintu_oktatas_tantargy_1?: true
+    Emelt_szintu_oktatas_tantargy_2?: true
+    Emelt_szintu_oktatas_tantargy_3?: true
+    Tanult_idegen_nyelv_1?: true
+    Tanult_idegen_nyelv_2?: true
+    Tanult_idegen_nyelv_3?: true
+    Tanulo_nemzetisegi_nyelvoktatasa?: true
+    Nemzetisegi_neveles_oktatas_fajtaja?: true
+    Nemzetisegi_nyelv?: true
+    Egesz_napos_iskolai_oktatasban_reszesul?: true
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: true
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: true
+    createBy?: true
+    _all?: true
+  }
+
+  export type TanuloAdatszolgAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TanuloAdatszolg to aggregate.
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TanuloAdatszolgs to fetch.
+     */
+    orderBy?: TanuloAdatszolgOrderByWithRelationInput | TanuloAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TanuloAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TanuloAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TanuloAdatszolgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TanuloAdatszolgs
+    **/
+    _count?: true | TanuloAdatszolgCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TanuloAdatszolgAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TanuloAdatszolgSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TanuloAdatszolgMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TanuloAdatszolgMaxAggregateInputType
+  }
+
+  export type GetTanuloAdatszolgAggregateType<T extends TanuloAdatszolgAggregateArgs> = {
+        [P in keyof T & keyof AggregateTanuloAdatszolg]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTanuloAdatszolg[P]>
+      : GetScalarType<T[P], AggregateTanuloAdatszolg[P]>
+  }
+
+
+
+
+  export type TanuloAdatszolgGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TanuloAdatszolgWhereInput
+    orderBy?: TanuloAdatszolgOrderByWithAggregationInput | TanuloAdatszolgOrderByWithAggregationInput[]
+    by: TanuloAdatszolgScalarFieldEnum[] | TanuloAdatszolgScalarFieldEnum
+    having?: TanuloAdatszolgScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TanuloAdatszolgCountAggregateInputType | true
+    _avg?: TanuloAdatszolgAvgAggregateInputType
+    _sum?: TanuloAdatszolgSumAggregateInputType
+    _min?: TanuloAdatszolgMinAggregateInputType
+    _max?: TanuloAdatszolgMaxAggregateInputType
+  }
+
+  export type TanuloAdatszolgGroupByOutputType = {
+    id: string
+    alapadatok_id: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito: string | null
+    Intezmeny_OM_azonosito: string | null
+    Intezmeny_nev: string | null
+    Intezmeny_szekhely_telepules_nev: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam: string | null
+    Intezmeny_szekhely_cim: string | null
+    Intezmeny_szekhely_email: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+    Feladatellatasi_hely_nev: string | null
+    Feladatellatasi_hely_telepules_nev: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam: string | null
+    Feladatellatasi_hely_cim: string | null
+    Feladatellatasi_hely_email: string | null
+    Lakohely_tanulo_lakohely_telepules: string | null
+    Lakohely_szulo_allando_lakohely_telepules: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: string | null
+    Tanulo_Koreve: string | null
+    Tanulo_jogviszonya: string | null
+    Nem: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+    Tantervi_jellemzo: string | null
+    Munkarend: string | null
+    Evfolyam: string | null
+    Regi_Szkt_OKJ_Szakmacsoport: string | null
+    Regi_Szkt_OKJ_Agazat: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany: string | null
+    Uj_Szkt_Reszszakmak_Agazat: string | null
+    Uj_Szkt_Reszszakma_Szakma: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: string | null
+    Programkovetelmenyes_szakmai_kepzes: string | null
+    Allampolgarsag_orszaga_1: string | null
+    Allampolgarsag_orszaga_2: string | null
+    Sajatos_nevelesi_igeny: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt: string | null
+    Fogyatekossag_tipusa: string | null
+    Kiemelten_tehetseges: string | null
+    Evfolyamismetlo: string | null
+    Egyeni_tanrend_szerint_tanul: string | null
+    Tanmuhelyben_tanul: string | null
+    Mas_telepulesrol_bejar: string | null
+    Kollegiumban_lakik: string | null
+    Externatusi_ellatasban_reszesitett: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: string | null
+    Etkeztetesben_reszesul: string | null
+    Gyakorlathoz_kotheto_jogviszony: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: string | null
+    Napkoziotthoni_ellatasban_reszesul: string | null
+    Hatranyos_helyzetu: string | null
+    Halmozottan_hatranyos_helyzetu: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: string | null
+    Szamitogepet_oktatasi_celra_hasznal: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt: string | null
+    Etika_oktatasban_reszesul: string | null
+    Nyelvoktatasban_reszesul: string | null
+    Nyelvoktatas_alol_felmentett: string | null
+    Tandijas: string | null
+    Teritesi_dijas: string | null
+    Kezdo_evfolyamos_tanulo: string | null
+    Iskolai_sportkorben_resztvevo_tanulo: string | null
+    Diaksport_egyesulet_tagja: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: string | null
+    Arany_Janos_Tehetseggondozo_Program: string | null
+    Emelt_szintu_oktatasban_vesz_reszt: string | null
+    Emelt_szintu_oktatas_tantargy_1: string | null
+    Emelt_szintu_oktatas_tantargy_2: string | null
+    Emelt_szintu_oktatas_tantargy_3: string | null
+    Tanult_idegen_nyelv_1: string | null
+    Tanult_idegen_nyelv_2: string | null
+    Tanult_idegen_nyelv_3: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja: string | null
+    Nemzetisegi_nyelv: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul: string | null
+    createBy: string | null
+    _count: TanuloAdatszolgCountAggregateOutputType | null
+    _avg: TanuloAdatszolgAvgAggregateOutputType | null
+    _sum: TanuloAdatszolgSumAggregateOutputType | null
+    _min: TanuloAdatszolgMinAggregateOutputType | null
+    _max: TanuloAdatszolgMaxAggregateOutputType | null
+  }
+
+  type GetTanuloAdatszolgGroupByPayload<T extends TanuloAdatszolgGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TanuloAdatszolgGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TanuloAdatszolgGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TanuloAdatszolgGroupByOutputType[P]>
+            : GetScalarType<T[P], TanuloAdatszolgGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TanuloAdatszolgSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Tanulo_Oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Lakohely_tanulo_lakohely_telepules?: boolean
+    Lakohely_szulo_allando_lakohely_telepules?: boolean
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: boolean
+    Tanulo_Koreve?: boolean
+    Tanulo_jogviszonya?: boolean
+    Nem?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Tantervi_jellemzo?: boolean
+    Munkarend?: boolean
+    Evfolyam?: boolean
+    Regi_Szkt_OKJ_Szakmacsoport?: boolean
+    Regi_Szkt_OKJ_Agazat?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_kod?: boolean
+    Regi_Szkt_OKJ_Reszszakkepesites?: boolean
+    Uj_Szkt_Szakmajegyzek_Agazat?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: boolean
+    Uj_Szkt_Reszszakmak_Agazat?: boolean
+    Uj_Szkt_Reszszakma_Szakma?: boolean
+    Uj_Szkt_Reszszakmak_Reszszakma?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: boolean
+    Programkovetelmenyes_szakmai_kepzes?: boolean
+    Allampolgarsag_orszaga_1?: boolean
+    Allampolgarsag_orszaga_2?: boolean
+    Sajatos_nevelesi_igeny?: boolean
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: boolean
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: boolean
+    Fogyatekossag_tipusa?: boolean
+    Kiemelten_tehetseges?: boolean
+    Evfolyamismetlo?: boolean
+    Egyeni_tanrend_szerint_tanul?: boolean
+    Tanmuhelyben_tanul?: boolean
+    Mas_telepulesrol_bejar?: boolean
+    Kollegiumban_lakik?: boolean
+    Externatusi_ellatasban_reszesitett?: boolean
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: boolean
+    Etkeztetesben_reszesul?: boolean
+    Gyakorlathoz_kotheto_jogviszony?: boolean
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: boolean
+    Napkoziotthoni_ellatasban_reszesul?: boolean
+    Hatranyos_helyzetu?: boolean
+    Halmozottan_hatranyos_helyzetu?: boolean
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: boolean
+    Szamitogepet_oktatasi_celra_hasznal?: boolean
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: boolean
+    Etika_oktatasban_reszesul?: boolean
+    Nyelvoktatasban_reszesul?: boolean
+    Nyelvoktatas_alol_felmentett?: boolean
+    Tandijas?: boolean
+    Teritesi_dijas?: boolean
+    Kezdo_evfolyamos_tanulo?: boolean
+    Iskolai_sportkorben_resztvevo_tanulo?: boolean
+    Diaksport_egyesulet_tagja?: boolean
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: boolean
+    Arany_Janos_Tehetseggondozo_Program?: boolean
+    Emelt_szintu_oktatasban_vesz_reszt?: boolean
+    Emelt_szintu_oktatas_tantargy_1?: boolean
+    Emelt_szintu_oktatas_tantargy_2?: boolean
+    Emelt_szintu_oktatas_tantargy_3?: boolean
+    Tanult_idegen_nyelv_1?: boolean
+    Tanult_idegen_nyelv_2?: boolean
+    Tanult_idegen_nyelv_3?: boolean
+    Tanulo_nemzetisegi_nyelvoktatasa?: boolean
+    Nemzetisegi_neveles_oktatas_fajtaja?: boolean
+    Nemzetisegi_nyelv?: boolean
+    Egesz_napos_iskolai_oktatasban_reszesul?: boolean
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: boolean
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: boolean
+    createBy?: boolean
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tanuloAdatszolg"]>
+
+  export type TanuloAdatszolgSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Tanulo_Oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Lakohely_tanulo_lakohely_telepules?: boolean
+    Lakohely_szulo_allando_lakohely_telepules?: boolean
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: boolean
+    Tanulo_Koreve?: boolean
+    Tanulo_jogviszonya?: boolean
+    Nem?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Tantervi_jellemzo?: boolean
+    Munkarend?: boolean
+    Evfolyam?: boolean
+    Regi_Szkt_OKJ_Szakmacsoport?: boolean
+    Regi_Szkt_OKJ_Agazat?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_kod?: boolean
+    Regi_Szkt_OKJ_Reszszakkepesites?: boolean
+    Uj_Szkt_Szakmajegyzek_Agazat?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: boolean
+    Uj_Szkt_Reszszakmak_Agazat?: boolean
+    Uj_Szkt_Reszszakma_Szakma?: boolean
+    Uj_Szkt_Reszszakmak_Reszszakma?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: boolean
+    Programkovetelmenyes_szakmai_kepzes?: boolean
+    Allampolgarsag_orszaga_1?: boolean
+    Allampolgarsag_orszaga_2?: boolean
+    Sajatos_nevelesi_igeny?: boolean
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: boolean
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: boolean
+    Fogyatekossag_tipusa?: boolean
+    Kiemelten_tehetseges?: boolean
+    Evfolyamismetlo?: boolean
+    Egyeni_tanrend_szerint_tanul?: boolean
+    Tanmuhelyben_tanul?: boolean
+    Mas_telepulesrol_bejar?: boolean
+    Kollegiumban_lakik?: boolean
+    Externatusi_ellatasban_reszesitett?: boolean
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: boolean
+    Etkeztetesben_reszesul?: boolean
+    Gyakorlathoz_kotheto_jogviszony?: boolean
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: boolean
+    Napkoziotthoni_ellatasban_reszesul?: boolean
+    Hatranyos_helyzetu?: boolean
+    Halmozottan_hatranyos_helyzetu?: boolean
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: boolean
+    Szamitogepet_oktatasi_celra_hasznal?: boolean
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: boolean
+    Etika_oktatasban_reszesul?: boolean
+    Nyelvoktatasban_reszesul?: boolean
+    Nyelvoktatas_alol_felmentett?: boolean
+    Tandijas?: boolean
+    Teritesi_dijas?: boolean
+    Kezdo_evfolyamos_tanulo?: boolean
+    Iskolai_sportkorben_resztvevo_tanulo?: boolean
+    Diaksport_egyesulet_tagja?: boolean
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: boolean
+    Arany_Janos_Tehetseggondozo_Program?: boolean
+    Emelt_szintu_oktatasban_vesz_reszt?: boolean
+    Emelt_szintu_oktatas_tantargy_1?: boolean
+    Emelt_szintu_oktatas_tantargy_2?: boolean
+    Emelt_szintu_oktatas_tantargy_3?: boolean
+    Tanult_idegen_nyelv_1?: boolean
+    Tanult_idegen_nyelv_2?: boolean
+    Tanult_idegen_nyelv_3?: boolean
+    Tanulo_nemzetisegi_nyelvoktatasa?: boolean
+    Nemzetisegi_neveles_oktatas_fajtaja?: boolean
+    Nemzetisegi_nyelv?: boolean
+    Egesz_napos_iskolai_oktatasban_reszesul?: boolean
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: boolean
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: boolean
+    createBy?: boolean
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tanuloAdatszolg"]>
+
+  export type TanuloAdatszolgSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Tanulo_Oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Lakohely_tanulo_lakohely_telepules?: boolean
+    Lakohely_szulo_allando_lakohely_telepules?: boolean
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: boolean
+    Tanulo_Koreve?: boolean
+    Tanulo_jogviszonya?: boolean
+    Nem?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Tantervi_jellemzo?: boolean
+    Munkarend?: boolean
+    Evfolyam?: boolean
+    Regi_Szkt_OKJ_Szakmacsoport?: boolean
+    Regi_Szkt_OKJ_Agazat?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_kod?: boolean
+    Regi_Szkt_OKJ_Reszszakkepesites?: boolean
+    Uj_Szkt_Szakmajegyzek_Agazat?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: boolean
+    Uj_Szkt_Reszszakmak_Agazat?: boolean
+    Uj_Szkt_Reszszakma_Szakma?: boolean
+    Uj_Szkt_Reszszakmak_Reszszakma?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: boolean
+    Programkovetelmenyes_szakmai_kepzes?: boolean
+    Allampolgarsag_orszaga_1?: boolean
+    Allampolgarsag_orszaga_2?: boolean
+    Sajatos_nevelesi_igeny?: boolean
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: boolean
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: boolean
+    Fogyatekossag_tipusa?: boolean
+    Kiemelten_tehetseges?: boolean
+    Evfolyamismetlo?: boolean
+    Egyeni_tanrend_szerint_tanul?: boolean
+    Tanmuhelyben_tanul?: boolean
+    Mas_telepulesrol_bejar?: boolean
+    Kollegiumban_lakik?: boolean
+    Externatusi_ellatasban_reszesitett?: boolean
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: boolean
+    Etkeztetesben_reszesul?: boolean
+    Gyakorlathoz_kotheto_jogviszony?: boolean
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: boolean
+    Napkoziotthoni_ellatasban_reszesul?: boolean
+    Hatranyos_helyzetu?: boolean
+    Halmozottan_hatranyos_helyzetu?: boolean
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: boolean
+    Szamitogepet_oktatasi_celra_hasznal?: boolean
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: boolean
+    Etika_oktatasban_reszesul?: boolean
+    Nyelvoktatasban_reszesul?: boolean
+    Nyelvoktatas_alol_felmentett?: boolean
+    Tandijas?: boolean
+    Teritesi_dijas?: boolean
+    Kezdo_evfolyamos_tanulo?: boolean
+    Iskolai_sportkorben_resztvevo_tanulo?: boolean
+    Diaksport_egyesulet_tagja?: boolean
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: boolean
+    Arany_Janos_Tehetseggondozo_Program?: boolean
+    Emelt_szintu_oktatasban_vesz_reszt?: boolean
+    Emelt_szintu_oktatas_tantargy_1?: boolean
+    Emelt_szintu_oktatas_tantargy_2?: boolean
+    Emelt_szintu_oktatas_tantargy_3?: boolean
+    Tanult_idegen_nyelv_1?: boolean
+    Tanult_idegen_nyelv_2?: boolean
+    Tanult_idegen_nyelv_3?: boolean
+    Tanulo_nemzetisegi_nyelvoktatasa?: boolean
+    Nemzetisegi_neveles_oktatas_fajtaja?: boolean
+    Nemzetisegi_nyelv?: boolean
+    Egesz_napos_iskolai_oktatasban_reszesul?: boolean
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: boolean
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: boolean
+    createBy?: boolean
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tanuloAdatszolg"]>
+
+  export type TanuloAdatszolgSelectScalar = {
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Tanulo_Oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Lakohely_tanulo_lakohely_telepules?: boolean
+    Lakohely_szulo_allando_lakohely_telepules?: boolean
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: boolean
+    Tanulo_Koreve?: boolean
+    Tanulo_jogviszonya?: boolean
+    Nem?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Tantervi_jellemzo?: boolean
+    Munkarend?: boolean
+    Evfolyam?: boolean
+    Regi_Szkt_OKJ_Szakmacsoport?: boolean
+    Regi_Szkt_OKJ_Agazat?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: boolean
+    Regi_Szkt_OKJ_Szakkepesites_kod?: boolean
+    Regi_Szkt_OKJ_Reszszakkepesites?: boolean
+    Uj_Szkt_Szakmajegyzek_Agazat?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: boolean
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: boolean
+    Uj_Szkt_Reszszakmak_Agazat?: boolean
+    Uj_Szkt_Reszszakma_Szakma?: boolean
+    Uj_Szkt_Reszszakmak_Reszszakma?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: boolean
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: boolean
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: boolean
+    Programkovetelmenyes_szakmai_kepzes?: boolean
+    Allampolgarsag_orszaga_1?: boolean
+    Allampolgarsag_orszaga_2?: boolean
+    Sajatos_nevelesi_igeny?: boolean
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: boolean
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: boolean
+    Fogyatekossag_tipusa?: boolean
+    Kiemelten_tehetseges?: boolean
+    Evfolyamismetlo?: boolean
+    Egyeni_tanrend_szerint_tanul?: boolean
+    Tanmuhelyben_tanul?: boolean
+    Mas_telepulesrol_bejar?: boolean
+    Kollegiumban_lakik?: boolean
+    Externatusi_ellatasban_reszesitett?: boolean
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: boolean
+    Etkeztetesben_reszesul?: boolean
+    Gyakorlathoz_kotheto_jogviszony?: boolean
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: boolean
+    Napkoziotthoni_ellatasban_reszesul?: boolean
+    Hatranyos_helyzetu?: boolean
+    Halmozottan_hatranyos_helyzetu?: boolean
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: boolean
+    Szamitogepet_oktatasi_celra_hasznal?: boolean
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: boolean
+    Etika_oktatasban_reszesul?: boolean
+    Nyelvoktatasban_reszesul?: boolean
+    Nyelvoktatas_alol_felmentett?: boolean
+    Tandijas?: boolean
+    Teritesi_dijas?: boolean
+    Kezdo_evfolyamos_tanulo?: boolean
+    Iskolai_sportkorben_resztvevo_tanulo?: boolean
+    Diaksport_egyesulet_tagja?: boolean
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: boolean
+    Arany_Janos_Tehetseggondozo_Program?: boolean
+    Emelt_szintu_oktatasban_vesz_reszt?: boolean
+    Emelt_szintu_oktatas_tantargy_1?: boolean
+    Emelt_szintu_oktatas_tantargy_2?: boolean
+    Emelt_szintu_oktatas_tantargy_3?: boolean
+    Tanult_idegen_nyelv_1?: boolean
+    Tanult_idegen_nyelv_2?: boolean
+    Tanult_idegen_nyelv_3?: boolean
+    Tanulo_nemzetisegi_nyelvoktatasa?: boolean
+    Nemzetisegi_neveles_oktatas_fajtaja?: boolean
+    Nemzetisegi_nyelv?: boolean
+    Egesz_napos_iskolai_oktatasban_reszesul?: boolean
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: boolean
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: boolean
+    createBy?: boolean
+  }
+
+  export type TanuloAdatszolgOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "alapadatok_id" | "tanev_kezdete" | "Tanulo_Oktatasi_azonosito" | "Intezmeny_OM_azonosito" | "Intezmeny_nev" | "Intezmeny_szekhely_telepules_nev" | "Intezmeny_szekhely_telepules_iranyitoszam" | "Intezmeny_szekhely_cim" | "Intezmeny_szekhely_email" | "Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito" | "Feladatellatasi_hely_nev" | "Feladatellatasi_hely_telepules_nev" | "Feladatellatasi_hely_telepules_iranyitoszam" | "Feladatellatasi_hely_cim" | "Feladatellatasi_hely_email" | "Lakohely_tanulo_lakohely_telepules" | "Lakohely_szulo_allando_lakohely_telepules" | "Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules" | "Tanulo_Koreve" | "Tanulo_jogviszonya" | "Nem" | "Feladatellatasi_hely_tipus_ellatott_feladat" | "Tantervi_jellemzo" | "Munkarend" | "Evfolyam" | "Regi_Szkt_OKJ_Szakmacsoport" | "Regi_Szkt_OKJ_Agazat" | "Regi_Szkt_OKJ_Szakkepesites_megnevezese" | "Regi_Szkt_OKJ_Szakkepesites_kod" | "Regi_Szkt_OKJ_Reszszakkepesites" | "Uj_Szkt_Szakmajegyzek_Agazat" | "Uj_Szkt_Szakmajegyzek_Szakma_megnevezese" | "Uj_Szkt_Szakmajegyzek_Szakma_kod" | "Uj_Szkt_Szakmajegyzek_Szakmairany" | "Uj_Szkt_Reszszakmak_Agazat" | "Uj_Szkt_Reszszakma_Szakma" | "Uj_Szkt_Reszszakmak_Reszszakma" | "Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet" | "Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese" | "Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod" | "Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany" | "Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet" | "Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese" | "Programkovetelmenyes_szakmai_kepzes" | "Allampolgarsag_orszaga_1" | "Allampolgarsag_orszaga_2" | "Sajatos_nevelesi_igeny" | "Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt" | "Sajatos_nevelesi_igeny_integraltan_nevelt" | "Fogyatekossag_tipusa" | "Kiemelten_tehetseges" | "Evfolyamismetlo" | "Egyeni_tanrend_szerint_tanul" | "Tanmuhelyben_tanul" | "Mas_telepulesrol_bejar" | "Kollegiumban_lakik" | "Externatusi_ellatasban_reszesitett" | "Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul" | "Etkeztetesben_reszesul" | "Gyakorlathoz_kotheto_jogviszony" | "Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo" | "Napkoziotthoni_ellatasban_reszesul" | "Hatranyos_helyzetu" | "Halmozottan_hatranyos_helyzetu" | "Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul" | "Szamitogepet_oktatasi_celra_hasznal" | "Hit_es_erkolcstan_oktatasban_vesz_reszt" | "Etika_oktatasban_reszesul" | "Nyelvoktatasban_reszesul" | "Nyelvoktatas_alol_felmentett" | "Tandijas" | "Teritesi_dijas" | "Kezdo_evfolyamos_tanulo" | "Iskolai_sportkorben_resztvevo_tanulo" | "Diaksport_egyesulet_tagja" | "Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok" | "Arany_Janos_Tehetseggondozo_Program" | "Emelt_szintu_oktatasban_vesz_reszt" | "Emelt_szintu_oktatas_tantargy_1" | "Emelt_szintu_oktatas_tantargy_2" | "Emelt_szintu_oktatas_tantargy_3" | "Tanult_idegen_nyelv_1" | "Tanult_idegen_nyelv_2" | "Tanult_idegen_nyelv_3" | "Tanulo_nemzetisegi_nyelvoktatasa" | "Nemzetisegi_neveles_oktatas_fajtaja" | "Nemzetisegi_nyelv" | "Egesz_napos_iskolai_oktatasban_reszesul" | "A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte" | "Otthon_nyujtott_ellatasi_formaban_reszesul" | "createBy", ExtArgs["result"]["tanuloAdatszolg"]>
+  export type TanuloAdatszolgInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }
+  export type TanuloAdatszolgIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }
+  export type TanuloAdatszolgIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }
+
+  export type $TanuloAdatszolgPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TanuloAdatszolg"
+    objects: {
+      alapadatok: Prisma.$AlapadatokPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      alapadatok_id: string
+      tanev_kezdete: number
+      Tanulo_Oktatasi_azonosito: string | null
+      Intezmeny_OM_azonosito: string | null
+      Intezmeny_nev: string | null
+      Intezmeny_szekhely_telepules_nev: string | null
+      Intezmeny_szekhely_telepules_iranyitoszam: string | null
+      Intezmeny_szekhely_cim: string | null
+      Intezmeny_szekhely_email: string | null
+      Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+      Feladatellatasi_hely_nev: string | null
+      Feladatellatasi_hely_telepules_nev: string | null
+      Feladatellatasi_hely_telepules_iranyitoszam: string | null
+      Feladatellatasi_hely_cim: string | null
+      Feladatellatasi_hely_email: string | null
+      Lakohely_tanulo_lakohely_telepules: string | null
+      Lakohely_szulo_allando_lakohely_telepules: string | null
+      Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: string | null
+      Tanulo_Koreve: string | null
+      Tanulo_jogviszonya: string | null
+      Nem: string | null
+      Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+      Tantervi_jellemzo: string | null
+      Munkarend: string | null
+      Evfolyam: string | null
+      Regi_Szkt_OKJ_Szakmacsoport: string | null
+      Regi_Szkt_OKJ_Agazat: string | null
+      Regi_Szkt_OKJ_Szakkepesites_megnevezese: string | null
+      Regi_Szkt_OKJ_Szakkepesites_kod: string | null
+      Regi_Szkt_OKJ_Reszszakkepesites: string | null
+      Uj_Szkt_Szakmajegyzek_Agazat: string | null
+      Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: string | null
+      Uj_Szkt_Szakmajegyzek_Szakma_kod: string | null
+      Uj_Szkt_Szakmajegyzek_Szakmairany: string | null
+      Uj_Szkt_Reszszakmak_Agazat: string | null
+      Uj_Szkt_Reszszakma_Szakma: string | null
+      Uj_Szkt_Reszszakmak_Reszszakma: string | null
+      Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: string | null
+      Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: string | null
+      Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: string | null
+      Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: string | null
+      Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: string | null
+      Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: string | null
+      Programkovetelmenyes_szakmai_kepzes: string | null
+      Allampolgarsag_orszaga_1: string | null
+      Allampolgarsag_orszaga_2: string | null
+      Sajatos_nevelesi_igeny: string | null
+      Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: string | null
+      Sajatos_nevelesi_igeny_integraltan_nevelt: string | null
+      Fogyatekossag_tipusa: string | null
+      Kiemelten_tehetseges: string | null
+      Evfolyamismetlo: string | null
+      Egyeni_tanrend_szerint_tanul: string | null
+      Tanmuhelyben_tanul: string | null
+      Mas_telepulesrol_bejar: string | null
+      Kollegiumban_lakik: string | null
+      Externatusi_ellatasban_reszesitett: string | null
+      Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: string | null
+      Etkeztetesben_reszesul: string | null
+      Gyakorlathoz_kotheto_jogviszony: string | null
+      Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: string | null
+      Napkoziotthoni_ellatasban_reszesul: string | null
+      Hatranyos_helyzetu: string | null
+      Halmozottan_hatranyos_helyzetu: string | null
+      Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: string | null
+      Szamitogepet_oktatasi_celra_hasznal: string | null
+      Hit_es_erkolcstan_oktatasban_vesz_reszt: string | null
+      Etika_oktatasban_reszesul: string | null
+      Nyelvoktatasban_reszesul: string | null
+      Nyelvoktatas_alol_felmentett: string | null
+      Tandijas: string | null
+      Teritesi_dijas: string | null
+      Kezdo_evfolyamos_tanulo: string | null
+      Iskolai_sportkorben_resztvevo_tanulo: string | null
+      Diaksport_egyesulet_tagja: string | null
+      Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: string | null
+      Arany_Janos_Tehetseggondozo_Program: string | null
+      Emelt_szintu_oktatasban_vesz_reszt: string | null
+      Emelt_szintu_oktatas_tantargy_1: string | null
+      Emelt_szintu_oktatas_tantargy_2: string | null
+      Emelt_szintu_oktatas_tantargy_3: string | null
+      Tanult_idegen_nyelv_1: string | null
+      Tanult_idegen_nyelv_2: string | null
+      Tanult_idegen_nyelv_3: string | null
+      Tanulo_nemzetisegi_nyelvoktatasa: string | null
+      Nemzetisegi_neveles_oktatas_fajtaja: string | null
+      Nemzetisegi_nyelv: string | null
+      Egesz_napos_iskolai_oktatasban_reszesul: string | null
+      A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: string | null
+      Otthon_nyujtott_ellatasi_formaban_reszesul: string | null
+      createBy: string | null
+    }, ExtArgs["result"]["tanuloAdatszolg"]>
+    composites: {}
+  }
+
+  type TanuloAdatszolgGetPayload<S extends boolean | null | undefined | TanuloAdatszolgDefaultArgs> = $Result.GetResult<Prisma.$TanuloAdatszolgPayload, S>
+
+  type TanuloAdatszolgCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TanuloAdatszolgFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TanuloAdatszolgCountAggregateInputType | true
+    }
+
+  export interface TanuloAdatszolgDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TanuloAdatszolg'], meta: { name: 'TanuloAdatszolg' } }
+    /**
+     * Find zero or one TanuloAdatszolg that matches the filter.
+     * @param {TanuloAdatszolgFindUniqueArgs} args - Arguments to find a TanuloAdatszolg
+     * @example
+     * // Get one TanuloAdatszolg
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TanuloAdatszolgFindUniqueArgs>(args: SelectSubset<T, TanuloAdatszolgFindUniqueArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TanuloAdatszolg that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TanuloAdatszolgFindUniqueOrThrowArgs} args - Arguments to find a TanuloAdatszolg
+     * @example
+     * // Get one TanuloAdatszolg
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TanuloAdatszolgFindUniqueOrThrowArgs>(args: SelectSubset<T, TanuloAdatszolgFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TanuloAdatszolg that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgFindFirstArgs} args - Arguments to find a TanuloAdatszolg
+     * @example
+     * // Get one TanuloAdatszolg
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TanuloAdatszolgFindFirstArgs>(args?: SelectSubset<T, TanuloAdatszolgFindFirstArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TanuloAdatszolg that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgFindFirstOrThrowArgs} args - Arguments to find a TanuloAdatszolg
+     * @example
+     * // Get one TanuloAdatszolg
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TanuloAdatszolgFindFirstOrThrowArgs>(args?: SelectSubset<T, TanuloAdatszolgFindFirstOrThrowArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TanuloAdatszolgs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TanuloAdatszolgs
+     * const tanuloAdatszolgs = await prisma.tanuloAdatszolg.findMany()
+     * 
+     * // Get first 10 TanuloAdatszolgs
+     * const tanuloAdatszolgs = await prisma.tanuloAdatszolg.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tanuloAdatszolgWithIdOnly = await prisma.tanuloAdatszolg.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TanuloAdatszolgFindManyArgs>(args?: SelectSubset<T, TanuloAdatszolgFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TanuloAdatszolg.
+     * @param {TanuloAdatszolgCreateArgs} args - Arguments to create a TanuloAdatszolg.
+     * @example
+     * // Create one TanuloAdatszolg
+     * const TanuloAdatszolg = await prisma.tanuloAdatszolg.create({
+     *   data: {
+     *     // ... data to create a TanuloAdatszolg
+     *   }
+     * })
+     * 
+     */
+    create<T extends TanuloAdatszolgCreateArgs>(args: SelectSubset<T, TanuloAdatszolgCreateArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TanuloAdatszolgs.
+     * @param {TanuloAdatszolgCreateManyArgs} args - Arguments to create many TanuloAdatszolgs.
+     * @example
+     * // Create many TanuloAdatszolgs
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TanuloAdatszolgCreateManyArgs>(args?: SelectSubset<T, TanuloAdatszolgCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TanuloAdatszolgs and returns the data saved in the database.
+     * @param {TanuloAdatszolgCreateManyAndReturnArgs} args - Arguments to create many TanuloAdatszolgs.
+     * @example
+     * // Create many TanuloAdatszolgs
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TanuloAdatszolgs and only return the `id`
+     * const tanuloAdatszolgWithIdOnly = await prisma.tanuloAdatszolg.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TanuloAdatszolgCreateManyAndReturnArgs>(args?: SelectSubset<T, TanuloAdatszolgCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TanuloAdatszolg.
+     * @param {TanuloAdatszolgDeleteArgs} args - Arguments to delete one TanuloAdatszolg.
+     * @example
+     * // Delete one TanuloAdatszolg
+     * const TanuloAdatszolg = await prisma.tanuloAdatszolg.delete({
+     *   where: {
+     *     // ... filter to delete one TanuloAdatszolg
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TanuloAdatszolgDeleteArgs>(args: SelectSubset<T, TanuloAdatszolgDeleteArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TanuloAdatszolg.
+     * @param {TanuloAdatszolgUpdateArgs} args - Arguments to update one TanuloAdatszolg.
+     * @example
+     * // Update one TanuloAdatszolg
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TanuloAdatszolgUpdateArgs>(args: SelectSubset<T, TanuloAdatszolgUpdateArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TanuloAdatszolgs.
+     * @param {TanuloAdatszolgDeleteManyArgs} args - Arguments to filter TanuloAdatszolgs to delete.
+     * @example
+     * // Delete a few TanuloAdatszolgs
+     * const { count } = await prisma.tanuloAdatszolg.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TanuloAdatszolgDeleteManyArgs>(args?: SelectSubset<T, TanuloAdatszolgDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TanuloAdatszolgs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TanuloAdatszolgs
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TanuloAdatszolgUpdateManyArgs>(args: SelectSubset<T, TanuloAdatszolgUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TanuloAdatszolgs and returns the data updated in the database.
+     * @param {TanuloAdatszolgUpdateManyAndReturnArgs} args - Arguments to update many TanuloAdatszolgs.
+     * @example
+     * // Update many TanuloAdatszolgs
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TanuloAdatszolgs and only return the `id`
+     * const tanuloAdatszolgWithIdOnly = await prisma.tanuloAdatszolg.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TanuloAdatszolgUpdateManyAndReturnArgs>(args: SelectSubset<T, TanuloAdatszolgUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TanuloAdatszolg.
+     * @param {TanuloAdatszolgUpsertArgs} args - Arguments to update or create a TanuloAdatszolg.
+     * @example
+     * // Update or create a TanuloAdatszolg
+     * const tanuloAdatszolg = await prisma.tanuloAdatszolg.upsert({
+     *   create: {
+     *     // ... data to create a TanuloAdatszolg
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TanuloAdatszolg we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TanuloAdatszolgUpsertArgs>(args: SelectSubset<T, TanuloAdatszolgUpsertArgs<ExtArgs>>): Prisma__TanuloAdatszolgClient<$Result.GetResult<Prisma.$TanuloAdatszolgPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TanuloAdatszolgs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgCountArgs} args - Arguments to filter TanuloAdatszolgs to count.
+     * @example
+     * // Count the number of TanuloAdatszolgs
+     * const count = await prisma.tanuloAdatszolg.count({
+     *   where: {
+     *     // ... the filter for the TanuloAdatszolgs we want to count
+     *   }
+     * })
+    **/
+    count<T extends TanuloAdatszolgCountArgs>(
+      args?: Subset<T, TanuloAdatszolgCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TanuloAdatszolgCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TanuloAdatszolg.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TanuloAdatszolgAggregateArgs>(args: Subset<T, TanuloAdatszolgAggregateArgs>): Prisma.PrismaPromise<GetTanuloAdatszolgAggregateType<T>>
+
+    /**
+     * Group by TanuloAdatszolg.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TanuloAdatszolgGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TanuloAdatszolgGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TanuloAdatszolgGroupByArgs['orderBy'] }
+        : { orderBy?: TanuloAdatszolgGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TanuloAdatszolgGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTanuloAdatszolgGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TanuloAdatszolg model
+   */
+  readonly fields: TanuloAdatszolgFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TanuloAdatszolg.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TanuloAdatszolgClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    alapadatok<T extends AlapadatokDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlapadatokDefaultArgs<ExtArgs>>): Prisma__AlapadatokClient<$Result.GetResult<Prisma.$AlapadatokPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TanuloAdatszolg model
+   */
+  interface TanuloAdatszolgFieldRefs {
+    readonly id: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly alapadatok_id: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly tanev_kezdete: FieldRef<"TanuloAdatszolg", 'Int'>
+    readonly Tanulo_Oktatasi_azonosito: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Intezmeny_OM_azonosito: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Intezmeny_nev: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_telepules_nev: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_telepules_iranyitoszam: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_cim: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_email: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_nev: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_telepules_nev: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_telepules_iranyitoszam: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_cim: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_email: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Lakohely_tanulo_lakohely_telepules: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Lakohely_szulo_allando_lakohely_telepules: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanulo_Koreve: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanulo_jogviszonya: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nem: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_tipus_ellatott_feladat: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tantervi_jellemzo: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Munkarend: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Evfolyam: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Regi_Szkt_OKJ_Szakmacsoport: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Regi_Szkt_OKJ_Agazat: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Regi_Szkt_OKJ_Szakkepesites_megnevezese: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Regi_Szkt_OKJ_Szakkepesites_kod: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Regi_Szkt_OKJ_Reszszakkepesites: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Szakmajegyzek_Agazat: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Szakmajegyzek_Szakma_kod: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Szakmajegyzek_Szakmairany: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Reszszakmak_Agazat: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Reszszakma_Szakma: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Uj_Szkt_Reszszakmak_Reszszakma: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Programkovetelmenyes_szakmai_kepzes: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Allampolgarsag_orszaga_1: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Allampolgarsag_orszaga_2: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Sajatos_nevelesi_igeny: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Sajatos_nevelesi_igeny_integraltan_nevelt: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Fogyatekossag_tipusa: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Kiemelten_tehetseges: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Evfolyamismetlo: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Egyeni_tanrend_szerint_tanul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanmuhelyben_tanul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Mas_telepulesrol_bejar: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Kollegiumban_lakik: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Externatusi_ellatasban_reszesitett: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Etkeztetesben_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Gyakorlathoz_kotheto_jogviszony: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Napkoziotthoni_ellatasban_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Hatranyos_helyzetu: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Halmozottan_hatranyos_helyzetu: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Szamitogepet_oktatasi_celra_hasznal: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Hit_es_erkolcstan_oktatasban_vesz_reszt: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Etika_oktatasban_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nyelvoktatasban_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nyelvoktatas_alol_felmentett: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tandijas: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Teritesi_dijas: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Kezdo_evfolyamos_tanulo: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Iskolai_sportkorben_resztvevo_tanulo: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Diaksport_egyesulet_tagja: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Arany_Janos_Tehetseggondozo_Program: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Emelt_szintu_oktatasban_vesz_reszt: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Emelt_szintu_oktatas_tantargy_1: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Emelt_szintu_oktatas_tantargy_2: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Emelt_szintu_oktatas_tantargy_3: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanult_idegen_nyelv_1: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanult_idegen_nyelv_2: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanult_idegen_nyelv_3: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Tanulo_nemzetisegi_nyelvoktatasa: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nemzetisegi_neveles_oktatas_fajtaja: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Nemzetisegi_nyelv: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Egesz_napos_iskolai_oktatasban_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly Otthon_nyujtott_ellatasi_formaban_reszesul: FieldRef<"TanuloAdatszolg", 'String'>
+    readonly createBy: FieldRef<"TanuloAdatszolg", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TanuloAdatszolg findUnique
+   */
+  export type TanuloAdatszolgFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which TanuloAdatszolg to fetch.
+     */
+    where: TanuloAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * TanuloAdatszolg findUniqueOrThrow
+   */
+  export type TanuloAdatszolgFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which TanuloAdatszolg to fetch.
+     */
+    where: TanuloAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * TanuloAdatszolg findFirst
+   */
+  export type TanuloAdatszolgFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which TanuloAdatszolg to fetch.
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TanuloAdatszolgs to fetch.
+     */
+    orderBy?: TanuloAdatszolgOrderByWithRelationInput | TanuloAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TanuloAdatszolgs.
+     */
+    cursor?: TanuloAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TanuloAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TanuloAdatszolgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TanuloAdatszolgs.
+     */
+    distinct?: TanuloAdatszolgScalarFieldEnum | TanuloAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * TanuloAdatszolg findFirstOrThrow
+   */
+  export type TanuloAdatszolgFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which TanuloAdatszolg to fetch.
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TanuloAdatszolgs to fetch.
+     */
+    orderBy?: TanuloAdatszolgOrderByWithRelationInput | TanuloAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TanuloAdatszolgs.
+     */
+    cursor?: TanuloAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TanuloAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TanuloAdatszolgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TanuloAdatszolgs.
+     */
+    distinct?: TanuloAdatszolgScalarFieldEnum | TanuloAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * TanuloAdatszolg findMany
+   */
+  export type TanuloAdatszolgFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which TanuloAdatszolgs to fetch.
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TanuloAdatszolgs to fetch.
+     */
+    orderBy?: TanuloAdatszolgOrderByWithRelationInput | TanuloAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TanuloAdatszolgs.
+     */
+    cursor?: TanuloAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TanuloAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TanuloAdatszolgs.
+     */
+    skip?: number
+    distinct?: TanuloAdatszolgScalarFieldEnum | TanuloAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * TanuloAdatszolg create
+   */
+  export type TanuloAdatszolgCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TanuloAdatszolg.
+     */
+    data: XOR<TanuloAdatszolgCreateInput, TanuloAdatszolgUncheckedCreateInput>
+  }
+
+  /**
+   * TanuloAdatszolg createMany
+   */
+  export type TanuloAdatszolgCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TanuloAdatszolgs.
+     */
+    data: TanuloAdatszolgCreateManyInput | TanuloAdatszolgCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TanuloAdatszolg createManyAndReturn
+   */
+  export type TanuloAdatszolgCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * The data used to create many TanuloAdatszolgs.
+     */
+    data: TanuloAdatszolgCreateManyInput | TanuloAdatszolgCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TanuloAdatszolg update
+   */
+  export type TanuloAdatszolgUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TanuloAdatszolg.
+     */
+    data: XOR<TanuloAdatszolgUpdateInput, TanuloAdatszolgUncheckedUpdateInput>
+    /**
+     * Choose, which TanuloAdatszolg to update.
+     */
+    where: TanuloAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * TanuloAdatszolg updateMany
+   */
+  export type TanuloAdatszolgUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TanuloAdatszolgs.
+     */
+    data: XOR<TanuloAdatszolgUpdateManyMutationInput, TanuloAdatszolgUncheckedUpdateManyInput>
+    /**
+     * Filter which TanuloAdatszolgs to update
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * Limit how many TanuloAdatszolgs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TanuloAdatszolg updateManyAndReturn
+   */
+  export type TanuloAdatszolgUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * The data used to update TanuloAdatszolgs.
+     */
+    data: XOR<TanuloAdatszolgUpdateManyMutationInput, TanuloAdatszolgUncheckedUpdateManyInput>
+    /**
+     * Filter which TanuloAdatszolgs to update
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * Limit how many TanuloAdatszolgs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TanuloAdatszolg upsert
+   */
+  export type TanuloAdatszolgUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TanuloAdatszolg to update in case it exists.
+     */
+    where: TanuloAdatszolgWhereUniqueInput
+    /**
+     * In case the TanuloAdatszolg found by the `where` argument doesn't exist, create a new TanuloAdatszolg with this data.
+     */
+    create: XOR<TanuloAdatszolgCreateInput, TanuloAdatszolgUncheckedCreateInput>
+    /**
+     * In case the TanuloAdatszolg was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TanuloAdatszolgUpdateInput, TanuloAdatszolgUncheckedUpdateInput>
+  }
+
+  /**
+   * TanuloAdatszolg delete
+   */
+  export type TanuloAdatszolgDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter which TanuloAdatszolg to delete.
+     */
+    where: TanuloAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * TanuloAdatszolg deleteMany
+   */
+  export type TanuloAdatszolgDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TanuloAdatszolgs to delete
+     */
+    where?: TanuloAdatszolgWhereInput
+    /**
+     * Limit how many TanuloAdatszolgs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TanuloAdatszolg without action
+   */
+  export type TanuloAdatszolgDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TanuloAdatszolg
+     */
+    select?: TanuloAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TanuloAdatszolg
+     */
+    omit?: TanuloAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TanuloAdatszolgInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OktatoAdatszolg
+   */
+
+  export type AggregateOktatoAdatszolg = {
+    _count: OktatoAdatszolgCountAggregateOutputType | null
+    _avg: OktatoAdatszolgAvgAggregateOutputType | null
+    _sum: OktatoAdatszolgSumAggregateOutputType | null
+    _min: OktatoAdatszolgMinAggregateOutputType | null
+    _max: OktatoAdatszolgMaxAggregateOutputType | null
+  }
+
+  export type OktatoAdatszolgAvgAggregateOutputType = {
+    tanev_kezdete: number | null
+  }
+
+  export type OktatoAdatszolgSumAggregateOutputType = {
+    tanev_kezdete: number | null
+  }
+
+  export type OktatoAdatszolgMinAggregateOutputType = {
+    id: string | null
+    alapadatok_id: string | null
+    tanev_kezdete: number | null
+    Alkalmazott_oktatasi_azonosito: string | null
+    Intezmeny_OM_azonosito: string | null
+    Intezmeny_nev: string | null
+    Intezmeny_szekhely_telepules_nev: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam: string | null
+    Intezmeny_szekhely_cim: string | null
+    Intezmeny_szekhely_email: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+    Feladatellatasi_hely_nev: string | null
+    Feladatellatasi_hely_telepules_nev: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam: string | null
+    Feladatellatasi_hely_cim: string | null
+    Feladatellatasi_hely_email: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado: string | null
+    Oktato_nem: string | null
+    Oktato_koreve: string | null
+    Oktato_magasabb_vezetoi_megbizas: string | null
+    Oktato_munkakor: string | null
+    Oktato_vegzettseg: string | null
+    Oktato_fokozatok: string | null
+    Oktato_oktatott_targykategoria_1_szerint: string | null
+    Oktato_oktatott_targykategoria_2_szerint: string | null
+    Oktato_oktatott_targykategoria_3_szerint: string | null
+    Oktato_tantervi_jellemzo_szerint: string | null
+    Oktato_Nyugdijas: string | null
+    Oktato_Tartosan_tavol_levo: string | null
+    Oktato_Palyakezdo: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: string | null
+    createBy: string | null
+  }
+
+  export type OktatoAdatszolgMaxAggregateOutputType = {
+    id: string | null
+    alapadatok_id: string | null
+    tanev_kezdete: number | null
+    Alkalmazott_oktatasi_azonosito: string | null
+    Intezmeny_OM_azonosito: string | null
+    Intezmeny_nev: string | null
+    Intezmeny_szekhely_telepules_nev: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam: string | null
+    Intezmeny_szekhely_cim: string | null
+    Intezmeny_szekhely_email: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+    Feladatellatasi_hely_nev: string | null
+    Feladatellatasi_hely_telepules_nev: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam: string | null
+    Feladatellatasi_hely_cim: string | null
+    Feladatellatasi_hely_email: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado: string | null
+    Oktato_nem: string | null
+    Oktato_koreve: string | null
+    Oktato_magasabb_vezetoi_megbizas: string | null
+    Oktato_munkakor: string | null
+    Oktato_vegzettseg: string | null
+    Oktato_fokozatok: string | null
+    Oktato_oktatott_targykategoria_1_szerint: string | null
+    Oktato_oktatott_targykategoria_2_szerint: string | null
+    Oktato_oktatott_targykategoria_3_szerint: string | null
+    Oktato_tantervi_jellemzo_szerint: string | null
+    Oktato_Nyugdijas: string | null
+    Oktato_Tartosan_tavol_levo: string | null
+    Oktato_Palyakezdo: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: string | null
+    createBy: string | null
+  }
+
+  export type OktatoAdatszolgCountAggregateOutputType = {
+    id: number
+    alapadatok_id: number
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito: number
+    Intezmeny_OM_azonosito: number
+    Intezmeny_nev: number
+    Intezmeny_szekhely_telepules_nev: number
+    Intezmeny_szekhely_telepules_iranyitoszam: number
+    Intezmeny_szekhely_cim: number
+    Intezmeny_szekhely_email: number
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: number
+    Feladatellatasi_hely_nev: number
+    Feladatellatasi_hely_telepules_nev: number
+    Feladatellatasi_hely_telepules_iranyitoszam: number
+    Feladatellatasi_hely_cim: number
+    Feladatellatasi_hely_email: number
+    Feladatellatasi_hely_tipus_ellatott_feladat: number
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado: number
+    Oktato_nem: number
+    Oktato_koreve: number
+    Oktato_magasabb_vezetoi_megbizas: number
+    Oktato_munkakor: number
+    Oktato_vegzettseg: number
+    Oktato_fokozatok: number
+    Oktato_oktatott_targykategoria_1_szerint: number
+    Oktato_oktatott_targykategoria_2_szerint: number
+    Oktato_oktatott_targykategoria_3_szerint: number
+    Oktato_tantervi_jellemzo_szerint: number
+    Oktato_Nyugdijas: number
+    Oktato_Tartosan_tavol_levo: number
+    Oktato_Palyakezdo: number
+    Oktato_Internetet_oktatasi_celra_hasznalo: number
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: number
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: number
+    createBy: number
+    _all: number
+  }
+
+
+  export type OktatoAdatszolgAvgAggregateInputType = {
+    tanev_kezdete?: true
+  }
+
+  export type OktatoAdatszolgSumAggregateInputType = {
+    tanev_kezdete?: true
+  }
+
+  export type OktatoAdatszolgMinAggregateInputType = {
+    id?: true
+    alapadatok_id?: true
+    tanev_kezdete?: true
+    Alkalmazott_oktatasi_azonosito?: true
+    Intezmeny_OM_azonosito?: true
+    Intezmeny_nev?: true
+    Intezmeny_szekhely_telepules_nev?: true
+    Intezmeny_szekhely_telepules_iranyitoszam?: true
+    Intezmeny_szekhely_cim?: true
+    Intezmeny_szekhely_email?: true
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: true
+    Feladatellatasi_hely_nev?: true
+    Feladatellatasi_hely_telepules_nev?: true
+    Feladatellatasi_hely_telepules_iranyitoszam?: true
+    Feladatellatasi_hely_cim?: true
+    Feladatellatasi_hely_email?: true
+    Feladatellatasi_hely_tipus_ellatott_feladat?: true
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: true
+    Oktato_nem?: true
+    Oktato_koreve?: true
+    Oktato_magasabb_vezetoi_megbizas?: true
+    Oktato_munkakor?: true
+    Oktato_vegzettseg?: true
+    Oktato_fokozatok?: true
+    Oktato_oktatott_targykategoria_1_szerint?: true
+    Oktato_oktatott_targykategoria_2_szerint?: true
+    Oktato_oktatott_targykategoria_3_szerint?: true
+    Oktato_tantervi_jellemzo_szerint?: true
+    Oktato_Nyugdijas?: true
+    Oktato_Tartosan_tavol_levo?: true
+    Oktato_Palyakezdo?: true
+    Oktato_Internetet_oktatasi_celra_hasznalo?: true
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: true
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: true
+    createBy?: true
+  }
+
+  export type OktatoAdatszolgMaxAggregateInputType = {
+    id?: true
+    alapadatok_id?: true
+    tanev_kezdete?: true
+    Alkalmazott_oktatasi_azonosito?: true
+    Intezmeny_OM_azonosito?: true
+    Intezmeny_nev?: true
+    Intezmeny_szekhely_telepules_nev?: true
+    Intezmeny_szekhely_telepules_iranyitoszam?: true
+    Intezmeny_szekhely_cim?: true
+    Intezmeny_szekhely_email?: true
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: true
+    Feladatellatasi_hely_nev?: true
+    Feladatellatasi_hely_telepules_nev?: true
+    Feladatellatasi_hely_telepules_iranyitoszam?: true
+    Feladatellatasi_hely_cim?: true
+    Feladatellatasi_hely_email?: true
+    Feladatellatasi_hely_tipus_ellatott_feladat?: true
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: true
+    Oktato_nem?: true
+    Oktato_koreve?: true
+    Oktato_magasabb_vezetoi_megbizas?: true
+    Oktato_munkakor?: true
+    Oktato_vegzettseg?: true
+    Oktato_fokozatok?: true
+    Oktato_oktatott_targykategoria_1_szerint?: true
+    Oktato_oktatott_targykategoria_2_szerint?: true
+    Oktato_oktatott_targykategoria_3_szerint?: true
+    Oktato_tantervi_jellemzo_szerint?: true
+    Oktato_Nyugdijas?: true
+    Oktato_Tartosan_tavol_levo?: true
+    Oktato_Palyakezdo?: true
+    Oktato_Internetet_oktatasi_celra_hasznalo?: true
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: true
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: true
+    createBy?: true
+  }
+
+  export type OktatoAdatszolgCountAggregateInputType = {
+    id?: true
+    alapadatok_id?: true
+    tanev_kezdete?: true
+    Alkalmazott_oktatasi_azonosito?: true
+    Intezmeny_OM_azonosito?: true
+    Intezmeny_nev?: true
+    Intezmeny_szekhely_telepules_nev?: true
+    Intezmeny_szekhely_telepules_iranyitoszam?: true
+    Intezmeny_szekhely_cim?: true
+    Intezmeny_szekhely_email?: true
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: true
+    Feladatellatasi_hely_nev?: true
+    Feladatellatasi_hely_telepules_nev?: true
+    Feladatellatasi_hely_telepules_iranyitoszam?: true
+    Feladatellatasi_hely_cim?: true
+    Feladatellatasi_hely_email?: true
+    Feladatellatasi_hely_tipus_ellatott_feladat?: true
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: true
+    Oktato_nem?: true
+    Oktato_koreve?: true
+    Oktato_magasabb_vezetoi_megbizas?: true
+    Oktato_munkakor?: true
+    Oktato_vegzettseg?: true
+    Oktato_fokozatok?: true
+    Oktato_oktatott_targykategoria_1_szerint?: true
+    Oktato_oktatott_targykategoria_2_szerint?: true
+    Oktato_oktatott_targykategoria_3_szerint?: true
+    Oktato_tantervi_jellemzo_szerint?: true
+    Oktato_Nyugdijas?: true
+    Oktato_Tartosan_tavol_levo?: true
+    Oktato_Palyakezdo?: true
+    Oktato_Internetet_oktatasi_celra_hasznalo?: true
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: true
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: true
+    createBy?: true
+    _all?: true
+  }
+
+  export type OktatoAdatszolgAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OktatoAdatszolg to aggregate.
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OktatoAdatszolgs to fetch.
+     */
+    orderBy?: OktatoAdatszolgOrderByWithRelationInput | OktatoAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OktatoAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OktatoAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OktatoAdatszolgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OktatoAdatszolgs
+    **/
+    _count?: true | OktatoAdatszolgCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OktatoAdatszolgAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OktatoAdatszolgSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OktatoAdatszolgMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OktatoAdatszolgMaxAggregateInputType
+  }
+
+  export type GetOktatoAdatszolgAggregateType<T extends OktatoAdatszolgAggregateArgs> = {
+        [P in keyof T & keyof AggregateOktatoAdatszolg]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOktatoAdatszolg[P]>
+      : GetScalarType<T[P], AggregateOktatoAdatszolg[P]>
+  }
+
+
+
+
+  export type OktatoAdatszolgGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OktatoAdatszolgWhereInput
+    orderBy?: OktatoAdatszolgOrderByWithAggregationInput | OktatoAdatszolgOrderByWithAggregationInput[]
+    by: OktatoAdatszolgScalarFieldEnum[] | OktatoAdatszolgScalarFieldEnum
+    having?: OktatoAdatszolgScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OktatoAdatszolgCountAggregateInputType | true
+    _avg?: OktatoAdatszolgAvgAggregateInputType
+    _sum?: OktatoAdatszolgSumAggregateInputType
+    _min?: OktatoAdatszolgMinAggregateInputType
+    _max?: OktatoAdatszolgMaxAggregateInputType
+  }
+
+  export type OktatoAdatszolgGroupByOutputType = {
+    id: string
+    alapadatok_id: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito: string | null
+    Intezmeny_OM_azonosito: string | null
+    Intezmeny_nev: string | null
+    Intezmeny_szekhely_telepules_nev: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam: string | null
+    Intezmeny_szekhely_cim: string | null
+    Intezmeny_szekhely_email: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+    Feladatellatasi_hely_nev: string | null
+    Feladatellatasi_hely_telepules_nev: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam: string | null
+    Feladatellatasi_hely_cim: string | null
+    Feladatellatasi_hely_email: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado: string | null
+    Oktato_nem: string | null
+    Oktato_koreve: string | null
+    Oktato_magasabb_vezetoi_megbizas: string | null
+    Oktato_munkakor: string | null
+    Oktato_vegzettseg: string | null
+    Oktato_fokozatok: string | null
+    Oktato_oktatott_targykategoria_1_szerint: string | null
+    Oktato_oktatott_targykategoria_2_szerint: string | null
+    Oktato_oktatott_targykategoria_3_szerint: string | null
+    Oktato_tantervi_jellemzo_szerint: string | null
+    Oktato_Nyugdijas: string | null
+    Oktato_Tartosan_tavol_levo: string | null
+    Oktato_Palyakezdo: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: string | null
+    createBy: string | null
+    _count: OktatoAdatszolgCountAggregateOutputType | null
+    _avg: OktatoAdatszolgAvgAggregateOutputType | null
+    _sum: OktatoAdatszolgSumAggregateOutputType | null
+    _min: OktatoAdatszolgMinAggregateOutputType | null
+    _max: OktatoAdatszolgMaxAggregateOutputType | null
+  }
+
+  type GetOktatoAdatszolgGroupByPayload<T extends OktatoAdatszolgGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OktatoAdatszolgGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OktatoAdatszolgGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OktatoAdatszolgGroupByOutputType[P]>
+            : GetScalarType<T[P], OktatoAdatszolgGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OktatoAdatszolgSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Alkalmazott_oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: boolean
+    Oktato_nem?: boolean
+    Oktato_koreve?: boolean
+    Oktato_magasabb_vezetoi_megbizas?: boolean
+    Oktato_munkakor?: boolean
+    Oktato_vegzettseg?: boolean
+    Oktato_fokozatok?: boolean
+    Oktato_oktatott_targykategoria_1_szerint?: boolean
+    Oktato_oktatott_targykategoria_2_szerint?: boolean
+    Oktato_oktatott_targykategoria_3_szerint?: boolean
+    Oktato_tantervi_jellemzo_szerint?: boolean
+    Oktato_Nyugdijas?: boolean
+    Oktato_Tartosan_tavol_levo?: boolean
+    Oktato_Palyakezdo?: boolean
+    Oktato_Internetet_oktatasi_celra_hasznalo?: boolean
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: boolean
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: boolean
+    createBy?: boolean
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["oktatoAdatszolg"]>
+
+  export type OktatoAdatszolgSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Alkalmazott_oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: boolean
+    Oktato_nem?: boolean
+    Oktato_koreve?: boolean
+    Oktato_magasabb_vezetoi_megbizas?: boolean
+    Oktato_munkakor?: boolean
+    Oktato_vegzettseg?: boolean
+    Oktato_fokozatok?: boolean
+    Oktato_oktatott_targykategoria_1_szerint?: boolean
+    Oktato_oktatott_targykategoria_2_szerint?: boolean
+    Oktato_oktatott_targykategoria_3_szerint?: boolean
+    Oktato_tantervi_jellemzo_szerint?: boolean
+    Oktato_Nyugdijas?: boolean
+    Oktato_Tartosan_tavol_levo?: boolean
+    Oktato_Palyakezdo?: boolean
+    Oktato_Internetet_oktatasi_celra_hasznalo?: boolean
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: boolean
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: boolean
+    createBy?: boolean
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["oktatoAdatszolg"]>
+
+  export type OktatoAdatszolgSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Alkalmazott_oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: boolean
+    Oktato_nem?: boolean
+    Oktato_koreve?: boolean
+    Oktato_magasabb_vezetoi_megbizas?: boolean
+    Oktato_munkakor?: boolean
+    Oktato_vegzettseg?: boolean
+    Oktato_fokozatok?: boolean
+    Oktato_oktatott_targykategoria_1_szerint?: boolean
+    Oktato_oktatott_targykategoria_2_szerint?: boolean
+    Oktato_oktatott_targykategoria_3_szerint?: boolean
+    Oktato_tantervi_jellemzo_szerint?: boolean
+    Oktato_Nyugdijas?: boolean
+    Oktato_Tartosan_tavol_levo?: boolean
+    Oktato_Palyakezdo?: boolean
+    Oktato_Internetet_oktatasi_celra_hasznalo?: boolean
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: boolean
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: boolean
+    createBy?: boolean
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["oktatoAdatszolg"]>
+
+  export type OktatoAdatszolgSelectScalar = {
+    id?: boolean
+    alapadatok_id?: boolean
+    tanev_kezdete?: boolean
+    Alkalmazott_oktatasi_azonosito?: boolean
+    Intezmeny_OM_azonosito?: boolean
+    Intezmeny_nev?: boolean
+    Intezmeny_szekhely_telepules_nev?: boolean
+    Intezmeny_szekhely_telepules_iranyitoszam?: boolean
+    Intezmeny_szekhely_cim?: boolean
+    Intezmeny_szekhely_email?: boolean
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: boolean
+    Feladatellatasi_hely_nev?: boolean
+    Feladatellatasi_hely_telepules_nev?: boolean
+    Feladatellatasi_hely_telepules_iranyitoszam?: boolean
+    Feladatellatasi_hely_cim?: boolean
+    Feladatellatasi_hely_email?: boolean
+    Feladatellatasi_hely_tipus_ellatott_feladat?: boolean
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: boolean
+    Oktato_nem?: boolean
+    Oktato_koreve?: boolean
+    Oktato_magasabb_vezetoi_megbizas?: boolean
+    Oktato_munkakor?: boolean
+    Oktato_vegzettseg?: boolean
+    Oktato_fokozatok?: boolean
+    Oktato_oktatott_targykategoria_1_szerint?: boolean
+    Oktato_oktatott_targykategoria_2_szerint?: boolean
+    Oktato_oktatott_targykategoria_3_szerint?: boolean
+    Oktato_tantervi_jellemzo_szerint?: boolean
+    Oktato_Nyugdijas?: boolean
+    Oktato_Tartosan_tavol_levo?: boolean
+    Oktato_Palyakezdo?: boolean
+    Oktato_Internetet_oktatasi_celra_hasznalo?: boolean
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: boolean
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: boolean
+    createBy?: boolean
+  }
+
+  export type OktatoAdatszolgOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "alapadatok_id" | "tanev_kezdete" | "Alkalmazott_oktatasi_azonosito" | "Intezmeny_OM_azonosito" | "Intezmeny_nev" | "Intezmeny_szekhely_telepules_nev" | "Intezmeny_szekhely_telepules_iranyitoszam" | "Intezmeny_szekhely_cim" | "Intezmeny_szekhely_email" | "Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito" | "Feladatellatasi_hely_nev" | "Feladatellatasi_hely_telepules_nev" | "Feladatellatasi_hely_telepules_iranyitoszam" | "Feladatellatasi_hely_cim" | "Feladatellatasi_hely_email" | "Feladatellatasi_hely_tipus_ellatott_feladat" | "Oktato_teljes_munkaidos_reszmunkaidos_oraado" | "Oktato_nem" | "Oktato_koreve" | "Oktato_magasabb_vezetoi_megbizas" | "Oktato_munkakor" | "Oktato_vegzettseg" | "Oktato_fokozatok" | "Oktato_oktatott_targykategoria_1_szerint" | "Oktato_oktatott_targykategoria_2_szerint" | "Oktato_oktatott_targykategoria_3_szerint" | "Oktato_tantervi_jellemzo_szerint" | "Oktato_Nyugdijas" | "Oktato_Tartosan_tavol_levo" | "Oktato_Palyakezdo" | "Oktato_Internetet_oktatasi_celra_hasznalo" | "Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok" | "Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja" | "createBy", ExtArgs["result"]["oktatoAdatszolg"]>
+  export type OktatoAdatszolgInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }
+  export type OktatoAdatszolgIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }
+  export type OktatoAdatszolgIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alapadatok?: boolean | AlapadatokDefaultArgs<ExtArgs>
+  }
+
+  export type $OktatoAdatszolgPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OktatoAdatszolg"
+    objects: {
+      alapadatok: Prisma.$AlapadatokPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      alapadatok_id: string
+      tanev_kezdete: number
+      Alkalmazott_oktatasi_azonosito: string | null
+      Intezmeny_OM_azonosito: string | null
+      Intezmeny_nev: string | null
+      Intezmeny_szekhely_telepules_nev: string | null
+      Intezmeny_szekhely_telepules_iranyitoszam: string | null
+      Intezmeny_szekhely_cim: string | null
+      Intezmeny_szekhely_email: string | null
+      Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: string | null
+      Feladatellatasi_hely_nev: string | null
+      Feladatellatasi_hely_telepules_nev: string | null
+      Feladatellatasi_hely_telepules_iranyitoszam: string | null
+      Feladatellatasi_hely_cim: string | null
+      Feladatellatasi_hely_email: string | null
+      Feladatellatasi_hely_tipus_ellatott_feladat: string | null
+      Oktato_teljes_munkaidos_reszmunkaidos_oraado: string | null
+      Oktato_nem: string | null
+      Oktato_koreve: string | null
+      Oktato_magasabb_vezetoi_megbizas: string | null
+      Oktato_munkakor: string | null
+      Oktato_vegzettseg: string | null
+      Oktato_fokozatok: string | null
+      Oktato_oktatott_targykategoria_1_szerint: string | null
+      Oktato_oktatott_targykategoria_2_szerint: string | null
+      Oktato_oktatott_targykategoria_3_szerint: string | null
+      Oktato_tantervi_jellemzo_szerint: string | null
+      Oktato_Nyugdijas: string | null
+      Oktato_Tartosan_tavol_levo: string | null
+      Oktato_Palyakezdo: string | null
+      Oktato_Internetet_oktatasi_celra_hasznalo: string | null
+      Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: string | null
+      Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: string | null
+      createBy: string | null
+    }, ExtArgs["result"]["oktatoAdatszolg"]>
+    composites: {}
+  }
+
+  type OktatoAdatszolgGetPayload<S extends boolean | null | undefined | OktatoAdatszolgDefaultArgs> = $Result.GetResult<Prisma.$OktatoAdatszolgPayload, S>
+
+  type OktatoAdatszolgCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OktatoAdatszolgFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OktatoAdatszolgCountAggregateInputType | true
+    }
+
+  export interface OktatoAdatszolgDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OktatoAdatszolg'], meta: { name: 'OktatoAdatszolg' } }
+    /**
+     * Find zero or one OktatoAdatszolg that matches the filter.
+     * @param {OktatoAdatszolgFindUniqueArgs} args - Arguments to find a OktatoAdatszolg
+     * @example
+     * // Get one OktatoAdatszolg
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OktatoAdatszolgFindUniqueArgs>(args: SelectSubset<T, OktatoAdatszolgFindUniqueArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OktatoAdatszolg that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OktatoAdatszolgFindUniqueOrThrowArgs} args - Arguments to find a OktatoAdatszolg
+     * @example
+     * // Get one OktatoAdatszolg
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OktatoAdatszolgFindUniqueOrThrowArgs>(args: SelectSubset<T, OktatoAdatszolgFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OktatoAdatszolg that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgFindFirstArgs} args - Arguments to find a OktatoAdatszolg
+     * @example
+     * // Get one OktatoAdatszolg
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OktatoAdatszolgFindFirstArgs>(args?: SelectSubset<T, OktatoAdatszolgFindFirstArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OktatoAdatszolg that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgFindFirstOrThrowArgs} args - Arguments to find a OktatoAdatszolg
+     * @example
+     * // Get one OktatoAdatszolg
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OktatoAdatszolgFindFirstOrThrowArgs>(args?: SelectSubset<T, OktatoAdatszolgFindFirstOrThrowArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OktatoAdatszolgs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OktatoAdatszolgs
+     * const oktatoAdatszolgs = await prisma.oktatoAdatszolg.findMany()
+     * 
+     * // Get first 10 OktatoAdatszolgs
+     * const oktatoAdatszolgs = await prisma.oktatoAdatszolg.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const oktatoAdatszolgWithIdOnly = await prisma.oktatoAdatszolg.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OktatoAdatszolgFindManyArgs>(args?: SelectSubset<T, OktatoAdatszolgFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OktatoAdatszolg.
+     * @param {OktatoAdatszolgCreateArgs} args - Arguments to create a OktatoAdatszolg.
+     * @example
+     * // Create one OktatoAdatszolg
+     * const OktatoAdatszolg = await prisma.oktatoAdatszolg.create({
+     *   data: {
+     *     // ... data to create a OktatoAdatszolg
+     *   }
+     * })
+     * 
+     */
+    create<T extends OktatoAdatszolgCreateArgs>(args: SelectSubset<T, OktatoAdatszolgCreateArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OktatoAdatszolgs.
+     * @param {OktatoAdatszolgCreateManyArgs} args - Arguments to create many OktatoAdatszolgs.
+     * @example
+     * // Create many OktatoAdatszolgs
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OktatoAdatszolgCreateManyArgs>(args?: SelectSubset<T, OktatoAdatszolgCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OktatoAdatszolgs and returns the data saved in the database.
+     * @param {OktatoAdatszolgCreateManyAndReturnArgs} args - Arguments to create many OktatoAdatszolgs.
+     * @example
+     * // Create many OktatoAdatszolgs
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OktatoAdatszolgs and only return the `id`
+     * const oktatoAdatszolgWithIdOnly = await prisma.oktatoAdatszolg.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OktatoAdatszolgCreateManyAndReturnArgs>(args?: SelectSubset<T, OktatoAdatszolgCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OktatoAdatszolg.
+     * @param {OktatoAdatszolgDeleteArgs} args - Arguments to delete one OktatoAdatszolg.
+     * @example
+     * // Delete one OktatoAdatszolg
+     * const OktatoAdatszolg = await prisma.oktatoAdatszolg.delete({
+     *   where: {
+     *     // ... filter to delete one OktatoAdatszolg
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OktatoAdatszolgDeleteArgs>(args: SelectSubset<T, OktatoAdatszolgDeleteArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OktatoAdatszolg.
+     * @param {OktatoAdatszolgUpdateArgs} args - Arguments to update one OktatoAdatszolg.
+     * @example
+     * // Update one OktatoAdatszolg
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OktatoAdatszolgUpdateArgs>(args: SelectSubset<T, OktatoAdatszolgUpdateArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OktatoAdatszolgs.
+     * @param {OktatoAdatszolgDeleteManyArgs} args - Arguments to filter OktatoAdatszolgs to delete.
+     * @example
+     * // Delete a few OktatoAdatszolgs
+     * const { count } = await prisma.oktatoAdatszolg.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OktatoAdatszolgDeleteManyArgs>(args?: SelectSubset<T, OktatoAdatszolgDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OktatoAdatszolgs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OktatoAdatszolgs
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OktatoAdatszolgUpdateManyArgs>(args: SelectSubset<T, OktatoAdatszolgUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OktatoAdatszolgs and returns the data updated in the database.
+     * @param {OktatoAdatszolgUpdateManyAndReturnArgs} args - Arguments to update many OktatoAdatszolgs.
+     * @example
+     * // Update many OktatoAdatszolgs
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OktatoAdatszolgs and only return the `id`
+     * const oktatoAdatszolgWithIdOnly = await prisma.oktatoAdatszolg.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OktatoAdatszolgUpdateManyAndReturnArgs>(args: SelectSubset<T, OktatoAdatszolgUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OktatoAdatszolg.
+     * @param {OktatoAdatszolgUpsertArgs} args - Arguments to update or create a OktatoAdatszolg.
+     * @example
+     * // Update or create a OktatoAdatszolg
+     * const oktatoAdatszolg = await prisma.oktatoAdatszolg.upsert({
+     *   create: {
+     *     // ... data to create a OktatoAdatszolg
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OktatoAdatszolg we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OktatoAdatszolgUpsertArgs>(args: SelectSubset<T, OktatoAdatszolgUpsertArgs<ExtArgs>>): Prisma__OktatoAdatszolgClient<$Result.GetResult<Prisma.$OktatoAdatszolgPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OktatoAdatszolgs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgCountArgs} args - Arguments to filter OktatoAdatszolgs to count.
+     * @example
+     * // Count the number of OktatoAdatszolgs
+     * const count = await prisma.oktatoAdatszolg.count({
+     *   where: {
+     *     // ... the filter for the OktatoAdatszolgs we want to count
+     *   }
+     * })
+    **/
+    count<T extends OktatoAdatszolgCountArgs>(
+      args?: Subset<T, OktatoAdatszolgCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OktatoAdatszolgCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OktatoAdatszolg.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OktatoAdatszolgAggregateArgs>(args: Subset<T, OktatoAdatszolgAggregateArgs>): Prisma.PrismaPromise<GetOktatoAdatszolgAggregateType<T>>
+
+    /**
+     * Group by OktatoAdatszolg.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OktatoAdatszolgGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OktatoAdatszolgGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OktatoAdatszolgGroupByArgs['orderBy'] }
+        : { orderBy?: OktatoAdatszolgGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OktatoAdatszolgGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOktatoAdatszolgGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OktatoAdatszolg model
+   */
+  readonly fields: OktatoAdatszolgFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OktatoAdatszolg.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OktatoAdatszolgClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    alapadatok<T extends AlapadatokDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlapadatokDefaultArgs<ExtArgs>>): Prisma__AlapadatokClient<$Result.GetResult<Prisma.$AlapadatokPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OktatoAdatszolg model
+   */
+  interface OktatoAdatszolgFieldRefs {
+    readonly id: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly alapadatok_id: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly tanev_kezdete: FieldRef<"OktatoAdatszolg", 'Int'>
+    readonly Alkalmazott_oktatasi_azonosito: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Intezmeny_OM_azonosito: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Intezmeny_nev: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_telepules_nev: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_telepules_iranyitoszam: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_cim: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Intezmeny_szekhely_email: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_nev: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_telepules_nev: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_telepules_iranyitoszam: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_cim: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_email: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Feladatellatasi_hely_tipus_ellatott_feladat: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_teljes_munkaidos_reszmunkaidos_oraado: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_nem: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_koreve: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_magasabb_vezetoi_megbizas: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_munkakor: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_vegzettseg: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_fokozatok: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_oktatott_targykategoria_1_szerint: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_oktatott_targykategoria_2_szerint: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_oktatott_targykategoria_3_szerint: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_tantervi_jellemzo_szerint: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_Nyugdijas: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_Tartosan_tavol_levo: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_Palyakezdo: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_Internetet_oktatasi_celra_hasznalo: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: FieldRef<"OktatoAdatszolg", 'String'>
+    readonly createBy: FieldRef<"OktatoAdatszolg", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OktatoAdatszolg findUnique
+   */
+  export type OktatoAdatszolgFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which OktatoAdatszolg to fetch.
+     */
+    where: OktatoAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * OktatoAdatszolg findUniqueOrThrow
+   */
+  export type OktatoAdatszolgFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which OktatoAdatszolg to fetch.
+     */
+    where: OktatoAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * OktatoAdatszolg findFirst
+   */
+  export type OktatoAdatszolgFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which OktatoAdatszolg to fetch.
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OktatoAdatszolgs to fetch.
+     */
+    orderBy?: OktatoAdatszolgOrderByWithRelationInput | OktatoAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OktatoAdatszolgs.
+     */
+    cursor?: OktatoAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OktatoAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OktatoAdatszolgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OktatoAdatszolgs.
+     */
+    distinct?: OktatoAdatszolgScalarFieldEnum | OktatoAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * OktatoAdatszolg findFirstOrThrow
+   */
+  export type OktatoAdatszolgFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which OktatoAdatszolg to fetch.
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OktatoAdatszolgs to fetch.
+     */
+    orderBy?: OktatoAdatszolgOrderByWithRelationInput | OktatoAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OktatoAdatszolgs.
+     */
+    cursor?: OktatoAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OktatoAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OktatoAdatszolgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OktatoAdatszolgs.
+     */
+    distinct?: OktatoAdatszolgScalarFieldEnum | OktatoAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * OktatoAdatszolg findMany
+   */
+  export type OktatoAdatszolgFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter, which OktatoAdatszolgs to fetch.
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OktatoAdatszolgs to fetch.
+     */
+    orderBy?: OktatoAdatszolgOrderByWithRelationInput | OktatoAdatszolgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OktatoAdatszolgs.
+     */
+    cursor?: OktatoAdatszolgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OktatoAdatszolgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OktatoAdatszolgs.
+     */
+    skip?: number
+    distinct?: OktatoAdatszolgScalarFieldEnum | OktatoAdatszolgScalarFieldEnum[]
+  }
+
+  /**
+   * OktatoAdatszolg create
+   */
+  export type OktatoAdatszolgCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OktatoAdatszolg.
+     */
+    data: XOR<OktatoAdatszolgCreateInput, OktatoAdatszolgUncheckedCreateInput>
+  }
+
+  /**
+   * OktatoAdatszolg createMany
+   */
+  export type OktatoAdatszolgCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OktatoAdatszolgs.
+     */
+    data: OktatoAdatszolgCreateManyInput | OktatoAdatszolgCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OktatoAdatszolg createManyAndReturn
+   */
+  export type OktatoAdatszolgCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * The data used to create many OktatoAdatszolgs.
+     */
+    data: OktatoAdatszolgCreateManyInput | OktatoAdatszolgCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OktatoAdatszolg update
+   */
+  export type OktatoAdatszolgUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OktatoAdatszolg.
+     */
+    data: XOR<OktatoAdatszolgUpdateInput, OktatoAdatszolgUncheckedUpdateInput>
+    /**
+     * Choose, which OktatoAdatszolg to update.
+     */
+    where: OktatoAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * OktatoAdatszolg updateMany
+   */
+  export type OktatoAdatszolgUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OktatoAdatszolgs.
+     */
+    data: XOR<OktatoAdatszolgUpdateManyMutationInput, OktatoAdatszolgUncheckedUpdateManyInput>
+    /**
+     * Filter which OktatoAdatszolgs to update
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * Limit how many OktatoAdatszolgs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OktatoAdatszolg updateManyAndReturn
+   */
+  export type OktatoAdatszolgUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * The data used to update OktatoAdatszolgs.
+     */
+    data: XOR<OktatoAdatszolgUpdateManyMutationInput, OktatoAdatszolgUncheckedUpdateManyInput>
+    /**
+     * Filter which OktatoAdatszolgs to update
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * Limit how many OktatoAdatszolgs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OktatoAdatszolg upsert
+   */
+  export type OktatoAdatszolgUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OktatoAdatszolg to update in case it exists.
+     */
+    where: OktatoAdatszolgWhereUniqueInput
+    /**
+     * In case the OktatoAdatszolg found by the `where` argument doesn't exist, create a new OktatoAdatszolg with this data.
+     */
+    create: XOR<OktatoAdatszolgCreateInput, OktatoAdatszolgUncheckedCreateInput>
+    /**
+     * In case the OktatoAdatszolg was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OktatoAdatszolgUpdateInput, OktatoAdatszolgUncheckedUpdateInput>
+  }
+
+  /**
+   * OktatoAdatszolg delete
+   */
+  export type OktatoAdatszolgDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+    /**
+     * Filter which OktatoAdatszolg to delete.
+     */
+    where: OktatoAdatszolgWhereUniqueInput
+  }
+
+  /**
+   * OktatoAdatszolg deleteMany
+   */
+  export type OktatoAdatszolgDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OktatoAdatszolgs to delete
+     */
+    where?: OktatoAdatszolgWhereInput
+    /**
+     * Limit how many OktatoAdatszolgs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OktatoAdatszolg without action
+   */
+  export type OktatoAdatszolgDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OktatoAdatszolg
+     */
+    select?: OktatoAdatszolgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OktatoAdatszolg
+     */
+    omit?: OktatoAdatszolgOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OktatoAdatszolgInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -47810,6 +51800,7 @@ export namespace Prisma {
     name: 'name',
     alias: 'alias',
     isAvailable: 'isAvailable',
+    isLocked: 'isLocked',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -48424,6 +52415,145 @@ export namespace Prisma {
   export type OktatoEgyebTevScalarFieldEnum = (typeof OktatoEgyebTevScalarFieldEnum)[keyof typeof OktatoEgyebTevScalarFieldEnum]
 
 
+  export const TanuloAdatszolgScalarFieldEnum: {
+    id: 'id',
+    alapadatok_id: 'alapadatok_id',
+    tanev_kezdete: 'tanev_kezdete',
+    Tanulo_Oktatasi_azonosito: 'Tanulo_Oktatasi_azonosito',
+    Intezmeny_OM_azonosito: 'Intezmeny_OM_azonosito',
+    Intezmeny_nev: 'Intezmeny_nev',
+    Intezmeny_szekhely_telepules_nev: 'Intezmeny_szekhely_telepules_nev',
+    Intezmeny_szekhely_telepules_iranyitoszam: 'Intezmeny_szekhely_telepules_iranyitoszam',
+    Intezmeny_szekhely_cim: 'Intezmeny_szekhely_cim',
+    Intezmeny_szekhely_email: 'Intezmeny_szekhely_email',
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: 'Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito',
+    Feladatellatasi_hely_nev: 'Feladatellatasi_hely_nev',
+    Feladatellatasi_hely_telepules_nev: 'Feladatellatasi_hely_telepules_nev',
+    Feladatellatasi_hely_telepules_iranyitoszam: 'Feladatellatasi_hely_telepules_iranyitoszam',
+    Feladatellatasi_hely_cim: 'Feladatellatasi_hely_cim',
+    Feladatellatasi_hely_email: 'Feladatellatasi_hely_email',
+    Lakohely_tanulo_lakohely_telepules: 'Lakohely_tanulo_lakohely_telepules',
+    Lakohely_szulo_allando_lakohely_telepules: 'Lakohely_szulo_allando_lakohely_telepules',
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules: 'Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules',
+    Tanulo_Koreve: 'Tanulo_Koreve',
+    Tanulo_jogviszonya: 'Tanulo_jogviszonya',
+    Nem: 'Nem',
+    Feladatellatasi_hely_tipus_ellatott_feladat: 'Feladatellatasi_hely_tipus_ellatott_feladat',
+    Tantervi_jellemzo: 'Tantervi_jellemzo',
+    Munkarend: 'Munkarend',
+    Evfolyam: 'Evfolyam',
+    Regi_Szkt_OKJ_Szakmacsoport: 'Regi_Szkt_OKJ_Szakmacsoport',
+    Regi_Szkt_OKJ_Agazat: 'Regi_Szkt_OKJ_Agazat',
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese: 'Regi_Szkt_OKJ_Szakkepesites_megnevezese',
+    Regi_Szkt_OKJ_Szakkepesites_kod: 'Regi_Szkt_OKJ_Szakkepesites_kod',
+    Regi_Szkt_OKJ_Reszszakkepesites: 'Regi_Szkt_OKJ_Reszszakkepesites',
+    Uj_Szkt_Szakmajegyzek_Agazat: 'Uj_Szkt_Szakmajegyzek_Agazat',
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese: 'Uj_Szkt_Szakmajegyzek_Szakma_megnevezese',
+    Uj_Szkt_Szakmajegyzek_Szakma_kod: 'Uj_Szkt_Szakmajegyzek_Szakma_kod',
+    Uj_Szkt_Szakmajegyzek_Szakmairany: 'Uj_Szkt_Szakmajegyzek_Szakmairany',
+    Uj_Szkt_Reszszakmak_Agazat: 'Uj_Szkt_Reszszakmak_Agazat',
+    Uj_Szkt_Reszszakma_Szakma: 'Uj_Szkt_Reszszakma_Szakma',
+    Uj_Szkt_Reszszakmak_Reszszakma: 'Uj_Szkt_Reszszakmak_Reszszakma',
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet: 'Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet',
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese: 'Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese',
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod: 'Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod',
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany: 'Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany',
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet: 'Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet',
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese: 'Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese',
+    Programkovetelmenyes_szakmai_kepzes: 'Programkovetelmenyes_szakmai_kepzes',
+    Allampolgarsag_orszaga_1: 'Allampolgarsag_orszaga_1',
+    Allampolgarsag_orszaga_2: 'Allampolgarsag_orszaga_2',
+    Sajatos_nevelesi_igeny: 'Sajatos_nevelesi_igeny',
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt: 'Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt',
+    Sajatos_nevelesi_igeny_integraltan_nevelt: 'Sajatos_nevelesi_igeny_integraltan_nevelt',
+    Fogyatekossag_tipusa: 'Fogyatekossag_tipusa',
+    Kiemelten_tehetseges: 'Kiemelten_tehetseges',
+    Evfolyamismetlo: 'Evfolyamismetlo',
+    Egyeni_tanrend_szerint_tanul: 'Egyeni_tanrend_szerint_tanul',
+    Tanmuhelyben_tanul: 'Tanmuhelyben_tanul',
+    Mas_telepulesrol_bejar: 'Mas_telepulesrol_bejar',
+    Kollegiumban_lakik: 'Kollegiumban_lakik',
+    Externatusi_ellatasban_reszesitett: 'Externatusi_ellatasban_reszesitett',
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul: 'Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul',
+    Etkeztetesben_reszesul: 'Etkeztetesben_reszesul',
+    Gyakorlathoz_kotheto_jogviszony: 'Gyakorlathoz_kotheto_jogviszony',
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo: 'Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo',
+    Napkoziotthoni_ellatasban_reszesul: 'Napkoziotthoni_ellatasban_reszesul',
+    Hatranyos_helyzetu: 'Hatranyos_helyzetu',
+    Halmozottan_hatranyos_helyzetu: 'Halmozottan_hatranyos_helyzetu',
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul: 'Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul',
+    Szamitogepet_oktatasi_celra_hasznal: 'Szamitogepet_oktatasi_celra_hasznal',
+    Hit_es_erkolcstan_oktatasban_vesz_reszt: 'Hit_es_erkolcstan_oktatasban_vesz_reszt',
+    Etika_oktatasban_reszesul: 'Etika_oktatasban_reszesul',
+    Nyelvoktatasban_reszesul: 'Nyelvoktatasban_reszesul',
+    Nyelvoktatas_alol_felmentett: 'Nyelvoktatas_alol_felmentett',
+    Tandijas: 'Tandijas',
+    Teritesi_dijas: 'Teritesi_dijas',
+    Kezdo_evfolyamos_tanulo: 'Kezdo_evfolyamos_tanulo',
+    Iskolai_sportkorben_resztvevo_tanulo: 'Iskolai_sportkorben_resztvevo_tanulo',
+    Diaksport_egyesulet_tagja: 'Diaksport_egyesulet_tagja',
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok: 'Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok',
+    Arany_Janos_Tehetseggondozo_Program: 'Arany_Janos_Tehetseggondozo_Program',
+    Emelt_szintu_oktatasban_vesz_reszt: 'Emelt_szintu_oktatasban_vesz_reszt',
+    Emelt_szintu_oktatas_tantargy_1: 'Emelt_szintu_oktatas_tantargy_1',
+    Emelt_szintu_oktatas_tantargy_2: 'Emelt_szintu_oktatas_tantargy_2',
+    Emelt_szintu_oktatas_tantargy_3: 'Emelt_szintu_oktatas_tantargy_3',
+    Tanult_idegen_nyelv_1: 'Tanult_idegen_nyelv_1',
+    Tanult_idegen_nyelv_2: 'Tanult_idegen_nyelv_2',
+    Tanult_idegen_nyelv_3: 'Tanult_idegen_nyelv_3',
+    Tanulo_nemzetisegi_nyelvoktatasa: 'Tanulo_nemzetisegi_nyelvoktatasa',
+    Nemzetisegi_neveles_oktatas_fajtaja: 'Nemzetisegi_neveles_oktatas_fajtaja',
+    Nemzetisegi_nyelv: 'Nemzetisegi_nyelv',
+    Egesz_napos_iskolai_oktatasban_reszesul: 'Egesz_napos_iskolai_oktatasban_reszesul',
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte: 'A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte',
+    Otthon_nyujtott_ellatasi_formaban_reszesul: 'Otthon_nyujtott_ellatasi_formaban_reszesul',
+    createBy: 'createBy'
+  };
+
+  export type TanuloAdatszolgScalarFieldEnum = (typeof TanuloAdatszolgScalarFieldEnum)[keyof typeof TanuloAdatszolgScalarFieldEnum]
+
+
+  export const OktatoAdatszolgScalarFieldEnum: {
+    id: 'id',
+    alapadatok_id: 'alapadatok_id',
+    tanev_kezdete: 'tanev_kezdete',
+    Alkalmazott_oktatasi_azonosito: 'Alkalmazott_oktatasi_azonosito',
+    Intezmeny_OM_azonosito: 'Intezmeny_OM_azonosito',
+    Intezmeny_nev: 'Intezmeny_nev',
+    Intezmeny_szekhely_telepules_nev: 'Intezmeny_szekhely_telepules_nev',
+    Intezmeny_szekhely_telepules_iranyitoszam: 'Intezmeny_szekhely_telepules_iranyitoszam',
+    Intezmeny_szekhely_cim: 'Intezmeny_szekhely_cim',
+    Intezmeny_szekhely_email: 'Intezmeny_szekhely_email',
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito: 'Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito',
+    Feladatellatasi_hely_nev: 'Feladatellatasi_hely_nev',
+    Feladatellatasi_hely_telepules_nev: 'Feladatellatasi_hely_telepules_nev',
+    Feladatellatasi_hely_telepules_iranyitoszam: 'Feladatellatasi_hely_telepules_iranyitoszam',
+    Feladatellatasi_hely_cim: 'Feladatellatasi_hely_cim',
+    Feladatellatasi_hely_email: 'Feladatellatasi_hely_email',
+    Feladatellatasi_hely_tipus_ellatott_feladat: 'Feladatellatasi_hely_tipus_ellatott_feladat',
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado: 'Oktato_teljes_munkaidos_reszmunkaidos_oraado',
+    Oktato_nem: 'Oktato_nem',
+    Oktato_koreve: 'Oktato_koreve',
+    Oktato_magasabb_vezetoi_megbizas: 'Oktato_magasabb_vezetoi_megbizas',
+    Oktato_munkakor: 'Oktato_munkakor',
+    Oktato_vegzettseg: 'Oktato_vegzettseg',
+    Oktato_fokozatok: 'Oktato_fokozatok',
+    Oktato_oktatott_targykategoria_1_szerint: 'Oktato_oktatott_targykategoria_1_szerint',
+    Oktato_oktatott_targykategoria_2_szerint: 'Oktato_oktatott_targykategoria_2_szerint',
+    Oktato_oktatott_targykategoria_3_szerint: 'Oktato_oktatott_targykategoria_3_szerint',
+    Oktato_tantervi_jellemzo_szerint: 'Oktato_tantervi_jellemzo_szerint',
+    Oktato_Nyugdijas: 'Oktato_Nyugdijas',
+    Oktato_Tartosan_tavol_levo: 'Oktato_Tartosan_tavol_levo',
+    Oktato_Palyakezdo: 'Oktato_Palyakezdo',
+    Oktato_Internetet_oktatasi_celra_hasznalo: 'Oktato_Internetet_oktatasi_celra_hasznalo',
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok: 'Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok',
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja: 'Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja',
+    createBy: 'createBy'
+  };
+
+  export type OktatoAdatszolgScalarFieldEnum = (typeof OktatoAdatszolgScalarFieldEnum)[keyof typeof OktatoAdatszolgScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -48702,6 +52832,7 @@ export namespace Prisma {
     name?: StringFilter<"TableList"> | string
     alias?: StringNullableFilter<"TableList"> | string | null
     isAvailable?: BoolFilter<"TableList"> | boolean
+    isLocked?: BoolFilter<"TableList"> | boolean
     createdAt?: DateTimeFilter<"TableList"> | Date | string
     updatedAt?: DateTimeNullableFilter<"TableList"> | Date | string | null
     access?: TableAccessListRelationFilter
@@ -48712,6 +52843,7 @@ export namespace Prisma {
     name?: SortOrder
     alias?: SortOrderInput | SortOrder
     isAvailable?: SortOrder
+    isLocked?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     access?: TableAccessOrderByRelationAggregateInput
@@ -48725,6 +52857,7 @@ export namespace Prisma {
     NOT?: TableListWhereInput | TableListWhereInput[]
     alias?: StringNullableFilter<"TableList"> | string | null
     isAvailable?: BoolFilter<"TableList"> | boolean
+    isLocked?: BoolFilter<"TableList"> | boolean
     createdAt?: DateTimeFilter<"TableList"> | Date | string
     updatedAt?: DateTimeNullableFilter<"TableList"> | Date | string | null
     access?: TableAccessListRelationFilter
@@ -48735,6 +52868,7 @@ export namespace Prisma {
     name?: SortOrder
     alias?: SortOrderInput | SortOrder
     isAvailable?: SortOrder
+    isLocked?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: TableListCountOrderByAggregateInput
@@ -48750,6 +52884,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"TableList"> | string
     alias?: StringNullableWithAggregatesFilter<"TableList"> | string | null
     isAvailable?: BoolWithAggregatesFilter<"TableList"> | boolean
+    isLocked?: BoolWithAggregatesFilter<"TableList"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"TableList"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"TableList"> | Date | string | null
   }
@@ -48948,6 +53083,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokListRelationFilter
     dobbanto?: DobbantoListRelationFilter
     muhelyiskola?: MuhelyiskolaListRelationFilter
+    tanuloAdatszolg?: TanuloAdatszolgListRelationFilter
+    oktatoAdatszolg?: OktatoAdatszolgListRelationFilter
     users?: UserListRelationFilter
     OktatoEgyebTev?: OktatoEgyebTevListRelationFilter
   }
@@ -48980,6 +53117,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokOrderByRelationAggregateInput
     dobbanto?: DobbantoOrderByRelationAggregateInput
     muhelyiskola?: MuhelyiskolaOrderByRelationAggregateInput
+    tanuloAdatszolg?: TanuloAdatszolgOrderByRelationAggregateInput
+    oktatoAdatszolg?: OktatoAdatszolgOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
     OktatoEgyebTev?: OktatoEgyebTevOrderByRelationAggregateInput
   }
@@ -49015,6 +53154,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokListRelationFilter
     dobbanto?: DobbantoListRelationFilter
     muhelyiskola?: MuhelyiskolaListRelationFilter
+    tanuloAdatszolg?: TanuloAdatszolgListRelationFilter
+    oktatoAdatszolg?: OktatoAdatszolgListRelationFilter
     users?: UserListRelationFilter
     OktatoEgyebTev?: OktatoEgyebTevListRelationFilter
   }, "id">
@@ -49579,10 +53720,10 @@ export namespace Prisma {
     NOT?: KompetenciaWhereInput | KompetenciaWhereInput[]
     id?: UuidFilter<"Kompetencia"> | string
     tanev_kezdete?: IntFilter<"Kompetencia"> | number
-    mat_orsz_p?: StringFilter<"Kompetencia"> | string
-    szoveg_orsz_p?: StringFilter<"Kompetencia"> | string
-    mat_int_p?: StringFilter<"Kompetencia"> | string
-    szoveg_int_p?: StringFilter<"Kompetencia"> | string
+    mat_orsz_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFilter<"Kompetencia"> | string
     alapadatok_id?: UuidFilter<"Kompetencia"> | string
     createAt?: DateTimeFilter<"Kompetencia"> | Date | string
@@ -49614,10 +53755,10 @@ export namespace Prisma {
     OR?: KompetenciaWhereInput[]
     NOT?: KompetenciaWhereInput | KompetenciaWhereInput[]
     tanev_kezdete?: IntFilter<"Kompetencia"> | number
-    mat_orsz_p?: StringFilter<"Kompetencia"> | string
-    szoveg_orsz_p?: StringFilter<"Kompetencia"> | string
-    mat_int_p?: StringFilter<"Kompetencia"> | string
-    szoveg_int_p?: StringFilter<"Kompetencia"> | string
+    mat_orsz_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFilter<"Kompetencia"> | string
     alapadatok_id?: UuidFilter<"Kompetencia"> | string
     createAt?: DateTimeFilter<"Kompetencia"> | Date | string
@@ -49653,10 +53794,10 @@ export namespace Prisma {
     NOT?: KompetenciaScalarWhereWithAggregatesInput | KompetenciaScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Kompetencia"> | string
     tanev_kezdete?: IntWithAggregatesFilter<"Kompetencia"> | number
-    mat_orsz_p?: StringWithAggregatesFilter<"Kompetencia"> | string
-    szoveg_orsz_p?: StringWithAggregatesFilter<"Kompetencia"> | string
-    mat_int_p?: StringWithAggregatesFilter<"Kompetencia"> | string
-    szoveg_int_p?: StringWithAggregatesFilter<"Kompetencia"> | string
+    mat_orsz_p?: DecimalWithAggregatesFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalWithAggregatesFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalWithAggregatesFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalWithAggregatesFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringWithAggregatesFilter<"Kompetencia"> | string
     alapadatok_id?: UuidWithAggregatesFilter<"Kompetencia"> | string
     createAt?: DateTimeWithAggregatesFilter<"Kompetencia"> | Date | string
@@ -52033,6 +56174,705 @@ export namespace Prisma {
     oktatok_letszama?: IntWithAggregatesFilter<"OktatoEgyebTev"> | number
   }
 
+  export type TanuloAdatszolgWhereInput = {
+    AND?: TanuloAdatszolgWhereInput | TanuloAdatszolgWhereInput[]
+    OR?: TanuloAdatszolgWhereInput[]
+    NOT?: TanuloAdatszolgWhereInput | TanuloAdatszolgWhereInput[]
+    id?: UuidFilter<"TanuloAdatszolg"> | string
+    alapadatok_id?: UuidFilter<"TanuloAdatszolg"> | string
+    tanev_kezdete?: IntFilter<"TanuloAdatszolg"> | number
+    Tanulo_Oktatasi_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_tanulo_lakohely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_Koreve?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_jogviszonya?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nem?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tantervi_jellemzo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Munkarend?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Evfolyam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakma_Szakma?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Fogyatekossag_tipusa?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kiemelten_tehetseges?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Evfolyamismetlo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Egyeni_tanrend_szerint_tanul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanmuhelyben_tanul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Mas_telepulesrol_bejar?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kollegiumban_lakik?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Externatusi_ellatasban_reszesitett?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Etkeztetesben_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Gyakorlathoz_kotheto_jogviszony?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Napkoziotthoni_ellatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Hatranyos_helyzetu?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Halmozottan_hatranyos_helyzetu?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Etika_oktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatas_alol_felmentett?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tandijas?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Teritesi_dijas?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kezdo_evfolyamos_tanulo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Diaksport_egyesulet_tagja?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Arany_Janos_Tehetseggondozo_Program?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_3?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_3?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_nyelv?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    createBy?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
+  }
+
+  export type TanuloAdatszolgOrderByWithRelationInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Tanulo_Oktatasi_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_OM_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_cim?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_email?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_cim?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_email?: SortOrderInput | SortOrder
+    Lakohely_tanulo_lakohely_telepules?: SortOrderInput | SortOrder
+    Lakohely_szulo_allando_lakohely_telepules?: SortOrderInput | SortOrder
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: SortOrderInput | SortOrder
+    Tanulo_Koreve?: SortOrderInput | SortOrder
+    Tanulo_jogviszonya?: SortOrderInput | SortOrder
+    Nem?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrderInput | SortOrder
+    Tantervi_jellemzo?: SortOrderInput | SortOrder
+    Munkarend?: SortOrderInput | SortOrder
+    Evfolyam?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Szakmacsoport?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Agazat?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_kod?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Reszszakkepesites?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Agazat?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: SortOrderInput | SortOrder
+    Uj_Szkt_Reszszakmak_Agazat?: SortOrderInput | SortOrder
+    Uj_Szkt_Reszszakma_Szakma?: SortOrderInput | SortOrder
+    Uj_Szkt_Reszszakmak_Reszszakma?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: SortOrderInput | SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: SortOrderInput | SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: SortOrderInput | SortOrder
+    Programkovetelmenyes_szakmai_kepzes?: SortOrderInput | SortOrder
+    Allampolgarsag_orszaga_1?: SortOrderInput | SortOrder
+    Allampolgarsag_orszaga_2?: SortOrderInput | SortOrder
+    Sajatos_nevelesi_igeny?: SortOrderInput | SortOrder
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: SortOrderInput | SortOrder
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: SortOrderInput | SortOrder
+    Fogyatekossag_tipusa?: SortOrderInput | SortOrder
+    Kiemelten_tehetseges?: SortOrderInput | SortOrder
+    Evfolyamismetlo?: SortOrderInput | SortOrder
+    Egyeni_tanrend_szerint_tanul?: SortOrderInput | SortOrder
+    Tanmuhelyben_tanul?: SortOrderInput | SortOrder
+    Mas_telepulesrol_bejar?: SortOrderInput | SortOrder
+    Kollegiumban_lakik?: SortOrderInput | SortOrder
+    Externatusi_ellatasban_reszesitett?: SortOrderInput | SortOrder
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: SortOrderInput | SortOrder
+    Etkeztetesben_reszesul?: SortOrderInput | SortOrder
+    Gyakorlathoz_kotheto_jogviszony?: SortOrderInput | SortOrder
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: SortOrderInput | SortOrder
+    Napkoziotthoni_ellatasban_reszesul?: SortOrderInput | SortOrder
+    Hatranyos_helyzetu?: SortOrderInput | SortOrder
+    Halmozottan_hatranyos_helyzetu?: SortOrderInput | SortOrder
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: SortOrderInput | SortOrder
+    Szamitogepet_oktatasi_celra_hasznal?: SortOrderInput | SortOrder
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: SortOrderInput | SortOrder
+    Etika_oktatasban_reszesul?: SortOrderInput | SortOrder
+    Nyelvoktatasban_reszesul?: SortOrderInput | SortOrder
+    Nyelvoktatas_alol_felmentett?: SortOrderInput | SortOrder
+    Tandijas?: SortOrderInput | SortOrder
+    Teritesi_dijas?: SortOrderInput | SortOrder
+    Kezdo_evfolyamos_tanulo?: SortOrderInput | SortOrder
+    Iskolai_sportkorben_resztvevo_tanulo?: SortOrderInput | SortOrder
+    Diaksport_egyesulet_tagja?: SortOrderInput | SortOrder
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: SortOrderInput | SortOrder
+    Arany_Janos_Tehetseggondozo_Program?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatasban_vesz_reszt?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatas_tantargy_1?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatas_tantargy_2?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatas_tantargy_3?: SortOrderInput | SortOrder
+    Tanult_idegen_nyelv_1?: SortOrderInput | SortOrder
+    Tanult_idegen_nyelv_2?: SortOrderInput | SortOrder
+    Tanult_idegen_nyelv_3?: SortOrderInput | SortOrder
+    Tanulo_nemzetisegi_nyelvoktatasa?: SortOrderInput | SortOrder
+    Nemzetisegi_neveles_oktatas_fajtaja?: SortOrderInput | SortOrder
+    Nemzetisegi_nyelv?: SortOrderInput | SortOrder
+    Egesz_napos_iskolai_oktatasban_reszesul?: SortOrderInput | SortOrder
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: SortOrderInput | SortOrder
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: SortOrderInput | SortOrder
+    createBy?: SortOrderInput | SortOrder
+    alapadatok?: AlapadatokOrderByWithRelationInput
+  }
+
+  export type TanuloAdatszolgWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TanuloAdatszolgWhereInput | TanuloAdatszolgWhereInput[]
+    OR?: TanuloAdatszolgWhereInput[]
+    NOT?: TanuloAdatszolgWhereInput | TanuloAdatszolgWhereInput[]
+    alapadatok_id?: UuidFilter<"TanuloAdatszolg"> | string
+    tanev_kezdete?: IntFilter<"TanuloAdatszolg"> | number
+    Tanulo_Oktatasi_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_tanulo_lakohely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_Koreve?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_jogviszonya?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nem?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tantervi_jellemzo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Munkarend?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Evfolyam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakma_Szakma?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Fogyatekossag_tipusa?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kiemelten_tehetseges?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Evfolyamismetlo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Egyeni_tanrend_szerint_tanul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanmuhelyben_tanul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Mas_telepulesrol_bejar?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kollegiumban_lakik?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Externatusi_ellatasban_reszesitett?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Etkeztetesben_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Gyakorlathoz_kotheto_jogviszony?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Napkoziotthoni_ellatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Hatranyos_helyzetu?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Halmozottan_hatranyos_helyzetu?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Etika_oktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatas_alol_felmentett?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tandijas?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Teritesi_dijas?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kezdo_evfolyamos_tanulo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Diaksport_egyesulet_tagja?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Arany_Janos_Tehetseggondozo_Program?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_3?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_3?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_nyelv?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    createBy?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
+  }, "id">
+
+  export type TanuloAdatszolgOrderByWithAggregationInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Tanulo_Oktatasi_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_OM_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_cim?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_email?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_cim?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_email?: SortOrderInput | SortOrder
+    Lakohely_tanulo_lakohely_telepules?: SortOrderInput | SortOrder
+    Lakohely_szulo_allando_lakohely_telepules?: SortOrderInput | SortOrder
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: SortOrderInput | SortOrder
+    Tanulo_Koreve?: SortOrderInput | SortOrder
+    Tanulo_jogviszonya?: SortOrderInput | SortOrder
+    Nem?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrderInput | SortOrder
+    Tantervi_jellemzo?: SortOrderInput | SortOrder
+    Munkarend?: SortOrderInput | SortOrder
+    Evfolyam?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Szakmacsoport?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Agazat?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_kod?: SortOrderInput | SortOrder
+    Regi_Szkt_OKJ_Reszszakkepesites?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Agazat?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: SortOrderInput | SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: SortOrderInput | SortOrder
+    Uj_Szkt_Reszszakmak_Agazat?: SortOrderInput | SortOrder
+    Uj_Szkt_Reszszakma_Szakma?: SortOrderInput | SortOrder
+    Uj_Szkt_Reszszakmak_Reszszakma?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: SortOrderInput | SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: SortOrderInput | SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: SortOrderInput | SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: SortOrderInput | SortOrder
+    Programkovetelmenyes_szakmai_kepzes?: SortOrderInput | SortOrder
+    Allampolgarsag_orszaga_1?: SortOrderInput | SortOrder
+    Allampolgarsag_orszaga_2?: SortOrderInput | SortOrder
+    Sajatos_nevelesi_igeny?: SortOrderInput | SortOrder
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: SortOrderInput | SortOrder
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: SortOrderInput | SortOrder
+    Fogyatekossag_tipusa?: SortOrderInput | SortOrder
+    Kiemelten_tehetseges?: SortOrderInput | SortOrder
+    Evfolyamismetlo?: SortOrderInput | SortOrder
+    Egyeni_tanrend_szerint_tanul?: SortOrderInput | SortOrder
+    Tanmuhelyben_tanul?: SortOrderInput | SortOrder
+    Mas_telepulesrol_bejar?: SortOrderInput | SortOrder
+    Kollegiumban_lakik?: SortOrderInput | SortOrder
+    Externatusi_ellatasban_reszesitett?: SortOrderInput | SortOrder
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: SortOrderInput | SortOrder
+    Etkeztetesben_reszesul?: SortOrderInput | SortOrder
+    Gyakorlathoz_kotheto_jogviszony?: SortOrderInput | SortOrder
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: SortOrderInput | SortOrder
+    Napkoziotthoni_ellatasban_reszesul?: SortOrderInput | SortOrder
+    Hatranyos_helyzetu?: SortOrderInput | SortOrder
+    Halmozottan_hatranyos_helyzetu?: SortOrderInput | SortOrder
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: SortOrderInput | SortOrder
+    Szamitogepet_oktatasi_celra_hasznal?: SortOrderInput | SortOrder
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: SortOrderInput | SortOrder
+    Etika_oktatasban_reszesul?: SortOrderInput | SortOrder
+    Nyelvoktatasban_reszesul?: SortOrderInput | SortOrder
+    Nyelvoktatas_alol_felmentett?: SortOrderInput | SortOrder
+    Tandijas?: SortOrderInput | SortOrder
+    Teritesi_dijas?: SortOrderInput | SortOrder
+    Kezdo_evfolyamos_tanulo?: SortOrderInput | SortOrder
+    Iskolai_sportkorben_resztvevo_tanulo?: SortOrderInput | SortOrder
+    Diaksport_egyesulet_tagja?: SortOrderInput | SortOrder
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: SortOrderInput | SortOrder
+    Arany_Janos_Tehetseggondozo_Program?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatasban_vesz_reszt?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatas_tantargy_1?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatas_tantargy_2?: SortOrderInput | SortOrder
+    Emelt_szintu_oktatas_tantargy_3?: SortOrderInput | SortOrder
+    Tanult_idegen_nyelv_1?: SortOrderInput | SortOrder
+    Tanult_idegen_nyelv_2?: SortOrderInput | SortOrder
+    Tanult_idegen_nyelv_3?: SortOrderInput | SortOrder
+    Tanulo_nemzetisegi_nyelvoktatasa?: SortOrderInput | SortOrder
+    Nemzetisegi_neveles_oktatas_fajtaja?: SortOrderInput | SortOrder
+    Nemzetisegi_nyelv?: SortOrderInput | SortOrder
+    Egesz_napos_iskolai_oktatasban_reszesul?: SortOrderInput | SortOrder
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: SortOrderInput | SortOrder
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: SortOrderInput | SortOrder
+    createBy?: SortOrderInput | SortOrder
+    _count?: TanuloAdatszolgCountOrderByAggregateInput
+    _avg?: TanuloAdatszolgAvgOrderByAggregateInput
+    _max?: TanuloAdatszolgMaxOrderByAggregateInput
+    _min?: TanuloAdatszolgMinOrderByAggregateInput
+    _sum?: TanuloAdatszolgSumOrderByAggregateInput
+  }
+
+  export type TanuloAdatszolgScalarWhereWithAggregatesInput = {
+    AND?: TanuloAdatszolgScalarWhereWithAggregatesInput | TanuloAdatszolgScalarWhereWithAggregatesInput[]
+    OR?: TanuloAdatszolgScalarWhereWithAggregatesInput[]
+    NOT?: TanuloAdatszolgScalarWhereWithAggregatesInput | TanuloAdatszolgScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"TanuloAdatszolg"> | string
+    alapadatok_id?: UuidWithAggregatesFilter<"TanuloAdatszolg"> | string
+    tanev_kezdete?: IntWithAggregatesFilter<"TanuloAdatszolg"> | number
+    Tanulo_Oktatasi_azonosito?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_tanulo_lakohely_telepules?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_Koreve?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_jogviszonya?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nem?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tantervi_jellemzo?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Munkarend?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Evfolyam?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Agazat?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakma_Szakma?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_1?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_2?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Fogyatekossag_tipusa?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Kiemelten_tehetseges?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Evfolyamismetlo?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Egyeni_tanrend_szerint_tanul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanmuhelyben_tanul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Mas_telepulesrol_bejar?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Kollegiumban_lakik?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Externatusi_ellatasban_reszesitett?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Etkeztetesben_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Gyakorlathoz_kotheto_jogviszony?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Napkoziotthoni_ellatasban_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Hatranyos_helyzetu?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Halmozottan_hatranyos_helyzetu?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Etika_oktatasban_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatasban_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatas_alol_felmentett?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tandijas?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Teritesi_dijas?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Kezdo_evfolyamos_tanulo?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Diaksport_egyesulet_tagja?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Arany_Janos_Tehetseggondozo_Program?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_1?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_2?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_3?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_1?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_2?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_3?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_nyelv?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+    createBy?: StringNullableWithAggregatesFilter<"TanuloAdatszolg"> | string | null
+  }
+
+  export type OktatoAdatszolgWhereInput = {
+    AND?: OktatoAdatszolgWhereInput | OktatoAdatszolgWhereInput[]
+    OR?: OktatoAdatszolgWhereInput[]
+    NOT?: OktatoAdatszolgWhereInput | OktatoAdatszolgWhereInput[]
+    id?: UuidFilter<"OktatoAdatszolg"> | string
+    alapadatok_id?: UuidFilter<"OktatoAdatszolg"> | string
+    tanev_kezdete?: IntFilter<"OktatoAdatszolg"> | number
+    Alkalmazott_oktatasi_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_nem?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_koreve?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_magasabb_vezetoi_megbizas?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_munkakor?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_vegzettseg?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_fokozatok?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_tantervi_jellemzo_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Nyugdijas?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Tartosan_tavol_levo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Palyakezdo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    createBy?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
+  }
+
+  export type OktatoAdatszolgOrderByWithRelationInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Alkalmazott_oktatasi_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_OM_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_cim?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_email?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_cim?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_email?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrderInput | SortOrder
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: SortOrderInput | SortOrder
+    Oktato_nem?: SortOrderInput | SortOrder
+    Oktato_koreve?: SortOrderInput | SortOrder
+    Oktato_magasabb_vezetoi_megbizas?: SortOrderInput | SortOrder
+    Oktato_munkakor?: SortOrderInput | SortOrder
+    Oktato_vegzettseg?: SortOrderInput | SortOrder
+    Oktato_fokozatok?: SortOrderInput | SortOrder
+    Oktato_oktatott_targykategoria_1_szerint?: SortOrderInput | SortOrder
+    Oktato_oktatott_targykategoria_2_szerint?: SortOrderInput | SortOrder
+    Oktato_oktatott_targykategoria_3_szerint?: SortOrderInput | SortOrder
+    Oktato_tantervi_jellemzo_szerint?: SortOrderInput | SortOrder
+    Oktato_Nyugdijas?: SortOrderInput | SortOrder
+    Oktato_Tartosan_tavol_levo?: SortOrderInput | SortOrder
+    Oktato_Palyakezdo?: SortOrderInput | SortOrder
+    Oktato_Internetet_oktatasi_celra_hasznalo?: SortOrderInput | SortOrder
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: SortOrderInput | SortOrder
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: SortOrderInput | SortOrder
+    createBy?: SortOrderInput | SortOrder
+    alapadatok?: AlapadatokOrderByWithRelationInput
+  }
+
+  export type OktatoAdatszolgWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: OktatoAdatszolgWhereInput | OktatoAdatszolgWhereInput[]
+    OR?: OktatoAdatszolgWhereInput[]
+    NOT?: OktatoAdatszolgWhereInput | OktatoAdatszolgWhereInput[]
+    alapadatok_id?: UuidFilter<"OktatoAdatszolg"> | string
+    tanev_kezdete?: IntFilter<"OktatoAdatszolg"> | number
+    Alkalmazott_oktatasi_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_nem?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_koreve?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_magasabb_vezetoi_megbizas?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_munkakor?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_vegzettseg?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_fokozatok?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_tantervi_jellemzo_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Nyugdijas?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Tartosan_tavol_levo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Palyakezdo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    createBy?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    alapadatok?: XOR<AlapadatokScalarRelationFilter, AlapadatokWhereInput>
+  }, "id">
+
+  export type OktatoAdatszolgOrderByWithAggregationInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Alkalmazott_oktatasi_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_OM_azonosito?: SortOrderInput | SortOrder
+    Intezmeny_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_cim?: SortOrderInput | SortOrder
+    Intezmeny_szekhely_email?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_cim?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_email?: SortOrderInput | SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrderInput | SortOrder
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: SortOrderInput | SortOrder
+    Oktato_nem?: SortOrderInput | SortOrder
+    Oktato_koreve?: SortOrderInput | SortOrder
+    Oktato_magasabb_vezetoi_megbizas?: SortOrderInput | SortOrder
+    Oktato_munkakor?: SortOrderInput | SortOrder
+    Oktato_vegzettseg?: SortOrderInput | SortOrder
+    Oktato_fokozatok?: SortOrderInput | SortOrder
+    Oktato_oktatott_targykategoria_1_szerint?: SortOrderInput | SortOrder
+    Oktato_oktatott_targykategoria_2_szerint?: SortOrderInput | SortOrder
+    Oktato_oktatott_targykategoria_3_szerint?: SortOrderInput | SortOrder
+    Oktato_tantervi_jellemzo_szerint?: SortOrderInput | SortOrder
+    Oktato_Nyugdijas?: SortOrderInput | SortOrder
+    Oktato_Tartosan_tavol_levo?: SortOrderInput | SortOrder
+    Oktato_Palyakezdo?: SortOrderInput | SortOrder
+    Oktato_Internetet_oktatasi_celra_hasznalo?: SortOrderInput | SortOrder
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: SortOrderInput | SortOrder
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: SortOrderInput | SortOrder
+    createBy?: SortOrderInput | SortOrder
+    _count?: OktatoAdatszolgCountOrderByAggregateInput
+    _avg?: OktatoAdatszolgAvgOrderByAggregateInput
+    _max?: OktatoAdatszolgMaxOrderByAggregateInput
+    _min?: OktatoAdatszolgMinOrderByAggregateInput
+    _sum?: OktatoAdatszolgSumOrderByAggregateInput
+  }
+
+  export type OktatoAdatszolgScalarWhereWithAggregatesInput = {
+    AND?: OktatoAdatszolgScalarWhereWithAggregatesInput | OktatoAdatszolgScalarWhereWithAggregatesInput[]
+    OR?: OktatoAdatszolgScalarWhereWithAggregatesInput[]
+    NOT?: OktatoAdatszolgScalarWhereWithAggregatesInput | OktatoAdatszolgScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"OktatoAdatszolg"> | string
+    alapadatok_id?: UuidWithAggregatesFilter<"OktatoAdatszolg"> | string
+    tanev_kezdete?: IntWithAggregatesFilter<"OktatoAdatszolg"> | number
+    Alkalmazott_oktatasi_azonosito?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_nem?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_koreve?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_magasabb_vezetoi_megbizas?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_munkakor?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_vegzettseg?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_fokozatok?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_tantervi_jellemzo_szerint?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Nyugdijas?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Tartosan_tavol_levo?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Palyakezdo?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+    createBy?: StringNullableWithAggregatesFilter<"OktatoAdatszolg"> | string | null
+  }
+
   export type SessionCreateInput = {
     id: string
     sid: string
@@ -52178,6 +57018,7 @@ export namespace Prisma {
     name: string
     alias?: string | null
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     access?: TableAccessCreateNestedManyWithoutTableInput
@@ -52188,6 +57029,7 @@ export namespace Prisma {
     name: string
     alias?: string | null
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     access?: TableAccessUncheckedCreateNestedManyWithoutTableInput
@@ -52198,6 +57040,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     access?: TableAccessUpdateManyWithoutTableNestedInput
@@ -52208,6 +57051,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     access?: TableAccessUncheckedUpdateManyWithoutTableNestedInput
@@ -52218,6 +57062,7 @@ export namespace Prisma {
     name: string
     alias?: string | null
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -52227,6 +57072,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -52236,6 +57082,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -52440,6 +57287,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -52472,6 +57321,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -52504,6 +57355,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -52536,6 +57389,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -53096,10 +57951,10 @@ export namespace Prisma {
   export type KompetenciaCreateInput = {
     id?: string
     tanev_kezdete?: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p?: Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: Decimal | DecimalJsLike | number | string
+    mat_int_p?: Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: Decimal | DecimalJsLike | number | string
     kepzes_forma: string
     createAt?: Date | string
     createBy?: string | null
@@ -53111,10 +57966,10 @@ export namespace Prisma {
   export type KompetenciaUncheckedCreateInput = {
     id?: string
     tanev_kezdete?: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p?: Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: Decimal | DecimalJsLike | number | string
+    mat_int_p?: Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: Decimal | DecimalJsLike | number | string
     kepzes_forma: string
     alapadatok_id: string
     createAt?: Date | string
@@ -53126,10 +57981,10 @@ export namespace Prisma {
   export type KompetenciaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53141,10 +57996,10 @@ export namespace Prisma {
   export type KompetenciaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -53156,10 +58011,10 @@ export namespace Prisma {
   export type KompetenciaCreateManyInput = {
     id?: string
     tanev_kezdete?: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p?: Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: Decimal | DecimalJsLike | number | string
+    mat_int_p?: Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: Decimal | DecimalJsLike | number | string
     kepzes_forma: string
     alapadatok_id: string
     createAt?: Date | string
@@ -53171,10 +58026,10 @@ export namespace Prisma {
   export type KompetenciaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53185,10 +58040,10 @@ export namespace Prisma {
   export type KompetenciaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     alapadatok_id?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55959,6 +60814,935 @@ export namespace Prisma {
     oktatok_letszama?: IntFieldUpdateOperationsInput | number
   }
 
+  export type TanuloAdatszolgCreateInput = {
+    id?: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Lakohely_tanulo_lakohely_telepules?: string | null
+    Lakohely_szulo_allando_lakohely_telepules?: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: string | null
+    Tanulo_Koreve?: string | null
+    Tanulo_jogviszonya?: string | null
+    Nem?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Tantervi_jellemzo?: string | null
+    Munkarend?: string | null
+    Evfolyam?: string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: string | null
+    Regi_Szkt_OKJ_Agazat?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: string | null
+    Uj_Szkt_Reszszakmak_Agazat?: string | null
+    Uj_Szkt_Reszszakma_Szakma?: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: string | null
+    Programkovetelmenyes_szakmai_kepzes?: string | null
+    Allampolgarsag_orszaga_1?: string | null
+    Allampolgarsag_orszaga_2?: string | null
+    Sajatos_nevelesi_igeny?: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: string | null
+    Fogyatekossag_tipusa?: string | null
+    Kiemelten_tehetseges?: string | null
+    Evfolyamismetlo?: string | null
+    Egyeni_tanrend_szerint_tanul?: string | null
+    Tanmuhelyben_tanul?: string | null
+    Mas_telepulesrol_bejar?: string | null
+    Kollegiumban_lakik?: string | null
+    Externatusi_ellatasban_reszesitett?: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: string | null
+    Etkeztetesben_reszesul?: string | null
+    Gyakorlathoz_kotheto_jogviszony?: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: string | null
+    Napkoziotthoni_ellatasban_reszesul?: string | null
+    Hatranyos_helyzetu?: string | null
+    Halmozottan_hatranyos_helyzetu?: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: string | null
+    Szamitogepet_oktatasi_celra_hasznal?: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: string | null
+    Etika_oktatasban_reszesul?: string | null
+    Nyelvoktatasban_reszesul?: string | null
+    Nyelvoktatas_alol_felmentett?: string | null
+    Tandijas?: string | null
+    Teritesi_dijas?: string | null
+    Kezdo_evfolyamos_tanulo?: string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: string | null
+    Diaksport_egyesulet_tagja?: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: string | null
+    Arany_Janos_Tehetseggondozo_Program?: string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: string | null
+    Emelt_szintu_oktatas_tantargy_1?: string | null
+    Emelt_szintu_oktatas_tantargy_2?: string | null
+    Emelt_szintu_oktatas_tantargy_3?: string | null
+    Tanult_idegen_nyelv_1?: string | null
+    Tanult_idegen_nyelv_2?: string | null
+    Tanult_idegen_nyelv_3?: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: string | null
+    Nemzetisegi_nyelv?: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: string | null
+    createBy?: string | null
+    alapadatok: AlapadatokCreateNestedOneWithoutTanuloAdatszolgInput
+  }
+
+  export type TanuloAdatszolgUncheckedCreateInput = {
+    id?: string
+    alapadatok_id: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Lakohely_tanulo_lakohely_telepules?: string | null
+    Lakohely_szulo_allando_lakohely_telepules?: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: string | null
+    Tanulo_Koreve?: string | null
+    Tanulo_jogviszonya?: string | null
+    Nem?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Tantervi_jellemzo?: string | null
+    Munkarend?: string | null
+    Evfolyam?: string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: string | null
+    Regi_Szkt_OKJ_Agazat?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: string | null
+    Uj_Szkt_Reszszakmak_Agazat?: string | null
+    Uj_Szkt_Reszszakma_Szakma?: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: string | null
+    Programkovetelmenyes_szakmai_kepzes?: string | null
+    Allampolgarsag_orszaga_1?: string | null
+    Allampolgarsag_orszaga_2?: string | null
+    Sajatos_nevelesi_igeny?: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: string | null
+    Fogyatekossag_tipusa?: string | null
+    Kiemelten_tehetseges?: string | null
+    Evfolyamismetlo?: string | null
+    Egyeni_tanrend_szerint_tanul?: string | null
+    Tanmuhelyben_tanul?: string | null
+    Mas_telepulesrol_bejar?: string | null
+    Kollegiumban_lakik?: string | null
+    Externatusi_ellatasban_reszesitett?: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: string | null
+    Etkeztetesben_reszesul?: string | null
+    Gyakorlathoz_kotheto_jogviszony?: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: string | null
+    Napkoziotthoni_ellatasban_reszesul?: string | null
+    Hatranyos_helyzetu?: string | null
+    Halmozottan_hatranyos_helyzetu?: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: string | null
+    Szamitogepet_oktatasi_celra_hasznal?: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: string | null
+    Etika_oktatasban_reszesul?: string | null
+    Nyelvoktatasban_reszesul?: string | null
+    Nyelvoktatas_alol_felmentett?: string | null
+    Tandijas?: string | null
+    Teritesi_dijas?: string | null
+    Kezdo_evfolyamos_tanulo?: string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: string | null
+    Diaksport_egyesulet_tagja?: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: string | null
+    Arany_Janos_Tehetseggondozo_Program?: string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: string | null
+    Emelt_szintu_oktatas_tantargy_1?: string | null
+    Emelt_szintu_oktatas_tantargy_2?: string | null
+    Emelt_szintu_oktatas_tantargy_3?: string | null
+    Tanult_idegen_nyelv_1?: string | null
+    Tanult_idegen_nyelv_2?: string | null
+    Tanult_idegen_nyelv_3?: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: string | null
+    Nemzetisegi_nyelv?: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: string | null
+    createBy?: string | null
+  }
+
+  export type TanuloAdatszolgUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+    alapadatok?: AlapadatokUpdateOneRequiredWithoutTanuloAdatszolgNestedInput
+  }
+
+  export type TanuloAdatszolgUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    alapadatok_id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TanuloAdatszolgCreateManyInput = {
+    id?: string
+    alapadatok_id: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Lakohely_tanulo_lakohely_telepules?: string | null
+    Lakohely_szulo_allando_lakohely_telepules?: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: string | null
+    Tanulo_Koreve?: string | null
+    Tanulo_jogviszonya?: string | null
+    Nem?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Tantervi_jellemzo?: string | null
+    Munkarend?: string | null
+    Evfolyam?: string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: string | null
+    Regi_Szkt_OKJ_Agazat?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: string | null
+    Uj_Szkt_Reszszakmak_Agazat?: string | null
+    Uj_Szkt_Reszszakma_Szakma?: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: string | null
+    Programkovetelmenyes_szakmai_kepzes?: string | null
+    Allampolgarsag_orszaga_1?: string | null
+    Allampolgarsag_orszaga_2?: string | null
+    Sajatos_nevelesi_igeny?: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: string | null
+    Fogyatekossag_tipusa?: string | null
+    Kiemelten_tehetseges?: string | null
+    Evfolyamismetlo?: string | null
+    Egyeni_tanrend_szerint_tanul?: string | null
+    Tanmuhelyben_tanul?: string | null
+    Mas_telepulesrol_bejar?: string | null
+    Kollegiumban_lakik?: string | null
+    Externatusi_ellatasban_reszesitett?: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: string | null
+    Etkeztetesben_reszesul?: string | null
+    Gyakorlathoz_kotheto_jogviszony?: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: string | null
+    Napkoziotthoni_ellatasban_reszesul?: string | null
+    Hatranyos_helyzetu?: string | null
+    Halmozottan_hatranyos_helyzetu?: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: string | null
+    Szamitogepet_oktatasi_celra_hasznal?: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: string | null
+    Etika_oktatasban_reszesul?: string | null
+    Nyelvoktatasban_reszesul?: string | null
+    Nyelvoktatas_alol_felmentett?: string | null
+    Tandijas?: string | null
+    Teritesi_dijas?: string | null
+    Kezdo_evfolyamos_tanulo?: string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: string | null
+    Diaksport_egyesulet_tagja?: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: string | null
+    Arany_Janos_Tehetseggondozo_Program?: string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: string | null
+    Emelt_szintu_oktatas_tantargy_1?: string | null
+    Emelt_szintu_oktatas_tantargy_2?: string | null
+    Emelt_szintu_oktatas_tantargy_3?: string | null
+    Tanult_idegen_nyelv_1?: string | null
+    Tanult_idegen_nyelv_2?: string | null
+    Tanult_idegen_nyelv_3?: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: string | null
+    Nemzetisegi_nyelv?: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: string | null
+    createBy?: string | null
+  }
+
+  export type TanuloAdatszolgUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TanuloAdatszolgUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    alapadatok_id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OktatoAdatszolgCreateInput = {
+    id?: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: string | null
+    Oktato_nem?: string | null
+    Oktato_koreve?: string | null
+    Oktato_magasabb_vezetoi_megbizas?: string | null
+    Oktato_munkakor?: string | null
+    Oktato_vegzettseg?: string | null
+    Oktato_fokozatok?: string | null
+    Oktato_oktatott_targykategoria_1_szerint?: string | null
+    Oktato_oktatott_targykategoria_2_szerint?: string | null
+    Oktato_oktatott_targykategoria_3_szerint?: string | null
+    Oktato_tantervi_jellemzo_szerint?: string | null
+    Oktato_Nyugdijas?: string | null
+    Oktato_Tartosan_tavol_levo?: string | null
+    Oktato_Palyakezdo?: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: string | null
+    createBy?: string | null
+    alapadatok: AlapadatokCreateNestedOneWithoutOktatoAdatszolgInput
+  }
+
+  export type OktatoAdatszolgUncheckedCreateInput = {
+    id?: string
+    alapadatok_id: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: string | null
+    Oktato_nem?: string | null
+    Oktato_koreve?: string | null
+    Oktato_magasabb_vezetoi_megbizas?: string | null
+    Oktato_munkakor?: string | null
+    Oktato_vegzettseg?: string | null
+    Oktato_fokozatok?: string | null
+    Oktato_oktatott_targykategoria_1_szerint?: string | null
+    Oktato_oktatott_targykategoria_2_szerint?: string | null
+    Oktato_oktatott_targykategoria_3_szerint?: string | null
+    Oktato_tantervi_jellemzo_szerint?: string | null
+    Oktato_Nyugdijas?: string | null
+    Oktato_Tartosan_tavol_levo?: string | null
+    Oktato_Palyakezdo?: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: string | null
+    createBy?: string | null
+  }
+
+  export type OktatoAdatszolgUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+    alapadatok?: AlapadatokUpdateOneRequiredWithoutOktatoAdatszolgNestedInput
+  }
+
+  export type OktatoAdatszolgUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    alapadatok_id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OktatoAdatszolgCreateManyInput = {
+    id?: string
+    alapadatok_id: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: string | null
+    Oktato_nem?: string | null
+    Oktato_koreve?: string | null
+    Oktato_magasabb_vezetoi_megbizas?: string | null
+    Oktato_munkakor?: string | null
+    Oktato_vegzettseg?: string | null
+    Oktato_fokozatok?: string | null
+    Oktato_oktatott_targykategoria_1_szerint?: string | null
+    Oktato_oktatott_targykategoria_2_szerint?: string | null
+    Oktato_oktatott_targykategoria_3_szerint?: string | null
+    Oktato_tantervi_jellemzo_szerint?: string | null
+    Oktato_Nyugdijas?: string | null
+    Oktato_Tartosan_tavol_levo?: string | null
+    Oktato_Palyakezdo?: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: string | null
+    createBy?: string | null
+  }
+
+  export type OktatoAdatszolgUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OktatoAdatszolgUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    alapadatok_id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -56269,6 +62053,7 @@ export namespace Prisma {
     name?: SortOrder
     alias?: SortOrder
     isAvailable?: SortOrder
+    isLocked?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -56278,6 +62063,7 @@ export namespace Prisma {
     name?: SortOrder
     alias?: SortOrder
     isAvailable?: SortOrder
+    isLocked?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -56287,6 +62073,7 @@ export namespace Prisma {
     name?: SortOrder
     alias?: SortOrder
     isAvailable?: SortOrder
+    isLocked?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -56607,6 +62394,18 @@ export namespace Prisma {
     none?: MuhelyiskolaWhereInput
   }
 
+  export type TanuloAdatszolgListRelationFilter = {
+    every?: TanuloAdatszolgWhereInput
+    some?: TanuloAdatszolgWhereInput
+    none?: TanuloAdatszolgWhereInput
+  }
+
+  export type OktatoAdatszolgListRelationFilter = {
+    every?: OktatoAdatszolgWhereInput
+    some?: OktatoAdatszolgWhereInput
+    none?: OktatoAdatszolgWhereInput
+  }
+
   export type UserListRelationFilter = {
     every?: UserWhereInput
     some?: UserWhereInput
@@ -56708,6 +62507,14 @@ export namespace Prisma {
   }
 
   export type MuhelyiskolaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TanuloAdatszolgOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OktatoAdatszolgOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -57024,6 +62831,17 @@ export namespace Prisma {
     felvett_letszam?: SortOrder
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type KompetenciaCountOrderByAggregateInput = {
     id?: SortOrder
     tanev_kezdete?: SortOrder
@@ -57041,6 +62859,10 @@ export namespace Prisma {
 
   export type KompetenciaAvgOrderByAggregateInput = {
     tanev_kezdete?: SortOrder
+    mat_orsz_p?: SortOrder
+    szoveg_orsz_p?: SortOrder
+    mat_int_p?: SortOrder
+    szoveg_int_p?: SortOrder
   }
 
   export type KompetenciaMaxOrderByAggregateInput = {
@@ -57075,9 +62897,13 @@ export namespace Prisma {
 
   export type KompetenciaSumOrderByAggregateInput = {
     tanev_kezdete?: SortOrder
+    mat_orsz_p?: SortOrder
+    szoveg_orsz_p?: SortOrder
+    mat_int_p?: SortOrder
+    szoveg_int_p?: SortOrder
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
     notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -57085,7 +62911,12 @@ export namespace Prisma {
     lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type EgyOktatoraJutoTanuloCountOrderByAggregateInput = {
@@ -57129,22 +62960,6 @@ export namespace Prisma {
   export type EgyOktatoraJutoTanuloSumOrderByAggregateInput = {
     tanev_kezdete?: SortOrder
     letszam?: SortOrder
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type Tanugyi_AdatokCountOrderByAggregateInput = {
@@ -58640,6 +64455,421 @@ export namespace Prisma {
     oktatok_letszama?: SortOrder
   }
 
+  export type TanuloAdatszolgCountOrderByAggregateInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Tanulo_Oktatasi_azonosito?: SortOrder
+    Intezmeny_OM_azonosito?: SortOrder
+    Intezmeny_nev?: SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrder
+    Intezmeny_szekhely_cim?: SortOrder
+    Intezmeny_szekhely_email?: SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrder
+    Feladatellatasi_hely_nev?: SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrder
+    Feladatellatasi_hely_cim?: SortOrder
+    Feladatellatasi_hely_email?: SortOrder
+    Lakohely_tanulo_lakohely_telepules?: SortOrder
+    Lakohely_szulo_allando_lakohely_telepules?: SortOrder
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: SortOrder
+    Tanulo_Koreve?: SortOrder
+    Tanulo_jogviszonya?: SortOrder
+    Nem?: SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrder
+    Tantervi_jellemzo?: SortOrder
+    Munkarend?: SortOrder
+    Evfolyam?: SortOrder
+    Regi_Szkt_OKJ_Szakmacsoport?: SortOrder
+    Regi_Szkt_OKJ_Agazat?: SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_kod?: SortOrder
+    Regi_Szkt_OKJ_Reszszakkepesites?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Agazat?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: SortOrder
+    Uj_Szkt_Reszszakmak_Agazat?: SortOrder
+    Uj_Szkt_Reszszakma_Szakma?: SortOrder
+    Uj_Szkt_Reszszakmak_Reszszakma?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes?: SortOrder
+    Allampolgarsag_orszaga_1?: SortOrder
+    Allampolgarsag_orszaga_2?: SortOrder
+    Sajatos_nevelesi_igeny?: SortOrder
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: SortOrder
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: SortOrder
+    Fogyatekossag_tipusa?: SortOrder
+    Kiemelten_tehetseges?: SortOrder
+    Evfolyamismetlo?: SortOrder
+    Egyeni_tanrend_szerint_tanul?: SortOrder
+    Tanmuhelyben_tanul?: SortOrder
+    Mas_telepulesrol_bejar?: SortOrder
+    Kollegiumban_lakik?: SortOrder
+    Externatusi_ellatasban_reszesitett?: SortOrder
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: SortOrder
+    Etkeztetesben_reszesul?: SortOrder
+    Gyakorlathoz_kotheto_jogviszony?: SortOrder
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: SortOrder
+    Napkoziotthoni_ellatasban_reszesul?: SortOrder
+    Hatranyos_helyzetu?: SortOrder
+    Halmozottan_hatranyos_helyzetu?: SortOrder
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: SortOrder
+    Szamitogepet_oktatasi_celra_hasznal?: SortOrder
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: SortOrder
+    Etika_oktatasban_reszesul?: SortOrder
+    Nyelvoktatasban_reszesul?: SortOrder
+    Nyelvoktatas_alol_felmentett?: SortOrder
+    Tandijas?: SortOrder
+    Teritesi_dijas?: SortOrder
+    Kezdo_evfolyamos_tanulo?: SortOrder
+    Iskolai_sportkorben_resztvevo_tanulo?: SortOrder
+    Diaksport_egyesulet_tagja?: SortOrder
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: SortOrder
+    Arany_Janos_Tehetseggondozo_Program?: SortOrder
+    Emelt_szintu_oktatasban_vesz_reszt?: SortOrder
+    Emelt_szintu_oktatas_tantargy_1?: SortOrder
+    Emelt_szintu_oktatas_tantargy_2?: SortOrder
+    Emelt_szintu_oktatas_tantargy_3?: SortOrder
+    Tanult_idegen_nyelv_1?: SortOrder
+    Tanult_idegen_nyelv_2?: SortOrder
+    Tanult_idegen_nyelv_3?: SortOrder
+    Tanulo_nemzetisegi_nyelvoktatasa?: SortOrder
+    Nemzetisegi_neveles_oktatas_fajtaja?: SortOrder
+    Nemzetisegi_nyelv?: SortOrder
+    Egesz_napos_iskolai_oktatasban_reszesul?: SortOrder
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: SortOrder
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: SortOrder
+    createBy?: SortOrder
+  }
+
+  export type TanuloAdatszolgAvgOrderByAggregateInput = {
+    tanev_kezdete?: SortOrder
+  }
+
+  export type TanuloAdatszolgMaxOrderByAggregateInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Tanulo_Oktatasi_azonosito?: SortOrder
+    Intezmeny_OM_azonosito?: SortOrder
+    Intezmeny_nev?: SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrder
+    Intezmeny_szekhely_cim?: SortOrder
+    Intezmeny_szekhely_email?: SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrder
+    Feladatellatasi_hely_nev?: SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrder
+    Feladatellatasi_hely_cim?: SortOrder
+    Feladatellatasi_hely_email?: SortOrder
+    Lakohely_tanulo_lakohely_telepules?: SortOrder
+    Lakohely_szulo_allando_lakohely_telepules?: SortOrder
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: SortOrder
+    Tanulo_Koreve?: SortOrder
+    Tanulo_jogviszonya?: SortOrder
+    Nem?: SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrder
+    Tantervi_jellemzo?: SortOrder
+    Munkarend?: SortOrder
+    Evfolyam?: SortOrder
+    Regi_Szkt_OKJ_Szakmacsoport?: SortOrder
+    Regi_Szkt_OKJ_Agazat?: SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_kod?: SortOrder
+    Regi_Szkt_OKJ_Reszszakkepesites?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Agazat?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: SortOrder
+    Uj_Szkt_Reszszakmak_Agazat?: SortOrder
+    Uj_Szkt_Reszszakma_Szakma?: SortOrder
+    Uj_Szkt_Reszszakmak_Reszszakma?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes?: SortOrder
+    Allampolgarsag_orszaga_1?: SortOrder
+    Allampolgarsag_orszaga_2?: SortOrder
+    Sajatos_nevelesi_igeny?: SortOrder
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: SortOrder
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: SortOrder
+    Fogyatekossag_tipusa?: SortOrder
+    Kiemelten_tehetseges?: SortOrder
+    Evfolyamismetlo?: SortOrder
+    Egyeni_tanrend_szerint_tanul?: SortOrder
+    Tanmuhelyben_tanul?: SortOrder
+    Mas_telepulesrol_bejar?: SortOrder
+    Kollegiumban_lakik?: SortOrder
+    Externatusi_ellatasban_reszesitett?: SortOrder
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: SortOrder
+    Etkeztetesben_reszesul?: SortOrder
+    Gyakorlathoz_kotheto_jogviszony?: SortOrder
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: SortOrder
+    Napkoziotthoni_ellatasban_reszesul?: SortOrder
+    Hatranyos_helyzetu?: SortOrder
+    Halmozottan_hatranyos_helyzetu?: SortOrder
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: SortOrder
+    Szamitogepet_oktatasi_celra_hasznal?: SortOrder
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: SortOrder
+    Etika_oktatasban_reszesul?: SortOrder
+    Nyelvoktatasban_reszesul?: SortOrder
+    Nyelvoktatas_alol_felmentett?: SortOrder
+    Tandijas?: SortOrder
+    Teritesi_dijas?: SortOrder
+    Kezdo_evfolyamos_tanulo?: SortOrder
+    Iskolai_sportkorben_resztvevo_tanulo?: SortOrder
+    Diaksport_egyesulet_tagja?: SortOrder
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: SortOrder
+    Arany_Janos_Tehetseggondozo_Program?: SortOrder
+    Emelt_szintu_oktatasban_vesz_reszt?: SortOrder
+    Emelt_szintu_oktatas_tantargy_1?: SortOrder
+    Emelt_szintu_oktatas_tantargy_2?: SortOrder
+    Emelt_szintu_oktatas_tantargy_3?: SortOrder
+    Tanult_idegen_nyelv_1?: SortOrder
+    Tanult_idegen_nyelv_2?: SortOrder
+    Tanult_idegen_nyelv_3?: SortOrder
+    Tanulo_nemzetisegi_nyelvoktatasa?: SortOrder
+    Nemzetisegi_neveles_oktatas_fajtaja?: SortOrder
+    Nemzetisegi_nyelv?: SortOrder
+    Egesz_napos_iskolai_oktatasban_reszesul?: SortOrder
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: SortOrder
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: SortOrder
+    createBy?: SortOrder
+  }
+
+  export type TanuloAdatszolgMinOrderByAggregateInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Tanulo_Oktatasi_azonosito?: SortOrder
+    Intezmeny_OM_azonosito?: SortOrder
+    Intezmeny_nev?: SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrder
+    Intezmeny_szekhely_cim?: SortOrder
+    Intezmeny_szekhely_email?: SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrder
+    Feladatellatasi_hely_nev?: SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrder
+    Feladatellatasi_hely_cim?: SortOrder
+    Feladatellatasi_hely_email?: SortOrder
+    Lakohely_tanulo_lakohely_telepules?: SortOrder
+    Lakohely_szulo_allando_lakohely_telepules?: SortOrder
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: SortOrder
+    Tanulo_Koreve?: SortOrder
+    Tanulo_jogviszonya?: SortOrder
+    Nem?: SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrder
+    Tantervi_jellemzo?: SortOrder
+    Munkarend?: SortOrder
+    Evfolyam?: SortOrder
+    Regi_Szkt_OKJ_Szakmacsoport?: SortOrder
+    Regi_Szkt_OKJ_Agazat?: SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: SortOrder
+    Regi_Szkt_OKJ_Szakkepesites_kod?: SortOrder
+    Regi_Szkt_OKJ_Reszszakkepesites?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Agazat?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: SortOrder
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: SortOrder
+    Uj_Szkt_Reszszakmak_Agazat?: SortOrder
+    Uj_Szkt_Reszszakma_Szakma?: SortOrder
+    Uj_Szkt_Reszszakmak_Reszszakma?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: SortOrder
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: SortOrder
+    Programkovetelmenyes_szakmai_kepzes?: SortOrder
+    Allampolgarsag_orszaga_1?: SortOrder
+    Allampolgarsag_orszaga_2?: SortOrder
+    Sajatos_nevelesi_igeny?: SortOrder
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: SortOrder
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: SortOrder
+    Fogyatekossag_tipusa?: SortOrder
+    Kiemelten_tehetseges?: SortOrder
+    Evfolyamismetlo?: SortOrder
+    Egyeni_tanrend_szerint_tanul?: SortOrder
+    Tanmuhelyben_tanul?: SortOrder
+    Mas_telepulesrol_bejar?: SortOrder
+    Kollegiumban_lakik?: SortOrder
+    Externatusi_ellatasban_reszesitett?: SortOrder
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: SortOrder
+    Etkeztetesben_reszesul?: SortOrder
+    Gyakorlathoz_kotheto_jogviszony?: SortOrder
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: SortOrder
+    Napkoziotthoni_ellatasban_reszesul?: SortOrder
+    Hatranyos_helyzetu?: SortOrder
+    Halmozottan_hatranyos_helyzetu?: SortOrder
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: SortOrder
+    Szamitogepet_oktatasi_celra_hasznal?: SortOrder
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: SortOrder
+    Etika_oktatasban_reszesul?: SortOrder
+    Nyelvoktatasban_reszesul?: SortOrder
+    Nyelvoktatas_alol_felmentett?: SortOrder
+    Tandijas?: SortOrder
+    Teritesi_dijas?: SortOrder
+    Kezdo_evfolyamos_tanulo?: SortOrder
+    Iskolai_sportkorben_resztvevo_tanulo?: SortOrder
+    Diaksport_egyesulet_tagja?: SortOrder
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: SortOrder
+    Arany_Janos_Tehetseggondozo_Program?: SortOrder
+    Emelt_szintu_oktatasban_vesz_reszt?: SortOrder
+    Emelt_szintu_oktatas_tantargy_1?: SortOrder
+    Emelt_szintu_oktatas_tantargy_2?: SortOrder
+    Emelt_szintu_oktatas_tantargy_3?: SortOrder
+    Tanult_idegen_nyelv_1?: SortOrder
+    Tanult_idegen_nyelv_2?: SortOrder
+    Tanult_idegen_nyelv_3?: SortOrder
+    Tanulo_nemzetisegi_nyelvoktatasa?: SortOrder
+    Nemzetisegi_neveles_oktatas_fajtaja?: SortOrder
+    Nemzetisegi_nyelv?: SortOrder
+    Egesz_napos_iskolai_oktatasban_reszesul?: SortOrder
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: SortOrder
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: SortOrder
+    createBy?: SortOrder
+  }
+
+  export type TanuloAdatszolgSumOrderByAggregateInput = {
+    tanev_kezdete?: SortOrder
+  }
+
+  export type OktatoAdatszolgCountOrderByAggregateInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Alkalmazott_oktatasi_azonosito?: SortOrder
+    Intezmeny_OM_azonosito?: SortOrder
+    Intezmeny_nev?: SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrder
+    Intezmeny_szekhely_cim?: SortOrder
+    Intezmeny_szekhely_email?: SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrder
+    Feladatellatasi_hely_nev?: SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrder
+    Feladatellatasi_hely_cim?: SortOrder
+    Feladatellatasi_hely_email?: SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrder
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: SortOrder
+    Oktato_nem?: SortOrder
+    Oktato_koreve?: SortOrder
+    Oktato_magasabb_vezetoi_megbizas?: SortOrder
+    Oktato_munkakor?: SortOrder
+    Oktato_vegzettseg?: SortOrder
+    Oktato_fokozatok?: SortOrder
+    Oktato_oktatott_targykategoria_1_szerint?: SortOrder
+    Oktato_oktatott_targykategoria_2_szerint?: SortOrder
+    Oktato_oktatott_targykategoria_3_szerint?: SortOrder
+    Oktato_tantervi_jellemzo_szerint?: SortOrder
+    Oktato_Nyugdijas?: SortOrder
+    Oktato_Tartosan_tavol_levo?: SortOrder
+    Oktato_Palyakezdo?: SortOrder
+    Oktato_Internetet_oktatasi_celra_hasznalo?: SortOrder
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: SortOrder
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: SortOrder
+    createBy?: SortOrder
+  }
+
+  export type OktatoAdatszolgAvgOrderByAggregateInput = {
+    tanev_kezdete?: SortOrder
+  }
+
+  export type OktatoAdatszolgMaxOrderByAggregateInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Alkalmazott_oktatasi_azonosito?: SortOrder
+    Intezmeny_OM_azonosito?: SortOrder
+    Intezmeny_nev?: SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrder
+    Intezmeny_szekhely_cim?: SortOrder
+    Intezmeny_szekhely_email?: SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrder
+    Feladatellatasi_hely_nev?: SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrder
+    Feladatellatasi_hely_cim?: SortOrder
+    Feladatellatasi_hely_email?: SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrder
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: SortOrder
+    Oktato_nem?: SortOrder
+    Oktato_koreve?: SortOrder
+    Oktato_magasabb_vezetoi_megbizas?: SortOrder
+    Oktato_munkakor?: SortOrder
+    Oktato_vegzettseg?: SortOrder
+    Oktato_fokozatok?: SortOrder
+    Oktato_oktatott_targykategoria_1_szerint?: SortOrder
+    Oktato_oktatott_targykategoria_2_szerint?: SortOrder
+    Oktato_oktatott_targykategoria_3_szerint?: SortOrder
+    Oktato_tantervi_jellemzo_szerint?: SortOrder
+    Oktato_Nyugdijas?: SortOrder
+    Oktato_Tartosan_tavol_levo?: SortOrder
+    Oktato_Palyakezdo?: SortOrder
+    Oktato_Internetet_oktatasi_celra_hasznalo?: SortOrder
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: SortOrder
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: SortOrder
+    createBy?: SortOrder
+  }
+
+  export type OktatoAdatszolgMinOrderByAggregateInput = {
+    id?: SortOrder
+    alapadatok_id?: SortOrder
+    tanev_kezdete?: SortOrder
+    Alkalmazott_oktatasi_azonosito?: SortOrder
+    Intezmeny_OM_azonosito?: SortOrder
+    Intezmeny_nev?: SortOrder
+    Intezmeny_szekhely_telepules_nev?: SortOrder
+    Intezmeny_szekhely_telepules_iranyitoszam?: SortOrder
+    Intezmeny_szekhely_cim?: SortOrder
+    Intezmeny_szekhely_email?: SortOrder
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: SortOrder
+    Feladatellatasi_hely_nev?: SortOrder
+    Feladatellatasi_hely_telepules_nev?: SortOrder
+    Feladatellatasi_hely_telepules_iranyitoszam?: SortOrder
+    Feladatellatasi_hely_cim?: SortOrder
+    Feladatellatasi_hely_email?: SortOrder
+    Feladatellatasi_hely_tipus_ellatott_feladat?: SortOrder
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: SortOrder
+    Oktato_nem?: SortOrder
+    Oktato_koreve?: SortOrder
+    Oktato_magasabb_vezetoi_megbizas?: SortOrder
+    Oktato_munkakor?: SortOrder
+    Oktato_vegzettseg?: SortOrder
+    Oktato_fokozatok?: SortOrder
+    Oktato_oktatott_targykategoria_1_szerint?: SortOrder
+    Oktato_oktatott_targykategoria_2_szerint?: SortOrder
+    Oktato_oktatott_targykategoria_3_szerint?: SortOrder
+    Oktato_tantervi_jellemzo_szerint?: SortOrder
+    Oktato_Nyugdijas?: SortOrder
+    Oktato_Tartosan_tavol_levo?: SortOrder
+    Oktato_Palyakezdo?: SortOrder
+    Oktato_Internetet_oktatasi_celra_hasznalo?: SortOrder
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: SortOrder
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: SortOrder
+    createBy?: SortOrder
+  }
+
+  export type OktatoAdatszolgSumOrderByAggregateInput = {
+    tanev_kezdete?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -59025,6 +65255,20 @@ export namespace Prisma {
     connect?: MuhelyiskolaWhereUniqueInput | MuhelyiskolaWhereUniqueInput[]
   }
 
+  export type TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput = {
+    create?: XOR<TanuloAdatszolgCreateWithoutAlapadatokInput, TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput> | TanuloAdatszolgCreateWithoutAlapadatokInput[] | TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput | TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    createMany?: TanuloAdatszolgCreateManyAlapadatokInputEnvelope
+    connect?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+  }
+
+  export type OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput = {
+    create?: XOR<OktatoAdatszolgCreateWithoutAlapadatokInput, OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput> | OktatoAdatszolgCreateWithoutAlapadatokInput[] | OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput | OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    createMany?: OktatoAdatszolgCreateManyAlapadatokInputEnvelope
+    connect?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+  }
+
   export type UserCreateNestedManyWithoutAlapadatokInput = {
     create?: XOR<UserCreateWithoutAlapadatokInput, UserUncheckedCreateWithoutAlapadatokInput> | UserCreateWithoutAlapadatokInput[] | UserUncheckedCreateWithoutAlapadatokInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAlapadatokInput | UserCreateOrConnectWithoutAlapadatokInput[]
@@ -59198,6 +65442,20 @@ export namespace Prisma {
     connectOrCreate?: MuhelyiskolaCreateOrConnectWithoutAlapadatokInput | MuhelyiskolaCreateOrConnectWithoutAlapadatokInput[]
     createMany?: MuhelyiskolaCreateManyAlapadatokInputEnvelope
     connect?: MuhelyiskolaWhereUniqueInput | MuhelyiskolaWhereUniqueInput[]
+  }
+
+  export type TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput = {
+    create?: XOR<TanuloAdatszolgCreateWithoutAlapadatokInput, TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput> | TanuloAdatszolgCreateWithoutAlapadatokInput[] | TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput | TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    createMany?: TanuloAdatszolgCreateManyAlapadatokInputEnvelope
+    connect?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+  }
+
+  export type OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput = {
+    create?: XOR<OktatoAdatszolgCreateWithoutAlapadatokInput, OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput> | OktatoAdatszolgCreateWithoutAlapadatokInput[] | OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput | OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    createMany?: OktatoAdatszolgCreateManyAlapadatokInputEnvelope
+    connect?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutAlapadatokInput = {
@@ -59534,6 +65792,34 @@ export namespace Prisma {
     update?: MuhelyiskolaUpdateWithWhereUniqueWithoutAlapadatokInput | MuhelyiskolaUpdateWithWhereUniqueWithoutAlapadatokInput[]
     updateMany?: MuhelyiskolaUpdateManyWithWhereWithoutAlapadatokInput | MuhelyiskolaUpdateManyWithWhereWithoutAlapadatokInput[]
     deleteMany?: MuhelyiskolaScalarWhereInput | MuhelyiskolaScalarWhereInput[]
+  }
+
+  export type TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput = {
+    create?: XOR<TanuloAdatszolgCreateWithoutAlapadatokInput, TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput> | TanuloAdatszolgCreateWithoutAlapadatokInput[] | TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput | TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    upsert?: TanuloAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput | TanuloAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput[]
+    createMany?: TanuloAdatszolgCreateManyAlapadatokInputEnvelope
+    set?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    disconnect?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    delete?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    connect?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    update?: TanuloAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput | TanuloAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput[]
+    updateMany?: TanuloAdatszolgUpdateManyWithWhereWithoutAlapadatokInput | TanuloAdatszolgUpdateManyWithWhereWithoutAlapadatokInput[]
+    deleteMany?: TanuloAdatszolgScalarWhereInput | TanuloAdatszolgScalarWhereInput[]
+  }
+
+  export type OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput = {
+    create?: XOR<OktatoAdatszolgCreateWithoutAlapadatokInput, OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput> | OktatoAdatszolgCreateWithoutAlapadatokInput[] | OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput | OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    upsert?: OktatoAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput | OktatoAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput[]
+    createMany?: OktatoAdatszolgCreateManyAlapadatokInputEnvelope
+    set?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    disconnect?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    delete?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    connect?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    update?: OktatoAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput | OktatoAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput[]
+    updateMany?: OktatoAdatszolgUpdateManyWithWhereWithoutAlapadatokInput | OktatoAdatszolgUpdateManyWithWhereWithoutAlapadatokInput[]
+    deleteMany?: OktatoAdatszolgScalarWhereInput | OktatoAdatszolgScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutAlapadatokNestedInput = {
@@ -59884,6 +66170,34 @@ export namespace Prisma {
     update?: MuhelyiskolaUpdateWithWhereUniqueWithoutAlapadatokInput | MuhelyiskolaUpdateWithWhereUniqueWithoutAlapadatokInput[]
     updateMany?: MuhelyiskolaUpdateManyWithWhereWithoutAlapadatokInput | MuhelyiskolaUpdateManyWithWhereWithoutAlapadatokInput[]
     deleteMany?: MuhelyiskolaScalarWhereInput | MuhelyiskolaScalarWhereInput[]
+  }
+
+  export type TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput = {
+    create?: XOR<TanuloAdatszolgCreateWithoutAlapadatokInput, TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput> | TanuloAdatszolgCreateWithoutAlapadatokInput[] | TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput | TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    upsert?: TanuloAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput | TanuloAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput[]
+    createMany?: TanuloAdatszolgCreateManyAlapadatokInputEnvelope
+    set?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    disconnect?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    delete?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    connect?: TanuloAdatszolgWhereUniqueInput | TanuloAdatszolgWhereUniqueInput[]
+    update?: TanuloAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput | TanuloAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput[]
+    updateMany?: TanuloAdatszolgUpdateManyWithWhereWithoutAlapadatokInput | TanuloAdatszolgUpdateManyWithWhereWithoutAlapadatokInput[]
+    deleteMany?: TanuloAdatszolgScalarWhereInput | TanuloAdatszolgScalarWhereInput[]
+  }
+
+  export type OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput = {
+    create?: XOR<OktatoAdatszolgCreateWithoutAlapadatokInput, OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput> | OktatoAdatszolgCreateWithoutAlapadatokInput[] | OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput[]
+    connectOrCreate?: OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput | OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput[]
+    upsert?: OktatoAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput | OktatoAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput[]
+    createMany?: OktatoAdatszolgCreateManyAlapadatokInputEnvelope
+    set?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    disconnect?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    delete?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    connect?: OktatoAdatszolgWhereUniqueInput | OktatoAdatszolgWhereUniqueInput[]
+    update?: OktatoAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput | OktatoAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput[]
+    updateMany?: OktatoAdatszolgUpdateManyWithWhereWithoutAlapadatokInput | OktatoAdatszolgUpdateManyWithWhereWithoutAlapadatokInput[]
+    deleteMany?: OktatoAdatszolgScalarWhereInput | OktatoAdatszolgScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutAlapadatokNestedInput = {
@@ -60948,6 +67262,14 @@ export namespace Prisma {
     connect?: AlapadatokWhereUniqueInput
   }
 
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type AlapadatokUpdateOneRequiredWithoutKompetenciaNestedInput = {
     create?: XOR<AlapadatokCreateWithoutKompetenciaInput, AlapadatokUncheckedCreateWithoutKompetenciaInput>
     connectOrCreate?: AlapadatokCreateOrConnectWithoutKompetenciaInput
@@ -60960,14 +67282,6 @@ export namespace Prisma {
     create?: XOR<AlapadatokCreateWithoutEgyOktatoraJutoTanuloInput, AlapadatokUncheckedCreateWithoutEgyOktatoraJutoTanuloInput>
     connectOrCreate?: AlapadatokCreateOrConnectWithoutEgyOktatoraJutoTanuloInput
     connect?: AlapadatokWhereUniqueInput
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type AlapadatokUpdateOneRequiredWithoutEgyOktatoraJutoTanuloNestedInput = {
@@ -61500,6 +67814,34 @@ export namespace Prisma {
     update?: XOR<XOR<AlapadatokUpdateToOneWithWhereWithoutOktatoEgyebTevInput, AlapadatokUpdateWithoutOktatoEgyebTevInput>, AlapadatokUncheckedUpdateWithoutOktatoEgyebTevInput>
   }
 
+  export type AlapadatokCreateNestedOneWithoutTanuloAdatszolgInput = {
+    create?: XOR<AlapadatokCreateWithoutTanuloAdatszolgInput, AlapadatokUncheckedCreateWithoutTanuloAdatszolgInput>
+    connectOrCreate?: AlapadatokCreateOrConnectWithoutTanuloAdatszolgInput
+    connect?: AlapadatokWhereUniqueInput
+  }
+
+  export type AlapadatokUpdateOneRequiredWithoutTanuloAdatszolgNestedInput = {
+    create?: XOR<AlapadatokCreateWithoutTanuloAdatszolgInput, AlapadatokUncheckedCreateWithoutTanuloAdatszolgInput>
+    connectOrCreate?: AlapadatokCreateOrConnectWithoutTanuloAdatszolgInput
+    upsert?: AlapadatokUpsertWithoutTanuloAdatszolgInput
+    connect?: AlapadatokWhereUniqueInput
+    update?: XOR<XOR<AlapadatokUpdateToOneWithWhereWithoutTanuloAdatszolgInput, AlapadatokUpdateWithoutTanuloAdatszolgInput>, AlapadatokUncheckedUpdateWithoutTanuloAdatszolgInput>
+  }
+
+  export type AlapadatokCreateNestedOneWithoutOktatoAdatszolgInput = {
+    create?: XOR<AlapadatokCreateWithoutOktatoAdatszolgInput, AlapadatokUncheckedCreateWithoutOktatoAdatszolgInput>
+    connectOrCreate?: AlapadatokCreateOrConnectWithoutOktatoAdatszolgInput
+    connect?: AlapadatokWhereUniqueInput
+  }
+
+  export type AlapadatokUpdateOneRequiredWithoutOktatoAdatszolgNestedInput = {
+    create?: XOR<AlapadatokCreateWithoutOktatoAdatszolgInput, AlapadatokUncheckedCreateWithoutOktatoAdatszolgInput>
+    connectOrCreate?: AlapadatokCreateOrConnectWithoutOktatoAdatszolgInput
+    upsert?: AlapadatokUpsertWithoutOktatoAdatszolgInput
+    connect?: AlapadatokWhereUniqueInput
+    update?: XOR<XOR<AlapadatokUpdateToOneWithWhereWithoutOktatoAdatszolgInput, AlapadatokUpdateWithoutOktatoAdatszolgInput>, AlapadatokUncheckedUpdateWithoutOktatoAdatszolgInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -61895,6 +68237,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
 
@@ -61926,6 +68270,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
 
@@ -62036,6 +68382,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
 
@@ -62067,6 +68415,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
 
@@ -62146,6 +68496,7 @@ export namespace Prisma {
     name: string
     alias?: string | null
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -62155,6 +68506,7 @@ export namespace Prisma {
     name: string
     alias?: string | null
     isAvailable?: boolean
+    isLocked?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -62217,6 +68569,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -62226,6 +68579,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     alias?: NullableStringFieldUpdateOperationsInput | string | null
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isLocked?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -62339,10 +68693,10 @@ export namespace Prisma {
   export type KompetenciaCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete?: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p?: Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: Decimal | DecimalJsLike | number | string
+    mat_int_p?: Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: Decimal | DecimalJsLike | number | string
     kepzes_forma: string
     createAt?: Date | string
     createBy?: string | null
@@ -62353,10 +68707,10 @@ export namespace Prisma {
   export type KompetenciaUncheckedCreateWithoutAlapadatokInput = {
     id?: string
     tanev_kezdete?: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p?: Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: Decimal | DecimalJsLike | number | string
+    mat_int_p?: Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: Decimal | DecimalJsLike | number | string
     kepzes_forma: string
     createAt?: Date | string
     createBy?: string | null
@@ -63318,6 +69672,288 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TanuloAdatszolgCreateWithoutAlapadatokInput = {
+    id?: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Lakohely_tanulo_lakohely_telepules?: string | null
+    Lakohely_szulo_allando_lakohely_telepules?: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: string | null
+    Tanulo_Koreve?: string | null
+    Tanulo_jogviszonya?: string | null
+    Nem?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Tantervi_jellemzo?: string | null
+    Munkarend?: string | null
+    Evfolyam?: string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: string | null
+    Regi_Szkt_OKJ_Agazat?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: string | null
+    Uj_Szkt_Reszszakmak_Agazat?: string | null
+    Uj_Szkt_Reszszakma_Szakma?: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: string | null
+    Programkovetelmenyes_szakmai_kepzes?: string | null
+    Allampolgarsag_orszaga_1?: string | null
+    Allampolgarsag_orszaga_2?: string | null
+    Sajatos_nevelesi_igeny?: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: string | null
+    Fogyatekossag_tipusa?: string | null
+    Kiemelten_tehetseges?: string | null
+    Evfolyamismetlo?: string | null
+    Egyeni_tanrend_szerint_tanul?: string | null
+    Tanmuhelyben_tanul?: string | null
+    Mas_telepulesrol_bejar?: string | null
+    Kollegiumban_lakik?: string | null
+    Externatusi_ellatasban_reszesitett?: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: string | null
+    Etkeztetesben_reszesul?: string | null
+    Gyakorlathoz_kotheto_jogviszony?: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: string | null
+    Napkoziotthoni_ellatasban_reszesul?: string | null
+    Hatranyos_helyzetu?: string | null
+    Halmozottan_hatranyos_helyzetu?: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: string | null
+    Szamitogepet_oktatasi_celra_hasznal?: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: string | null
+    Etika_oktatasban_reszesul?: string | null
+    Nyelvoktatasban_reszesul?: string | null
+    Nyelvoktatas_alol_felmentett?: string | null
+    Tandijas?: string | null
+    Teritesi_dijas?: string | null
+    Kezdo_evfolyamos_tanulo?: string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: string | null
+    Diaksport_egyesulet_tagja?: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: string | null
+    Arany_Janos_Tehetseggondozo_Program?: string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: string | null
+    Emelt_szintu_oktatas_tantargy_1?: string | null
+    Emelt_szintu_oktatas_tantargy_2?: string | null
+    Emelt_szintu_oktatas_tantargy_3?: string | null
+    Tanult_idegen_nyelv_1?: string | null
+    Tanult_idegen_nyelv_2?: string | null
+    Tanult_idegen_nyelv_3?: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: string | null
+    Nemzetisegi_nyelv?: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: string | null
+    createBy?: string | null
+  }
+
+  export type TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput = {
+    id?: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Lakohely_tanulo_lakohely_telepules?: string | null
+    Lakohely_szulo_allando_lakohely_telepules?: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: string | null
+    Tanulo_Koreve?: string | null
+    Tanulo_jogviszonya?: string | null
+    Nem?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Tantervi_jellemzo?: string | null
+    Munkarend?: string | null
+    Evfolyam?: string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: string | null
+    Regi_Szkt_OKJ_Agazat?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: string | null
+    Uj_Szkt_Reszszakmak_Agazat?: string | null
+    Uj_Szkt_Reszszakma_Szakma?: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: string | null
+    Programkovetelmenyes_szakmai_kepzes?: string | null
+    Allampolgarsag_orszaga_1?: string | null
+    Allampolgarsag_orszaga_2?: string | null
+    Sajatos_nevelesi_igeny?: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: string | null
+    Fogyatekossag_tipusa?: string | null
+    Kiemelten_tehetseges?: string | null
+    Evfolyamismetlo?: string | null
+    Egyeni_tanrend_szerint_tanul?: string | null
+    Tanmuhelyben_tanul?: string | null
+    Mas_telepulesrol_bejar?: string | null
+    Kollegiumban_lakik?: string | null
+    Externatusi_ellatasban_reszesitett?: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: string | null
+    Etkeztetesben_reszesul?: string | null
+    Gyakorlathoz_kotheto_jogviszony?: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: string | null
+    Napkoziotthoni_ellatasban_reszesul?: string | null
+    Hatranyos_helyzetu?: string | null
+    Halmozottan_hatranyos_helyzetu?: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: string | null
+    Szamitogepet_oktatasi_celra_hasznal?: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: string | null
+    Etika_oktatasban_reszesul?: string | null
+    Nyelvoktatasban_reszesul?: string | null
+    Nyelvoktatas_alol_felmentett?: string | null
+    Tandijas?: string | null
+    Teritesi_dijas?: string | null
+    Kezdo_evfolyamos_tanulo?: string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: string | null
+    Diaksport_egyesulet_tagja?: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: string | null
+    Arany_Janos_Tehetseggondozo_Program?: string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: string | null
+    Emelt_szintu_oktatas_tantargy_1?: string | null
+    Emelt_szintu_oktatas_tantargy_2?: string | null
+    Emelt_szintu_oktatas_tantargy_3?: string | null
+    Tanult_idegen_nyelv_1?: string | null
+    Tanult_idegen_nyelv_2?: string | null
+    Tanult_idegen_nyelv_3?: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: string | null
+    Nemzetisegi_nyelv?: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: string | null
+    createBy?: string | null
+  }
+
+  export type TanuloAdatszolgCreateOrConnectWithoutAlapadatokInput = {
+    where: TanuloAdatszolgWhereUniqueInput
+    create: XOR<TanuloAdatszolgCreateWithoutAlapadatokInput, TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput>
+  }
+
+  export type TanuloAdatszolgCreateManyAlapadatokInputEnvelope = {
+    data: TanuloAdatszolgCreateManyAlapadatokInput | TanuloAdatszolgCreateManyAlapadatokInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OktatoAdatszolgCreateWithoutAlapadatokInput = {
+    id?: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: string | null
+    Oktato_nem?: string | null
+    Oktato_koreve?: string | null
+    Oktato_magasabb_vezetoi_megbizas?: string | null
+    Oktato_munkakor?: string | null
+    Oktato_vegzettseg?: string | null
+    Oktato_fokozatok?: string | null
+    Oktato_oktatott_targykategoria_1_szerint?: string | null
+    Oktato_oktatott_targykategoria_2_szerint?: string | null
+    Oktato_oktatott_targykategoria_3_szerint?: string | null
+    Oktato_tantervi_jellemzo_szerint?: string | null
+    Oktato_Nyugdijas?: string | null
+    Oktato_Tartosan_tavol_levo?: string | null
+    Oktato_Palyakezdo?: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: string | null
+    createBy?: string | null
+  }
+
+  export type OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput = {
+    id?: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: string | null
+    Oktato_nem?: string | null
+    Oktato_koreve?: string | null
+    Oktato_magasabb_vezetoi_megbizas?: string | null
+    Oktato_munkakor?: string | null
+    Oktato_vegzettseg?: string | null
+    Oktato_fokozatok?: string | null
+    Oktato_oktatott_targykategoria_1_szerint?: string | null
+    Oktato_oktatott_targykategoria_2_szerint?: string | null
+    Oktato_oktatott_targykategoria_3_szerint?: string | null
+    Oktato_tantervi_jellemzo_szerint?: string | null
+    Oktato_Nyugdijas?: string | null
+    Oktato_Tartosan_tavol_levo?: string | null
+    Oktato_Palyakezdo?: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: string | null
+    createBy?: string | null
+  }
+
+  export type OktatoAdatszolgCreateOrConnectWithoutAlapadatokInput = {
+    where: OktatoAdatszolgWhereUniqueInput
+    create: XOR<OktatoAdatszolgCreateWithoutAlapadatokInput, OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput>
+  }
+
+  export type OktatoAdatszolgCreateManyAlapadatokInputEnvelope = {
+    data: OktatoAdatszolgCreateManyAlapadatokInput | OktatoAdatszolgCreateManyAlapadatokInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserCreateWithoutAlapadatokInput = {
     id?: string
     email: string
@@ -63470,10 +70106,10 @@ export namespace Prisma {
     NOT?: KompetenciaScalarWhereInput | KompetenciaScalarWhereInput[]
     id?: UuidFilter<"Kompetencia"> | string
     tanev_kezdete?: IntFilter<"Kompetencia"> | number
-    mat_orsz_p?: StringFilter<"Kompetencia"> | string
-    szoveg_orsz_p?: StringFilter<"Kompetencia"> | string
-    mat_int_p?: StringFilter<"Kompetencia"> | string
-    szoveg_int_p?: StringFilter<"Kompetencia"> | string
+    mat_orsz_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFilter<"Kompetencia"> | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFilter<"Kompetencia"> | string
     alapadatok_id?: UuidFilter<"Kompetencia"> | string
     createAt?: DateTimeFilter<"Kompetencia"> | Date | string
@@ -64267,6 +70903,177 @@ export namespace Prisma {
     createBy?: StringNullableFilter<"Muhelyiskola"> | string | null
     updatedAt?: DateTimeNullableFilter<"Muhelyiskola"> | Date | string | null
     updatedBy?: StringNullableFilter<"Muhelyiskola"> | string | null
+  }
+
+  export type TanuloAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput = {
+    where: TanuloAdatszolgWhereUniqueInput
+    update: XOR<TanuloAdatszolgUpdateWithoutAlapadatokInput, TanuloAdatszolgUncheckedUpdateWithoutAlapadatokInput>
+    create: XOR<TanuloAdatszolgCreateWithoutAlapadatokInput, TanuloAdatszolgUncheckedCreateWithoutAlapadatokInput>
+  }
+
+  export type TanuloAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput = {
+    where: TanuloAdatszolgWhereUniqueInput
+    data: XOR<TanuloAdatszolgUpdateWithoutAlapadatokInput, TanuloAdatszolgUncheckedUpdateWithoutAlapadatokInput>
+  }
+
+  export type TanuloAdatszolgUpdateManyWithWhereWithoutAlapadatokInput = {
+    where: TanuloAdatszolgScalarWhereInput
+    data: XOR<TanuloAdatszolgUpdateManyMutationInput, TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokInput>
+  }
+
+  export type TanuloAdatszolgScalarWhereInput = {
+    AND?: TanuloAdatszolgScalarWhereInput | TanuloAdatszolgScalarWhereInput[]
+    OR?: TanuloAdatszolgScalarWhereInput[]
+    NOT?: TanuloAdatszolgScalarWhereInput | TanuloAdatszolgScalarWhereInput[]
+    id?: UuidFilter<"TanuloAdatszolg"> | string
+    alapadatok_id?: UuidFilter<"TanuloAdatszolg"> | string
+    tanev_kezdete?: IntFilter<"TanuloAdatszolg"> | number
+    Tanulo_Oktatasi_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_tanulo_lakohely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_Koreve?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_jogviszonya?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nem?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tantervi_jellemzo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Munkarend?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Evfolyam?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakma_Szakma?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Programkovetelmenyes_szakmai_kepzes?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Allampolgarsag_orszaga_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Fogyatekossag_tipusa?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kiemelten_tehetseges?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Evfolyamismetlo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Egyeni_tanrend_szerint_tanul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanmuhelyben_tanul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Mas_telepulesrol_bejar?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kollegiumban_lakik?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Externatusi_ellatasban_reszesitett?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Etkeztetesben_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Gyakorlathoz_kotheto_jogviszony?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Napkoziotthoni_ellatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Hatranyos_helyzetu?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Halmozottan_hatranyos_helyzetu?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Etika_oktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nyelvoktatas_alol_felmentett?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tandijas?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Teritesi_dijas?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Kezdo_evfolyamos_tanulo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Diaksport_egyesulet_tagja?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Arany_Janos_Tehetseggondozo_Program?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Emelt_szintu_oktatas_tantargy_3?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_1?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_2?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanult_idegen_nyelv_3?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Nemzetisegi_nyelv?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+    createBy?: StringNullableFilter<"TanuloAdatszolg"> | string | null
+  }
+
+  export type OktatoAdatszolgUpsertWithWhereUniqueWithoutAlapadatokInput = {
+    where: OktatoAdatszolgWhereUniqueInput
+    update: XOR<OktatoAdatszolgUpdateWithoutAlapadatokInput, OktatoAdatszolgUncheckedUpdateWithoutAlapadatokInput>
+    create: XOR<OktatoAdatszolgCreateWithoutAlapadatokInput, OktatoAdatszolgUncheckedCreateWithoutAlapadatokInput>
+  }
+
+  export type OktatoAdatszolgUpdateWithWhereUniqueWithoutAlapadatokInput = {
+    where: OktatoAdatszolgWhereUniqueInput
+    data: XOR<OktatoAdatszolgUpdateWithoutAlapadatokInput, OktatoAdatszolgUncheckedUpdateWithoutAlapadatokInput>
+  }
+
+  export type OktatoAdatszolgUpdateManyWithWhereWithoutAlapadatokInput = {
+    where: OktatoAdatszolgScalarWhereInput
+    data: XOR<OktatoAdatszolgUpdateManyMutationInput, OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokInput>
+  }
+
+  export type OktatoAdatszolgScalarWhereInput = {
+    AND?: OktatoAdatszolgScalarWhereInput | OktatoAdatszolgScalarWhereInput[]
+    OR?: OktatoAdatszolgScalarWhereInput[]
+    NOT?: OktatoAdatszolgScalarWhereInput | OktatoAdatszolgScalarWhereInput[]
+    id?: UuidFilter<"OktatoAdatszolg"> | string
+    alapadatok_id?: UuidFilter<"OktatoAdatszolg"> | string
+    tanev_kezdete?: IntFilter<"OktatoAdatszolg"> | number
+    Alkalmazott_oktatasi_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_OM_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_cim?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Intezmeny_szekhely_email?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_nev?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_cim?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_email?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_nem?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_koreve?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_magasabb_vezetoi_megbizas?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_munkakor?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_vegzettseg?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_fokozatok?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_tantervi_jellemzo_szerint?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Nyugdijas?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Tartosan_tavol_levo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Palyakezdo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: StringNullableFilter<"OktatoAdatszolg"> | string | null
+    createBy?: StringNullableFilter<"OktatoAdatszolg"> | string | null
   }
 
   export type UserUpsertWithWhereUniqueWithoutAlapadatokInput = {
@@ -65516,6 +72323,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -65547,6 +72356,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -65627,6 +72438,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -65658,6 +72471,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -65728,6 +72543,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -65759,6 +72576,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -65841,6 +72660,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -65872,6 +72693,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -65944,6 +72767,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -65975,6 +72800,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -66090,6 +72917,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66121,6 +72950,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66232,6 +73063,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -66263,6 +73096,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -66310,6 +73145,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66341,6 +73178,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66372,6 +73211,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -66403,6 +73244,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -66518,6 +73361,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66549,6 +73394,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66660,6 +73507,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -66691,6 +73540,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -66738,6 +73589,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66769,6 +73622,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66800,6 +73655,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -66831,6 +73688,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -66878,6 +73737,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66909,6 +73770,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -66940,6 +73803,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -66971,6 +73836,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -67018,6 +73885,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67049,6 +73918,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67080,6 +73951,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -67111,6 +73984,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -67158,6 +74033,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67189,6 +74066,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67220,6 +74099,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -67251,6 +74132,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -67366,6 +74249,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67397,6 +74282,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67673,6 +74560,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -67704,6 +74593,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -67776,6 +74667,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67807,6 +74700,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67869,6 +74764,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -67900,6 +74797,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -67947,6 +74846,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -67978,6 +74879,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68009,6 +74912,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -68040,6 +74945,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -68155,6 +75062,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68186,6 +75095,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68297,6 +75208,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -68328,6 +75241,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -68443,6 +75358,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68474,6 +75391,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68585,6 +75504,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -68616,6 +75537,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -68731,6 +75654,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68762,6 +75687,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -68873,6 +75800,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -68904,6 +75833,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -69019,6 +75950,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69050,6 +75983,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69161,6 +76096,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -69192,6 +76129,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -69307,6 +76246,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69338,6 +76279,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69449,6 +76392,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -69480,6 +76425,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -69527,6 +76474,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69558,6 +76507,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69589,6 +76540,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -69620,6 +76573,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -69667,6 +76622,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69698,6 +76655,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69729,6 +76688,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -69760,6 +76721,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -69807,6 +76770,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69838,6 +76803,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69869,6 +76836,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -69900,6 +76869,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -69947,6 +76918,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -69978,6 +76951,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -70009,6 +76984,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokCreateNestedManyWithoutAlapadatokInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -70040,6 +77017,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -70087,6 +77066,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUpdateManyWithoutAlapadatokNestedInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -70118,6 +77099,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -70149,6 +77132,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokCreateNestedManyWithoutAlapadatokInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
   }
@@ -70180,6 +77165,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
   }
@@ -70227,6 +77214,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUpdateManyWithoutAlapadatokNestedInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
   }
@@ -70258,6 +77247,8 @@ export namespace Prisma {
     hhesHhhTanulok?: HHEsHHHTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
     OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
@@ -70290,6 +77281,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
     users?: UserCreateNestedManyWithoutAlapadatokInput
   }
 
@@ -70321,6 +77314,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
     dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
     muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
     users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
   }
 
@@ -70368,6 +77363,8 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
     users?: UserUpdateManyWithoutAlapadatokNestedInput
   }
 
@@ -70399,7 +77396,305 @@ export namespace Prisma {
     sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
     dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
     muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
     users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
+  }
+
+  export type AlapadatokCreateWithoutTanuloAdatszolgInput = {
+    id?: string
+    iskola_neve: string
+    intezmeny_tipus: string
+    deleted?: boolean
+    felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
+    kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
+    tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
+    tanugyiAdatok?: Tanugyi_AdatokCreateNestedManyWithoutAlapadatokInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyCreateNestedManyWithoutAlapadatokInput
+    tanulo_letszam?: Tanulo_LetszamCreateNestedManyWithoutAlapadatokInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloCreateNestedManyWithoutAlapadatokInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaCreateNestedManyWithoutAlapadatokInput
+    versenyek?: versenyekCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakma?: Alapadatok_SzakmaCreateNestedManyWithoutAlapadatokInput
+    nszfhMeresek?: nszfhMeresekCreateNestedManyWithoutAlapadatokInput
+    elhelyezkedes?: ElhelyezkedesCreateNestedManyWithoutAlapadatokInput
+    elegedettseg?: ElegedettsegCreateNestedManyWithoutAlapadatokInput
+    vizsgaeredmenyek?: VizsgaEredmenyekCreateNestedManyWithoutAlapadatokInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekCreateNestedManyWithoutAlapadatokInput
+    lemorzsolodas?: LemorzsolodasCreateNestedManyWithoutAlapadatokInput
+    elegedettsegMeres?: ElegedettsegMeresCreateNestedManyWithoutAlapadatokInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegCreateNestedManyWithoutAlapadatokInput
+    hhesHhhTanulok?: HHEsHHHTanulokCreateNestedManyWithoutAlapadatokInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
+    dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
+    muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgCreateNestedManyWithoutAlapadatokInput
+    users?: UserCreateNestedManyWithoutAlapadatokInput
+    OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
+  }
+
+  export type AlapadatokUncheckedCreateWithoutTanuloAdatszolgInput = {
+    id?: string
+    iskola_neve: string
+    intezmeny_tipus: string
+    deleted?: boolean
+    felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
+    kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanugyiAdatok?: Tanugyi_AdatokUncheckedCreateNestedManyWithoutAlapadatokInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanulo_letszam?: Tanulo_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloUncheckedCreateNestedManyWithoutAlapadatokInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaUncheckedCreateNestedManyWithoutAlapadatokInput
+    versenyek?: versenyekUncheckedCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyUncheckedCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakma?: Alapadatok_SzakmaUncheckedCreateNestedManyWithoutAlapadatokInput
+    nszfhMeresek?: nszfhMeresekUncheckedCreateNestedManyWithoutAlapadatokInput
+    elhelyezkedes?: ElhelyezkedesUncheckedCreateNestedManyWithoutAlapadatokInput
+    elegedettseg?: ElegedettsegUncheckedCreateNestedManyWithoutAlapadatokInput
+    vizsgaeredmenyek?: VizsgaEredmenyekUncheckedCreateNestedManyWithoutAlapadatokInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekUncheckedCreateNestedManyWithoutAlapadatokInput
+    lemorzsolodas?: LemorzsolodasUncheckedCreateNestedManyWithoutAlapadatokInput
+    elegedettsegMeres?: ElegedettsegMeresUncheckedCreateNestedManyWithoutAlapadatokInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegUncheckedCreateNestedManyWithoutAlapadatokInput
+    hhesHhhTanulok?: HHEsHHHTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
+    dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
+    muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
+    OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
+  }
+
+  export type AlapadatokCreateOrConnectWithoutTanuloAdatszolgInput = {
+    where: AlapadatokWhereUniqueInput
+    create: XOR<AlapadatokCreateWithoutTanuloAdatszolgInput, AlapadatokUncheckedCreateWithoutTanuloAdatszolgInput>
+  }
+
+  export type AlapadatokUpsertWithoutTanuloAdatszolgInput = {
+    update: XOR<AlapadatokUpdateWithoutTanuloAdatszolgInput, AlapadatokUncheckedUpdateWithoutTanuloAdatszolgInput>
+    create: XOR<AlapadatokCreateWithoutTanuloAdatszolgInput, AlapadatokUncheckedCreateWithoutTanuloAdatszolgInput>
+    where?: AlapadatokWhereInput
+  }
+
+  export type AlapadatokUpdateToOneWithWhereWithoutTanuloAdatszolgInput = {
+    where?: AlapadatokWhereInput
+    data: XOR<AlapadatokUpdateWithoutTanuloAdatszolgInput, AlapadatokUncheckedUpdateWithoutTanuloAdatszolgInput>
+  }
+
+  export type AlapadatokUpdateWithoutTanuloAdatszolgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    iskola_neve?: StringFieldUpdateOperationsInput | string
+    intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
+    felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
+    kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
+    tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
+    tanugyiAdatok?: Tanugyi_AdatokUpdateManyWithoutAlapadatokNestedInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyUpdateManyWithoutAlapadatokNestedInput
+    tanulo_letszam?: Tanulo_LetszamUpdateManyWithoutAlapadatokNestedInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloUpdateManyWithoutAlapadatokNestedInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaUpdateManyWithoutAlapadatokNestedInput
+    versenyek?: versenyekUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakma?: Alapadatok_SzakmaUpdateManyWithoutAlapadatokNestedInput
+    nszfhMeresek?: nszfhMeresekUpdateManyWithoutAlapadatokNestedInput
+    elhelyezkedes?: ElhelyezkedesUpdateManyWithoutAlapadatokNestedInput
+    elegedettseg?: ElegedettsegUpdateManyWithoutAlapadatokNestedInput
+    vizsgaeredmenyek?: VizsgaEredmenyekUpdateManyWithoutAlapadatokNestedInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekUpdateManyWithoutAlapadatokNestedInput
+    lemorzsolodas?: LemorzsolodasUpdateManyWithoutAlapadatokNestedInput
+    elegedettsegMeres?: ElegedettsegMeresUpdateManyWithoutAlapadatokNestedInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegUpdateManyWithoutAlapadatokNestedInput
+    hhesHhhTanulok?: HHEsHHHTanulokUpdateManyWithoutAlapadatokNestedInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
+    dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
+    muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    users?: UserUpdateManyWithoutAlapadatokNestedInput
+    OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
+  }
+
+  export type AlapadatokUncheckedUpdateWithoutTanuloAdatszolgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    iskola_neve?: StringFieldUpdateOperationsInput | string
+    intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
+    felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanugyiAdatok?: Tanugyi_AdatokUncheckedUpdateManyWithoutAlapadatokNestedInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanulo_letszam?: Tanulo_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloUncheckedUpdateManyWithoutAlapadatokNestedInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    versenyek?: versenyekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyUncheckedUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakma?: Alapadatok_SzakmaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    nszfhMeresek?: nszfhMeresekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    elhelyezkedes?: ElhelyezkedesUncheckedUpdateManyWithoutAlapadatokNestedInput
+    elegedettseg?: ElegedettsegUncheckedUpdateManyWithoutAlapadatokNestedInput
+    vizsgaeredmenyek?: VizsgaEredmenyekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    lemorzsolodas?: LemorzsolodasUncheckedUpdateManyWithoutAlapadatokNestedInput
+    elegedettsegMeres?: ElegedettsegMeresUncheckedUpdateManyWithoutAlapadatokNestedInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegUncheckedUpdateManyWithoutAlapadatokNestedInput
+    hhesHhhTanulok?: HHEsHHHTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
+    dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
+    muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    oktatoAdatszolg?: OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
+    OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
+  }
+
+  export type AlapadatokCreateWithoutOktatoAdatszolgInput = {
+    id?: string
+    iskola_neve: string
+    intezmeny_tipus: string
+    deleted?: boolean
+    felvettek_szama?: Felvettek_SzamaCreateNestedManyWithoutAlapadatokInput
+    kompetencia?: KompetenciaCreateNestedManyWithoutAlapadatokInput
+    tanar_letszam?: Tanar_LetszamCreateNestedManyWithoutAlapadatokInput
+    tanugyiAdatok?: Tanugyi_AdatokCreateNestedManyWithoutAlapadatokInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyCreateNestedManyWithoutAlapadatokInput
+    tanulo_letszam?: Tanulo_LetszamCreateNestedManyWithoutAlapadatokInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloCreateNestedManyWithoutAlapadatokInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaCreateNestedManyWithoutAlapadatokInput
+    versenyek?: versenyekCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakma?: Alapadatok_SzakmaCreateNestedManyWithoutAlapadatokInput
+    nszfhMeresek?: nszfhMeresekCreateNestedManyWithoutAlapadatokInput
+    elhelyezkedes?: ElhelyezkedesCreateNestedManyWithoutAlapadatokInput
+    elegedettseg?: ElegedettsegCreateNestedManyWithoutAlapadatokInput
+    vizsgaeredmenyek?: VizsgaEredmenyekCreateNestedManyWithoutAlapadatokInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekCreateNestedManyWithoutAlapadatokInput
+    lemorzsolodas?: LemorzsolodasCreateNestedManyWithoutAlapadatokInput
+    elegedettsegMeres?: ElegedettsegMeresCreateNestedManyWithoutAlapadatokInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegCreateNestedManyWithoutAlapadatokInput
+    hhesHhhTanulok?: HHEsHHHTanulokCreateNestedManyWithoutAlapadatokInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokCreateNestedManyWithoutAlapadatokInput
+    dobbanto?: DobbantoCreateNestedManyWithoutAlapadatokInput
+    muhelyiskola?: MuhelyiskolaCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgCreateNestedManyWithoutAlapadatokInput
+    users?: UserCreateNestedManyWithoutAlapadatokInput
+    OktatoEgyebTev?: OktatoEgyebTevCreateNestedManyWithoutAlapadatokInput
+  }
+
+  export type AlapadatokUncheckedCreateWithoutOktatoAdatszolgInput = {
+    id?: string
+    iskola_neve: string
+    intezmeny_tipus: string
+    deleted?: boolean
+    felvettek_szama?: Felvettek_SzamaUncheckedCreateNestedManyWithoutAlapadatokInput
+    kompetencia?: KompetenciaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanar_letszam?: Tanar_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanugyiAdatok?: Tanugyi_AdatokUncheckedCreateNestedManyWithoutAlapadatokInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanulo_letszam?: Tanulo_LetszamUncheckedCreateNestedManyWithoutAlapadatokInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloUncheckedCreateNestedManyWithoutAlapadatokInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaUncheckedCreateNestedManyWithoutAlapadatokInput
+    versenyek?: versenyekUncheckedCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyUncheckedCreateNestedManyWithoutAlapadatokInput
+    alapadatok_szakma?: Alapadatok_SzakmaUncheckedCreateNestedManyWithoutAlapadatokInput
+    nszfhMeresek?: nszfhMeresekUncheckedCreateNestedManyWithoutAlapadatokInput
+    elhelyezkedes?: ElhelyezkedesUncheckedCreateNestedManyWithoutAlapadatokInput
+    elegedettseg?: ElegedettsegUncheckedCreateNestedManyWithoutAlapadatokInput
+    vizsgaeredmenyek?: VizsgaEredmenyekUncheckedCreateNestedManyWithoutAlapadatokInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekUncheckedCreateNestedManyWithoutAlapadatokInput
+    lemorzsolodas?: LemorzsolodasUncheckedCreateNestedManyWithoutAlapadatokInput
+    elegedettsegMeres?: ElegedettsegMeresUncheckedCreateNestedManyWithoutAlapadatokInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegUncheckedCreateNestedManyWithoutAlapadatokInput
+    hhesHhhTanulok?: HHEsHHHTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedCreateNestedManyWithoutAlapadatokInput
+    dobbanto?: DobbantoUncheckedCreateNestedManyWithoutAlapadatokInput
+    muhelyiskola?: MuhelyiskolaUncheckedCreateNestedManyWithoutAlapadatokInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedCreateNestedManyWithoutAlapadatokInput
+    users?: UserUncheckedCreateNestedManyWithoutAlapadatokInput
+    OktatoEgyebTev?: OktatoEgyebTevUncheckedCreateNestedManyWithoutAlapadatokInput
+  }
+
+  export type AlapadatokCreateOrConnectWithoutOktatoAdatszolgInput = {
+    where: AlapadatokWhereUniqueInput
+    create: XOR<AlapadatokCreateWithoutOktatoAdatszolgInput, AlapadatokUncheckedCreateWithoutOktatoAdatszolgInput>
+  }
+
+  export type AlapadatokUpsertWithoutOktatoAdatszolgInput = {
+    update: XOR<AlapadatokUpdateWithoutOktatoAdatszolgInput, AlapadatokUncheckedUpdateWithoutOktatoAdatszolgInput>
+    create: XOR<AlapadatokCreateWithoutOktatoAdatszolgInput, AlapadatokUncheckedCreateWithoutOktatoAdatszolgInput>
+    where?: AlapadatokWhereInput
+  }
+
+  export type AlapadatokUpdateToOneWithWhereWithoutOktatoAdatszolgInput = {
+    where?: AlapadatokWhereInput
+    data: XOR<AlapadatokUpdateWithoutOktatoAdatszolgInput, AlapadatokUncheckedUpdateWithoutOktatoAdatszolgInput>
+  }
+
+  export type AlapadatokUpdateWithoutOktatoAdatszolgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    iskola_neve?: StringFieldUpdateOperationsInput | string
+    intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
+    felvettek_szama?: Felvettek_SzamaUpdateManyWithoutAlapadatokNestedInput
+    kompetencia?: KompetenciaUpdateManyWithoutAlapadatokNestedInput
+    tanar_letszam?: Tanar_LetszamUpdateManyWithoutAlapadatokNestedInput
+    tanugyiAdatok?: Tanugyi_AdatokUpdateManyWithoutAlapadatokNestedInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyUpdateManyWithoutAlapadatokNestedInput
+    tanulo_letszam?: Tanulo_LetszamUpdateManyWithoutAlapadatokNestedInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloUpdateManyWithoutAlapadatokNestedInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaUpdateManyWithoutAlapadatokNestedInput
+    versenyek?: versenyekUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakma?: Alapadatok_SzakmaUpdateManyWithoutAlapadatokNestedInput
+    nszfhMeresek?: nszfhMeresekUpdateManyWithoutAlapadatokNestedInput
+    elhelyezkedes?: ElhelyezkedesUpdateManyWithoutAlapadatokNestedInput
+    elegedettseg?: ElegedettsegUpdateManyWithoutAlapadatokNestedInput
+    vizsgaeredmenyek?: VizsgaEredmenyekUpdateManyWithoutAlapadatokNestedInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekUpdateManyWithoutAlapadatokNestedInput
+    lemorzsolodas?: LemorzsolodasUpdateManyWithoutAlapadatokNestedInput
+    elegedettsegMeres?: ElegedettsegMeresUpdateManyWithoutAlapadatokNestedInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegUpdateManyWithoutAlapadatokNestedInput
+    hhesHhhTanulok?: HHEsHHHTanulokUpdateManyWithoutAlapadatokNestedInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokUpdateManyWithoutAlapadatokNestedInput
+    dobbanto?: DobbantoUpdateManyWithoutAlapadatokNestedInput
+    muhelyiskola?: MuhelyiskolaUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUpdateManyWithoutAlapadatokNestedInput
+    users?: UserUpdateManyWithoutAlapadatokNestedInput
+    OktatoEgyebTev?: OktatoEgyebTevUpdateManyWithoutAlapadatokNestedInput
+  }
+
+  export type AlapadatokUncheckedUpdateWithoutOktatoAdatszolgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    iskola_neve?: StringFieldUpdateOperationsInput | string
+    intezmeny_tipus?: StringFieldUpdateOperationsInput | string
+    deleted?: BoolFieldUpdateOperationsInput | boolean
+    felvettek_szama?: Felvettek_SzamaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    kompetencia?: KompetenciaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanar_letszam?: Tanar_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanugyiAdatok?: Tanugyi_AdatokUncheckedUpdateManyWithoutAlapadatokNestedInput
+    alkalmazottakMunkaugy?: Alkalmazottak_MunkaugyUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanulo_letszam?: Tanulo_LetszamUncheckedUpdateManyWithoutAlapadatokNestedInput
+    egyOktatoraJutoTanulo?: EgyOktatoraJutoTanuloUncheckedUpdateManyWithoutAlapadatokNestedInput
+    szakkepzesiMunkaszerzodesAranya?: SzakkepzesiMunkaszerzodesAranyaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    versenyek?: versenyekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakirany?: Alapadatok_SzakiranyUncheckedUpdateManyWithoutAlapadatokNestedInput
+    alapadatok_szakma?: Alapadatok_SzakmaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    nszfhMeresek?: nszfhMeresekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    elhelyezkedes?: ElhelyezkedesUncheckedUpdateManyWithoutAlapadatokNestedInput
+    elegedettseg?: ElegedettsegUncheckedUpdateManyWithoutAlapadatokNestedInput
+    vizsgaeredmenyek?: VizsgaEredmenyekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    szakmaiVizsgaEredmenyek?: SzakmaiVizsgaEredmenyekUncheckedUpdateManyWithoutAlapadatokNestedInput
+    lemorzsolodas?: LemorzsolodasUncheckedUpdateManyWithoutAlapadatokNestedInput
+    elegedettsegMeres?: ElegedettsegMeresUncheckedUpdateManyWithoutAlapadatokNestedInput
+    intezmenyiNeveltseg?: IntezmenyiNeveltsegUncheckedUpdateManyWithoutAlapadatokNestedInput
+    hhesHhhTanulok?: HHEsHHHTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
+    sajatosNevelesuTanulok?: SajatosNevelesuTanulokUncheckedUpdateManyWithoutAlapadatokNestedInput
+    dobbanto?: DobbantoUncheckedUpdateManyWithoutAlapadatokNestedInput
+    muhelyiskola?: MuhelyiskolaUncheckedUpdateManyWithoutAlapadatokNestedInput
+    tanuloAdatszolg?: TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokNestedInput
+    users?: UserUncheckedUpdateManyWithoutAlapadatokNestedInput
+    OktatoEgyebTev?: OktatoEgyebTevUncheckedUpdateManyWithoutAlapadatokNestedInput
   }
 
   export type LogCreateManyUserInput = {
@@ -70539,10 +77834,10 @@ export namespace Prisma {
   export type KompetenciaCreateManyAlapadatokInput = {
     id?: string
     tanev_kezdete?: number
-    mat_orsz_p: string
-    szoveg_orsz_p: string
-    mat_int_p: string
-    szoveg_int_p: string
+    mat_orsz_p?: Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: Decimal | DecimalJsLike | number | string
+    mat_int_p?: Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: Decimal | DecimalJsLike | number | string
     kepzes_forma: string
     createAt?: Date | string
     createBy?: string | null
@@ -70917,6 +78212,137 @@ export namespace Prisma {
     updatedBy?: string | null
   }
 
+  export type TanuloAdatszolgCreateManyAlapadatokInput = {
+    id?: string
+    tanev_kezdete: number
+    Tanulo_Oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Lakohely_tanulo_lakohely_telepules?: string | null
+    Lakohely_szulo_allando_lakohely_telepules?: string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: string | null
+    Tanulo_Koreve?: string | null
+    Tanulo_jogviszonya?: string | null
+    Nem?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Tantervi_jellemzo?: string | null
+    Munkarend?: string | null
+    Evfolyam?: string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: string | null
+    Regi_Szkt_OKJ_Agazat?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: string | null
+    Uj_Szkt_Reszszakmak_Agazat?: string | null
+    Uj_Szkt_Reszszakma_Szakma?: string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: string | null
+    Programkovetelmenyes_szakmai_kepzes?: string | null
+    Allampolgarsag_orszaga_1?: string | null
+    Allampolgarsag_orszaga_2?: string | null
+    Sajatos_nevelesi_igeny?: string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: string | null
+    Fogyatekossag_tipusa?: string | null
+    Kiemelten_tehetseges?: string | null
+    Evfolyamismetlo?: string | null
+    Egyeni_tanrend_szerint_tanul?: string | null
+    Tanmuhelyben_tanul?: string | null
+    Mas_telepulesrol_bejar?: string | null
+    Kollegiumban_lakik?: string | null
+    Externatusi_ellatasban_reszesitett?: string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: string | null
+    Etkeztetesben_reszesul?: string | null
+    Gyakorlathoz_kotheto_jogviszony?: string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: string | null
+    Napkoziotthoni_ellatasban_reszesul?: string | null
+    Hatranyos_helyzetu?: string | null
+    Halmozottan_hatranyos_helyzetu?: string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: string | null
+    Szamitogepet_oktatasi_celra_hasznal?: string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: string | null
+    Etika_oktatasban_reszesul?: string | null
+    Nyelvoktatasban_reszesul?: string | null
+    Nyelvoktatas_alol_felmentett?: string | null
+    Tandijas?: string | null
+    Teritesi_dijas?: string | null
+    Kezdo_evfolyamos_tanulo?: string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: string | null
+    Diaksport_egyesulet_tagja?: string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: string | null
+    Arany_Janos_Tehetseggondozo_Program?: string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: string | null
+    Emelt_szintu_oktatas_tantargy_1?: string | null
+    Emelt_szintu_oktatas_tantargy_2?: string | null
+    Emelt_szintu_oktatas_tantargy_3?: string | null
+    Tanult_idegen_nyelv_1?: string | null
+    Tanult_idegen_nyelv_2?: string | null
+    Tanult_idegen_nyelv_3?: string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: string | null
+    Nemzetisegi_nyelv?: string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: string | null
+    createBy?: string | null
+  }
+
+  export type OktatoAdatszolgCreateManyAlapadatokInput = {
+    id?: string
+    tanev_kezdete: number
+    Alkalmazott_oktatasi_azonosito?: string | null
+    Intezmeny_OM_azonosito?: string | null
+    Intezmeny_nev?: string | null
+    Intezmeny_szekhely_telepules_nev?: string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: string | null
+    Intezmeny_szekhely_cim?: string | null
+    Intezmeny_szekhely_email?: string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: string | null
+    Feladatellatasi_hely_nev?: string | null
+    Feladatellatasi_hely_telepules_nev?: string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: string | null
+    Feladatellatasi_hely_cim?: string | null
+    Feladatellatasi_hely_email?: string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: string | null
+    Oktato_nem?: string | null
+    Oktato_koreve?: string | null
+    Oktato_magasabb_vezetoi_megbizas?: string | null
+    Oktato_munkakor?: string | null
+    Oktato_vegzettseg?: string | null
+    Oktato_fokozatok?: string | null
+    Oktato_oktatott_targykategoria_1_szerint?: string | null
+    Oktato_oktatott_targykategoria_2_szerint?: string | null
+    Oktato_oktatott_targykategoria_3_szerint?: string | null
+    Oktato_tantervi_jellemzo_szerint?: string | null
+    Oktato_Nyugdijas?: string | null
+    Oktato_Tartosan_tavol_levo?: string | null
+    Oktato_Palyakezdo?: string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: string | null
+    createBy?: string | null
+  }
+
   export type UserCreateManyAlapadatokInput = {
     id?: string
     email: string
@@ -70998,10 +78424,10 @@ export namespace Prisma {
   export type KompetenciaUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71012,10 +78438,10 @@ export namespace Prisma {
   export type KompetenciaUncheckedUpdateWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71026,10 +78452,10 @@ export namespace Prisma {
   export type KompetenciaUncheckedUpdateManyWithoutAlapadatokInput = {
     id?: StringFieldUpdateOperationsInput | string
     tanev_kezdete?: IntFieldUpdateOperationsInput | number
-    mat_orsz_p?: StringFieldUpdateOperationsInput | string
-    szoveg_orsz_p?: StringFieldUpdateOperationsInput | string
-    mat_int_p?: StringFieldUpdateOperationsInput | string
-    szoveg_int_p?: StringFieldUpdateOperationsInput | string
+    mat_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_orsz_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mat_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    szoveg_int_p?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kepzes_forma?: StringFieldUpdateOperationsInput | string
     createAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72136,6 +79562,399 @@ export namespace Prisma {
     createBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TanuloAdatszolgUpdateWithoutAlapadatokInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TanuloAdatszolgUncheckedUpdateWithoutAlapadatokInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TanuloAdatszolgUncheckedUpdateManyWithoutAlapadatokInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Tanulo_Oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_tanulo_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_szulo_allando_lakohely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_Koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_jogviszonya?: NullableStringFieldUpdateOperationsInput | string | null
+    Nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Tantervi_jellemzo?: NullableStringFieldUpdateOperationsInput | string | null
+    Munkarend?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyam?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakmacsoport?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Regi_Szkt_OKJ_Reszszakkepesites?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakma_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Szakmajegyzek_Szakmairany?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Agazat?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakma_Szakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Uj_Szkt_Reszszakmak_Reszszakma?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod?: NullableStringFieldUpdateOperationsInput | string | null
+    Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese?: NullableStringFieldUpdateOperationsInput | string | null
+    Programkovetelmenyes_szakmai_kepzes?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Allampolgarsag_orszaga_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Sajatos_nevelesi_igeny_integraltan_nevelt?: NullableStringFieldUpdateOperationsInput | string | null
+    Fogyatekossag_tipusa?: NullableStringFieldUpdateOperationsInput | string | null
+    Kiemelten_tehetseges?: NullableStringFieldUpdateOperationsInput | string | null
+    Evfolyamismetlo?: NullableStringFieldUpdateOperationsInput | string | null
+    Egyeni_tanrend_szerint_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanmuhelyben_tanul?: NullableStringFieldUpdateOperationsInput | string | null
+    Mas_telepulesrol_bejar?: NullableStringFieldUpdateOperationsInput | string | null
+    Kollegiumban_lakik?: NullableStringFieldUpdateOperationsInput | string | null
+    Externatusi_ellatasban_reszesitett?: NullableStringFieldUpdateOperationsInput | string | null
+    Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Etkeztetesben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Gyakorlathoz_kotheto_jogviszony?: NullableStringFieldUpdateOperationsInput | string | null
+    Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Napkoziotthoni_ellatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Halmozottan_hatranyos_helyzetu?: NullableStringFieldUpdateOperationsInput | string | null
+    Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Szamitogepet_oktatasi_celra_hasznal?: NullableStringFieldUpdateOperationsInput | string | null
+    Hit_es_erkolcstan_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Etika_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    Nyelvoktatas_alol_felmentett?: NullableStringFieldUpdateOperationsInput | string | null
+    Tandijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Teritesi_dijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Kezdo_evfolyamos_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Iskolai_sportkorben_resztvevo_tanulo?: NullableStringFieldUpdateOperationsInput | string | null
+    Diaksport_egyesulet_tagja?: NullableStringFieldUpdateOperationsInput | string | null
+    Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok?: NullableStringFieldUpdateOperationsInput | string | null
+    Arany_Janos_Tehetseggondozo_Program?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatasban_vesz_reszt?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Emelt_szintu_oktatas_tantargy_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_1?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_2?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanult_idegen_nyelv_3?: NullableStringFieldUpdateOperationsInput | string | null
+    Tanulo_nemzetisegi_nyelvoktatasa?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_neveles_oktatas_fajtaja?: NullableStringFieldUpdateOperationsInput | string | null
+    Nemzetisegi_nyelv?: NullableStringFieldUpdateOperationsInput | string | null
+    Egesz_napos_iskolai_oktatasban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte?: NullableStringFieldUpdateOperationsInput | string | null
+    Otthon_nyujtott_ellatasi_formaban_reszesul?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OktatoAdatszolgUpdateWithoutAlapadatokInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OktatoAdatszolgUncheckedUpdateWithoutAlapadatokInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OktatoAdatszolgUncheckedUpdateManyWithoutAlapadatokInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tanev_kezdete?: IntFieldUpdateOperationsInput | number
+    Alkalmazott_oktatasi_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_OM_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Intezmeny_szekhely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_nev?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_telepules_iranyitoszam?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_cim?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_email?: NullableStringFieldUpdateOperationsInput | string | null
+    Feladatellatasi_hely_tipus_ellatott_feladat?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_teljes_munkaidos_reszmunkaidos_oraado?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_nem?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_koreve?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_magasabb_vezetoi_megbizas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_munkakor?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_vegzettseg?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_fokozatok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_1_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_2_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_oktatott_targykategoria_3_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_tantervi_jellemzo_szerint?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Nyugdijas?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Tartosan_tavol_levo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Palyakezdo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Internetet_oktatasi_celra_hasznalo?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok?: NullableStringFieldUpdateOperationsInput | string | null
+    Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja?: NullableStringFieldUpdateOperationsInput | string | null
+    createBy?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUpdateWithoutAlapadatokInput = {

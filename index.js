@@ -119,6 +119,8 @@ protectedRouter.use("/oktato-egyeb-tev", i.oktatoEgyebTevRouter);
 protectedRouter.use("/alkalmazottak_munkaugy", i.alkalmazottakMunkauyRouter);
 protectedRouter.use("/szakirany", i.szakiranyRouter);
 protectedRouter.use("/szakma", i.szakmaRouter);
+protectedRouter.use("/tanulo_adatszolgaltatas", i.tanuloAdatszolgaltatasRouter);
+protectedRouter.use("/oktato_adatszolgaltatas", i.oktatoAdatszolgaltatasRouter);
 
 // Mount the protected router under the API router
 apiRouter.use(protectedRouter);

@@ -37,6 +37,7 @@ model TableList {
   name        String    @unique @db.VarChar(100)
   alias       String?   @db.VarChar(100)
   isAvailable Boolean   @default(true)
+  isLocked    Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime? @updatedAt
 
@@ -111,6 +112,8 @@ model Alapadatok {
   sajatosNevelesuTanulok          SajatosNevelesuTanulok[]
   dobbanto                        Dobbanto[]
   muhelyiskola                    Muhelyiskola[]
+  tanuloAdatszolg                 TanuloAdatszolg[]
+  oktatoAdatszolg                 OktatoAdatszolg[]
 
   users User[] @relation("AlapadatokUsers")
 
@@ -231,10 +234,10 @@ model Felvettek_Szama {
 model Kompetencia {
   id            String     @id @default(uuid()) @db.Uuid
   tanev_kezdete Int        @default(0) @db.SmallInt
-  mat_orsz_p    String
-  szoveg_orsz_p String
-  mat_int_p     String
-  szoveg_int_p  String
+  mat_orsz_p    Decimal    @default(0.00) @db.Decimal(3, 2)
+  szoveg_orsz_p Decimal    @default(0.00) @db.Decimal(3, 2)
+  mat_int_p     Decimal    @default(0.00) @db.Decimal(3, 2)
+  szoveg_int_p  Decimal    @default(0.00) @db.Decimal(3, 2)
   kepzes_forma  String
   alapadatok_id String     @db.Uuid
   createAt      DateTime   @default(now())
@@ -762,4 +765,147 @@ model OktatoEgyebTev {
   alapadatok Alapadatok @relation(fields: [alapadatok_id], references: [id])
 
   @@map("oktato_egyeb_tev")
+}
+
+model TanuloAdatszolg {
+  id            String @id @default(uuid()) @db.Uuid
+  alapadatok_id String @db.Uuid
+  tanev_kezdete Int    @db.SmallInt
+
+  Tanulo_Oktatasi_azonosito                                                      String?
+  Intezmeny_OM_azonosito                                                         String?
+  Intezmeny_nev                                                                  String?
+  Intezmeny_szekhely_telepules_nev                                               String?
+  Intezmeny_szekhely_telepules_iranyitoszam                                      String?
+  Intezmeny_szekhely_cim                                                         String?
+  Intezmeny_szekhely_email                                                       String?
+  Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito                  String?
+  Feladatellatasi_hely_nev                                                       String?
+  Feladatellatasi_hely_telepules_nev                                             String?
+  Feladatellatasi_hely_telepules_iranyitoszam                                    String?
+  Feladatellatasi_hely_cim                                                       String?
+  Feladatellatasi_hely_email                                                     String?
+  Lakohely_tanulo_lakohely_telepules                                             String?
+  Lakohely_szulo_allando_lakohely_telepules                                      String?
+  Lakohely_kulfoldi_allampolgar_tartozkodasi_hely_telepules                      String?
+  Tanulo_Koreve                                                                  String?
+  Tanulo_jogviszonya                                                             String?
+  Nem                                                                            String?
+  Feladatellatasi_hely_tipus_ellatott_feladat                                    String?
+  Tantervi_jellemzo                                                              String?
+  Munkarend                                                                      String?
+  Evfolyam                                                                       String?
+  Regi_Szkt_OKJ_Szakmacsoport                                                    String?
+  Regi_Szkt_OKJ_Agazat                                                           String?
+  Regi_Szkt_OKJ_Szakkepesites_megnevezese                                        String?
+  Regi_Szkt_OKJ_Szakkepesites_kod                                                String?
+  Regi_Szkt_OKJ_Reszszakkepesites                                                String?
+  Uj_Szkt_Szakmajegyzek_Agazat                                                   String?
+  Uj_Szkt_Szakmajegyzek_Szakma_megnevezese                                       String?
+  Uj_Szkt_Szakmajegyzek_Szakma_kod                                               String?
+  Uj_Szkt_Szakmajegyzek_Szakmairany                                              String?
+  Uj_Szkt_Reszszakmak_Agazat                                                     String?
+  Uj_Szkt_Reszszakma_Szakma                                                      String?
+  Uj_Szkt_Reszszakmak_Reszszakma                                                 String?
+  Nkt_Szakgimnaziumban_oktathato_kepzesek_Tanulmanyi_terulet                     String?
+  Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_megnevezese              String?
+  Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakkepesites_kod                      String?
+  Nkt_Szakgimnaziumban_oktathato_kepzesek_Szakirany                              String?
+  Programkovetelmenyes_szakmai_kepzes_Agazat_Tanulmanyi_terulet                  String?
+  Programkovetelmenyes_szakmai_kepzes_Szakmai_kepzes_megnevezese                 String?
+  Programkovetelmenyes_szakmai_kepzes                                            String?
+  Allampolgarsag_orszaga_1                                                       String?
+  Allampolgarsag_orszaga_2                                                       String?
+  Sajatos_nevelesi_igeny                                                         String?
+  Sajatos_nevelesi_igeny_gyogypedagogiai_tanterv_szerint_nevelt                  String?
+  Sajatos_nevelesi_igeny_integraltan_nevelt                                      String?
+  Fogyatekossag_tipusa                                                           String?
+  Kiemelten_tehetseges                                                           String?
+  Evfolyamismetlo                                                                String?
+  Egyeni_tanrend_szerint_tanul                                                   String?
+  Tanmuhelyben_tanul                                                             String?
+  Mas_telepulesrol_bejar                                                         String?
+  Kollegiumban_lakik                                                             String?
+  Externatusi_ellatasban_reszesitett                                             String?
+  Szocialis_osztondijban_illetve_szocialis_tamogatasban_reszesul                 String?
+  Etkeztetesben_reszesul                                                         String?
+  Gyakorlathoz_kotheto_jogviszony                                                String?
+  Beilleszkedesi_tanulasi_magatartasi_nehezseggel_kuzdo                          String?
+  Napkoziotthoni_ellatasban_reszesul                                             String?
+  Hatranyos_helyzetu                                                             String?
+  Halmozottan_hatranyos_helyzetu                                                 String?
+  Rendszeres_gyermekvedelmi_kedvezmenyben_reszesul                               String?
+  Szamitogepet_oktatasi_celra_hasznal                                            String?
+  Hit_es_erkolcstan_oktatasban_vesz_reszt                                        String?
+  Etika_oktatasban_reszesul                                                      String?
+  Nyelvoktatasban_reszesul                                                       String?
+  Nyelvoktatas_alol_felmentett                                                   String?
+  Tandijas                                                                       String?
+  Teritesi_dijas                                                                 String?
+  Kezdo_evfolyamos_tanulo                                                        String?
+  Iskolai_sportkorben_resztvevo_tanulo                                           String?
+  Diaksport_egyesulet_tagja                                                      String?
+  Szaboky_Adolf_Szakkepzesi_Osztondijban_reszesulok_hiany_szakkepesitesi_tanulok String?
+  Arany_Janos_Tehetseggondozo_Program                                            String?
+  Emelt_szintu_oktatasban_vesz_reszt                                             String?
+  Emelt_szintu_oktatas_tantargy_1                                                String?
+  Emelt_szintu_oktatas_tantargy_2                                                String?
+  Emelt_szintu_oktatas_tantargy_3                                                String?
+  Tanult_idegen_nyelv_1                                                          String?
+  Tanult_idegen_nyelv_2                                                          String?
+  Tanult_idegen_nyelv_3                                                          String?
+  Tanulo_nemzetisegi_nyelvoktatasa                                               String?
+  Nemzetisegi_neveles_oktatas_fajtaja                                            String?
+  Nemzetisegi_nyelv                                                              String?
+  Egesz_napos_iskolai_oktatasban_reszesul                                        String?
+  A_9_evfolyamosok_kozul_a_8_evfolyamot_az_elozo_tanevben_vegezte                String?
+  Otthon_nyujtott_ellatasi_formaban_reszesul                                     String?
+
+  createBy   String?
+  alapadatok Alapadatok @relation(fields: [alapadatok_id], references: [id])
+
+  @@map("tanulo_adatszolg")
+}
+
+model OktatoAdatszolg {
+  id            String @id @default(uuid()) @db.Uuid
+  alapadatok_id String @db.Uuid
+  tanev_kezdete Int    @db.SmallInt
+
+  Alkalmazott_oktatasi_azonosito                                String?
+  Intezmeny_OM_azonosito                                        String?
+  Intezmeny_nev                                                 String?
+  Intezmeny_szekhely_telepules_nev                              String?
+  Intezmeny_szekhely_telepules_iranyitoszam                     String?
+  Intezmeny_szekhely_cim                                        String?
+  Intezmeny_szekhely_email                                      String?
+  Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito String?
+  Feladatellatasi_hely_nev                                      String?
+  Feladatellatasi_hely_telepules_nev                            String?
+  Feladatellatasi_hely_telepules_iranyitoszam                   String?
+  Feladatellatasi_hely_cim                                      String?
+  Feladatellatasi_hely_email                                    String?
+  Feladatellatasi_hely_tipus_ellatott_feladat                   String?
+  Oktato_teljes_munkaidos_reszmunkaidos_oraado                  String?
+  Oktato_nem                                                    String?
+  Oktato_koreve                                                 String?
+  Oktato_magasabb_vezetoi_megbizas                              String?
+  Oktato_munkakor                                               String?
+  Oktato_vegzettseg                                             String?
+  Oktato_fokozatok                                              String?
+  Oktato_oktatott_targykategoria_1_szerint                      String?
+  Oktato_oktatott_targykategoria_2_szerint                      String?
+  Oktato_oktatott_targykategoria_3_szerint                      String?
+  Oktato_tantervi_jellemzo_szerint                              String?
+  Oktato_Nyugdijas                                              String?
+  Oktato_Tartosan_tavol_levo                                    String?
+  Oktato_Palyakezdo                                             String?
+  Oktato_Internetet_oktatasi_celra_hasznalo                     String?
+  Oktato_Informatikai_kepesitessel_ismeretekkel_rendelkezok     String?
+  Oktato_IKT_eszkozoket_a_tanoraja_legalabb_40_aban_hasznalja   String?
+
+  createBy   String?
+  alapadatok Alapadatok @relation(fields: [alapadatok_id], references: [id])
+
+  @@map("oktato_adatszolg")
 }

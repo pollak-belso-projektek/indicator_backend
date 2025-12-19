@@ -1,5 +1,10 @@
 import e from "express";
-import { getAll, create, getById } from "../services/kompetencia.service.js";
+import {
+  getAll,
+  create,
+  getById,
+  update,
+} from "../services/kompetencia.service.js";
 
 const router = e.Router();
 
@@ -222,6 +227,43 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(400).json(error);
+  }
+});
+
+router.put("/", async (req, res) => {
+  try {
+    const {
+      id,
+      alapadatok_id,
+      tanev_kezdete,
+      mat_orsz_p,
+      szoveg_orsz_p,
+      mat_int_p,
+      szoveg_int_p,
+      kepzes_forma,
+    } = req.body;
+
+    if (!id || !alapadatok_id) {
+      return res
+        .status(400)
+        .json({ message: "Missing required fields: id or alapadatok_id" });
+    }
+
+    const data = await update(
+      id,
+      alapadatok_id,
+      tanev_kezdete,
+      mat_orsz_p,
+      szoveg_orsz_p,
+      mat_int_p,
+      szoveg_int_p,
+      kepzes_forma
+    );
+
+    res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
   }
 });
 
