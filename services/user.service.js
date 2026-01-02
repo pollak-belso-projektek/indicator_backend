@@ -273,6 +273,19 @@ export async function update(
         });
       })
     );
+  } else {
+    await prisma.tableAccess.deleteMany({
+      where: { userId: user.id },
+    });
+
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        tableAccess: {
+          deleteMany: {},
+        },
+      },
+    });
   }
 
   // Invalidate all user caches including specific user email and the users list
