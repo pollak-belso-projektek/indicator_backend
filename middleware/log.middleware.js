@@ -40,6 +40,17 @@ export function logMiddleware(req, res, next) {
     const hrTime = process.hrtime(startTime);
     const duration = Math.round(hrTime[0] * 1000 + hrTime[1] / 1000000);
 
+    // Determine log path from Referer (frontend path) or fallback to API path
+    let logPath = req.originalUrl.split("?")[0];
+    if (req.headers.referer) {
+      try {
+        const url = new URL(req.headers.referer);
+        logPath = url.pathname;
+      } catch (e) {
+        // Ignore invalid URLs
+      }
+    }
+
     // Extract token if available
     const token = req.headers.authorization?.split(" ")[1];
     let userId = null;
@@ -56,7 +67,7 @@ export function logMiddleware(req, res, next) {
       logRequest({
         userId,
         method: req.method,
-        path: req.originalUrl.split("?")[0],
+        path: logPath,
         statusCode: res.statusCode,
         body: sanitizeRequestBody(req.body),
         query: req.query,
@@ -78,7 +89,7 @@ export function logMiddleware(req, res, next) {
         logRequest({
           userId: userId,
           method: req.method,
-          path: req.originalUrl.split("?")[0],
+          path: logPath,
           statusCode: res.statusCode,
           body: sanitizeRequestBody(req.body),
           query: req.query,
@@ -104,7 +115,7 @@ export function logMiddleware(req, res, next) {
               logRequest({
                 userId: user.id,
                 method: req.method,
-                path: req.originalUrl.split("?")[0],
+                path: logPath,
                 statusCode: res.statusCode,
                 body: sanitizeRequestBody(req.body),
                 query: req.query,
@@ -119,7 +130,7 @@ export function logMiddleware(req, res, next) {
               // Log without user ID if user not found (but token was present)
               logRequest({
                 method: req.method,
-                path: req.originalUrl.split("?")[0],
+                path: logPath,
                 statusCode: res.statusCode,
                 body: sanitizeRequestBody(req.body),
                 query: req.query,
@@ -138,7 +149,7 @@ export function logMiddleware(req, res, next) {
             // Log anyway without user ID
             logRequest({
               method: req.method,
-              path: req.originalUrl.split("?")[0],
+              path: logPath,
               statusCode: res.statusCode,
               body: sanitizeRequestBody(req.body),
               query: req.query,
@@ -155,7 +166,7 @@ export function logMiddleware(req, res, next) {
       // Log without user ID
       logRequest({
         method: req.method,
-        path: req.originalUrl.split("?")[0],
+        path: logPath,
         statusCode: res.statusCode,
         body: sanitizeRequestBody(req.body),
         query: req.query,
