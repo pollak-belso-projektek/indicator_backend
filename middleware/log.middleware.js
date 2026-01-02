@@ -1,5 +1,5 @@
 import { logRequest } from "../services/log.service.js";
-import { getUserFromToken } from "../utils/token.js";
+import { getUserFromToken } from "../utils/tokenClient.js";
 import process from "node:process";
 
 // Simple user cache to avoid repeated database lookups
@@ -49,8 +49,27 @@ export function logMiddleware(req, res, next) {
     if (res.statusCode >= 500) level = "ERROR";
     else if (res.statusCode >= 400) level = "WARN";
 
-    // Use cached user ID if available
-    if (token) {
+    // 1. Check if user is already attached to request (fastest)
+    if (req.user && req.user.id) {
+      userId = req.user.id;
+
+      logRequest({
+        userId,
+        method: req.method,
+        path: req.originalUrl.split("?")[0],
+        statusCode: res.statusCode,
+        body: sanitizeRequestBody(req.body),
+        query: req.query,
+        headers: sanitizeHeaders(req.headers),
+        ip: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+        userAgent: req.headers["user-agent"],
+        duration,
+        level,
+        correlationId,
+      });
+    }
+    // 2. Use access token to find user
+    else if (token) {
       const cachedUser = userCache.get(token);
       if (cachedUser && cachedUser.expiry > Date.now()) {
         userId = cachedUser.id;
@@ -59,7 +78,7 @@ export function logMiddleware(req, res, next) {
         logRequest({
           userId: userId,
           method: req.method,
-          path: req.path,
+          path: req.originalUrl.split("?")[0],
           statusCode: res.statusCode,
           body: sanitizeRequestBody(req.body),
           query: req.query,
@@ -85,7 +104,22 @@ export function logMiddleware(req, res, next) {
               logRequest({
                 userId: user.id,
                 method: req.method,
-                path: req.path,
+                path: req.originalUrl.split("?")[0],
+                statusCode: res.statusCode,
+                body: sanitizeRequestBody(req.body),
+                query: req.query,
+                headers: sanitizeHeaders(req.headers),
+                ip: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+                userAgent: req.headers["user-agent"],
+                duration,
+                level,
+                correlationId,
+              });
+            } else {
+              // Log without user ID if user not found (but token was present)
+              logRequest({
+                method: req.method,
+                path: req.originalUrl.split("?")[0],
                 statusCode: res.statusCode,
                 body: sanitizeRequestBody(req.body),
                 query: req.query,
@@ -104,7 +138,7 @@ export function logMiddleware(req, res, next) {
             // Log anyway without user ID
             logRequest({
               method: req.method,
-              path: req.path,
+              path: req.originalUrl.split("?")[0],
               statusCode: res.statusCode,
               body: sanitizeRequestBody(req.body),
               query: req.query,
@@ -121,7 +155,7 @@ export function logMiddleware(req, res, next) {
       // Log without user ID
       logRequest({
         method: req.method,
-        path: req.path,
+        path: req.originalUrl.split("?")[0],
         statusCode: res.statusCode,
         body: sanitizeRequestBody(req.body),
         query: req.query,

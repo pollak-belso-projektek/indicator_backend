@@ -52,7 +52,7 @@ export async function getUserFromToken(token) {
     // For login service tokens, we get more complete user data from the token payload
     // and only fetch from database if we need additional information
     let user = {
-      id: decoded.id,
+      id: decoded.sub || decoded.id,
       email: decoded.email,
       name: decoded.name,
       permissions: decoded.permissions,
@@ -67,7 +67,7 @@ export async function getUserFromToken(token) {
           ...user,
           ...dbUser,
           // Keep token data as authoritative for these fields
-          id: decoded.id,
+          id: decoded.sub || decoded.id,
           email: decoded.email,
           name: decoded.name,
           permissions: decoded.permissions,
