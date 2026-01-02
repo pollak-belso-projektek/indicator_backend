@@ -41,7 +41,6 @@ jobs:
           tags: |
             type=ref,event=branch
             type=ref,event=pr
-            type=sha
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Main Service 🏗️
@@ -87,7 +86,6 @@ jobs:
           tags: |
             type=ref,event=branch
             type=ref,event=pr
-            type=sha
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Login Service 🔐
@@ -133,7 +131,6 @@ jobs:
           tags: |
             type=ref,event=branch
             type=ref,event=pr
-            type=sha
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Gateway Service 🌐
@@ -155,7 +152,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-main-service, build-login-service, build-gateway-service]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
     steps:
       - name: Deploy notification
         run: |
