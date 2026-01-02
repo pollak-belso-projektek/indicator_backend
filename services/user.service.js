@@ -242,8 +242,11 @@ export async function update(
       isActive,
     },
   });
+  // Handle tableAccess updates
+  let validTableIds = [];
+
   if (tableAccess && tableAccess.length > 0) {
-    await Promise.all(
+    validTableIds = await Promise.all(
       tableAccess.map(async (access) => {
         const table = await prisma.tableList.findUnique({
           where: { name: access.tableName },
@@ -271,22 +274,19 @@ export async function update(
             access: access.access,
           },
         });
+
+        return table.id;
       })
     );
-  } else {
-    await prisma.tableAccess.deleteMany({
-      where: { userId: user.id },
-    });
-
-    await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        tableAccess: {
-          deleteMany: {},
-        },
-      },
-    });
   }
+
+  // Remove any table access that is not in the current list
+  await prisma.tableAccess.deleteMany({
+    where: {
+      userId: user.id,
+      tableId: { notIn: validTableIds },
+    },
+  });
 
   // Invalidate all user caches including specific user email and the users list
   cache.invalidate("users:*");
