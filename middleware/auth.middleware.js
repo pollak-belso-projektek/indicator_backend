@@ -1,4 +1,5 @@
 import { refreshAccessToken, getUserFromToken } from "../utils/tokenClient.js";
+import { getById } from "../services/user.service.js";
 
 export async function authMiddleware(req, res, next) {
   if (req.method === "OPTIONS") {
@@ -24,6 +25,30 @@ export async function authMiddleware(req, res, next) {
     }
 
     req.user = user;
+
+    const impersonateUserId = req.headers["x-impersonate-user"];
+    if (impersonateUserId) {
+      if (user.permissionsDetails && user.permissionsDetails.isSuperadmin) {
+        console.log(
+          `Superadmin ${user.id} impersonating user ${impersonateUserId}`
+        );
+        const impersonatedUser = await getById(impersonateUserId);
+
+        if (impersonatedUser) {
+          req.impersonator = user; // Keep track of the real user
+          req.user = impersonatedUser;
+        } else {
+          console.warn(
+            `Impersonation failed: User ${impersonateUserId} not found`
+          );
+        }
+      } else {
+        console.warn(
+          `User ${user.id} attempted to impersonate without permission`
+        );
+      }
+    }
+
     next();
   } catch (error) {
     if (error.name === "TokenExpiredError") {
@@ -44,7 +69,28 @@ export async function authMiddleware(req, res, next) {
         res.setHeader("X-Refresh-Token", tokens.refreshToken);
 
         // Use getUserFromToken with the new token
-        const user = await getUserFromToken(tokens.accessToken);
+        let user = await getUserFromToken(tokens.accessToken);
+
+        // Handle impersonation after token refresh as well
+        const impersonateUserId = req.headers["x-impersonate-user"];
+        if (impersonateUserId) {
+          if (user.permissionsDetails && user.permissionsDetails.isSuperadmin) {
+            console.log(
+              `Superadmin ${user.id} impersonating user ${impersonateUserId} (after refresh)`
+            );
+            const impersonatedUser = await getById(impersonateUserId);
+
+            if (impersonatedUser) {
+              req.impersonator = user; // Keep track of the real user
+              user = impersonatedUser;
+            } else {
+              console.warn(
+                `Impersonation failed: User ${impersonateUserId} not found`
+              );
+            }
+          }
+        }
+
         req.user = user;
         next();
       } catch (error) {

@@ -108,6 +108,40 @@ export async function getByEmail(email) {
   return data;
 }
 
+export async function getById(id) {
+  const cacheKey = `users:id:${id}`;
+  const cachedData = cache.get(cacheKey);
+
+  if (cachedData) {
+    return cachedData;
+  }
+
+  const data = await prisma.user.findUnique({
+    include: {
+      tableAccess: {
+        include: {
+          table: true,
+        },
+      },
+      alapadatok: true,
+    },
+    where: {
+      id: id,
+    },
+  });
+
+  if (!data) {
+    return null;
+  }
+
+  // Store in cache
+  cache.set(cacheKey, data, CACHE_TTL.DETAIL);
+  // Enrich user with permission details
+  enrichUserWithPermissions(data);
+
+  return data;
+}
+
 export async function getAllFiltered(token) {
   const cacheKey = `users:all:filtered`;
   const cachedData = cache.get(cacheKey);
