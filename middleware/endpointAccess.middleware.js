@@ -15,6 +15,16 @@ export default function endpointAccessMiddleware(req, res, next) {
       return next();
     }
 
+    if (
+      (endpoint.includes("tablelist") ||
+        endpoint.includes("alapadatok") ||
+        endpoint.includes("tanugyi_adatok") ||
+        endpoint.includes("alkalmazottak_munkaugy")) &&
+      req.method === "GET"
+    ) {
+      return next();
+    }
+
     // Check if the user has access to this endpoint
     const hasEndpointAccess = user.tableAccess.some((access) =>
       endpoint.includes(access.tableName)
