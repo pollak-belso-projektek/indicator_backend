@@ -54,6 +54,7 @@ const corsConfig = {
     "no-cache",
     "no-store",
     "must-revalidate",
+    "x-impersonate-user",
   ],
 };
 
