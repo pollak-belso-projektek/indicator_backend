@@ -11,14 +11,13 @@ const CACHE_TTL = {
 };
 
 export async function getAll(token) {
-  const cacheKey = "users:all";
+  const user = await getUserFromToken(token);
+  const cacheKey = `users:all:${user.permissionsDetails.isSuperadmin ? 'super' : user.alapadatokId}`;
   const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
   }
-
-  const user = await getUserFromToken(token);
 
   let whereClause = {};
 
@@ -143,14 +142,13 @@ export async function getById(id) {
 }
 
 export async function getAllFiltered(token) {
-  const cacheKey = `users:all:filtered`;
+  const user = await getUserFromToken(token);
+  const cacheKey = `users:all:filtered:${user.permissionsDetails.isSuperadmin ? 'super' : user.alapadatokId}`;
   const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
   }
-
-  const user = await getUserFromToken(token);
 
   let whereClause = {};
 

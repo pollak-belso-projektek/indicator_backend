@@ -7,12 +7,21 @@ const CACHE_TTL = {
   DETAIL: 10 * 60 * 1000, // 10 minutes for details
 };
 
-export async function getAll() {
-  const cacheKey = "alapadatok:all";
+export async function getAll(user) {
+  let cacheKey = "alapadatok:all";
+  if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    cacheKey = `alapadatok:all:${user.alapadatokId}`;
+  }
+
   const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
     return cachedData;
+  }
+
+  let whereClause = { deleted: false };
+  if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    whereClause.id = user.alapadatokId;
   }
 
   const data = await prisma.alapadatok.findMany({
@@ -36,9 +45,7 @@ export async function getAll() {
         },
       },
     },
-    where: {
-      deleted: false, // Exclude deleted records
-    },
+    where: whereClause,
   });
 
   const filteredBySzakma = data.map((item) => {
@@ -132,7 +139,7 @@ export async function add(
   alapadatok_szakirany = []
 ) {
   // Invalidate the list cache before adding
-  await cache.del("alapadatok:all");
+  await cache.invalidate("alapadatok:all*");
 
   alapadatok_szakirany.map((szakirany) => {
     szakirany.szakirany.szakma.map((szakma) => {
@@ -274,7 +281,7 @@ export async function update(
   alapadatok_szakirany
 ) {
   // Invalidate both list and specific item cache
-  await cache.del("alapadatok:all");
+  await cache.invalidate("alapadatok:all*");
   await cache.del(`alapadatok:id:${id}`);
 
   const foundOrCreatedSzakirany = await Promise.all(
@@ -438,7 +445,7 @@ export async function removeSzakiranyFromAlapadatok(
   szakirany_id
 ) {
   // Invalidate both list and specific item cache
-  await cache.del("alapadatok:all");
+  await cache.invalidate("alapadatok:all*");
   await cache.del(`alapadatok:id:${alapadatok_id}`);
 
   await prisma.alapadatok_Szakirany.deleteMany({
@@ -453,7 +460,7 @@ export async function removeSzakiranyFromAlapadatok(
 
 export async function removeSzakmaFromAlapadatok(alapadatok_id, szakma_id) {
   // Invalidate both list and specific item cache
-  await cache.del("alapadatok:all");
+  await cache.invalidate("alapadatok:all*");
   await cache.del(`alapadatok:id:${alapadatok_id}`);
 
   await prisma.alapadatok_Szakma.deleteMany({
@@ -470,7 +477,7 @@ export async function removeSzakmaFromAlapadatok(alapadatok_id, szakma_id) {
 
 export async function deleteById(id) {
   // Invalidate both list and specific item cache
-  await cache.del("alapadatok:all");
+  await cache.invalidate("alapadatok:all*");
   await cache.del(`alapadatok:id:${id}`);
 
   await prisma.alapadatok.update({

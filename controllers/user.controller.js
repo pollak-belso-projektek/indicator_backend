@@ -7,6 +7,7 @@ import {
   updatePassword,
   inactivateUser,
   updatePersonalInformation,
+  getById,
 } from "../services/user.service.js";
 
 const router = e.Router();
@@ -295,6 +296,13 @@ router.post("/", async (req, res) => {
     isActive,
   } = req.body;
 
+  const requestUser = req.user;
+  if (requestUser && requestUser.permissionsDetails.isAdmin && !requestUser.permissionsDetails.isSuperadmin && !requestUser.permissionsDetails.isHSZC) {
+    if (alapadatokId && requestUser.alapadatokId !== parseInt(alapadatokId)) {
+      return res.status(403).json({ message: "Nincs jogosultságod más iskolához felhasználót létrehozni!" });
+    }
+  }
+
   try {
     await create(
       email,
@@ -396,6 +404,21 @@ router.put("/:id", async (req, res) => {
   const { email, name, permissions, tableAccess, alapadatokId, isActive } =
     req.body;
 
+  const requestUser = req.user;
+  if (requestUser && requestUser.permissionsDetails.isAdmin && !requestUser.permissionsDetails.isSuperadmin && !requestUser.permissionsDetails.isHSZC) {
+    if (alapadatokId && requestUser.alapadatokId !== parseInt(alapadatokId)) {
+      return res.status(403).json({ message: "Nincs jogosultságod más iskolához áthelyezni a felhasználót!" });
+    }
+    try {
+      const targetUser = await getById(parseInt(id));
+      if (!targetUser || targetUser.alapadatokId !== requestUser.alapadatokId) {
+        return res.status(403).json({ message: "Nincs jogosultságod más iskola felhasználójának módosításához!" });
+      }
+    } catch (e) {
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+
   try {
     await update(
       id,
@@ -438,6 +461,18 @@ router.put("/:id/password", async (req, res) => {
  */
 router.delete("/inactivate/:id", async (req, res) => {
   const { id } = req.params;
+
+  const requestUser = req.user;
+  if (requestUser && requestUser.permissionsDetails.isAdmin && !requestUser.permissionsDetails.isSuperadmin && !requestUser.permissionsDetails.isHSZC) {
+    try {
+      const targetUser = await getById(parseInt(id));
+      if (!targetUser || targetUser.alapadatokId !== requestUser.alapadatokId) {
+        return res.status(403).json({ message: "Nincs jogosultságod más iskola felhasználójának módosításához!" });
+      }
+    } catch (e) {
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
 
   try {
     await inactivateUser(id);

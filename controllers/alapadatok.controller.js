@@ -82,7 +82,7 @@ const router = express.Router();
  */
 router.get("/", async (req, res) => {
   try {
-    const data = await getAll();
+    const data = await getAll(req.user);
     res.status(200).json(data);
   } catch (error) {
     console.error(error);
@@ -272,6 +272,13 @@ router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const { iskola_neve, intezmeny_tipus, alapadatok_szakirany } = req.body;
+    
+    const user = req.user;
+    if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+      if (user.alapadatokId !== parseInt(id)) {
+        return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
+      }
+    }
 
     if (!id || !iskola_neve || !intezmeny_tipus)
       return res.status(400).json({ message: "Hiányos adatok!" });
@@ -361,6 +368,13 @@ router.delete(
     try {
       const { alapadatokId, szakiranyId } = req.params;
 
+      const user = req.user;
+      if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+        if (user.alapadatokId !== parseInt(alapadatokId)) {
+          return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
+        }
+      }
+
       if (!alapadatokId || !szakiranyId)
         return res.status(400).json({ message: "Hiányos adatok!" });
 
@@ -436,6 +450,13 @@ router.delete(
 router.delete("/removeSzakma/:alapadatokId/:szakmaId", async (req, res) => {
   try {
     const { alapadatokId, szakmaId } = req.params;
+    
+    const user = req.user;
+    if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+      if (user.alapadatokId !== parseInt(alapadatokId)) {
+        return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
+      }
+    }
 
     if (!alapadatokId || !szakmaId)
       return res.status(400).json({ message: "Hiányos adatok!" });
@@ -452,6 +473,13 @@ router.delete("/removeSzakma/:alapadatokId/:szakmaId", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
+
+    const user = req.user;
+    if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+      if (user.alapadatokId !== parseInt(id)) {
+        return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
+      }
+    }
 
     if (!id) return res.status(400).json({ message: "Hiányos adatok!" });
 
