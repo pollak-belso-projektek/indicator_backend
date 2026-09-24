@@ -9,7 +9,7 @@ const CACHE_TTL = {
 
 export async function getAll(user) {
   let cacheKey = "alapadatok:all";
-  if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+  if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
     cacheKey = `alapadatok:all:${user.alapadatokId}`;
   }
 
@@ -20,7 +20,7 @@ export async function getAll(user) {
   }
 
   let whereClause = { deleted: false };
-  if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+  if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
     whereClause.id = user.alapadatokId;
   }
 

@@ -274,7 +274,7 @@ router.put("/:id", async (req, res) => {
     const { iskola_neve, intezmeny_tipus, alapadatok_szakirany } = req.body;
     
     const user = req.user;
-    if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
       if (user.alapadatokId !== parseInt(id)) {
         return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
       }
@@ -369,7 +369,7 @@ router.delete(
       const { alapadatokId, szakiranyId } = req.params;
 
       const user = req.user;
-      if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+      if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
         if (user.alapadatokId !== parseInt(alapadatokId)) {
           return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
         }
@@ -452,7 +452,7 @@ router.delete("/removeSzakma/:alapadatokId/:szakmaId", async (req, res) => {
     const { alapadatokId, szakmaId } = req.params;
     
     const user = req.user;
-    if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
       if (user.alapadatokId !== parseInt(alapadatokId)) {
         return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
       }
@@ -475,7 +475,7 @@ router.delete("/:id", async (req, res) => {
     const { id } = req.params;
 
     const user = req.user;
-    if (user && user.permissionsDetails.isAdmin && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
       if (user.alapadatokId !== parseInt(id)) {
         return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
       }

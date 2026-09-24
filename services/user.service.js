@@ -42,13 +42,13 @@ export async function getAll(token) {
         },
       ],
     };
-  } else if (user.permissionsDetails.isAdmin) {
-    // Admin only gets users with the same alapadatokId
+  } else if (!user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    // Non-superadmin/HSZC users only get users with the same alapadatokId
+    if (!user.alapadatokId) return [];
     whereClause = {
       alapadatokId: user.alapadatokId,
     };
   } else {
-    // For other roles, return empty result or throw error
     return [];
   }
 
@@ -173,13 +173,13 @@ export async function getAllFiltered(token) {
         },
       ],
     };
-  } else if (user.permissionsDetails.isAdmin) {
-    // Admin only gets users with the same alapadatokId
+  } else if (!user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    // Non-superadmin/HSZC users only get users with the same alapadatokId
+    if (!user.alapadatokId) return [];
     whereClause = {
       alapadatokId: user.alapadatokId,
     };
   } else {
-    // For other roles, return empty result or throw error
     return [];
   }
 
