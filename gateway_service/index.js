@@ -31,12 +31,12 @@ const port = process.env.PORT || 5000;
 const corsOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(",")
   : [
-      "http://localhost:5173",
-      "http://172.16.0.100:5174",
-      "https://indikator.pollak.info",
-      "http://10.0.1.7:5173",
-      "http://192.168.1.6:5173",
-    ];
+    "http://localhost:5173",
+    "http://172.16.0.100:5174",
+    "https://indikator.pollak.info",
+    "http://10.0.1.7:5173",
+    "http://192.168.1.6:5173",
+  ];
 
 const corsConfig = {
   origin: corsOrigins,
@@ -137,7 +137,7 @@ app.get("/", (req, res) => {
 app.use("/health", healthRouter);
 
 // Authentication routes (with specific rate limiting)
-app.use("/api/v1/auth", authRateLimit);
+// app.use("/api/v1/auth", authRateLimit);
 app.use("/api/v1/auth", loginServiceProxy); // Direct proxy without circuit breaker for testing
 
 // Protected API routes
@@ -193,13 +193,11 @@ const startServer = async () => {
       console.log("");
       console.log("🔗 Service Routing:");
       console.log(
-        `   • /api/v1/auth/* → Login Service (${
-          process.env.LOGIN_SERVICE_URL || "http://localhost:5301"
+        `   • /api/v1/auth/* → Login Service (${process.env.LOGIN_SERVICE_URL || "http://localhost:5301"
         })`,
       );
       console.log(
-        `   • /api/v1/* → Main Service (${
-          process.env.MAIN_SERVICE_URL || "http://localhost:5300"
+        `   • /api/v1/* → Main Service (${process.env.MAIN_SERVICE_URL || "http://localhost:5300"
         })`,
       );
       console.log("");
