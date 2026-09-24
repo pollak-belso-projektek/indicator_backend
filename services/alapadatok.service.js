@@ -21,6 +21,7 @@ export async function getAll(user) {
 
   let whereClause = { deleted: false };
   if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
+    if (!user.alapadatokId) return [];
     whereClause.id = user.alapadatokId;
   }
 

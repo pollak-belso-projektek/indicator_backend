@@ -275,7 +275,7 @@ router.put("/:id", async (req, res) => {
     
     const user = req.user;
     if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
-      if (user.alapadatokId !== parseInt(id)) {
+      if (user.alapadatokId !== id) {
         return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
       }
     }
@@ -370,7 +370,7 @@ router.delete(
 
       const user = req.user;
       if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
-        if (user.alapadatokId !== parseInt(alapadatokId)) {
+        if (user.alapadatokId !== alapadatokId) {
           return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
         }
       }
@@ -453,7 +453,7 @@ router.delete("/removeSzakma/:alapadatokId/:szakmaId", async (req, res) => {
     
     const user = req.user;
     if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
-      if (user.alapadatokId !== parseInt(alapadatokId)) {
+      if (user.alapadatokId !== alapadatokId) {
         return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
       }
     }
@@ -476,7 +476,7 @@ router.delete("/:id", async (req, res) => {
 
     const user = req.user;
     if (user && !user.permissionsDetails.isSuperadmin && !user.permissionsDetails.isHSZC) {
-      if (user.alapadatokId !== parseInt(id)) {
+      if (user.alapadatokId !== id) {
         return res.status(403).json({ message: "Nincs jogosultságod más iskola adatainak módosításához!" });
       }
     }
