@@ -154,7 +154,7 @@ router.get("/", async (req, res) => {
  *             properties:
  *               status:
  *                 type: string
- *                 enum: [Folyamatban, Kész]
+ *                 enum: [Folyamatban, Ellenőrzésre vár, Kész]
  *     responses:
  *       200:
  *         description: Successfully updated
@@ -166,7 +166,7 @@ router.put("/:id/status", async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
 
-    if (!status || !["Folyamatban", "Kész"].includes(status)) {
+    if (!status || !["Folyamatban", "Ellenőrzésre vár", "Kész"].includes(status)) {
       return res.status(400).json({ message: "Érvénytelen státusz." });
     }
 
