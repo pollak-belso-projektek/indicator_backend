@@ -250,14 +250,17 @@ router.post("/", async (req, res) => {
     }
 
     // Handle different field names from client
-    const totalStudents = tanulok_osszesen || osszes_tanulo_szama;
+    const rawTotal =
+      tanulok_osszesen !== undefined ? tanulok_osszesen : osszes_tanulo_szama;
 
-    if (!totalStudents && totalStudents !== 0) {
+    if (rawTotal === undefined || rawTotal === null || rawTotal === "") {
       return res.status(400).json({
         error:
           "Total number of students is required (tanulok_osszesen or osszes_tanulo_szama)",
       });
     }
+
+    const totalStudents = Number(rawTotal);
 
     const createdData = await create(
       alapadatok_id,
@@ -353,7 +356,12 @@ router.put("/:id", async (req, res) => {
     } = req.body;
 
     // Handle different field names from client
-    const totalStudents = tanulok_osszesen || osszes_tanulo_szama;
+    const rawTotal =
+      tanulok_osszesen !== undefined ? tanulok_osszesen : osszes_tanulo_szama;
+    const totalStudents =
+      rawTotal !== undefined && rawTotal !== null && rawTotal !== ""
+        ? Number(rawTotal)
+        : 0;
 
     const updatedData = await update(
       id,

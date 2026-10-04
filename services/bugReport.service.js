@@ -230,10 +230,16 @@ export const getReportedBugs = async () => {
   }));
 };
 
+const STATUS_CONFIG = {
+  "Folyamatban": { color: "blue" },
+  "Ellenőrzésre vár": { color: "orange" },
+  "Kész": { color: "green" }
+};
+
 /**
  * Updates the status (adds label) of a bug report in Trello
  * @param {string} cardId - The Trello card ID
- * @param {string} status - 'Kész' or 'Folyamatban'
+ * @param {string} status - 'Folyamatban', 'Ellenőrzésre vár', or 'Kész'
  */
 export const updateBugStatus = async (cardId, status) => {
   const TRELLO_API_KEY = process.env.TRELLO_API_KEY;
@@ -252,22 +258,23 @@ export const updateBugStatus = async (cardId, status) => {
   const cardData = await cardResponse.json();
   const boardId = cardData.idBoard;
 
-  const oppositeStatus = status === "Kész" ? "Folyamatban" : "Kész";
-  const targetColor = status === "Kész" ? "green" : "blue";
+  const targetColor = STATUS_CONFIG[status]?.color || "blue";
 
   // Check if card already has target label
   const hasTargetLabel = cardData.labels && cardData.labels.some(l => l.name === status);
   
-  // Find opposite label if it exists on card
-  const oppositeLabelOnCard = cardData.labels && cardData.labels.find(l => l.name === oppositeStatus);
+  // Find other status labels if they exist on card
+  const otherStatusLabels = cardData.labels 
+    ? cardData.labels.filter(l => Object.keys(STATUS_CONFIG).some(s => s !== status && s === l.name)) 
+    : [];
 
-  if (hasTargetLabel && !oppositeLabelOnCard) {
+  if (hasTargetLabel && otherStatusLabels.length === 0) {
     return { success: true }; // Already in correct state
   }
 
-  // 2. Remove opposite label if present
-  if (oppositeLabelOnCard) {
-    await fetch(`https://api.trello.com/1/cards/${cardId}/idLabels/${oppositeLabelOnCard.id}?key=${TRELLO_API_KEY}&token=${TRELLO_API_TOKEN}`, {
+  // 2. Remove other status labels if present
+  for (const label of otherStatusLabels) {
+    await fetch(`https://api.trello.com/1/cards/${cardId}/idLabels/${label.id}?key=${TRELLO_API_KEY}&token=${TRELLO_API_TOKEN}`, {
       method: 'DELETE'
     });
   }
