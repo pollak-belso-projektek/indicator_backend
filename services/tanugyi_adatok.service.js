@@ -1,5 +1,6 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 import prisma from "../utils/prisma.js";
+import { generateAndSaveFromTanugyiAdatok } from "./tanulo_letszam.service.js";
 
 // Note: Using custom field mapping for camelCase vs snake_case difference
 const pattern = new ServicePattern(
@@ -50,5 +51,15 @@ export async function createMany(alapadatok_id, data, userId) {
     delete element.__errors;
   });
 
-  return await pattern.createMany(preparedData);
+  const result = await pattern.createMany(preparedData);
+
+  // Automatically calculate and save tanulo_letszam from the newly uploaded tanugyi_adatok
+  try {
+    await generateAndSaveFromTanugyiAdatok(alapadatok_id, year);
+    console.log(`✅ Automatically synced tanulo_letszam for school ${alapadatok_id}, year ${year}`);
+  } catch (syncError) {
+    console.error("Error auto-generating tanulo_letszam from tanugyi_adatok:", syncError);
+  }
+
+  return result;
 }

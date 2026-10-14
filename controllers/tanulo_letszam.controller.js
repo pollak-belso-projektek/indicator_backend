@@ -5,6 +5,7 @@ import {
   deleteMany,
   update,
   bulkSave,
+  generateAndSaveFromTanugyiAdatok,
 } from "../services/tanulo_letszam.service.js";
 import e from "express";
 
@@ -276,6 +277,25 @@ router.post("/bulk", async (req, res) => {
   } catch (error) {
     console.error("Bulk save error:", error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.post("/sync-from-tanugyi/:alapadatok_id/:year", async (req, res) => {
+  const { alapadatok_id, year } = req.params;
+
+  if (!alapadatok_id || isNaN(year)) {
+    return res.status(400).json({ error: "Érvénytelen alapadatok_id vagy év" });
+  }
+
+  try {
+    const result = await generateAndSaveFromTanugyiAdatok(alapadatok_id, parseInt(year));
+    res.status(200).json({
+      message: "Tanulólétszám sikeresen szinkronizálva a tanügyi adatokból",
+      count: result.count,
+    });
+  } catch (error) {
+    console.error("Hiba a tanulólétszám szinkronizálása során:", error);
+    res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 });
 

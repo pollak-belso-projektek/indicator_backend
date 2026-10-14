@@ -1,4 +1,3 @@
-import { createClient } from "redis";
 import process from "node:process";
 
 const REDIS_URL = process.env.REDIS_URL;
@@ -13,22 +12,27 @@ const DEFAULT_TTL = 5 * 60 * 1000;
 
 // Initialize Redis if URL is provided
 if (REDIS_URL) {
-  redisClient = createClient({ url: REDIS_URL });
+  import("redis")
+    .then(({ createClient }) => {
+      redisClient = createClient({ url: REDIS_URL });
 
-  redisClient.on("error", (err) => {
-    console.error("Redis Client Error:", err.message);
-    useRedis = false; // Fallback to memory on error
-  });
+      redisClient.on("error", (err) => {
+        console.error("Redis Client Error:", err.message);
+        useRedis = false; // Fallback to memory on error
+      });
 
-  redisClient.on("ready", () => {
-    console.log("Redis connected successfully");
-    useRedis = true;
-  });
+      redisClient.on("ready", () => {
+        console.log("Redis connected successfully");
+        useRedis = true;
+      });
 
-  // Connect asynchronously but don't await here at top level to not block module load
-  redisClient.connect().catch((err) => {
-    console.error("Failed to connect to Redis:", err.message);
-  });
+      redisClient.connect().catch((err) => {
+        console.error("Failed to connect to Redis:", err.message);
+      });
+    })
+    .catch((err) => {
+      console.warn("Redis client not installed, using in-memory cache fallback.");
+    });
 }
 
 /**
