@@ -7,7 +7,8 @@ export default function endpointAccessMiddleware(req, res, next) {
   }
 
   try {
-    const endpoint = req.originalUrl;
+    // Query values must never participate in endpoint authorization.
+    const endpoint = req.originalUrl.split("?")[0];
     const method = req.method;
 
     // Superadmin bypass - always has access to all endpoints and methods
@@ -25,9 +26,7 @@ export default function endpointAccessMiddleware(req, res, next) {
       return next();
     }
 
-    if (endpoint.includes("me")) {
-      return next();
-    }
+    // /me is mounted separately behind authentication in index.js.
 
     // Check if the user has access to this endpoint
     const hasEndpointAccess = user.tableAccess.some((access) =>

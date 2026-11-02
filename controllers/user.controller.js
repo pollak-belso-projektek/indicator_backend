@@ -1,4 +1,5 @@
 import e from "express";
+import userCreationMiddleware from "../middleware/userCreation.middleware.js";
 import {
   create,
   getAll,
@@ -285,7 +286,7 @@ router.get("/filtered", async (req, res) => {
  *       500:
  *         description: Internal server error
  */
-router.post("/", async (req, res) => {
+router.post("/", userCreationMiddleware, async (req, res) => {
   const {
     email,
     name,
@@ -295,13 +296,6 @@ router.post("/", async (req, res) => {
     alapadatokId,
     isActive,
   } = req.body;
-
-  const requestUser = req.user;
-  if (requestUser && requestUser.permissionsDetails.isAdmin && !requestUser.permissionsDetails.isSuperadmin && !requestUser.permissionsDetails.isHSZC) {
-    if (alapadatokId && requestUser.alapadatokId !== parseInt(alapadatokId)) {
-      return res.status(403).json({ message: "Nincs jogosultságod más iskolához felhasználót létrehozni!" });
-    }
-  }
 
   try {
     await create(

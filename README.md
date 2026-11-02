@@ -121,6 +121,28 @@ Database Database
 
 ## Troubleshooting
 
+### User creation authorization
+
+`POST /api/v1/users` requires an authenticated administrator or developer,
+plus create access to the `user` table (developers bypass table checks).
+The allowed target roles match the frontend:
+
+| Creator | Allowed target permission values |
+| --- | --- |
+| School admin | 1, 2, 4 (school general, privileged, admin) |
+| HSZC admin | 1, 2, 4, 9, 10 (school roles and HSZC general/privileged) |
+| Developer | 1, 2, 4, 9, 10, 15, 31 (all defined roles) |
+
+School admins must have an assigned school. Missing or null `alapadatokId`
+defaults to their school UUID; any different value is rejected with 403.
+An omitted `permissions` defaults to 1; invalid role values return 400,
+and valid but unauthorized roles return 403.
+
+Run `npm test` on Node.js 22 to check authorization regressions. The tests
+exercise the Express route over HTTP with the persistence service mocked;
+they do not require or validate a live database or login service. CI runs
+these tests before building or publishing any service image.
+
 If you encounter issues:
 
 1. **Port conflicts**: Check if ports 5000, 5301, or 5300 are in use
