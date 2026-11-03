@@ -12,7 +12,7 @@ env:
 
 jobs:
   test:
-    name: Test API authorization
+    name: Test backend
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

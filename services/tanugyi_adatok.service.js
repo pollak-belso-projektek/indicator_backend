@@ -1,6 +1,7 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 import prisma from "../utils/prisma.js";
 import { generateAndSaveFromTanugyiAdatok } from "./tanulo_letszam.service.js";
+import { generateAndSaveAdmissionsFromTanugyiAdatok } from "./admissions_autosave.service.js";
 
 // Note: Using custom field mapping for camelCase vs snake_case difference
 const pattern = new ServicePattern(
@@ -52,6 +53,7 @@ export async function createMany(alapadatok_id, data, userId) {
   });
 
   const result = await pattern.createMany(preparedData);
+  const syncWarnings = [];
 
   // Automatically calculate and save tanulo_letszam from the newly uploaded tanugyi_adatok
   try {
@@ -59,7 +61,15 @@ export async function createMany(alapadatok_id, data, userId) {
     console.log(`✅ Automatically synced tanulo_letszam for school ${alapadatok_id}, year ${year}`);
   } catch (syncError) {
     console.error("Error auto-generating tanulo_letszam from tanugyi_adatok:", syncError);
+    syncWarnings.push("A tanulólétszám automatikus mentése nem sikerült.");
   }
 
-  return result;
+  try {
+    await generateAndSaveAdmissionsFromTanugyiAdatok(alapadatok_id, year);
+  } catch (syncError) {
+    console.error("Error auto-generating felvettek_szama from tanugyi_adatok:", syncError);
+    syncWarnings.push("A felvettek számának automatikus mentése nem sikerült.");
+  }
+
+  return { ...result, syncWarnings };
 }

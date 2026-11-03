@@ -115,6 +115,19 @@ Database Database
 
 ## Development
 
+After importing educational records, the backend waits for automatic student-count
+and ninth-grade admission-count synchronization for the imported school and current
+academic year. Admissions include student-status first-year records admitted in that
+year, grouped by sector and profession. Repeat imports update admission counts
+without inserting duplicates; applicant counts and capacity are preserved, and
+historical years and other schools are unaffected. Source categories no longer
+present have their admission count reset to zero.
+
+The import response includes `syncWarnings`. An empty array means both syncs
+completed; otherwise the raw import succeeded but a derived-data sync failed.
+The frontend displays these warnings and refreshes both indicators after import.
+Previously imported records are synchronized when they are imported again.
+
 - Use `npm run microservices:dev` for hot reloading during development
 - Each service runs independently and can be started/stopped individually
 - The API Gateway automatically routes requests to the appropriate service
