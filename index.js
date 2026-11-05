@@ -127,6 +127,7 @@ protectedRouter.use("/szakirany", i.szakiranyRouter);
 protectedRouter.use("/szakma", i.szakmaRouter);
 protectedRouter.use("/tanulo_adatszolgaltatas", i.tanuloAdatszolgaltatasRouter);
 protectedRouter.use("/oktato_adatszolgaltatas", i.oktatoAdatszolgaltatasRouter);
+protectedRouter.use("/osztaly_adatszolgaltatas", i.osztalyAdatszolgaltatasRouter);
 protectedRouter.use("/hianyzas", i.hianyzasRouter);
 protectedRouter.use("/intezmenyi_elismeresek", i.intezményiElismeresekRouter);
 protectedRouter.use("/munkavallalok_elismeresek", i.munkavallalokElismeresekRouter);

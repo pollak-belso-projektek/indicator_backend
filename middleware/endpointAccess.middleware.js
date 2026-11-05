@@ -20,7 +20,8 @@ export default function endpointAccessMiddleware(req, res, next) {
       (endpoint.includes("tablelist") ||
         endpoint.includes("alapadatok") ||
         endpoint.includes("tanugyi_adatok") ||
-        endpoint.includes("alkalmazottak_munkaugy")) &&
+        endpoint.includes("alkalmazottak_munkaugy") ||
+        endpoint.includes("osztaly_adatszolgaltatas")) &&
       req.method === "GET"
     ) {
       return next();

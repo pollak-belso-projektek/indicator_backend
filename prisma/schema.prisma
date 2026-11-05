@@ -113,6 +113,7 @@ model Alapadatok {
   munkavallalokElismeresek        MunkavallalokElismeresek[]
   nszfhMeresek                    nszfhMeresek[]
   oktatoAdatszolg                 OktatoAdatszolg[]
+  osztalyAdatszolg                OsztalyAdatszolg[]
   OktatoEgyebTev                  OktatoEgyebTev[]
   sajatosNevelesuTanulok          SajatosNevelesuTanulok[]
   szakkepzesiMunkaszerzodesAranya SzakkepzesiMunkaszerzodesAranya[]
@@ -1246,4 +1247,34 @@ model BugReport {
   user             User     @relation(fields: [userId], references: [id])
 
   @@map("bug_reports")
+}
+
+model OsztalyAdatszolg {
+  id                                                            String     @id @default(uuid()) @db.Uuid
+  alapadatok_id                                                 String     @db.Uuid
+  tanev_kezdete                                                 Int        @db.SmallInt
+  Osztaly_neve                                                  String?
+  Intezmeny_OM_azonosito                                        String?
+  Intezmeny_nev                                                 String?
+  Intezmeny_szekhely_telepules_nev                              String?
+  Intezmeny_szekhely_telepules_iranyitoszam                     String?
+  Intezmeny_szekhely_cim                                        String?
+  Intezmeny_szekhely_email                                      String?
+  Feladatellatasi_hely_azonosito_Mukodesi_hely_hosszu_azonosito String?
+  Feladatellatasi_hely_nev                                      String?
+  Feladatellatasi_hely_telepules_nev                            String?
+  Feladatellatasi_hely_telepules_iranyitoszam                   String?
+  Feladatellatasi_hely_cim                                      String?
+  Feladatellatasi_hely_email                                    String?
+  Feladatellatasi_hely_tipus_ellatott_feladat                   String?
+  Osztaly_tantervi_jellemzo                                     String?
+  Munkarend                                                     String?
+  Gyogypedagogiai_tanterv                                       String?
+  Integralt_osztaly                                             String?
+  Osztaly_letszam_kategoria                                     String?
+  Evfolyam                                                      String?
+  createBy                                                      String?
+  alapadatok                                                    Alapadatok @relation(fields: [alapadatok_id], references: [id])
+
+  @@map("osztaly_adatszolg")
 }
