@@ -1,5 +1,10 @@
 import e from "express";
-import userCreationMiddleware from "../middleware/userCreation.middleware.js";
+import userCreationMiddleware, {
+  USER_ROLES,
+  assignableRoles,
+  checkTargetAccess,
+  isSchoolScoped,
+} from "../middleware/userCreation.middleware.js";
 import {
   create,
   getAll,
@@ -10,6 +15,34 @@ import {
   updatePersonalInformation,
   getById,
 } from "../services/user.service.js";
+
+/**
+ * Loads the target user and verifies the request user may manage it.
+ * Sends the error response and returns null if not allowed.
+ */
+async function loadManageableTarget(req, res) {
+  if (!req.user) {
+    res.status(401).json({ message: "Unauthorized" });
+    return null;
+  }
+  let target;
+  try {
+    target = await getById(req.params.id);
+  } catch (e) {
+    res.status(500).json({ message: "Internal Server Error" });
+    return null;
+  }
+  const denied = checkTargetAccess(req.user, target);
+  if (denied) {
+    res.status(denied.status).json({ message: denied.message });
+    return null;
+  }
+  if (!target) {
+    res.status(404).json({ message: "A felhasználó nem található!" });
+    return null;
+  }
+  return target;
+}
 
 const router = e.Router();
 
@@ -395,22 +428,29 @@ router.post("/", userCreationMiddleware, async (req, res) => {
  */
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { email, name, permissions, tableAccess, alapadatokId, isActive } =
-    req.body;
+  const { email, name, tableAccess, isActive } = req.body;
+  let { permissions, alapadatokId } = req.body;
+
+  const target = await loadManageableTarget(req, res);
+  if (!target) return;
 
   const requestUser = req.user;
-  if (requestUser && requestUser.permissionsDetails.isAdmin && !requestUser.permissionsDetails.isSuperadmin && !requestUser.permissionsDetails.isHSZC) {
-    if (alapadatokId && requestUser.alapadatokId !== parseInt(alapadatokId)) {
+  // Same role rules as creation: omitted role falls back to the service default (1).
+  const newRole = permissions === undefined ? 1 : permissions;
+  if (!Number.isInteger(newRole) || !USER_ROLES.includes(newRole)) {
+    return res.status(400).json({ message: "Érvénytelen felhasználótípus!" });
+  }
+  if (!assignableRoles(requestUser).includes(newRole)) {
+    return res.status(403).json({ message: "Nincs jogosultságod ilyen típusú felhasználót beállítani!" });
+  }
+  permissions = newRole;
+
+  if (isSchoolScoped(requestUser)) {
+    if (alapadatokId != null && alapadatokId !== requestUser.alapadatokId) {
       return res.status(403).json({ message: "Nincs jogosultságod más iskolához áthelyezni a felhasználót!" });
     }
-    try {
-      const targetUser = await getById(parseInt(id));
-      if (!targetUser || targetUser.alapadatokId !== requestUser.alapadatokId) {
-        return res.status(403).json({ message: "Nincs jogosultságod más iskola felhasználójának módosításához!" });
-      }
-    } catch (e) {
-      return res.status(500).json({ message: "Internal Server Error" });
-    }
+    // An omitted school would otherwise unassign the user from the school.
+    alapadatokId = requestUser.alapadatokId;
   }
 
   try {
@@ -434,6 +474,9 @@ router.put("/:id/password", async (req, res) => {
   const { id } = req.params;
   const { newPassword, newPasswordConfirm } = req.body;
 
+  const target = await loadManageableTarget(req, res);
+  if (!target) return;
+
   try {
     await updatePassword(id, newPassword, newPasswordConfirm);
     res.status(200).json({ message: "Password updated successfully" });
@@ -456,17 +499,8 @@ router.put("/:id/password", async (req, res) => {
 router.delete("/inactivate/:id", async (req, res) => {
   const { id } = req.params;
 
-  const requestUser = req.user;
-  if (requestUser && requestUser.permissionsDetails.isAdmin && !requestUser.permissionsDetails.isSuperadmin && !requestUser.permissionsDetails.isHSZC) {
-    try {
-      const targetUser = await getById(parseInt(id));
-      if (!targetUser || targetUser.alapadatokId !== requestUser.alapadatokId) {
-        return res.status(403).json({ message: "Nincs jogosultságod más iskola felhasználójának módosításához!" });
-      }
-    } catch (e) {
-      return res.status(500).json({ message: "Internal Server Error" });
-    }
-  }
+  const target = await loadManageableTarget(req, res);
+  if (!target) return;
 
   try {
     await inactivateUser(id);

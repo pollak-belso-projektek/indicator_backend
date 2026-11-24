@@ -140,3 +140,28 @@ for (const [method, access] of [['GET', 1], ['POST', 2], ['PUT', 4], ['PATCH', 4
     assert.equal(allowed, true);
   });
 }
+
+function runEndpointAccess(user, method, originalUrl) {
+  let status;
+  let allowed = false;
+  endpointAccess({ user, method, originalUrl }, {
+    status(code) { status = code; return this; }, json() {},
+  }, () => { allowed = true; });
+  return { allowed, status };
+}
+for (const url of ['/api/v1/szakma', '/api/v1/szakirany', '/api/v1/szakma/', '/api/v1/szakirany?x=1']) {
+  test(`GET ${url}: reference data readable without table permission`, () => {
+    assert.equal(runEndpointAccess(actors.noTables, 'GET', url).allowed, true);
+  });
+}
+for (const [method, url] of [
+  ['POST', '/api/v1/szakma'], ['PUT', '/api/v1/szakirany'], ['DELETE', '/api/v1/szakma'],
+  ['GET', '/api/v1/szakmai_vizsga_eredmenyek'], ['GET', '/api/v1/szakmairendezvenyek'],
+  ['GET', '/api/v1/szakmai_tovabbkepzes'], ['GET', '/api/v1/szakma/../user'], ['GET', '/api/v1/unknown?/api/v1/szakma'],
+]) {
+  test(`${method} ${url}: reference-data exception does not widen access`, () => {
+    const result = runEndpointAccess(actors.noTables, method, url);
+    assert.equal(result.allowed, false);
+    assert.equal(result.status, 403);
+  });
+}

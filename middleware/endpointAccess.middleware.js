@@ -1,3 +1,5 @@
+const PUBLIC_READ_ENDPOINTS = new Set(["/api/v1/szakma", "/api/v1/szakirany"]);
+
 export default function endpointAccessMiddleware(req, res, next) {
   // By the time this middleware runs, the authMiddleware should have attached the user
   const user = req.user;
@@ -23,6 +25,16 @@ export default function endpointAccessMiddleware(req, res, next) {
         endpoint.includes("alkalmazottak_munkaugy") ||
         endpoint.includes("osztaly_adatszolgaltatas")) &&
       req.method === "GET"
+    ) {
+      return next();
+    }
+
+    // Read-only reference data (szakma / szakirany dictionaries) has no table
+    // permission of its own. Match exact paths so e.g. "szakma" does not open
+    // "szakmai_vizsga_eredmenyek".
+    if (
+      req.method === "GET" &&
+      PUBLIC_READ_ENDPOINTS.has(endpoint.replace(/\/+$/, ""))
     ) {
       return next();
     }
