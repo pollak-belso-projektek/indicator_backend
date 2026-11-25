@@ -64,11 +64,20 @@ function cacheUser(token, userId) {
   });
 }
 
+// Paths excluded from request logging (e.g. health probes)
+const IGNORED_PATH_PREFIXES = ["/health", "/api/v1/health"];
+
 /**
  * Middleware for logging HTTP requests
  */
 export function logMiddleware(req, res, next) {
-  if (req.method === "OPTIONS") {
+  const requestPath = (req.originalUrl || req.url || "").split("?")[0];
+  if (
+    req.method === "OPTIONS" ||
+    IGNORED_PATH_PREFIXES.some(
+      (prefix) => requestPath === prefix || requestPath.startsWith(`${prefix}/`),
+    )
+  ) {
     return next();
   }
 

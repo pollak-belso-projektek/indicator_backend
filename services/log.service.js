@@ -159,6 +159,14 @@ export async function getLogsWithPagination(options = {}) {
   if (path) where.path = { contains: path, mode: "insensitive" };
   if (method) where.method = method;
 
+  // Hide noisy health-check logs unless explicitly searched
+  if (!path || !path.toLowerCase().includes("health")) {
+    where.AND = [
+      { NOT: { path: { startsWith: "/health" } } },
+      { NOT: { path: { startsWith: "/api/v1/health" } } },
+    ];
+  }
+
   // Add date range filter if provided
   if (dateRange.start || dateRange.end) {
     where.createdAt = {};
@@ -313,11 +321,15 @@ export async function getLogStats(since) {
     return cachedData;
   }
 
-  // Base where clause for all queries
+  // Base where clause for all queries (exclude noisy health probes)
   const where = {
     createdAt: {
       gte: since,
     },
+    AND: [
+      { NOT: { path: { startsWith: "/health" } } },
+      { NOT: { path: { startsWith: "/api/v1/health" } } },
+    ],
   };
 
   // Execute all statistic queries in parallel for better performance
@@ -359,6 +371,8 @@ export async function getLogStats(since) {
       SELECT path, COUNT(*)::int as count 
       FROM logs 
       WHERE "createdAt" >= ${since}
+        AND path NOT LIKE '/health%'
+        AND path NOT LIKE '/api/v1/health%'
       GROUP BY path 
       ORDER BY count DESC 
       LIMIT 10
