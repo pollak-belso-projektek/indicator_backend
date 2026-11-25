@@ -156,7 +156,7 @@ export async function getLogsWithPagination(options = {}) {
 
   if (userId) where.userId = userId;
   if (level) where.level = level;
-  if (path) where.path = { contains: path };
+  if (path) where.path = { contains: path, mode: "insensitive" };
   if (method) where.method = method;
 
   // Add date range filter if provided
@@ -276,6 +276,31 @@ export async function clearOldLogs(cutoffDate, level) {
 }
 
 /**
+ * Delete logs matching optional criteria (before date, level, method)
+ * @param {Object} criteria - { before?: Date, level?: string, method?: string }
+ * @returns {Promise<number>} Number of deleted logs
+ */
+export async function deleteLogs({ before, level, method } = {}) {
+  const where = {};
+
+  if (before) {
+    where.createdAt = { lt: before };
+  }
+  if (level) {
+    where.level = level;
+  }
+  if (method) {
+    where.method = method;
+  }
+
+  const result = await prisma.log.deleteMany({ where });
+
+  await cache.delByPattern("logs:*");
+
+  return result.count;
+}
+
+/**
  * Get log statistics
  * @param {Date} since - Only include logs since this date
  * @returns {Promise<Object>} Log statistics
@@ -331,7 +356,7 @@ export async function getLogStats(since) {
 
       // Get top 10 most accessed paths
       prisma.$queryRaw`
-      SELECT path, COUNT(*) as count 
+      SELECT path, COUNT(*)::int as count 
       FROM logs 
       WHERE "createdAt" >= ${since}
       GROUP BY path 

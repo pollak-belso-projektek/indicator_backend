@@ -215,6 +215,65 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/stats", async (req, res) => {
+  try {
+    const { days = 30 } = req.query;
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - parseInt(days));
+
+    const stats = await logService.getLogStats(cutoffDate);
+
+    res.json({
+      status: "success",
+      data: stats,
+    });
+  } catch (error) {
+    console.error("Error fetching log statistics:", error);
+    res
+      .status(500)
+      .json({ status: "error", message: "Failed to fetch log statistics" });
+  }
+});
+
+router.delete("/", async (req, res) => {
+  try {
+    const { before, level, method } = req.query;
+
+    if (!before && !level && !method) {
+      return res.status(400).json({
+        status: "error",
+        message: "Legalább egy törlési feltételt meg kell adni!",
+      });
+    }
+
+    let beforeDate;
+    if (before) {
+      beforeDate = new Date(before);
+      if (Number.isNaN(beforeDate.getTime())) {
+        return res.status(400).json({
+          status: "error",
+          message: "Érvénytelen dátum formátum!",
+        });
+      }
+    }
+
+    const deletedCount = await logService.deleteLogs({
+      before: beforeDate,
+      level: level || undefined,
+      method: method || undefined,
+    });
+
+    res.json({
+      status: "success",
+      message: "A naplók sikeresen törölve lettek.",
+      deletedCount,
+    });
+  } catch (error) {
+    console.error("Error deleting logs:", error);
+    res.status(500).json({ status: "error", message: "Hiba történt a naplók törlése során." });
+  }
+});
+
 /**
  * @swagger
  * /logs/{id}:
@@ -404,24 +463,4 @@ router.post("/clear", async (req, res) => {
  *       500:
  *         description: Server error
  */
-router.get("/stats", async (req, res) => {
-  try {
-    const { days = 30 } = req.query;
-    const cutoffDate = new Date();
-    cutoffDate.setDate(cutoffDate.getDate() - parseInt(days));
-
-    const stats = await logService.getLogStats(cutoffDate);
-
-    res.json({
-      status: "success",
-      data: stats,
-    });
-  } catch (error) {
-    console.error("Error fetching log statistics:", error);
-    res
-      .status(500)
-      .json({ status: "error", message: "Failed to fetch log statistics" });
-  }
-});
-
 export default router;
