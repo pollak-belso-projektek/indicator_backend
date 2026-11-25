@@ -207,17 +207,28 @@ export async function create(
   alapadatok_id = null,
   isActive = true,
 ) {
-  const existingUser = await prisma.user.findUnique({
-    where: { email },
+  const normalizedEmail = typeof email === "string" ? email.trim().toLowerCase() : email;
+
+  const existingUser = await prisma.user.findFirst({
+    where: {
+      email: {
+        equals: normalizedEmail,
+        mode: "insensitive",
+      },
+    },
   });
 
   if (existingUser) {
-    throw new Error("User with this email already exists.");
+    const error = new Error("Ezzel az e-mail címmel már létezik felhasználó!");
+    error.status = 409;
+    error.code = "EMAIL_ALREADY_EXISTS";
+    error.field = "email";
+    throw error;
   }
 
   const user = await prisma.user.create({
     data: {
-      email,
+      email: normalizedEmail,
       name,
       password: await hashPassword(password),
       permissions: permissions,

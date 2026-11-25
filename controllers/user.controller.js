@@ -342,6 +342,24 @@ router.post("/", userCreationMiddleware, async (req, res) => {
     );
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
+    if (
+      error?.status === 409 ||
+      error?.code === "EMAIL_ALREADY_EXISTS" ||
+      error?.code === "P2002"
+    ) {
+      return res.status(409).json({
+        message: "Ezzel az e-mail címmel már létezik felhasználó!",
+        code: "EMAIL_ALREADY_EXISTS",
+        field: "email",
+      });
+    }
+    if (error?.status && error.status >= 400 && error.status < 500) {
+      return res.status(error.status).json({
+        message: error.message,
+        ...(error.code && { code: error.code }),
+        ...(error.field && { field: error.field }),
+      });
+    }
     console.error("Error creating user:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
@@ -465,6 +483,17 @@ router.put("/:id", async (req, res) => {
     );
     res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
+    if (
+      error?.status === 409 ||
+      error?.code === "EMAIL_ALREADY_EXISTS" ||
+      error?.code === "P2002"
+    ) {
+      return res.status(409).json({
+        message: "Ezzel az e-mail címmel már létezik felhasználó!",
+        code: "EMAIL_ALREADY_EXISTS",
+        field: "email",
+      });
+    }
     console.error("Error updating user:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }

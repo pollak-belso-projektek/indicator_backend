@@ -154,6 +154,32 @@ for (const url of ['/api/v1/szakma', '/api/v1/szakirany', '/api/v1/szakma/', '/a
     assert.equal(runEndpointAccess(actors.noTables, 'GET', url).allowed, true);
   });
 }
+test('duplicate email returns 409 with Hungarian error message and field', async () => {
+  const conflictError = new Error('Ezzel az e-mail címmel már létezik felhasználó!');
+  conflictError.status = 409;
+  conflictError.code = 'EMAIL_ALREADY_EXISTS';
+  conflictError.field = 'email';
+  create.mock.mockImplementationOnce(async () => { throw conflictError; });
+
+  const response = await post(31, { email: 'existing@example.invalid' });
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.code, 'EMAIL_ALREADY_EXISTS');
+  assert.equal(body.field, 'email');
+  assert.match(body.message, /e-mail/i);
+});
+
+test('Prisma unique constraint P2002 on create returns 409', async () => {
+  const prismaError = Object.assign(new Error('Unique constraint failed'), { code: 'P2002' });
+  create.mock.mockImplementationOnce(async () => { throw prismaError; });
+
+  const response = await post(31, { email: 'race@example.invalid' });
+  assert.equal(response.status, 409);
+  const body = await response.json();
+  assert.equal(body.code, 'EMAIL_ALREADY_EXISTS');
+  assert.equal(body.field, 'email');
+});
+
 for (const [method, url] of [
   ['POST', '/api/v1/szakma'], ['PUT', '/api/v1/szakirany'], ['DELETE', '/api/v1/szakma'],
   ['GET', '/api/v1/szakmai_vizsga_eredmenyek'], ['GET', '/api/v1/szakmairendezvenyek'],
