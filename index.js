@@ -18,6 +18,7 @@ const corsConfig = {
 };
 
 const app = i.express();
+app.set("trust proxy", true);
 const port = process.env.PORT || 5300;
 const SESSION_SECRET = process.env.SESSION_SECRET || "supersecretkey";
 

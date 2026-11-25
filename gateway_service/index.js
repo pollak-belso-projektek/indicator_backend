@@ -26,6 +26,7 @@ import healthRouter from "./controllers/health.controller.js";
 
 // Configuration
 const app = express();
+app.set("trust proxy", true);
 const port = process.env.PORT || 5000;
 
 const corsOrigins = process.env.CORS_ORIGINS

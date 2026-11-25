@@ -30,6 +30,38 @@ const SENSITIVE_FIELDS = [
 ];
 
 /**
+ * Normalize an IP header/address value (takes first IP from comma-separated list,
+ * strips IPv4-mapped IPv6 "::ffff:" prefix, and caps length to DB column size 45).
+ */
+function normalizeIp(raw) {
+  if (!raw || typeof raw !== "string") return "";
+  const first = raw.split(",")[0].trim();
+  const cleaned = first.replace(/^::ffff:/i, "");
+  return cleaned.slice(0, 45);
+}
+
+/**
+ * Extract the real client IP from proxy headers or socket address.
+ */
+function extractClientIp(req) {
+  const candidates = [
+    req.headers["cf-connecting-ip"],
+    req.headers["true-client-ip"],
+    req.headers["x-real-ip"],
+    req.headers["x-forwarded-for"],
+    req.ip,
+    req.socket?.remoteAddress,
+  ];
+
+  for (const candidate of candidates) {
+    const ip = normalizeIp(candidate);
+    if (ip) return ip;
+  }
+
+  return "";
+}
+
+/**
  * Build a consistent log entry object
  */
 function buildLogEntry(req, res, { userId, duration, level, correlationId }) {
@@ -41,7 +73,7 @@ function buildLogEntry(req, res, { userId, duration, level, correlationId }) {
     body: sanitizeRequestBody(req.body),
     query: req.query,
     headers: sanitizeHeaders(req.headers),
-    ip: req.headers["x-forwarded-for"] || req.socket.remoteAddress,
+    ip: extractClientIp(req),
     userAgent: req.headers["user-agent"],
     duration,
     level,

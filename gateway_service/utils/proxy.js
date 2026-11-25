@@ -5,10 +5,33 @@ import { serviceRegistry } from "../utils/serviceRegistry.js";
  * Create proxy middleware for routing requests to services
  */
 
+function forwardClientIpHeaders(proxyReq, req) {
+  const existingXff = req.headers["x-forwarded-for"];
+  const remoteIp = (req.socket?.remoteAddress || req.ip || "").replace(/^::ffff:/i, "");
+  const xff = existingXff
+    ? `${existingXff}${remoteIp ? `, ${remoteIp}` : ""}`
+    : (req.ip || remoteIp).replace(/^::ffff:/i, "");
+
+  if (xff) {
+    proxyReq.setHeader("X-Forwarded-For", xff);
+  }
+  const realIp =
+    req.headers["cf-connecting-ip"] ||
+    req.headers["true-client-ip"] ||
+    req.headers["x-real-ip"] ||
+    (xff ? xff.split(",")[0].trim() : "");
+  if (realIp) {
+    proxyReq.setHeader("X-Real-IP", String(realIp).replace(/^::ffff:/i, ""));
+  }
+  proxyReq.setHeader("X-Forwarded-Proto", req.headers["x-forwarded-proto"] || req.protocol);
+  proxyReq.setHeader("X-Forwarded-Host", req.headers["x-forwarded-host"] || req.get("host"));
+}
+
 // Login service proxy
 export const loginServiceProxy = createProxyMiddleware({
   target: process.env.LOGIN_SERVICE_URL || "http://localhost:5301",
   changeOrigin: true,
+  xfwd: true,
   pathRewrite: {
     // Remove /api/v1/auth prefix when forwarding to login service
     "^/api/v1/auth": "/api/v1/auth",
@@ -26,10 +49,7 @@ export const loginServiceProxy = createProxyMiddleware({
     if (req.requestId) {
       proxyReq.setHeader("X-Request-ID", req.requestId);
     }
-    // Add original IP
-    proxyReq.setHeader("X-Forwarded-For", req.ip);
-    proxyReq.setHeader("X-Forwarded-Proto", req.protocol);
-    proxyReq.setHeader("X-Forwarded-Host", req.get("host"));
+    forwardClientIpHeaders(proxyReq, req);
   },
   onProxyRes: (proxyRes, req, res) => {
     // Log successful proxy
@@ -44,6 +64,7 @@ export const loginServiceProxy = createProxyMiddleware({
 export const mainServiceProxy = createProxyMiddleware({
   target: process.env.MAIN_SERVICE_URL || "http://localhost:5300",
   changeOrigin: true,
+  xfwd: true,
   pathRewrite: {
     // Keep the full path when forwarding to main service
     "^/api/v1": "/api/v1",
@@ -61,10 +82,7 @@ export const mainServiceProxy = createProxyMiddleware({
     if (req.requestId) {
       proxyReq.setHeader("X-Request-ID", req.requestId);
     }
-    // Add original IP
-    proxyReq.setHeader("X-Forwarded-For", req.ip);
-    proxyReq.setHeader("X-Forwarded-Proto", req.protocol);
-    proxyReq.setHeader("X-Forwarded-Host", req.get("host"));
+    forwardClientIpHeaders(proxyReq, req);
   },
   onProxyRes: (proxyRes, req, res) => {
     // Log successful proxy
