@@ -160,12 +160,57 @@ test('missing profession is counted as "Nincs meghatározva" of its sector', asy
   const row = tables.Tanulo_Letszam.find(r => r.szakma_id === null && r.szakirany_id === szakirany.turizmus.id && r.jogv_tipus === 0);
   assert.equal(row.letszam, 1);
 });
-test('an unknown new profession is created once, with a clean name', async () => {
+const unassignedRows = () => {
+  const id = tables.Szakirany.find(s => s.nev === 'Nincs meghatározva')?.id;
+  return tables.Tanulo_Letszam.filter(r => id && r.szakirany_id === id);
+};
+test('a profession the school has not configured counts as "Nincs meghatározva" of its sector', async () => {
   tables.Tanugyi_Adatok.push(student('Turizmus-vendéglátás - 23 (2020)', 'Szakács (4 1013 23 05)'), student('Turizmus-vendéglátás - 23 (2020)', 'Szakács (4 1013 23 05)'));
   await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
-  const created = tables.Szakma.filter(s => kepzesNameKey(s.nev) === kepzesNameKey('Szakács'));
-  assert.deepEqual(created.map(s => s.nev), ['Szakács']);
-  assert.equal(letszam(created[0].id), 2);
+  const row = tables.Tanulo_Letszam.find(r => r.szakma_id === null && r.szakirany_id === szakirany.turizmus.id && r.jogv_tipus === 0);
+  assert.equal(row.letszam, 2);
+  assert.equal(tables.Szakma.length, Object.keys(szakma).length, 'no dictionary entry is created');
+});
+test('students without sector and profession go to the separate "Nincs meghatározva" row', async () => {
+  tables.Tanugyi_Adatok.push(
+    student('Na', 'Na', { evfolyam: 'Kk 12' }),
+    student('Na', 'Na', { evfolyam: 'Kk 13' }),
+    student('Na', 'Na', { evfolyam: 'Kk 12', tanulo_jogviszonya: 'Felnőttképzési jogviszony' }),
+  );
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  const rows = unassignedRows();
+  assert.equal(rows.find(r => r.jogv_tipus === 0).letszam, 2);
+  assert.equal(rows.find(r => r.jogv_tipus === 1).letszam, 1);
+  assert.ok(rows.every(r => r.szakma_id === null));
+});
+test('a sector the school has not configured also goes to the "Nincs meghatározva" row', async () => {
+  tables.Tanugyi_Adatok.push(student('Gépészet - 10 (2020)', 'Gépgyártás-technológiai technikus (5 0715 10 06)'));
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  assert.equal(unassignedRows().find(r => r.jogv_tipus === 0).letszam, 1);
+  assert.ok(!tables.Szakirany.some(s => s.nev === 'Gépészet'), 'no dictionary entry is created');
+});
+test('the shared "Nincs meghatározva" sector is created once and then reused', async () => {
+  tables.Tanugyi_Adatok.push(student('Na', 'Na'));
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  assert.equal(tables.Szakirany.filter(s => s.nev === 'Nincs meghatározva').length, 1);
+  assert.equal(unassignedRows().find(r => r.jogv_tipus === 0).letszam, 1, 'not doubled by re-sync');
+});
+test('no "Nincs meghatározva" rows when every student is assigned', async () => {
+  tables.Tanugyi_Adatok.push(student('Turizmus-vendéglátás - 23 (2020)', 'Cukrász (4 1013 23 01)'));
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  assert.deepEqual(unassignedRows(), []);
+});
+test('every student is counted exactly once', async () => {
+  tables.Tanugyi_Adatok.push(
+    student('Turizmus-vendéglátás - 23 (2020)', 'Cukrász (4 1013 23 01)'),
+    student('Turizmus-vendéglátás - 23 (2020)', 'Szakács (4 1013 23 05)'),
+    student('Na', 'Burkoló (4 0732 06 03)'),
+    student('Gépészet - 10 (2020)', 'Na'),
+    student('Na', 'Na', { evfolyam: 'Kk 12' }),
+  );
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  assert.equal(tables.Tanulo_Letszam.reduce((t, r) => t + r.letszam, 0), 5);
 });
 test('every configured row exists even with zero students (table shows all of them)', async () => {
   tables.Tanugyi_Adatok.push(student('Turizmus-vendéglátás - 23 (2020)', 'Cukrász (4 1013 23 01)'));
@@ -206,4 +251,12 @@ for (const [raw, expected] of [
 test('profession rule keeps " - " parts that sector rule drops', () => {
   assert.equal(normalizeKepzesName('Pincér - vendégtéri szakember'), 'Pincér - vendégtéri szakember');
   assert.equal(agazatNameKey('GÉPÉSZET - Szakképző iskola'), agazatNameKey('Gépészet - 10 (2020)'));
+});
+
+test('the technical "Nincs meghatározva" sector is not offered in the sector list', async () => {
+  const { getAll } = await import('../services/szakirany.service.js');
+  tables.Szakirany.push({ id: 'si-nincs', nev: 'Nincs meghatározva' });
+  const names = (await getAll()).map(s => s.nev);
+  assert.ok(names.includes('Turizmus-vendéglátás'));
+  assert.ok(!names.includes('Nincs meghatározva'));
 });

@@ -127,7 +127,12 @@ export async function bulkSave(alapadatok_id, records) {
         letszam: Number(record.letszam),
         alapadatok: { connect: { id: alapadatok_id } },
         jogv_tipus: Number(record.jogv_tipus),
-        szakirany: { connect: { nev: record.szakirany } },
+        // The "Nincs meghatározva" bucket may not exist yet if nothing has been
+        // generated into it; every other sector must already exist.
+        szakirany:
+          record.szakirany === NINCS_MEGHATAROZVA
+            ? { connectOrCreate: { where: { nev: NINCS_MEGHATAROZVA }, create: { nev: NINCS_MEGHATAROZVA } } }
+            : { connect: { nev: record.szakirany } },
         tanev_kezdete: Number(record.tanev_kezdete),
       };
 
@@ -267,32 +272,47 @@ export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
 
     const jogvTipus = isFelnott ? 1 : 0;
 
-    let targetSzakiranyName = szakiranyName;
+    // Every student lands on a row the indicator table shows:
+    //  1. a profession configured for the school -> its own row
+    //  2. otherwise a sector configured for the school -> "Nincs meghatározva (<sector>)"
+    //  3. otherwise (no sector/profession in KRÉTA, or one the school has not
+    //     configured) -> the separate "Nincs meghatározva" row at the bottom.
+    let targetSzakiranyName = NINCS_MEGHATAROZVA;
     let targetSzakmaNev = null;
-
-    if (szakmaNev === "Nincs meghatározva") {
-      targetSzakmaNev = null;
-      targetSzakiranyName = szakiranyName;
-    } else {
+    const sectorOfSzakma =
+      szakmaNev !== NINCS_MEGHATAROZVA ? szakmaToSzakiranyMap.get(kepzesNameKey(szakmaNev)) : undefined;
+    if (sectorOfSzakma) {
+      targetSzakiranyName = sectorOfSzakma;
       targetSzakmaNev = szakmaNev;
-      const sectorOfSzakma = szakmaToSzakiranyMap.get(kepzesNameKey(szakmaNev));
-      if (sectorOfSzakma) {
-        targetSzakiranyName = sectorOfSzakma;
-      } else {
-        targetSzakiranyName = szakiranyName;
-      }
+    } else if (configuredSzakirany.has(agazatNameKey(szakiranyName))) {
+      targetSzakiranyName = szakiranyName;
     }
 
     const entry = getEntry(targetSzakiranyName, targetSzakmaNev);
     entry[jogvTipus] += 1;
   }
 
+  // Students without a usable sector are stored under one shared dictionary entry
+  // named "Nincs meghatározva" (szakirany_id is required). The manual save of the
+  // indicator page (bulkSave) connects to the same entry by name.
+  let unassigned;
+  const unassignedSzakirany = async () =>
+    (unassigned ??=
+      (await prisma.szakirany.findUnique({ where: { nev: NINCS_MEGHATAROZVA } })) ??
+      (await prisma.szakirany.create({ data: { nev: NINCS_MEGHATAROZVA } })));
+
   // Build records to insert
   const recordsToInsert = [];
 
   for (const entry of counts.values()) {
+    const isUnassigned = entry.szakiranyName === NINCS_MEGHATAROZVA;
+    // Only stored when someone is actually in it.
+    if (isUnassigned && !entry[0] && !entry[1]) continue;
+
     const szakiranyKey = agazatNameKey(entry.szakiranyName);
-    let szakiranyId = configuredSzakirany.get(szakiranyKey)?.id ?? szakiranyIndex.get(szakiranyKey)?.id;
+    let szakiranyId = isUnassigned
+      ? (await unassignedSzakirany()).id
+      : configuredSzakirany.get(szakiranyKey)?.id ?? szakiranyIndex.get(szakiranyKey)?.id;
     if (!szakiranyId && entry.szakiranyName && entry.szakiranyName !== NINCS_MEGHATAROZVA) {
       const created = await prisma.szakirany.create({
         data: { nev: entry.szakiranyName },
