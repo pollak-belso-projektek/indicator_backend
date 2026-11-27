@@ -4,6 +4,10 @@ import * as i from "./utils/imports.js";
 import prisma, { initializeDatabase } from "./utils/prisma.js";
 import compression from "compression";
 import process from "node:process";
+import {
+  createSchoolScopeMiddleware,
+  requireSuperadmin,
+} from "./middleware/schoolScope.middleware.js";
 
 const corsConfig = {
   origin: [
@@ -75,12 +79,20 @@ const apiRouter = i.express.Router();
 apiRouter.use(i.express.json({ limit: "50mb" }));
 apiRouter.use(i.express.urlencoded({ limit: "50mb", extended: false }));
 apiRouter.use(i.authMiddleware);
+// Per-request context + school isolation (must come right after authentication).
+// Runs before the request context exists, so this lookup itself is not scoped.
+apiRouter.use(
+  createSchoolScopeMiddleware({
+    loadSchoolIds: async () =>
+      (await prisma.alapadatok.findMany({ select: { id: true } })).map((s) => s.id),
+  }),
+);
 
 // Cache monitoring endpoint
-apiRouter.use("/cache", i.cacheRouter);
+apiRouter.use("/cache", requireSuperadmin, i.cacheRouter);
 
 // Log management endpoint
-apiRouter.use("/logs", i.logRouter);
+apiRouter.use("/logs", requireSuperadmin, i.logRouter);
 apiRouter.use("/changelog", i.changelogRouter);
 
 // Define API routes with their specific middleware

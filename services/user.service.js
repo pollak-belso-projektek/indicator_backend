@@ -2,7 +2,6 @@ import { hashPassword } from "../utils/hash.js";
 import prisma from "../utils/prisma.js";
 import * as cache from "../utils/cache.js";
 import { enrichUserWithPermissions } from "../utils/permissions.js";
-import { getUserFromToken } from "../utils/token.js";
 
 // Cache TTLs
 const CACHE_TTL = {
@@ -10,9 +9,20 @@ const CACHE_TTL = {
   DETAIL: 10 * 60 * 1000, // 10 minutes for details
 };
 
-export async function getAll(token) {
-  const user = await getUserFromToken(token);
-  const cacheKey = `users:all:${user.permissionsDetails.isSuperadmin ? 'super' : user.alapadatokId}`;
+/** Cache bucket for a user list: who is asking determines which users are visible. */
+function listScope(user) {
+  const p = user?.permissionsDetails || {};
+  if (p.isSuperadmin) return "super";
+  if (p.isHSZC && p.isAdmin) return "hszc";
+  return `school:${user?.alapadatokId}`;
+}
+
+/**
+ * Users visible to `user` (the authenticated – or, in alias mode, impersonated – user).
+ */
+export async function getAll(user) {
+  if (!user?.permissionsDetails) return [];
+  const cacheKey = `users:all:${listScope(user)}`;
   const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
@@ -141,9 +151,9 @@ export async function getById(id) {
   return enrichedData;
 }
 
-export async function getAllFiltered(token) {
-  const user = await getUserFromToken(token);
-  const cacheKey = `users:all:filtered:${user.permissionsDetails.isSuperadmin ? 'super' : user.alapadatokId}`;
+export async function getAllFiltered(user) {
+  if (!user?.permissionsDetails) return [];
+  const cacheKey = `users:all:filtered:${listScope(user)}`;
   const cachedData = await cache.get(cacheKey);
 
   if (cachedData) {
@@ -331,8 +341,10 @@ export async function update(
     },
   });
 
-  // Invalidate all user caches including specific user email and the users list
+  // Invalidate all user caches including specific user email and the users list,
+  // and the token -> user cache so role / active-state changes apply immediately.
   await cache.invalidate("users:*");
+  await cache.invalidate("token:user:");
 
   return user;
 }
@@ -368,10 +380,13 @@ export async function updatePersonalInformation(id, name, email) {
 }
 
 export async function inactivateUser(id) {
-  await cache.invalidate("users:*");
-
-  return prisma.user.update({
+  const result = await prisma.user.update({
     where: { id },
     data: { isActive: false },
   });
+  // After the write, so a concurrent request cannot re-cache the still-active user.
+  // token:user: makes the inactivation effective for already issued access tokens.
+  await cache.invalidate("users:*");
+  await cache.invalidate("token:user:");
+  return result;
 }

@@ -99,7 +99,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         // Check for superadmin permission
-        if (req.user.permissions < 3) {
+        if (!req.user?.permissionsDetails?.isSuperadmin) {
             return res.status(403).json({ error: "Forbidden: Superadmin access required" });
         }
 
@@ -151,7 +151,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try {
         // Check for superadmin permission
-        if (req.user.permissions < 3) {
+        if (!req.user?.permissionsDetails?.isSuperadmin) {
             return res.status(403).json({ error: "Forbidden: Superadmin access required" });
         }
 
@@ -187,7 +187,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         // Check for superadmin permission
-        if (req.user.permissions < 3) {
+        if (!req.user?.permissionsDetails?.isSuperadmin) {
             return res.status(403).json({ error: "Forbidden: Superadmin access required" });
         }
 

@@ -64,26 +64,32 @@ export async function getUserFromToken(token) {
     };
 
     // Get additional user data from database if needed (with detailed permissions, etc.)
+    let dbUser;
     try {
-      const dbUser = await getByEmail(decoded.email);
-      if (dbUser) {
-        // Merge database user data with token data
-        user = {
-          ...user,
-          ...dbUser,
-          // Keep token data as authoritative for these fields
-          id: decoded.sub || decoded.id,
-          email: decoded.email,
-          name: decoded.name,
-          permissions: decoded.permissions,
-        };
-      }
+      dbUser = await getByEmail(decoded.email);
     } catch (dbError) {
       console.warn(
         "Could not fetch additional user data from database:",
         dbError.message
       );
       // Continue with token data only
+    }
+    // A valid token is not enough: the account must still exist and be active.
+    // (dbUser === undefined means the lookup failed; then we keep token data only.)
+    if (dbUser === null || dbUser?.isActive === false) {
+      return null;
+    }
+    if (dbUser) {
+      // Merge database user data with token data
+      user = {
+        ...user,
+        ...dbUser,
+        // Keep token data as authoritative for these fields
+        id: decoded.sub || decoded.id,
+        email: decoded.email,
+        name: decoded.name,
+        permissions: decoded.permissions,
+      };
     }
 
     if (user) {

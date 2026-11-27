@@ -152,8 +152,7 @@ const router = e.Router();
  */
 router.get("/", async (req, res) => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    const data = await getAll(token);
+    const data = await getAll(req.user);
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -196,7 +195,7 @@ router.get("/", async (req, res) => {
 router.get("/getByEmail/:email", async (req, res) => {
   const { email } = req.params;
   try {
-    const data = await getAll();
+    const data = await getAll(req.user);
     const user = data.find((user) => user.email === email);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -235,8 +234,7 @@ router.get("/getByEmail/:email", async (req, res) => {
  */
 router.get("/filtered", async (req, res) => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    const data = await getAllFiltered(token);
+    const data = await getAllFiltered(req.user);
     res.status(200).json(data);
   } catch (error) {
     console.error("Error fetching filtered users:", error);

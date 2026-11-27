@@ -44,7 +44,7 @@ export function generateToken(user) {
   });
 
   const refreshToken = jwt.sign(
-    { email: user.email, name: user.name, id: user.id },
+    { email: user.email, name: user.name, id: user.id, type: "refresh" },
     JWT_REFRESH_SECRET,
     {
       ...JWT_DEFAULT_OPTIONS,
@@ -94,6 +94,14 @@ export async function verifyRefreshToken(token) {
       algorithms: [JWT_DEFAULT_OPTIONS.algorithm],
       issuer: JWT_DEFAULT_OPTIONS.issuer,
     });
+
+    // Trusted-device tokens share the refresh secret but may only skip 2FA at
+    // login: they must never work as a refresh token (that would be a 30-day
+    // session without a password). Older refresh tokens have no `type`, so only
+    // tokens explicitly typed as something else are rejected.
+    if (decoded.type !== undefined && decoded.type !== "refresh") {
+      return null;
+    }
 
     // Cache the successful verification
     await cache.set(cacheKey, decoded, TOKEN_CACHE_TTL);

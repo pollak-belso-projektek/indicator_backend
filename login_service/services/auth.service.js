@@ -6,6 +6,7 @@ import { sendTemporaryPasswordEmail } from "../utils/mailer.js";
 import speakeasy from "speakeasy";
 import QRCode from "qrcode";
 import { OAuth2Client } from "google-auth-library";
+import { randomInt } from "node:crypto";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -19,14 +20,16 @@ export async function login(email, password, twoFactorCode, trustDevice, trusted
       throw new Error("Hibás email vagy jelszó");
     }
 
-    if (!user.isActive) {
-      throw new Error("A fiók inaktív");
-    }
 
     // Password comparison is inherently slow for security
     const isPasswordValid = await comparePassword(password, user.password);
     if (!isPasswordValid) {
       throw new Error("Hibás email vagy jelszó");
+    }
+
+    // Checked after the password so the account state is not revealed to strangers.
+    if (!user.isActive) {
+      throw new Error("A fiók inaktív");
     }
 
     // Check trusted device token
@@ -185,6 +188,11 @@ export async function refresh(refreshToken) {
       throw new Error("User not found");
     }
 
+    // An inactivated account must not keep its session alive with an old refresh token.
+    if (!user.isActive) {
+      throw new Error("A fiók inaktív");
+    }
+
     // Generate new tokens
     const newTokens = generateToken(user);
 
@@ -206,6 +214,12 @@ export async function generate2FA(userId) {
   try {
     const user = await getById(userId);
     if (!user) throw new Error("User not found");
+
+    // Replacing the secret of an active 2FA would let anyone holding an access
+    // token silently take over the second factor. It must be disabled first.
+    if (user.isTwoFactorEnabled) {
+      throw new Error("A kétlépcsős azonosítás már be van kapcsolva.");
+    }
 
     const secret = speakeasy.generateSecret({
       name: `Indicator App (${user.email})`
@@ -267,25 +281,31 @@ export async function disable2FA(userId) {
  * Generates a random temporary password meeting specific criteria.
  * @returns {string}
  */
-function generateTemporaryPassword() {
+export function generateTemporaryPassword() {
   const lowercase = "abcdefghijklmnopqrstuvwxyz";
   const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numbers = "0123456789";
   const specials = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
 
   let password = "";
-  password += lowercase[Math.floor(Math.random() * lowercase.length)];
-  password += uppercase[Math.floor(Math.random() * uppercase.length)];
-  password += numbers[Math.floor(Math.random() * numbers.length)];
-  password += specials[Math.floor(Math.random() * specials.length)];
+  password += lowercase[randomInt(lowercase.length)];
+  password += uppercase[randomInt(uppercase.length)];
+  password += numbers[randomInt(numbers.length)];
+  password += specials[randomInt(specials.length)];
 
   const allChars = lowercase + uppercase + numbers + specials;
   for (let i = password.length; i < 12; i++) {
-    password += allChars[Math.floor(Math.random() * allChars.length)];
+    password += allChars[randomInt(allChars.length)];
   }
 
   // Shuffle the password characters
-  return password.split('').sort(() => 0.5 - Math.random()).join('');
+  // Fisher-Yates shuffle with a cryptographically secure RNG.
+  const chars = password.split('');
+  for (let i = chars.length - 1; i > 0; i--) {
+    const j = randomInt(i + 1);
+    [chars[i], chars[j]] = [chars[j], chars[i]];
+  }
+  return chars.join('');
 }
 
 /**

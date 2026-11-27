@@ -20,6 +20,9 @@ if (userCacheCleanupTimer.unref) {
   userCacheCleanupTimer.unref();
 }
 
+// Header names that must never be stored in logs
+const SENSITIVE_HEADER = /authorization|cookie|token|secret|password|api[-_]?key|credential/i;
+
 // List of sensitive fields to redact in request bodies
 const SENSITIVE_FIELDS = [
   "password",
@@ -186,14 +189,15 @@ function generateCorrelationId() {
  * @param {Object} headers - Request headers
  * @returns {Object} Sanitized headers
  */
-function sanitizeHeaders(headers) {
+export function sanitizeHeaders(headers) {
   if (!headers) return {};
 
   const sanitized = { ...headers };
 
-  // Remove sensitive headers
-  if (sanitized.authorization) sanitized.authorization = "***REDACTED***";
-  if (sanitized.cookie) sanitized.cookie = "***REDACTED***";
+  // Remove sensitive headers: auth, cookies, refresh tokens, API keys, secrets...
+  for (const name of Object.keys(sanitized)) {
+    if (SENSITIVE_HEADER.test(name)) sanitized[name] = "***REDACTED***";
+  }
 
   return sanitized;
 }
@@ -203,7 +207,7 @@ function sanitizeHeaders(headers) {
  * @param {Object} body - Request body
  * @returns {Object} Sanitized body
  */
-function sanitizeRequestBody(body) {
+export function sanitizeRequestBody(body) {
   if (!body) return null;
 
   // If body is not an object, return as is

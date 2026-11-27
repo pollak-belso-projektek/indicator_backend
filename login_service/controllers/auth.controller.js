@@ -1,5 +1,10 @@
 import express from "express";
-import rateLimit from "express-rate-limit";
+import {
+  createLoginLimiters,
+  createGoogleLoginLimiter,
+  createTwoFactorLimiter,
+  createForgotPasswordLimiters,
+} from "../utils/rateLimit.js";
 import { login, refresh, generate2FA, verify2FA, disable2FA, forgotPassword, googleLogin } from "../services/auth.service.js";
 import { verifyToken } from "../utils/token.js";
 
@@ -102,7 +107,7 @@ const router = express.Router();
  *                   type: string
  *                   example: User not found or Invalid password
  */
-router.post("/login", async (req, res) => {
+router.post("/login", ...createLoginLimiters(), async (req, res) => {
   const { email, password, twoFactorCode, trustDevice, trustedDeviceToken } = req.body;
 
   if (!email || !password) {
@@ -150,7 +155,7 @@ router.post("/login", async (req, res) => {
  *       401:
  *         description: Invalid token or user not found
  */
-router.post("/google-login", async (req, res) => {
+router.post("/google-login", createGoogleLoginLimiter(), async (req, res) => {
   const { idToken, twoFactorCode, trustDevice, trustedDeviceToken } = req.body;
 
   if (!idToken) {
@@ -166,16 +171,6 @@ router.post("/google-login", async (req, res) => {
   }
 });
 
-// Rate limiting for forgot password to prevent abuse (max 3 requests per IP per hour)
-const forgotPasswordLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hour
-  max: 3, // Limit each IP to 3 forgot password requests per windowMs
-  message: {
-    message: "Túl sok kérés erről az IP címről. Kérjük, próbáld újra egy óra múlva.",
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
 
 /**
  * @swagger
@@ -208,7 +203,7 @@ const forgotPasswordLimiter = rateLimit({
  *       500:
  *         description: Internal server error
  */
-router.post("/forgot-password", forgotPasswordLimiter, async (req, res) => {
+router.post("/forgot-password", ...createForgotPasswordLimiters(), async (req, res) => {
   const { email } = req.body;
 
   if (!email) {
@@ -309,7 +304,7 @@ router.post("/2fa/generate", authenticateToken, async (req, res) => {
   }
 });
 
-router.post("/2fa/verify", authenticateToken, async (req, res) => {
+router.post("/2fa/verify", authenticateToken, createTwoFactorLimiter(), async (req, res) => {
   const { token } = req.body;
   if (!token) return res.status(400).json({ message: "Token is required" });
 

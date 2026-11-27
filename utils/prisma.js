@@ -1,5 +1,6 @@
 // Singleton pattern for PrismaClient to avoid multiple instances
-import { PrismaClient } from "../generated/prisma/client.js";
+import { PrismaClient, Prisma } from "../generated/prisma/client.js";
+import { createSchoolScopeExtension, scopeConfigFromModels } from "./schoolScope.js";
 
 // Configuration for database connection retry
 const DB_RETRY_CONFIG = {
@@ -138,7 +139,7 @@ const withRetry = async (operation, config = DB_RETRY_CONFIG) => {
 };
 
 // Create a single PrismaClient instance and export it
-const prisma = new PrismaClient({
+const basePrisma = new PrismaClient({
   datasources: {
     db: {
       url: process.env.DATABASE_URL,
@@ -155,6 +156,12 @@ const prisma = new PrismaClient({
     isolationLevel: "ReadCommitted",
   },
 });
+
+// Row-level school isolation: school-scoped users only ever read/write their own
+// school's rows, whatever the controller passes in (see utils/schoolScope.js).
+const prisma = basePrisma.$extends(
+  createSchoolScopeExtension(scopeConfigFromModels(Prisma.dmmf.datamodel.models)),
+);
 
 // Test database connection with retry
 const testDatabaseConnection = async () => {

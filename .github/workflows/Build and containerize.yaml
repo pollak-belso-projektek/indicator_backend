@@ -20,9 +20,18 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            login_service/package-lock.json
       - name: Install test dependencies
         run: npm ci --ignore-scripts
       - name: Run regression tests
+        run: npm test
+      - name: Install login service test dependencies
+        working-directory: login_service
+        run: npm ci --ignore-scripts
+      - name: Run login service tests
+        working-directory: login_service
         run: npm test
 
   build-main-service:

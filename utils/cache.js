@@ -1,4 +1,20 @@
 import process from "node:process";
+import { currentSchoolScope } from "./requestContext.js";
+
+/**
+ * Cached query results depend on who asked: a school-scoped user only gets their own
+ * school's rows. Keys are therefore namespaced per school for such requests, so a
+ * result cached for a developer/HSZC user is never served to a school user (and
+ * vice versa). Pattern-based invalidation still matches every namespace.
+ */
+function scopedKey(key) {
+  const school = currentSchoolScope();
+  return school ? `school:${school}|${key}` : key;
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 const REDIS_URL = process.env.REDIS_URL;
 
@@ -72,6 +88,7 @@ if (cleanupTimer.unref) {
  * @returns {Promise<any|null>} - The cached value or null if not found/expired
  */
 export async function get(key) {
+  key = scopedKey(key);
   if (useRedis) {
     try {
       const data = await redisClient.get(key);
@@ -98,6 +115,7 @@ export async function get(key) {
  * @param {number|null} ttl - Time to live in milliseconds
  */
 export async function set(key, value, ttl = DEFAULT_TTL) {
+  key = scopedKey(key);
   if (useRedis) {
     try {
       const strValue = JSON.stringify(value);
@@ -124,6 +142,7 @@ export async function set(key, value, ttl = DEFAULT_TTL) {
  * @returns {Promise<boolean>} - True if the key exists and is not expired
  */
 export async function has(key) {
+  key = scopedKey(key);
   if (useRedis) {
     try {
       return (await redisClient.exists(key)) === 1;
@@ -147,6 +166,8 @@ export async function has(key) {
  * @param {string} key - The cache key
  */
 export async function del(key) {
+  // Remove the key from every school namespace as well.
+  await delByPattern(`(^|\\|)${escapeRegExp(key)}$`);
   if (useRedis) {
     try {
       await redisClient.del(key);

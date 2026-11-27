@@ -171,7 +171,7 @@ router.put("/:id/status", async (req, res) => {
     }
 
     // Must be superadmin
-    if (!req.user || !req.user.permissions || !req.user.permissions.isSuperadmin) {
+    if (!req.user?.permissionsDetails?.isSuperadmin) {
       return res.status(403).json({ message: "Nincs jogosultságod a hibajegy állapotának módosítására." });
     }
 
