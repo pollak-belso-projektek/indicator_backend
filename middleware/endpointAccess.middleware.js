@@ -1,105 +1,66 @@
-const PUBLIC_READ_ENDPOINTS = new Set(["/api/v1/szakma", "/api/v1/szakirany"]);
+import {
+  ENDPOINT_TABLES,
+  PUBLIC_READ_SEGMENTS,
+  tablesForSnapshot,
+  userHasTableAccess,
+} from "../utils/tableAccessMap.js";
 
+const FORBIDDEN = { message: "Forbidden - You don't have access to this endpoint" };
+
+/**
+ * Table-permission check for every router mounted on protectedRouter.
+ * The endpoint is identified by its first path segment after /api/v1/ and mapped to
+ * its permission table(s) explicitly (utils/tableAccessMap.js) – no substring
+ * matching, query strings never count, unknown endpoints are denied.
+ */
 export default function endpointAccessMiddleware(req, res, next) {
-  // By the time this middleware runs, the authMiddleware should have attached the user
   const user = req.user;
-
   if (!user) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
-  try {
-    // Query values must never participate in endpoint authorization.
-    const endpoint = req.originalUrl.split("?")[0];
-    const method = req.method;
-
-    // Superadmin bypass - always has access to all endpoints and methods
-    if (user.permissionsDetails && user.permissionsDetails.isSuperadmin) {
-      return next();
-    }
-
-    if (
-      (endpoint.includes("tablelist") ||
-        endpoint.includes("alapadatok") ||
-        endpoint.includes("tanugyi_adatok") ||
-        endpoint.includes("alkalmazottak_munkaugy") ||
-        endpoint.includes("osztaly_adatszolgaltatas")) &&
-      req.method === "GET"
-    ) {
-      return next();
-    }
-
-    // Read-only reference data (szakma / szakirany dictionaries) has no table
-    // permission of its own. Match exact paths so e.g. "szakma" does not open
-    // "szakmai_vizsga_eredmenyek".
-    if (
-      req.method === "GET" &&
-      PUBLIC_READ_ENDPOINTS.has(endpoint.replace(/\/+$/, ""))
-    ) {
-      return next();
-    }
-
-    // /me is mounted separately behind authentication in index.js.
-
-    // Check if the user has access to this endpoint
-    const hasEndpointAccess = user.tableAccess.some((access) =>
-      endpoint.includes(access.tableName),
-    );
-
-    if (!hasEndpointAccess) {
-      return res.status(403).json({
-        message: "Forbidden - You don't have access to this endpoint",
-      });
-    }
-
-    // Check if the user has permission to use the method on this endpoint
-    let hasMethodAccess = false;
-
-    for (const access of user.tableAccess) {
-      if (endpoint.includes(access.tableName)) {
-        switch (method) {
-          case "GET":
-            if (access.permissionsDetails.canRead) {
-              hasMethodAccess = true;
-            }
-            break;
-
-          case "POST":
-            if (access.permissionsDetails.canCreate) {
-              hasMethodAccess = true;
-            }
-            break;
-
-          case "PUT":
-          case "PATCH":
-            if (access.permissionsDetails.canUpdate) {
-              hasMethodAccess = true;
-            }
-            break;
-
-          case "DELETE":
-            if (access.permissionsDetails.canDelete) {
-              hasMethodAccess = true;
-            }
-            break;
-        }
-
-        if (hasMethodAccess) {
-          return next();
-        }
-      }
-    }
-
-    console.warn(
-      `User ${user.id} attempted to access ${method} ${endpoint} without permission`,
-    );
-
-    // If we get here, the user doesn't have permission to use this method
-    return res.status(403).json({
-      message: `Forbidden - You don't have permission to ${method} on this endpoint`,
-    });
-  } catch (error) {
-    console.error("Error in endpointAccessMiddleware:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
+  // Developers bypass table permissions.
+  if (user.permissionsDetails?.isSuperadmin) {
+    return next();
   }
+
+  const path = req.originalUrl.split("?")[0].replace(/^\/api\/v1\/?/, "");
+  const [segment, ...rest] = path.split("/").map((part) => {
+    try {
+      return decodeURIComponent(part);
+    } catch {
+      return part;
+    }
+  });
+  const method = req.method;
+
+  // Dot segments never name an endpoint; refuse them instead of guessing.
+  if ([segment, ...rest].some((part) => part === "." || part === "..")) {
+    return res.status(403).json(FORBIDDEN);
+  }
+
+  if ((method === "GET" || method === "HEAD") && PUBLIC_READ_SEGMENTS.has(segment)) {
+    return next();
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(ENDPOINT_TABLES, segment)) {
+    return res.status(403).json(FORBIDDEN);
+  }
+
+  if (segment === "form_history") {
+    // GET /form_history/:alapadatok_id/:table_name -> read right on that table.
+    if (method === "GET") {
+      return userHasTableAccess(user, tablesForSnapshot(rest[1]), "GET")
+        ? next()
+        : res.status(403).json(FORBIDDEN);
+    }
+    // POST /form_history/rollback/:id -> the controller checks the update right on
+    // the snapshot's table once it has loaded the snapshot.
+    if (method === "POST" && rest[0] === "rollback") return next();
+    return res.status(403).json(FORBIDDEN);
+  }
+
+  return userHasTableAccess(user, ENDPOINT_TABLES[segment], method)
+    ? next()
+    : res.status(403).json(FORBIDDEN);
 }

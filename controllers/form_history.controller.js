@@ -1,5 +1,6 @@
 import express from "express";
-import { getHistory, rollback } from "../services/form_history.service.js";
+import { getHistory, getHistoryById, rollback } from "../services/form_history.service.js";
+import { tablesForSnapshot, userHasTableAccess } from "../utils/tableAccessMap.js";
 
 const router = express.Router();
 
@@ -60,6 +61,16 @@ router.get("/:alapadatok_id/:table_name", async (req, res) => {
 router.post("/rollback/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    // Restoring overwrites the table's current data: requires the update right on
+    // the table the snapshot belongs to (developers bypass table rights).
+    const history = await getHistoryById(id);
+    if (!history) {
+      return res.status(404).json({ error: "A mentési pont nem található." });
+    }
+    const isDeveloper = req.user?.permissionsDetails?.isSuperadmin;
+    if (!isDeveloper && !userHasTableAccess(req.user, tablesForSnapshot(history.table_name), "PUT")) {
+      return res.status(403).json({ error: "Nincs jogosultságod a visszaállításhoz." });
+    }
     const result = await rollback(id);
     res.status(200).json(result);
   } catch (error) {

@@ -96,6 +96,11 @@ export async function getHistory(alapadatok_id, table_name) {
   });
 }
 
+/** A single snapshot (null when missing or, for school users, another school's). */
+export async function getHistoryById(history_id) {
+  return await getPattern().findById(history_id);
+}
+
 export async function rollback(history_id) {
   const history = await getPattern().findById(history_id);
 

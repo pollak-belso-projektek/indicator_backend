@@ -134,8 +134,8 @@ for (const [method, access] of [['GET', 1], ['POST', 2], ['PUT', 4], ['PATCH', 4
   test(`${method}: correct table permission still allows access`, () => {
     let allowed = false;
     endpointAccess({
-      user: { ...actors[1], tableAccess: [{ tableName: 'munkavallalok_elismeresek', permissionsDetails: mapTableAccess(access) }] },
-      method, originalUrl: '/api/v1/munkavallalok_elismeresek?name=test',
+      user: { ...actors[1], tableAccess: [{ tableName: 'dobbanto', permissionsDetails: mapTableAccess(access) }] },
+      method, originalUrl: '/api/v1/dobbanto?name=test',
     }, { status() { assert.fail('valid permission was rejected'); } }, () => { allowed = true; });
     assert.equal(allowed, true);
   });
