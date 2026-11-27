@@ -1,6 +1,7 @@
 import prisma from "./prisma.js";
 import { ServiceCache, CACHE_TTL } from "./ServiceCache.js";
 import { scheduleSnapshot } from "../services/form_history.service.js";
+import { currentAcademicYear } from "./academicYear.js";
 
 export { CACHE_TTL };
 
@@ -29,16 +30,7 @@ export class ServicePattern {
    * Helper method to get current academic year
    */
   getCurrentAcademicYear() {
-    const now = new Date();
-    let year = now.getFullYear();
-    const month = now.getMonth();
-
-    // If month is before June (0-based), we're in the previous academic year
-    if (month < 6) {
-      year -= 1;
-    }
-
-    return year;
+    return currentAcademicYear();
   }
 
   /**

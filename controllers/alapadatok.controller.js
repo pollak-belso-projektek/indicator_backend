@@ -136,10 +136,11 @@ router.get("/:id", async (req, res) => {
       return res.status(400).json({ message: "A paraméter nem megfelelő" });
 
     const data = await getById(id);
+    if (!data) return res.status(404).json({ message: "Az iskola nem található!" });
     res.status(200).json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Szerver hiba!", error: error });
+    res.status(500).json({ message: "Szerver hiba!" });
   }
 });
 

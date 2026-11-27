@@ -9,7 +9,7 @@ function getPattern() {
   return patternInstance;
 }
 
-function getPrismaModelName(tableName) {
+export function getPrismaModelName(tableName) {
   const overrides = {
     'intezmenyi_elismeresek': 'intezményiElismeresek',
     'munkavallalok_elismeresek': 'munkavallalokElismeresek',

@@ -1,5 +1,6 @@
 import e from "express";
 import * as szakmaiTovabbkepzesService from "../services/szakmai_tovabbkepzes.service.js";
+import { currentAcademicYear } from "../utils/academicYear.js";
 
 const router = e.Router();
 
@@ -57,7 +58,7 @@ router.get("/:alapadatok_id/:tanev", async (req, res, next) => {
 router.get("/:alapadatok_id", async (req, res, next) => {
   try {
     const { alapadatok_id } = req.params;
-    const currentYear = new Date().getFullYear();
+    const currentYear = currentAcademicYear();
     const data = await szakmaiTovabbkepzesService.getAllByAlapadatok(alapadatok_id, currentYear);
     res.status(200).json(data);
   } catch (error) {

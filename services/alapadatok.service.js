@@ -79,13 +79,6 @@ export async function getById(id) {
     return cachedData;
   }
 
-  let year = new Date().getFullYear();
-  const month = new Date().getMonth();
-
-  if (month < 6) {
-    year -= 1;
-  }
-
   const data = await prisma.alapadatok.findUnique({
     where: {
       id: id,
@@ -112,6 +105,9 @@ export async function getById(id) {
       },
     },
   });
+
+  // Unknown, deleted, or (for school users) another school's id.
+  if (!data) return null;
 
   const alapadatok_szakma = data.alapadatok_szakma.map((rel) => rel.szakma);
 

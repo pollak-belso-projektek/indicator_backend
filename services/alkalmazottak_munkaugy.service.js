@@ -1,5 +1,6 @@
 import { ServicePattern } from "../utils/ServicePattern.js";
 import prisma from "../utils/prisma.js";
+import { currentAcademicYear } from "../utils/academicYear.js";
 
 // Note: This service uses different field naming (TanevKezdete vs tanev_kezdete)
 const pattern = new ServicePattern('alkalmazottak_Munkaugy', 'id', {}, {}, {
@@ -27,12 +28,7 @@ export async function createMany(alapadatok_id, data) {
   // Delete existing records first
   await pattern.deleteByAlapadatokId(alapadatok_id);
 
-  let year = new Date().getFullYear();
-  const month = new Date().getMonth();
-
-  if (month < 9) {
-    year -= 1;
-  }
+  const year = currentAcademicYear();
 
   // Prepare data with validation and cleanup
   const preparedData = data.map((item) => {

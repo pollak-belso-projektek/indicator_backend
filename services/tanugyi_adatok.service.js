@@ -2,6 +2,7 @@ import { ServicePattern } from "../utils/ServicePattern.js";
 import prisma from "../utils/prisma.js";
 import { generateAndSaveFromTanugyiAdatok } from "./tanulo_letszam.service.js";
 import { generateAndSaveAdmissionsFromTanugyiAdatok } from "./admissions_autosave.service.js";
+import { currentAcademicYear } from "../utils/academicYear.js";
 
 // Note: Using custom field mapping for camelCase vs snake_case difference
 const pattern = new ServicePattern(
@@ -28,12 +29,7 @@ export async function createMany(alapadatok_id, data, userId) {
     throw new Error(`Alapadatok with id ${alapadatok_id} not found`);
   }
 
-  let year = new Date().getFullYear();
-  const month = new Date().getMonth();
-
-  if (month <= 7) {
-    year -= 1;
-  }
+  const year = currentAcademicYear();
 
   // Delete existing records first
   await pattern.deleteByAlapadatokIdAndExactYear(alapadatok_id, year);

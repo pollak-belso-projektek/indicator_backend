@@ -3,12 +3,13 @@ import { ServicePattern, CACHE_TTL } from "../utils/ServicePattern.js";
 import { scheduleSnapshot } from "./form_history.service.js";
 
 const pattern = new ServicePattern(
-  "szakmai_tovabbkepzes", 
+  "szakmaiTovabbkepzes", // must be the Prisma delegate name 
   "id", 
   {
     alapadatok: true,
   },
-  {}
+  {},
+  { yearField: "tanev" }
 );
 
 export async function getAll(tanev) {
