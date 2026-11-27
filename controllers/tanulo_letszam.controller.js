@@ -7,6 +7,7 @@ import {
   bulkSave,
   generateAndSaveFromTanugyiAdatok,
 } from "../services/tanulo_letszam.service.js";
+import { generateAndSaveAdmissionsFromTanugyiAdatok } from "../services/admissions_autosave.service.js";
 import e from "express";
 
 const router = e.Router();
@@ -289,9 +290,20 @@ router.post("/sync-from-tanugyi/:alapadatok_id/:year", async (req, res) => {
 
   try {
     const result = await generateAndSaveFromTanugyiAdatok(alapadatok_id, parseInt(year));
+    // Same as after a tanügyi import: admissions (indicator 2) come from the same data.
+    const syncWarnings = [];
+    try {
+      await generateAndSaveAdmissionsFromTanugyiAdatok(alapadatok_id, parseInt(year));
+    } catch (admissionsError) {
+      console.error("Hiba a felvettek számának szinkronizálása során:", admissionsError);
+      syncWarnings.push("A felvettek számának újraszámolása nem sikerült.");
+    }
     res.status(200).json({
-      message: "Tanulólétszám sikeresen szinkronizálva a tanügyi adatokból",
+      message: syncWarnings.length
+        ? `Tanulólétszám szinkronizálva. ${syncWarnings.join(" ")}`
+        : "Tanulólétszám és felvettek száma sikeresen szinkronizálva a tanügyi adatokból",
       count: result.count,
+      syncWarnings,
     });
   } catch (error) {
     console.error("Hiba a tanulólétszám szinkronizálása során:", error);

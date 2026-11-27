@@ -10,11 +10,12 @@ const snapshot = mock.fn(async () => {});
 const matches = (record, where) => Object.entries(where).every(([key, value]) => record[key] === value);
 const prisma = {
   tanugyi_Adatok: { findMany: async ({ where }) => students.filter(record => matches(record, where)) },
+  alapadatok: { findUnique: async () => null }, // school without configured sectors
   $transaction: async work => {
     const draft = structuredClone(records);
     const tx = {
-      szakirany: { upsert: async ({ where }) => ({ id: where.nev }) },
-      szakma: { upsert: async ({ where }) => ({ id: where.nev }) },
+      szakirany: { findMany: async () => [], create: async ({ data }) => ({ id: data.nev, nev: data.nev }) },
+      szakma: { findMany: async () => [], create: async ({ data }) => ({ id: data.nev, nev: data.nev }) },
       felvettek_Szama: {
         findMany: async ({ where }) => draft.filter(record => matches(record, where)),
         updateMany: async ({ where, data }) => {

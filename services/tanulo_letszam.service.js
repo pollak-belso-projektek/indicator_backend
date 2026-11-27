@@ -1,6 +1,16 @@
 import prisma from "../utils/prisma.js";
 import { ServicePattern, CACHE_TTL } from "../utils/ServicePattern.js";
 import { scheduleSnapshot } from "./form_history.service.js";
+import {
+  NINCS_MEGHATAROZVA,
+  SCHOOL_KEPZES_INCLUDE,
+  normalizeKepzesName,
+  normalizeAgazatName,
+  kepzesNameKey,
+  agazatNameKey,
+  indexByKepzesName,
+  schoolKepzesLookup,
+} from "../utils/kepzesName.js";
 
 // Initialize ServicePattern for tanulo_letszam with relations
 const pattern = new ServicePattern(
@@ -163,64 +173,34 @@ export async function bulkSave(alapadatok_id, records) {
 export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
   const school = await prisma.alapadatok.findUnique({
     where: { id: alapadatok_id },
-    include: {
-      alapadatok_szakirany: {
-        include: {
-          szakirany: {
-            include: {
-              szakma: {
-                include: {
-                  szakma: true,
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+    include: SCHOOL_KEPZES_INCLUDE,
   });
 
   if (!school) {
     throw new Error(`School with id ${alapadatok_id} not found`);
   }
 
-  // Pre-fetch all szakirany and szakma to resolve IDs
-  const allSzakiranyok = await prisma.szakirany.findMany({
-    select: { id: true, nev: true },
-  });
-  const szakiranyMap = new Map(allSzakiranyok.map((s) => [s.nev, s.id]));
+  // Existing dictionary entries, matched by normalized name (KRÉTA code suffixes and
+  // letter case ignored) so imports link to the canonical record instead of
+  // creating "Cukrász (4 1013 23 01)" next to "Cukrász".
+  const szakiranyIndex = indexByKepzesName(
+    await prisma.szakirany.findMany({ select: { id: true, nev: true } }),
+    agazatNameKey,
+  );
+  const szakmaIndex = indexByKepzesName(
+    await prisma.szakma.findMany({ select: { id: true, nev: true } }),
+  );
 
-  const allSzakmak = await prisma.szakma.findMany({
-    select: { id: true, nev: true },
-  });
-  const szakmaMap = new Map(allSzakmak.map((s) => [s.nev, s.id]));
+  // The school's own configured records always win, so counts are linked to exactly
+  // the rows the indicator table displays, even when the dictionary contains
+  // look-alikes ("    Burkoló" vs "Burkoló (4 0732 06 03)").
+  const {
+    szakirany: configuredSzakirany,
+    szakma: configuredSzakma,
+    szakmaToSzakirany: szakmaToSzakiranyMap,
+    categories: configuredCategories,
+  } = schoolKepzesLookup(school);
 
-  // Build mapping of szakma to parent szakirany and list all configured categories for the school
-  const szakmaToSzakiranyMap = new Map();
-  const configuredCategories = [];
-
-  if (school.alapadatok_szakirany && Array.isArray(school.alapadatok_szakirany)) {
-    for (const item of school.alapadatok_szakirany) {
-      const szakirany = item.szakirany;
-      if (!szakirany || !szakirany.nev) continue;
-      const szakiranyName = szakirany.nev;
-
-      // Always include "Nincs meghatározva" for each szakirany
-      configuredCategories.push({ szakiranyName, szakmaNev: null });
-
-      if (szakirany.szakma && Array.isArray(szakirany.szakma)) {
-        for (const sItem of szakirany.szakma) {
-          const s = sItem.szakma;
-          if (s && s.nev) {
-            szakmaToSzakiranyMap.set(s.nev, szakiranyName);
-            configuredCategories.push({ szakiranyName, szakmaNev: s.nev });
-          }
-        }
-      }
-    }
-  }
-
-  // Fetch student records from tanugyi_Adatok for this school and year
   const tanugyiData = await prisma.tanugyi_Adatok.findMany({
     where: {
       alapadatok_id,
@@ -253,26 +233,18 @@ export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
 
   // Aggregate student numbers
   for (const student of tanugyiData) {
-    let szakmaNev =
-      student.uj_szkt_szakma_tipusa ||
-      student.szakma_nev ||
-      student.szakkepzes_nev ||
-      "Nincs meghatározva";
-
-    if (szakmaNev && szakmaNev !== "Nincs meghatározva") {
-      szakmaNev = szakmaNev.split(" - ")[0].trim();
-    }
-    if (["Na", "NA", "na"].includes(szakmaNev)) {
-      szakmaNev = "Nincs meghatározva";
-    }
-
-    let szakiranyName = student.uj_Szkt_agazat_tipusa || "Nincs meghatározva";
-    if (szakiranyName && szakiranyName !== "Nincs meghatározva") {
-      szakiranyName = szakiranyName.split(" - ")[0].trim();
-    }
-    if (["Na", "NA", "na"].includes(szakiranyName)) {
-      szakiranyName = "Nincs meghatározva";
-    }
+    // Normalized names; configured spelling wins so the counts land on the rows the
+    // indicator table shows for this school.
+    const rawSzakma = normalizeKepzesName(
+      student.uj_szkt_szakma_tipusa || student.szakma_nev || student.szakkepzes_nev,
+    );
+    const szakmaNev = rawSzakma
+      ? configuredSzakma.get(kepzesNameKey(rawSzakma))?.nev ?? rawSzakma
+      : NINCS_MEGHATAROZVA;
+    const rawSzakirany = normalizeAgazatName(student.uj_Szkt_agazat_tipusa);
+    const szakiranyName = rawSzakirany
+      ? configuredSzakirany.get(agazatNameKey(rawSzakirany))?.nev ?? rawSzakirany
+      : NINCS_MEGHATAROZVA;
 
     const evfolyam = student.evfolyam || "";
     const isTechnikum = evfolyam.toLowerCase().includes("technikum");
@@ -303,8 +275,9 @@ export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
       targetSzakiranyName = szakiranyName;
     } else {
       targetSzakmaNev = szakmaNev;
-      if (szakmaToSzakiranyMap.has(szakmaNev)) {
-        targetSzakiranyName = szakmaToSzakiranyMap.get(szakmaNev);
+      const sectorOfSzakma = szakmaToSzakiranyMap.get(kepzesNameKey(szakmaNev));
+      if (sectorOfSzakma) {
+        targetSzakiranyName = sectorOfSzakma;
       } else {
         targetSzakiranyName = szakiranyName;
       }
@@ -318,13 +291,14 @@ export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
   const recordsToInsert = [];
 
   for (const entry of counts.values()) {
-    let szakiranyId = szakiranyMap.get(entry.szakiranyName);
-    if (!szakiranyId && entry.szakiranyName && entry.szakiranyName !== "Nincs meghatározva") {
+    const szakiranyKey = agazatNameKey(entry.szakiranyName);
+    let szakiranyId = configuredSzakirany.get(szakiranyKey)?.id ?? szakiranyIndex.get(szakiranyKey)?.id;
+    if (!szakiranyId && entry.szakiranyName && entry.szakiranyName !== NINCS_MEGHATAROZVA) {
       const created = await prisma.szakirany.create({
         data: { nev: entry.szakiranyName },
       });
       szakiranyId = created.id;
-      szakiranyMap.set(entry.szakiranyName, szakiranyId);
+      szakiranyIndex.set(szakiranyKey, created);
     }
 
     if (!szakiranyId) {
@@ -332,14 +306,15 @@ export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
     }
 
     let szakmaId = null;
-    if (entry.szakmaNev && entry.szakmaNev !== "Nincs meghatározva") {
-      szakmaId = szakmaMap.get(entry.szakmaNev);
+    if (entry.szakmaNev && entry.szakmaNev !== NINCS_MEGHATAROZVA) {
+      const szakmaKey = kepzesNameKey(entry.szakmaNev);
+      szakmaId = configuredSzakma.get(szakmaKey)?.id ?? szakmaIndex.get(szakmaKey)?.id;
       if (!szakmaId) {
         const created = await prisma.szakma.create({
           data: { nev: entry.szakmaNev },
         });
         szakmaId = created.id;
-        szakmaMap.set(entry.szakmaNev, szakmaId);
+        szakmaIndex.set(kepzesNameKey(entry.szakmaNev), created);
       }
     }
 
