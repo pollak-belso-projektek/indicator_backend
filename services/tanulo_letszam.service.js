@@ -251,14 +251,10 @@ export async function generateAndSaveFromTanugyiAdatok(alapadatok_id, year) {
       ? configuredSzakirany.get(agazatNameKey(rawSzakirany))?.nev ?? rawSzakirany
       : NINCS_MEGHATAROZVA;
 
+    // Every student counts, whatever the grade is called: grades such as
+    // "Dobbantó előkészítő" or "Műhelyiskola osztály" have no number and used to be
+    // dropped entirely.
     const evfolyam = student.evfolyam || "";
-    const isTechnikum = evfolyam.toLowerCase().includes("technikum");
-    const isSzakkepzo = evfolyam.toLowerCase().includes("szakképző");
-    const hasEvfolyamNumber = /\d+/.test(evfolyam);
-
-    if (!isTechnikum && !isSzakkepzo && !hasEvfolyamNumber) {
-      continue;
-    }
 
     const isFelnott =
       student.tanulo_jogviszonya?.toLowerCase().includes("felnőtt") ||

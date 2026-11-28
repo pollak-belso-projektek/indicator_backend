@@ -260,3 +260,20 @@ test('the technical "Nincs meghatározva" sector is not offered in the sector li
   assert.ok(names.includes('Turizmus-vendéglátás'));
   assert.ok(!names.includes('Nincs meghatározva'));
 });
+
+test('daytime students in grades without a number (Dobbantó, Műhelyiskola) are counted too', async () => {
+  const nappali = { tanulo_jogviszonya: 'Tanulói jogviszony', munkarend: 'Nappali rendszerű iskolai oktatás' };
+  const felnott = { tanulo_jogviszonya: 'Felnőttképzési jogviszony', munkarend: 'Felnőttképzési jogviszony munkarend nélkül' };
+  for (let i = 0; i < 6; i++) tables.Tanugyi_Adatok.push(student('Na', 'Na', { evfolyam: 'Dobbantó előkészítő', ...nappali }));
+  for (let i = 0; i < 4; i++) tables.Tanugyi_Adatok.push(student('Na', 'Na', { evfolyam: 'Műhelyiskola osztály', ...nappali }));
+  for (let i = 0; i < 37; i++) tables.Tanugyi_Adatok.push(student('Na', 'Na', { evfolyam: i < 24 ? 'Kk 12' : 'Kk 13', ...felnott }));
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  const rows = unassignedRows();
+  assert.equal(rows.find(r => r.jogv_tipus === 0).letszam, 10, 'nappali');
+  assert.equal(rows.find(r => r.jogv_tipus === 1).letszam, 37, 'felnőttképzés');
+});
+test('a configured profession in a grade without a number still lands on its row', async () => {
+  tables.Tanugyi_Adatok.push(student('Turizmus-vendéglátás - 23 (2020)', 'Cukrász (4 1013 23 01)', { evfolyam: 'Előkészítő évfolyam' }));
+  await generateAndSaveFromTanugyiAdatok(SCHOOL, 2026);
+  assert.equal(letszam(szakma.cukrasz.id), 1);
+});
